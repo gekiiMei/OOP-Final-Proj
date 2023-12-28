@@ -24,6 +24,24 @@ public class LogInUI extends javax.swing.JPanel {
         
        
     }
+    
+    private void checkLogin() {
+        mf.setUserID(UserIDField.getText());
+        if (UserIDField.getText().isEmpty()) {
+            //error msg
+            System.out.println("whoa hold on ur input is empty buddy");
+        } else {
+            if (UserIDField.getText().equals("0")) //temporary stand-in for student
+                mf.switchCard("StudentHomeCard");
+            else if (UserIDField.getText().equals("1")) //temporary stand-in for faculty
+                mf.switchCard("AdminHomeCard");
+            else {
+                //error msg
+                System.out.println("whoa buddy u dont exist in our database");
+            }
+        }
+        UserIDField.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +59,7 @@ public class LogInUI extends javax.swing.JPanel {
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
         UserIcon = new javax.swing.JLabel();
-        UsedIDField = new javax.swing.JTextField();
+        UserIDField = new javax.swing.JTextField();
         EnrlmntLBL = new javax.swing.JLabel();
         LogInLBL = new javax.swing.JLabel();
         UserID = new javax.swing.JLabel();
@@ -139,18 +157,18 @@ public class LogInUI extends javax.swing.JPanel {
         add(UserIcon);
         UserIcon.setBounds(1120, 210, 50, 70);
 
-        UsedIDField.setBackground(new java.awt.Color(249, 248, 248));
-        UsedIDField.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-        UsedIDField.setToolTipText("");
-        UsedIDField.setActionCommand("<Not Set>");
-        UsedIDField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        UsedIDField.addActionListener(new java.awt.event.ActionListener() {
+        UserIDField.setBackground(new java.awt.Color(249, 248, 248));
+        UserIDField.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        UserIDField.setToolTipText("");
+        UserIDField.setActionCommand("<Not Set>");
+        UserIDField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        UserIDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsedIDFieldActionPerformed(evt);
+                UserIDFieldActionPerformed(evt);
             }
         });
-        add(UsedIDField);
-        UsedIDField.setBounds(720, 210, 450, 70);
+        add(UserIDField);
+        UserIDField.setBounds(720, 210, 450, 70);
 
         EnrlmntLBL.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         EnrlmntLBL.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,12 +216,14 @@ public class LogInUI extends javax.swing.JPanel {
         Background.setBounds(0, 0, 1280, 720);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UsedIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsedIDFieldActionPerformed
+    private void UserIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserIDFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsedIDFieldActionPerformed
+        checkLogin();
+    }//GEN-LAST:event_UserIDFieldActionPerformed
 
     private void LogInBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInBTNActionPerformed
         // TODO add your handling code here:
+        checkLogin();
     }//GEN-LAST:event_LogInBTNActionPerformed
 
     private void LogInBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInBTNMouseEntered
@@ -272,8 +292,8 @@ public class LogInUI extends javax.swing.JPanel {
     private javax.swing.JButton MinimizeBTN;
     private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton SupportBTN;
-    private javax.swing.JTextField UsedIDField;
     private javax.swing.JLabel UserID;
+    private javax.swing.JTextField UserIDField;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
