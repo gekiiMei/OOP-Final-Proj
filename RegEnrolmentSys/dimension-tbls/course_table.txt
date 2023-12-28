@@ -1,0 +1,17 @@
+CREATE TABLE finals.course (
+    course_code     VARCHAR(25)     NOT NULL
+   ,description     VARCHAR(100)    NOT NULL
+   ,college_code    VARCHAR(25)     NOT NULL
+   ,date_opened     VARCHAR(15)     NOT NULL
+   ,date_closed     VARCHAR(15)     NOT NULL
+   ,status          VARCHAR(1)      NOT NULL
+   ,constraint college_code_fk FOREIGN KEY(college_code) REFERENCES finals.college(college_code)
+   ,constraint course_pk PRIMARY KEY(course_code, date_opened, date_closed)
+   ,constraint course_code_uk UNIQUE(course_code)
+) 
+
+INSERT INTO finals.course VALUES ('BSCS-CS', 'BSComputer Studies-Computer Science','CET','06-01-2000', '12-31-9999', 'A');
+INSERT INTO finals.course VALUES ('BSIM', 'BSinformation Management','CET', '06-01-2000', '12-31-2008', 'I');
+INSERT INTO finals.course VALUES ('BSCS','Bachelor of Science in Computer Science','CET','06-01-2000','12-31-9999','A');
+INSERT INTO finals.course VALUES('BSIT', 'Bachelor of Science in Information Technology', 'CET', '06-01-2000', '12-31-9999', 'A');
+
