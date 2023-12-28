@@ -90,7 +90,7 @@
         <Component class="javax.swing.JLabel" name="PLMLogo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\harley\Desktop\PLM\BS Computer Science\2023-2024\1st Sem\OOP\OOP-Final-Proj\RegEnrolmentSys\assets\PLM_Seal_2013.png"/>
+              <Image iconType="3" name="/assets/PLM_Seal_2013.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -159,12 +159,12 @@
     <Component class="javax.swing.JLabel" name="UserIcon">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\harley\Desktop\PLM\BS Computer Science\2023-2024\1st Sem\OOP\OOP-Final-Proj\RegEnrolmentSys\assets\1077114.png"/>
+          <Image iconType="3" name="/assets/1077114.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1170" y="210" width="50" height="70"/>
+          <AbsoluteConstraints x="1120" y="210" width="50" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -268,7 +268,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\harley\Desktop\PLM\BS Computer Science\2023-2024\1st Sem\OOP\OOP-Final-Proj\RegEnrolmentSys\assets\white-color-solid-background-1920x1080.png"/>
+          <Image iconType="3" name="/assets/white-color-solid-background-1920x1080.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="LOG IN"/>
         <Property name="verticalAlignment" type="int" value="3"/>
@@ -287,6 +287,11 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="Background">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/assets/LogInShortFinal.gif"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>

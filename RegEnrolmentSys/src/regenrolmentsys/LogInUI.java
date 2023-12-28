@@ -85,7 +85,7 @@ public class LogInUI extends javax.swing.JPanel {
         jPanel1.add(MainLBL);
         MainLBL.setBounds(40, 0, 290, 30);
 
-        PLMLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\harley\\Desktop\\PLM\\BS Computer Science\\2023-2024\\1st Sem\\OOP\\OOP-Final-Proj\\RegEnrolmentSys\\assets\\PLM_Seal_2013.png")); // NOI18N
+        PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
         jPanel1.add(PLMLogo);
         PLMLogo.setBounds(10, 0, 30, 30);
 
@@ -135,9 +135,9 @@ public class LogInUI extends javax.swing.JPanel {
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1280, 30);
 
-        UserIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\harley\\Desktop\\PLM\\BS Computer Science\\2023-2024\\1st Sem\\OOP\\OOP-Final-Proj\\RegEnrolmentSys\\assets\\1077114.png")); // NOI18N
+        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1077114.png"))); // NOI18N
         add(UserIcon);
-        UserIcon.setBounds(1170, 210, 50, 70);
+        UserIcon.setBounds(1120, 210, 50, 70);
 
         UsedIDField.setBackground(new java.awt.Color(249, 248, 248));
         UsedIDField.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -186,14 +186,16 @@ public class LogInUI extends javax.swing.JPanel {
         SupportBTN.setBounds(890, 560, 140, 30);
 
         LogInPanel.setBackground(new java.awt.Color(255, 255, 255));
-        LogInPanel.setIcon(new javax.swing.ImageIcon("C:\\Users\\harley\\Desktop\\PLM\\BS Computer Science\\2023-2024\\1st Sem\\OOP\\OOP-Final-Proj\\RegEnrolmentSys\\assets\\white-color-solid-background-1920x1080.png")); // NOI18N
+        LogInPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/white-color-solid-background-1920x1080.png"))); // NOI18N
         LogInPanel.setText("LOG IN");
         LogInPanel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         LogInPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 10, true));
         add(LogInPanel);
         LogInPanel.setBounds(660, 50, 600, 650);
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LogInShortFinal.gif"))); // NOI18N
         add(Background);
-        Background.setBounds(0, 0, 0, 0);
+        Background.setBounds(0, 0, 1280, 720);
     }// </editor-fold>//GEN-END:initComponents
 
     private void UsedIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsedIDFieldActionPerformed

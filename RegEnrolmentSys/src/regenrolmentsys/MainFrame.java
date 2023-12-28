@@ -14,6 +14,7 @@ public class MainFrame extends javax.swing.JFrame {
     private LogInUI panelLogin = new LogInUI(this);
     public MainFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Enrollment System for Regular Students");
         cont.setLayout(cl);
         add(panelLogin);
         pack();
