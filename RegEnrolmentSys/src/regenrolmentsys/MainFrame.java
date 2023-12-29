@@ -19,7 +19,10 @@ public class MainFrame extends javax.swing.JFrame {
     private String currentUserID = "";
     public MainFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        //setUndecorated(true);
         setTitle("Enrollment System for Regular Students");
+        
         cont.setLayout(cl);
         cont.add(panelLogin, "LoginCard");
         cont.add(panelAdminHome, "AdminHomeCard");

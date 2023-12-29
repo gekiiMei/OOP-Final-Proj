@@ -4,6 +4,8 @@
  */
 package regenrolmentsys;
 
+import java.awt.Color;
+
 /**
  *
  * @author harley
@@ -37,61 +39,28 @@ public class StudentHome extends javax.swing.JPanel {
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblUserName = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblTempID = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
         btnEnrolment = new javax.swing.JButton();
         btnSched = new javax.swing.JButton();
         btnGrades = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblTempID = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        MainLBL = new javax.swing.JLabel();
+        PLMLogo = new javax.swing.JLabel();
+        MinimizeBTN = new javax.swing.JButton();
+        CloseBTN = new javax.swing.JButton();
 
         jSplitPane1.setDividerLocation(450);
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        jLabel1.setText("welcome!");
-
-        lblUserName.setText("name");
-
-        jLabel3.setText("student");
-
-        lblTempID.setText("current ID: ");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(855, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblUserName))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblTempID)
-                        .addComponent(jLabel3)))
-                .addGap(367, 367, 367))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUserName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(52, 52, 52)
-                .addComponent(lblTempID)
-                .addContainerGap(177, Short.MAX_VALUE))
-        );
-
-        jSplitPane1.setTopComponent(jPanel1);
 
         btnProfile.setText("profile");
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -128,37 +97,130 @@ public class StudentHome extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(btnProfile)
-                .addGap(101, 101, 101)
-                .addComponent(btnEnrolment)
-                .addGap(154, 154, 154)
-                .addComponent(btnSched)
-                .addGap(149, 149, 149)
-                .addComponent(btnGrades)
-                .addGap(155, 155, 155)
-                .addComponent(btnLogout)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(btnProfile)
+                        .addGap(101, 101, 101)
+                        .addComponent(btnEnrolment)
+                        .addGap(154, 154, 154)
+                        .addComponent(btnSched)
+                        .addGap(149, 149, 149)
+                        .addComponent(btnGrades)
+                        .addGap(155, 155, 155)
+                        .addComponent(btnLogout))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(98, 98, 98)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProfile)
                     .addComponent(btnEnrolment)
                     .addComponent(btnSched)
                     .addComponent(btnGrades)
                     .addComponent(btnLogout))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(16, 16, 16))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
+
+        jPanel1.setLayout(null);
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("welcome!");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(680, 90, 270, 160);
+
+        lblUserName.setText("name");
+        jPanel1.add(lblUserName);
+        lblUserName.setBounds(680, 210, 30, 16);
+
+        jLabel3.setText("student");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(680, 210, 40, 60);
+
+        lblTempID.setText("current ID: ");
+        jPanel1.add(lblTempID);
+        lblTempID.setBounds(680, 230, 80, 50);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LogInShortFinal.gif"))); // NOI18N
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 30, 1280, 470);
+
+        jPanel3.setBackground(new java.awt.Color(254, 86, 86));
+        jPanel3.setLayout(null);
+
+        MainLBL.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        MainLBL.setForeground(new java.awt.Color(255, 255, 255));
+        MainLBL.setText("Enrollment System for Regular Students");
+        jPanel3.add(MainLBL);
+        MainLBL.setBounds(40, 0, 290, 30);
+
+        PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
+        jPanel3.add(PLMLogo);
+        PLMLogo.setBounds(10, 0, 30, 30);
+
+        MinimizeBTN.setBackground(new java.awt.Color(254, 86, 86));
+        MinimizeBTN.setFont(new java.awt.Font("Boldfinger", 0, 24)); // NOI18N
+        MinimizeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        MinimizeBTN.setText("-");
+        MinimizeBTN.setToolTipText("");
+        MinimizeBTN.setBorder(null);
+        MinimizeBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MinimizeBTNMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MinimizeBTNMouseExited(evt);
+            }
+        });
+        MinimizeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinimizeBTNActionPerformed(evt);
+            }
+        });
+        jPanel3.add(MinimizeBTN);
+        MinimizeBTN.setBounds(1220, 0, 30, 30);
+
+        CloseBTN.setBackground(new java.awt.Color(254, 86, 86));
+        CloseBTN.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
+        CloseBTN.setForeground(new java.awt.Color(255, 255, 255));
+        CloseBTN.setText("X");
+        CloseBTN.setBorder(null);
+        CloseBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CloseBTNMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CloseBTNMouseExited(evt);
+            }
+        });
+        CloseBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseBTNActionPerformed(evt);
+            }
+        });
+        jPanel3.add(CloseBTN);
+        CloseBTN.setBounds(1250, 0, 30, 30);
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(0, 0, 1280, 30);
+
+        jSplitPane1.setTopComponent(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -168,7 +230,7 @@ public class StudentHome extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,17 +264,55 @@ public class StudentHome extends javax.swing.JPanel {
         sm.getTabs().setSelectedIndex(2);
     }//GEN-LAST:event_btnSchedActionPerformed
 
+    private void MinimizeBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseEntered
+        MinimizeBTN.setBackground(new Color(203,68,68));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNMouseEntered
+
+    private void MinimizeBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseExited
+        MinimizeBTN.setBackground(new Color(254, 86, 86));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNMouseExited
+
+    private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
+        //minimize
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNActionPerformed
+
+    private void CloseBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseEntered
+        CloseBTN.setBackground(new Color(203,68,68));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNMouseEntered
+
+    private void CloseBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseExited
+        CloseBTN.setBackground(new Color(254, 86, 86));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNMouseExited
+
+    private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CloseBTN;
+    private javax.swing.JLabel MainLBL;
+    private javax.swing.JButton MinimizeBTN;
+    private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnEnrolment;
     private javax.swing.JButton btnGrades;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnSched;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblTempID;
     private javax.swing.JLabel lblUserName;
