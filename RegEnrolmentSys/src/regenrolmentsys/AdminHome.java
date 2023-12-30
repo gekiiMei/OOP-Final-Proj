@@ -38,7 +38,8 @@ public class AdminHome extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
-        btnTemp = new javax.swing.JToggleButton();
+        btnStudents = new javax.swing.JButton();
+        btnHistory = new javax.swing.JButton();
 
         jSplitPane1.setDividerLocation(450);
         jSplitPane1.setDividerSize(0);
@@ -85,10 +86,17 @@ public class AdminHome extends javax.swing.JPanel {
             }
         });
 
-        btnTemp.setText("go to admin menu");
-        btnTemp.addActionListener(new java.awt.event.ActionListener() {
+        btnStudents.setText("students");
+        btnStudents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTempActionPerformed(evt);
+                btnStudentsActionPerformed(evt);
+            }
+        });
+
+        btnHistory.setText("history");
+        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryActionPerformed(evt);
             }
         });
 
@@ -97,11 +105,13 @@ public class AdminHome extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(816, 816, 816)
-                .addComponent(btnTemp)
-                .addGap(83, 83, 83)
+                .addGap(109, 109, 109)
+                .addComponent(btnStudents)
+                .addGap(682, 682, 682)
+                .addComponent(btnHistory)
+                .addGap(87, 87, 87)
                 .addComponent(btnLogout)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +119,8 @@ public class AdminHome extends javax.swing.JPanel {
                 .addGap(101, 101, 101)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
-                    .addComponent(btnTemp))
+                    .addComponent(btnStudents)
+                    .addComponent(btnHistory))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
 
@@ -119,7 +130,7 @@ public class AdminHome extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,15 +144,25 @@ public class AdminHome extends javax.swing.JPanel {
         mf.switchCard("LoginCard");
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTempActionPerformed
+    private void btnStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentsActionPerformed
         // TODO add your handling code here:
-        mf.switchCard("AdminMenu");
-    }//GEN-LAST:event_btnTempActionPerformed
+        mf.switchCard("AdminMenuCard");
+        am.getTabs().setSelectedIndex(0);
+        //TODO: code for displaying students table
+    }//GEN-LAST:event_btnStudentsActionPerformed
+
+    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("AdminMenuCard");
+        am.getTabs().setSelectedIndex(5);
+        //TODO: code for displaying history table
+    }//GEN-LAST:event_btnHistoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JToggleButton btnTemp;
+    private javax.swing.JButton btnStudents;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
