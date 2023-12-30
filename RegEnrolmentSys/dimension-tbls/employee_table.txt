@@ -6,7 +6,7 @@ CREATE TABLE finals.employee (
    ,gender         VARCHAR(1)       NOT NULL
    ,cp_num         VARCHAR(20)      NOT NULL
    ,address        VARCHAR(100)     NOT NULL
-   ,bday           VARCHAR(15)      
+   ,bday           DATE      
    ,status         VARCHAR(1)       NOT NULL
    ,constraint employee_id_pk PRIMARY KEY(employee_id)
 )
