@@ -40,12 +40,10 @@ public class MainFrame extends javax.swing.JFrame {
     //setters
     public void setUserID(String userID) {
         this.currentUserID = userID;
-        System.out.println("id set : " + userID);
     }
     
     //getters
     public String getUserID() {
-        System.out.println("id get: " + currentUserID);
         return currentUserID;
     }
     

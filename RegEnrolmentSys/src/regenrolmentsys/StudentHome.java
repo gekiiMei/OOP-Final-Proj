@@ -244,6 +244,7 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
         sm.getTabs().setSelectedIndex(3);
+        // TODO: code for displaying grades
     }//GEN-LAST:event_btnGradesActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
