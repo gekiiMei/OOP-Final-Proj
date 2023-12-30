@@ -7,7 +7,7 @@ CREATE TABLE finals.student (
    ,course_code    VARCHAR(25)     NOT NULL
    ,cp_num         VARCHAR(20)     NOT NULL
    ,address        VARCHAR(100)    NOT NULL
-   ,bday           VARCHAR(25)     NOT NULL
+   ,bday           DATE            NOT NULL
    ,status         VARCHAR(1)      NOT NULL
    ,constraint student_no_pk PRIMARY KEY(student_no)
    ,constraint course_code_fk FOREIGN KEY(course_code) REFERENCES finals.course(course_code)
