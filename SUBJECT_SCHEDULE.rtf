@@ -6,21 +6,22 @@
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
 \f0\fs24 \cf0 CREATE TABLE finals.SUBJECT_SCHEDULE (\
-    sy              INT            NOT NULL\
-   , semester       INT            NOT NULL\
-   ,college_code    VARCHAR(50)    NOT NULL\
-   ,block_no        VARCHAR(50)    NOT NULL\
-   ,subject_code    VARCHAR(50)    NOT NULL\
-   ,day             VARCHAR(20)   \
-   ,time            VARCHAR(20)   \
-   ,room            VARCHAR(50)    \
-   ,type            VARCHAR(50)  \
-   ,sequence_no     INT            NOT NULL\
-   ,faculty_id      INT            NOT NULL\
-    PRIMARY KEY (sy, semester, block_no, subject_code, sequence_no, college_code),\
-    FOREIGN KEY (sy, semester, block_no, subject_code, college_code, faculty_id) \
-        REFERENCES EMPLOYEE(employee_no)\
+    sy INT,\
+    semester INT,\
+    college_code VARCHAR(50),\
+    block_no VARCHAR(50),\
+    subject_code VARCHAR(50),\
+    day VARCHAR(20),\
+    time VARCHAR(20),\
+    room VARCHAR(50),\
+    type VARCHAR(50),\
+    sequence_no INT,\
+    faculty_id INT,\
+    CONSTRAINT PK_SUBJECT_SCHEDULE PRIMARY KEY (sy, semester, block_no, subject_code, sequence_no, college_code),\
+    CONSTRAINT FK_SUBJECT_SCHEDULE_EMPLOYEE FOREIGN KEY (sy, semester, block_no, subject_code, college_code, faculty_id) \
+        REFERENCES finals.student_table(student_no)\
 );\
+\
 \
 INSERT INTO  finals.SUBJECT_SCHEDULE ('2023-2024','1','CET','CS21','OOP1','W','18:00-21:00','MSTeams','OL', '02','E003');\
 INSERT INTO  finals.SUBJECT_SCHEDULE ('2023-2024','1','CET','CS21','CAL001','W','15:00-18:00','GCA201','F2F', '01','E002');\
