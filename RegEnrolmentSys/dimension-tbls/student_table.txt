@@ -13,7 +13,7 @@ CREATE TABLE finals.student (
    ,constraint course_code_fk FOREIGN KEY(course_code) REFERENCES finals.course(course_code)
 ) 
 
-INSERT INTO finals.STUDENT VALUES ('12345', 'Atienza', 'Francis', 'fcatienza@yahoo.com', 'M', 'BSCS-CS', '09981234567', 'Cavite', 'Jan-12-2000', 'A');
+INSERT INTO finals.STUDENT VALUES ('2023-12345', 'Atienza', 'Francis', 'fcatienza@yahoo.com', 'M', 'BSCS-CS', '09981234567', 'Cavite', '2000-01-12', 'A');
 
 INSERT INTO finals.STUDENT VALUES ('2024-34129', 'Perez', 'Sofia', 'sofiaperez@example.com', 'F', 'BSCS', '09187654321', 'Mandaluyong', '2003-05-12', 'A');
 INSERT INTO finals.STUDENT VALUES ('2024-34130', 'Garcia', 'Sebastian', 'sebastiangarcia@example.com', 'M', 'BSIT', '09189876543', 'Pasig', '2003-09-26', 'A');
