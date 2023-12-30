@@ -1,0 +1,6 @@
+CREATE TABLE finals.history (
+    user_id         VARCHAR(20)     NOT NULL
+   ,action          VARCHAR(255)    NOT NULL
+   ,user_type       VARCHAR(10)     NOT NULL
+   ,constraint history_pk PRIMARY KEY(user_id, action)
+);
