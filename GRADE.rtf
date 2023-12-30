@@ -10,13 +10,19 @@
     semester INT NOT NULL,\
     student_no INT NOT NULL,\
     subject_code VARCHAR(50) NOT NULL,\
-    block_no VARCHAR(50),\
+    block_no VARCHAR(50) NOT NULL,\
     grade DECIMAL(4, 2),\
     CONSTRAINT PK_GRADE PRIMARY KEY (sy, semester, student_no, subject_code),\
-    CONSTRAINT FK_GRADE_SUBJECT_SCHEDULE FOREIGN KEY (sy, semester, student_no, subject_code) \
-        REFERENCES finals.SUBJECT_SCHEDULE(sy, semester, student_no, subject_code)\
+    CONSTRAINT FK_GRADE_SUBJECT_SCHEDULE \
+        FOREIGN KEY (sy, semester, student_no, subject_code) \
+        REFERENCES finals.SUBJECT_SCHEDULE(sy, semester, student_no, subject_code),\
+    CONSTRAINT FK_GRADE_STUDENT_TABLE \
+        FOREIGN KEY (student_no) \
+        REFERENCES finals.student_table(student_no),\
+    CONSTRAINT FK_GRADE_SUBJECT_TABLE \
+        FOREIGN KEY (subject_code) \
+        REFERENCES finals.subject_table(subject_code)\
 );\
-\
 \
 INSERT INTO finals.GRADE (sy, semester, student_no, subject_code, block_no, grade)\
 VALUES\
