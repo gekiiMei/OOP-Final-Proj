@@ -17,13 +17,17 @@
     type VARCHAR(50),\
     sequence_no INT NOT NULL,\
     faculty_id INT,\
+    student_no INT NOT NULL,\
     CONSTRAINT PK_SUBJECT_SCHEDULE PRIMARY KEY (sy, semester, block_no, subject_code, sequence_no, college_code),\
     CONSTRAINT FK_SUBJECT_SCHEDULE_STUDENT_TABLE \
-        FOREIGN KEY (sy, semester, block_no, subject_code, college_code) \
-        REFERENCES finals.student_table(sy, semester, block_no, subject_code),\
+        FOREIGN KEY (student_no) \
+        REFERENCES finals.student_table(student_no),\
     CONSTRAINT FK_SUBJECT_SCHEDULE_EMPLOYEE \
         FOREIGN KEY (faculty_id) \
-        REFERENCES finals.employee_table(employee_id)\
+        REFERENCES finals.employee_table(employee_id),\
+    CONSTRAINT FK_SUBJECT_SCHEDULE_SUBJECT_TABLE \
+        FOREIGN KEY (subject_code) \
+        REFERENCES finals.subject_table(subject_code)\
 );\
 \
 INSERT INTO  finals.SUBJECT_SCHEDULE ('2023-2024','1','CET','CS21','OOP1','W','18:00-21:00','MSTeams','OL', '02','E003');\
