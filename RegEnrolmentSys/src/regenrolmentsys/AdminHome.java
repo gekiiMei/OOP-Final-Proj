@@ -148,7 +148,7 @@ public class AdminHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("AdminMenuCard");
         am.getTabs().setSelectedIndex(0);
-        //TODO: code for displaying students table
+        am.loadStudentsTab();
     }//GEN-LAST:event_btnStudentsActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
