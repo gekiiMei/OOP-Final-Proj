@@ -12,9 +12,8 @@ CREATE TABLE finals.GRADE (
     CONSTRAINT grade_subject_fk FOREIGN KEY (subject_code) REFERENCES finals.subject (subject_code)
 );
 
---TODO: REWORK DATA SAMPLES
-INSERT INTO finals.GRADE (sy, semester, student_no, subject_code, block_no, grade)\
-VALUES\
-(2023, 1, 12345, 'OOP1', 'CS21', 3.00),\
-(2023, 1, 12345, 'CAL001', 'CS21', 3.00);\
-}
+--UPDATED DATA SAMPLES
+INSERT INTO finals.GRADE (sy, semester, student_no, subject_code, block_no, grade)
+VALUES
+('2023-2024','1','2023-12345','CSC 0211','CS21',3.00),
+('2023-2024','1','2024-34130','CSC 0212','CS21',3.00); 
