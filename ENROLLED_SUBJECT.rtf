@@ -6,17 +6,12 @@ CREATE TABLE finals.ENROLLED_SUBJECT (
     block_no VARCHAR(10) NOT NULL,
     status VARCHAR(20),
     CONSTRAINT PK_ENROLLED_SUBJECT PRIMARY KEY (sy, semester, student_no, subject_code, block_no),
-    CONSTRAINT FK_ENROLLED_SUBJECT_SUBJECT_SCHEDULE 
-        FOREIGN KEY (sy, semester, subject_code, block_no)
-        REFERENCES finals.SUBJECT_SCHEDULE(sy, semester, subject_code, block_no),
-    CONSTRAINT FK_ENROLLED_SUBJECT_STUDENT_TABLE 
-        FOREIGN KEY (student_no)
-        REFERENCES finals.student(student_no)
+    CONSTRAINT FK_ENROLLED_SUBJECT_SUBJECT_SCHEDULE FOREIGN KEY (sy, semester, subject_code, block_no)REFERENCES finals.SUBJECT_SCHEDULE(sy, semester, subject_code, block_no),
+    CONSTRAINT FK_ENROLLED_SUBJECT_STUDENT_TABLE FOREIGN KEY (student_no)REFERENCES finals.student(student_no)
 );  
 
---TODO: REWORK DATA SAMPLES
-INSERT INTO finals.ENROLLED_SUBJECT (sy, semester, student_no, subject_code, block_no, status)\
-VALUES\
-(2023, 1, 12345, 'OOP1', 'CS21', 'Enrolled'),\
-(2023, 1, 12345, 'CAL001', 'CS21', 'Enrolled');\
-}
+--UPDATED DATA SAMPLES
+INSERT INTO finals.ENROLLED_SUBJECT (sy, semester, student_no, subject_code, block_no, status)
+VALUES
+('2023-2024','1','2023-12345','CSC 0211','CS21','Enrolled'),
+('2023-2024','1','2024-34130','CSC 0212','CS21','Enrolled');
