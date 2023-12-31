@@ -25,7 +25,7 @@ public class AdminMenu extends javax.swing.JPanel {
     }
     
     public javax.swing.JTable getStudentTable() {
-        return tblStudents;
+        return tblHistory;
     }
 
     /**
@@ -50,14 +50,14 @@ public class AdminMenu extends javax.swing.JPanel {
         tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblStudents = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblStudents = new javax.swing.JTable();
+        tblHistory = new javax.swing.JTable();
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
@@ -152,7 +152,7 @@ public class AdminMenu extends javax.swing.JPanel {
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -163,7 +163,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tblStudents);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -236,7 +236,7 @@ public class AdminMenu extends javax.swing.JPanel {
 
         tabs.addTab("", jPanel8);
 
-        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
+        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -247,7 +247,8 @@ public class AdminMenu extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblStudents);
+        tblHistory.setCellSelectionEnabled(true);
+        jScrollPane1.setViewportView(tblHistory);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -330,6 +331,7 @@ public class AdminMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         tabs.setSelectedIndex(5);
         //TODO: code for displaying history table
+        
     }//GEN-LAST:event_btnHistoryActionPerformed
 
 
@@ -352,8 +354,8 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblHistory;
     private javax.swing.JTable tblStudents;
     // End of variables declaration//GEN-END:variables
 }
