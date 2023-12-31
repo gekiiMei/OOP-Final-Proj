@@ -72,5 +72,5 @@ INSERT INTO finals.STUDENT VALUES ('2026-34182', 'Chavez', 'Lucas', 'lucaschavez
 INSERT INTO finals.STUDENT VALUES ('2026-34183', 'Gutierrez', 'Emilia', 'emiliagutierrez@example.com', 'F', 'BSIT', '09189876543', 'Makati', '2005-12-05', 'A');
 INSERT INTO finals.STUDENT VALUES ('2026-34184', 'Martinez', 'Gabriel', 'gabrielmartinez@example.com', 'M', 'BSCS', '09182345678', 'Quezon City', '2005-05-19', 'A');
 INSERT INTO finals.STUDENT VALUES ('2026-34185', 'Fernandez', 'Diana', 'dianafernandez@example.com', 'F', 'BSCS', '09183456789', 'Pasig', '2005-07-12', 'A');
-INSERT INTO finals.STUDENT VALUES ('2026-34186', 'Castillo', 'Alejandro', 'alejandrocastillo@example.com', 'M', 'BS', '09186543210', 'Mandaluyong', '2005-10-29', 'A');
+INSERT INTO finals.STUDENT VALUES ('2026-34186', 'Castillo', 'Alejandro', 'alejandrocastillo@example.com', 'M', 'BSCS', '09186543210', 'Mandaluyong', '2005-10-29', 'A');
 
