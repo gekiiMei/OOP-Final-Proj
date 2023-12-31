@@ -12,6 +12,7 @@ CREATE TABLE finals.subject(
 ,   constraint semester_fk FOREIGN KEY(semester) REFERENCES finals.SEMESTER(semester)
 ,   constraint college_code_fk2 FOREIGN KEY(college_code) REFERENCES finals.COLLEGE(college_code)
 ,   constraint course_code_fk2 FOREIGN KEY(course_code) REFERENCES finals.COURSE(course_code)
+,   constraint subject_code_uk UNIQUE (subject_code)
 ) 
 
 INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'ICC 0101', 'Introduction to Computing (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
