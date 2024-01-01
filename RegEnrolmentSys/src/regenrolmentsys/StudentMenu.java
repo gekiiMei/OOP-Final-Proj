@@ -4,6 +4,11 @@
  */
 package regenrolmentsys;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
  * @author harley
@@ -11,12 +16,16 @@ package regenrolmentsys;
 public class StudentMenu extends javax.swing.JPanel {
     private MainFrame mf = null;
     private String currentUser = "";
+    private Connection con = null;
+    private ResultSet rs = null;
+    private PreparedStatement ps = null;
     /**
      * Creates new form StudentMenu
      */
     public StudentMenu(MainFrame mf) {
         initComponents();
         this.mf = mf;
+        this.currentUser = mf.getUserID();
     }
     
     public javax.swing.JTabbedPane getTabs() {
@@ -26,6 +35,11 @@ public class StudentMenu extends javax.swing.JPanel {
     public void setUserID(String userID) {
         this.currentUser = userID;
     }
+    
+    public void profileStudentsTab(){
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,10 +57,30 @@ public class StudentMenu extends javax.swing.JPanel {
         btnSched = new javax.swing.JButton();
         btnGrades = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        btnBackStudentMenu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblStudentNo = new javax.swing.JLabel();
+        lblStudentLN = new javax.swing.JLabel();
+        lblStudentFN = new javax.swing.JLabel();
+        lblStudentEmail = new javax.swing.JLabel();
+        lblStudentGender = new javax.swing.JLabel();
+        lblStudentCourseCode = new javax.swing.JLabel();
+        lblStudentCPNum = new javax.swing.JLabel();
+        lblStudentAddress = new javax.swing.JLabel();
+        lblStudentBday = new javax.swing.JLabel();
+        lblStudentStatus = new javax.swing.JLabel();
+        txtStudentNo = new javax.swing.JTextField();
+        txtStudentFN = new javax.swing.JTextField();
+        txtStudentLN1 = new javax.swing.JTextField();
+        txtStudentGender = new javax.swing.JTextField();
+        txtStudentEmail = new javax.swing.JTextField();
+        txtStudentCourseCode = new javax.swing.JTextField();
+        txtStudentCPNum = new javax.swing.JTextField();
+        txtStudentAddress = new javax.swing.JTextField();
+        txtStudentBday = new javax.swing.JTextField();
+        txtStudentStatus = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -93,6 +127,13 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
 
+        btnBackStudentMenu.setText("back");
+        btnBackStudentMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackStudentMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -100,6 +141,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBackStudentMenu)
                     .addComponent(btnLogout)
                     .addComponent(btnGrades)
                     .addComponent(btnSched)
@@ -118,7 +160,9 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addComponent(btnSched)
                 .addGap(38, 38, 38)
                 .addComponent(btnGrades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
+                .addComponent(btnBackStudentMenu)
+                .addGap(18, 18, 18)
                 .addComponent(btnLogout)
                 .addGap(41, 41, 41))
         );
@@ -128,23 +172,101 @@ public class StudentMenu extends javax.swing.JPanel {
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
 
-        jLabel1.setText("profile!");
+        lblStudentNo.setText("STUDENT NUMBER:");
+
+        lblStudentLN.setText("LAST NAME:");
+
+        lblStudentFN.setText("FIRST NAME:");
+
+        lblStudentEmail.setText("EMAIL:");
+
+        lblStudentGender.setText("GENDER:");
+
+        lblStudentCourseCode.setText("COURSE CODE:");
+
+        lblStudentCPNum.setText("CELLPHONE NUMBER:");
+
+        lblStudentAddress.setText("ADDRESS:");
+
+        lblStudentBday.setText("BIRTHDAY:");
+
+        lblStudentStatus.setText("STATUS:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel1)
-                .addContainerGap(882, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblStudentStatus)
+                    .addComponent(lblStudentBday)
+                    .addComponent(lblStudentAddress)
+                    .addComponent(lblStudentCPNum)
+                    .addComponent(lblStudentCourseCode)
+                    .addComponent(lblStudentGender)
+                    .addComponent(lblStudentEmail)
+                    .addComponent(lblStudentFN)
+                    .addComponent(lblStudentNo)
+                    .addComponent(lblStudentLN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtStudentLN1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addComponent(txtStudentFN)
+                    .addComponent(txtStudentEmail)
+                    .addComponent(txtStudentNo)
+                    .addComponent(txtStudentAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addComponent(txtStudentGender)
+                    .addComponent(txtStudentCourseCode)
+                    .addComponent(txtStudentCPNum)
+                    .addComponent(txtStudentBday)
+                    .addComponent(txtStudentStatus))
+                .addContainerGap(611, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel1)
-                .addContainerGap(636, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStudentNo)
+                    .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentLN)
+                    .addComponent(txtStudentLN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentFN)
+                    .addComponent(txtStudentFN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentEmail)
+                    .addComponent(txtStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentGender)
+                    .addComponent(txtStudentGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentCourseCode)
+                    .addComponent(txtStudentCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStudentCPNum)
+                    .addComponent(txtStudentCPNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtStudentAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStudentAddress))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtStudentBday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStudentBday))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtStudentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStudentStatus))
+                .addContainerGap(415, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
@@ -255,8 +377,15 @@ public class StudentMenu extends javax.swing.JPanel {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        mf.setUserID("");
-        mf.switchCard("LoginCard");
+        
+        int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (response == 0){
+            mf.setUserID("");
+            mf.switchCard("LoginCard");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Cancelled");
+        }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
@@ -280,14 +409,19 @@ public class StudentMenu extends javax.swing.JPanel {
         //TODO: code for displaying grades
     }//GEN-LAST:event_btnGradesActionPerformed
 
+    private void btnBackStudentMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackStudentMenuActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("StudentHomeCard");
+    }//GEN-LAST:event_btnBackStudentMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnEnrolment;
     private javax.swing.JButton btnGrades;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnSched;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -299,6 +433,26 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblStudentAddress;
+    private javax.swing.JLabel lblStudentBday;
+    private javax.swing.JLabel lblStudentCPNum;
+    private javax.swing.JLabel lblStudentCourseCode;
+    private javax.swing.JLabel lblStudentEmail;
+    private javax.swing.JLabel lblStudentFN;
+    private javax.swing.JLabel lblStudentGender;
+    private javax.swing.JLabel lblStudentLN;
+    private javax.swing.JLabel lblStudentNo;
+    private javax.swing.JLabel lblStudentStatus;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTextField txtStudentAddress;
+    private javax.swing.JTextField txtStudentBday;
+    private javax.swing.JTextField txtStudentCPNum;
+    private javax.swing.JTextField txtStudentCourseCode;
+    private javax.swing.JTextField txtStudentEmail;
+    private javax.swing.JTextField txtStudentFN;
+    private javax.swing.JTextField txtStudentGender;
+    private javax.swing.JTextField txtStudentLN1;
+    private javax.swing.JTextField txtStudentNo;
+    private javax.swing.JTextField txtStudentStatus;
     // End of variables declaration//GEN-END:variables
 }
