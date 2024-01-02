@@ -21,6 +21,10 @@ public class AdminHome extends javax.swing.JPanel {
         this.mf = mf;
         this.currentUser = mf.getUserID();
     }
+    
+    public void setUserID(String userID) {
+        this.currentUser = userID;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
