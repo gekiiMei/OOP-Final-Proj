@@ -5,6 +5,7 @@
 package regenrolmentsys;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -236,8 +237,14 @@ public class StudentHome extends javax.swing.JPanel {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        mf.setUserID("");
-        mf.switchCard("LoginCard");
+        int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (response == 0){
+            mf.setUserID("");
+            mf.switchCard("LoginCard");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Canceled");
+        }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
@@ -276,7 +283,7 @@ public class StudentHome extends javax.swing.JPanel {
     }//GEN-LAST:event_MinimizeBTNMouseExited
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-        //minimize
+        //minimize button event here:
 
         // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
@@ -285,14 +292,15 @@ public class StudentHome extends javax.swing.JPanel {
         CloseBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNMouseEntered
-
+ 
     private void CloseBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseExited
         CloseBTN.setBackground(new Color(254, 86, 86));
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNMouseExited
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-
+        //exit button event here:
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
