@@ -47,6 +47,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnBackStudentMenu" min="-2" max="-2" attributes="0"/>
                           <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                           <Component id="btnGrades" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSched" min="-2" max="-2" attributes="0"/>
@@ -68,7 +69,9 @@
                       <Component id="btnSched" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnGrades" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="434" max="32767" attributes="0"/>
+                      <EmptySpace pref="393" max="32767" attributes="0"/>
+                      <Component id="btnBackStudentMenu" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
@@ -114,6 +117,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBackStudentMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="back"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackStudentMenuActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -166,27 +177,164 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="882" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentNo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtStudentLN1" pref="222" max="32767" attributes="0"/>
+                                  <Component id="txtStudentFN" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStudentEmail" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStudentNo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStudentAddress" pref="222" max="32767" attributes="0"/>
+                                  <Component id="txtStudentGender" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStudentCourseCode" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStudentCPNum" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStudentBday" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStudentStatus" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="611" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="636" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblStudentNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentLN1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentFN" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentEmail" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentGender" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentCourseCode" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblStudentCPNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentCPNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtStudentAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtStudentBday" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentBday" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtStudentStatus" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentStatus" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="415" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
+                    <Component class="javax.swing.JLabel" name="lblStudentNo">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="profile!"/>
+                        <Property name="text" type="java.lang.String" value="STUDENT NUMBER:"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentLN">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="LAST NAME:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentFN">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="FIRST NAME:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentEmail">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="EMAIL:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentGender">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="GENDER:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentCourseCode">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="COURSE CODE:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentCPNum">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="CELLPHONE NUMBER:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentAddress">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="ADDRESS:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentBday">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="BIRTHDAY:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentStatus">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="STATUS:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentNo">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentFN">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentLN1">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentGender">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentEmail">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentCourseCode">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentCPNum">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentAddress">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentBday">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtStudentStatus">
                     </Component>
                   </SubComponents>
                 </Container>
