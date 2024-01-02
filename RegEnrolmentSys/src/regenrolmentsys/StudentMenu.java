@@ -40,6 +40,62 @@ public class StudentMenu extends javax.swing.JPanel {
         
     }
     
+    public void loadGradesTab() {
+         con = ConnectDB.connect();
+         try {
+             rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+             while (rs.next())
+                 cmbGradeSY.addItem(rs.getString("sy"));
+             rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+             while (rs.next())
+                 cmbGradeSem.addItem(rs.getString("semester"));
+         } catch (Exception e) {
+             System.out.println(e); //TODO: ERROR MSG
+         }
+    }
+    
+    private void loadGradesTable() {
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("SELECT * FROM finals.GRADE WHERE student_no = ? AND SY = ? AND SEMESTER = ?"); //TODO: REPLACE WITH VIEW
+            ps.setString(1, currentUser);
+            ps.setString(2, cmbGradeSY.getSelectedItem().toString());
+            ps.setString(3, cmbGradeSem.getSelectedItem().toString());
+            System.out.println(currentUser + " " + cmbGradeSY.getSelectedItem().toString() + " " + cmbGradeSem.getSelectedItem().toString());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                rs = ps.executeQuery();
+                tblGradesTable.setModel(TableUtil.resultSetToTableModel(rs));
+            }
+            else {
+                gradesTableEmpty();
+            }
+        } catch (Exception e) {
+            System.out.println(e); //TODO: ERROR MSG
+        }
+    }
+    
+    private void resetGradesTable() {
+        tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"Select SY and Sem"}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
+    }
+    
+    private void gradesTableEmpty() {
+        tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"No grades found in SY and Sem"}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,7 +143,12 @@ public class StudentMenu extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblGradesTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        cmbGradeSY = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        cmbGradeSem = new javax.swing.JComboBox<>();
+        btnGradeSearch = new javax.swing.JButton();
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
@@ -221,7 +282,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(txtStudentCPNum)
                     .addComponent(txtStudentBday)
                     .addComponent(txtStudentStatus))
-                .addContainerGap(611, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +341,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(305, 305, 305)
                 .addComponent(jLabel2)
-                .addContainerGap(659, Short.MAX_VALUE))
+                .addContainerGap(636, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +362,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(441, 441, 441)
                 .addComponent(jLabel3)
-                .addContainerGap(531, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,18 +374,43 @@ public class StudentMenu extends javax.swing.JPanel {
 
         tabs.addTab("", jPanel5);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Select SY and Sem"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblGradesTable);
+        if (tblGradesTable.getColumnModel().getColumnCount() > 0) {
+            tblGradesTable.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        jLabel1.setText("School year :");
+
+        cmbGradeSY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGradeSYActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Semester");
+
+        btnGradeSearch.setText("Search");
+        btnGradeSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGradeSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -332,13 +418,32 @@ public class StudentMenu extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbGradeSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnGradeSearch)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(185, 185, 185)
+                .addGap(143, 143, 143)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cmbGradeSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGradeSearch))
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -382,6 +487,7 @@ public class StudentMenu extends javax.swing.JPanel {
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
+            resetGradesTable();
         }
         else{
             JOptionPane.showMessageDialog(null, "Cancelled");
@@ -406,7 +512,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(3);
-        //TODO: code for displaying grades
+        loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
 
     private void btnBackStudentMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackStudentMenuActionPerformed
@@ -414,16 +520,30 @@ public class StudentMenu extends javax.swing.JPanel {
         mf.switchCard("StudentHomeCard");
     }//GEN-LAST:event_btnBackStudentMenuActionPerformed
 
+    private void cmbGradeSYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGradeSYActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbGradeSYActionPerformed
+
+    private void btnGradeSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeSearchActionPerformed
+        // TODO add your handling code here:
+        loadGradesTable();
+    }//GEN-LAST:event_btnGradeSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnEnrolment;
+    private javax.swing.JButton btnGradeSearch;
     private javax.swing.JButton btnGrades;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnSched;
+    private javax.swing.JComboBox<String> cmbGradeSY;
+    private javax.swing.JComboBox<String> cmbGradeSem;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -432,7 +552,6 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblStudentAddress;
     private javax.swing.JLabel lblStudentBday;
     private javax.swing.JLabel lblStudentCPNum;
@@ -444,6 +563,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblStudentNo;
     private javax.swing.JLabel lblStudentStatus;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblGradesTable;
     private javax.swing.JTextField txtStudentAddress;
     private javax.swing.JTextField txtStudentBday;
     private javax.swing.JTextField txtStudentCPNum;

@@ -28,6 +28,10 @@ public class AdminMenu extends javax.swing.JPanel {
         
     }
     
+    public void setUserID(String userID) {
+        this.currentUser = userID;
+    }
+    
     public javax.swing.JTabbedPane getTabs() {
         return tabs;
     }

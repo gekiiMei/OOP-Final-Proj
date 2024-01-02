@@ -3,12 +3,14 @@ package regenrolmentsys;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.sql.*;
 
 
  
 public class LogInUI extends javax.swing.JPanel {
     private MainFrame mf = null;
+    private Connection con = null;
+    private ResultSet rs = null;
     /**
      * Creates new form LogInUI
      */
@@ -27,17 +29,24 @@ public class LogInUI extends javax.swing.JPanel {
     
     private void checkLogin() {
         mf.setUserID(UserIDField.getText());
+        con = ConnectDB.connect();
         if (UserIDField.getText().isEmpty()) {
-            //error msg
+            //TODO: error msg
             System.out.println("whoa hold on ur input is empty buddy");
         } else {
-            if (UserIDField.getText().equals("0")) //temporary stand-in for student
-                mf.switchCard("StudentHomeCard");
-            else if (UserIDField.getText().equals("1")) //temporary stand-in for faculty
-                mf.switchCard("AdminHomeCard");
-            else {
-                //error msg
-                System.out.println("whoa buddy u dont exist in our database");
+            try {
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + mf.getUserID() + "'").executeQuery();
+                if (rs.next())
+                    mf.switchCard("StudentHomeCard");
+                else {
+                    rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + mf.getUserID() + "'").executeQuery();
+                    if (rs.next())
+                        mf.switchCard("AdminHomeCard");
+                    else
+                        System.out.println("whoa buddy u arent in our system"); //TODO: error msg
+                }
+            } catch (Exception e) {
+                System.out.println(e); //TODO: ERROR MSG
             }
         }
         UserIDField.setText("");

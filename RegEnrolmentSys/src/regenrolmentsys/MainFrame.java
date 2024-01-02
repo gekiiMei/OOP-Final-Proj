@@ -36,6 +36,9 @@ public class MainFrame extends javax.swing.JFrame {
     public void switchCard(String targetCard) {
         cl.show(cont, targetCard);
         panelStudentHome.setUserID(currentUserID);
+        panelStudentMenu.setUserID(currentUserID);
+        panelAdminHome.setUserID(currentUserID);
+        panelAdminMenu.setUserID(currentUserID);
     }
     //setters
     public void setUserID(String userID) {
