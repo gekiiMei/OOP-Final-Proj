@@ -6,6 +6,8 @@ package regenrolmentsys;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.sql.*;
+
 
 /**
  *
@@ -15,6 +17,9 @@ public class StudentHome extends javax.swing.JPanel {
     private MainFrame mf = null;
     private StudentMenu sm = null;
     private String currentUser = "";
+    private Connection con = null;
+    private ResultSet rs = null;
+    private PreparedStatement ps = null;
     /**
      * Creates new form StudentHome
      */
@@ -22,11 +27,26 @@ public class StudentHome extends javax.swing.JPanel {
         initComponents();
         this.sm = sm;
         this.mf = mf;
+        this.currentUser = mf.getUserID();
+        setUserName();
+
     }
     
     public void setUserID(String userID) {
         this.currentUser = userID;
         lblTempID.setText("Current ID: " + userID);
+    }
+    
+    public void setUserName(){
+        con = ConnectDB.connect();
+        try{
+            rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no ='"+mf.getUserID()+"'").executeQuery();
+            if (rs.next())
+                lblUserName.setText(rs.getString("first_name"));
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -140,22 +160,29 @@ public class StudentHome extends javax.swing.JPanel {
 
         jPanel1.setLayout(null);
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("welcome!");
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 51));
+        jLabel1.setText("WELCOME!");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(680, 90, 270, 160);
+        jLabel1.setBounds(620, 70, 310, 90);
 
+        lblUserName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblUserName.setForeground(new java.awt.Color(255, 255, 102));
         lblUserName.setText("name");
         jPanel1.add(lblUserName);
-        lblUserName.setBounds(680, 210, 30, 16);
+        lblUserName.setBounds(620, 140, 80, 40);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 51));
         jLabel3.setText("student");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(680, 210, 40, 60);
+        jLabel3.setBounds(620, 160, 120, 60);
 
+        lblTempID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTempID.setForeground(new java.awt.Color(255, 255, 51));
         lblTempID.setText("current ID: ");
         jPanel1.add(lblTempID);
-        lblTempID.setBounds(680, 230, 80, 50);
+        lblTempID.setBounds(620, 200, 170, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LogInShortFinal.gif"))); // NOI18N
         jPanel1.add(jLabel2);
