@@ -2,20 +2,25 @@ CREATE TABLE finals.student (
     student_no     VARCHAR(20)     NOT NULL
    ,last_name      VARCHAR(50)     NOT NULL
    ,first_name     VARCHAR(75)     NOT NULL
-   ,email          VARCHAR(35)     NOT NULL
-   ,gender         VARCHAR(1)      NOT NULL
+   ,MI             VARCHAR(1)      NOT NULL
+   ,email          VARCHAR(50)     GENERATED ALWAYS AS (
+        LOWER(SUBSTR(first_name, 1, 1) || SUBSTR(MI, 1, 1) || last_name || '@plm.edu.ph')
+    )
+   ,gender         VARCHAR(1)      NOT NULL     DEFAULT 'M'
    ,course_code    VARCHAR(25)     NOT NULL
-   ,cp_num         VARCHAR(20)     NOT NULL
+   ,cp_num         VARCHAR(20)     NOT NULL     
    ,address        VARCHAR(100)    NOT NULL
-   ,bday           DATE            NOT NULL
-   ,status         VARCHAR(1)      NOT NULL
+   ,bday           DATE            NOT NULL     
+   ,status         VARCHAR(1)      NOT NULL     DEFAULT 'A'
    ,constraint student_no_pk PRIMARY KEY(student_no)
    ,constraint course_code_fk FOREIGN KEY(course_code) REFERENCES finals.course(course_code)
-) 
+);
 
-INSERT INTO finals.STUDENT VALUES ('2023-12345', 'Atienza', 'Francis', 'fcatienza@yahoo.com', 'M', 'BSCS-CS', '09981234567', 'Cavite', '2000-01-12', 'A');
+INSERT INTO finals.STUDENT VALUES ('2024-34129', 'Perez', 'Sofia', 'A', DEFAULT, 'F', 'BSCS-CS', '09187654321', 'Mandaluyong', '2003-05-12', 'A');
+INSERT INTO finals.STUDENT VALUES ('2023-12345', 'Atienza', 'Francis', 'C', DEFAULT, 'M', 'BSCS-CS', '09981234567', 'Cavite', '2000-01-12', 'A');
 
-INSERT INTO finals.STUDENT VALUES ('2024-34129', 'Perez', 'Sofia', 'sofiaperez@example.com', 'F', 'BSCS', '09187654321', 'Mandaluyong', '2003-05-12', 'A');
+/* ^^^^ Please re-enter values following the above format ^^^^^ */
+
 INSERT INTO finals.STUDENT VALUES ('2024-34130', 'Garcia', 'Sebastian', 'sebastiangarcia@example.com', 'M', 'BSIT', '09189876543', 'Pasig', '2003-09-26', 'A');
 INSERT INTO finals.STUDENT VALUES ('2024-34131', 'Torres', 'Catalina', 'catalinatorres@example.com', 'F', 'BSCS', '09182345678', 'Makati', '2003-12-17', 'A');
 INSERT INTO finals.STUDENT VALUES ('2024-34132', 'Santos', 'Joaquin', 'joaquinsantos@example.com', 'M', 'BSCS', '09188765432', 'Quezon City', '2003-05-31', 'A');

@@ -1,102 +1,100 @@
-CREATE TABLE finals.subject(
-    college_year VARCHAR(10) not null
+CREATE TABLE finals.subject( 
+    college_year VARCHAR(1) not null
 ,   semester VARCHAR(1) not null
 ,   subject_code VARCHAR(20) not null
 ,   description VARCHAR(100) not null
 ,   units INTEGER not null
-,   curriculum VARCHAR(5) not null
+,   curriculum VARCHAR(4) not null default '2018'
 ,   college_code VARCHAR(25) not null
 ,   course_code VARCHAR(25) not null
-,   status VARCHAR(1) not null
+,   status VARCHAR(1) not null default 'A'
 ,   constraint subject_code_pk PRIMARY KEY(subject_code, college_code, course_code)
 ,   constraint semester_fk FOREIGN KEY(semester) REFERENCES finals.SEMESTER(semester)
 ,   constraint college_code_fk2 FOREIGN KEY(college_code) REFERENCES finals.COLLEGE(college_code)
 ,   constraint course_code_fk2 FOREIGN KEY(course_code) REFERENCES finals.COURSE(course_code)
 ,   constraint subject_code_uk UNIQUE (subject_code)
-) 
+);
 
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'ICC 0101', 'Introduction to Computing (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'ICC 0101.1', 'Introduction to Computing (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'ICC 0102', 'Fundamentals of Programming (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'ICC 0102.1', 'Fundamentals of Programming (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'CSC 0102', 'Discrete Structure 1', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'STS 0002', 'Science, Technology and Society', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'MMW 0001', 'Mathematics in the Modern World', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'PCM 0006', 'Purposive Communications', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'IPP 0010', 'Interdisiplinaryong Pagbasa at Pagsulat tungo sa Mabisang Pagpapahayag', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'PATHFIT 1', 'Physical Activities towards Health and Fitness 1 (Movement Competency Training)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '1', 'NSTP 1', 'National Service Training Program - ROTC 1/CTWS 1', 3, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'ICC 0101', 'Introduction to Computing (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'ICC 0101.1', 'Introduction to Computing (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'ICC 0102', 'Fundamentals of Programming (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'ICC 0102.1', 'Fundamentals of Programming (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'CSC 0102', 'Discrete Structure 1', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'STS 0002', 'Science, Technology and Society', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'MMW 0001', 'Mathematics in the Modern World', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'PCM 0006', 'Purposive Communications', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'IPP 0010', 'Interdisiplinaryong Pagbasa at Pagsulat tungo sa Mabisang Pagpapahayag', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'PATHFIT 1', 'Physical Activities towards Health and Fitness 1 (Movement Competency Training)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '1', 'NSTP 1', 'National Service Training Program - ROTC 1/CTWS 1', 3, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'ICC 0103', 'Intermediate Programming (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'ICC 0103.1', 'Intermediate Programming (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'ICC 0104', 'Data Structures and Algorithms (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'ICC 0104.1', 'Data Structures and Algorithms (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'CSC 0211', 'Discrete Structures 2', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'CSC 0223', 'Human Computer Interaction', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'TCW 0005', 'The Contemporary World', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'RPH 0004', 'Readings in Philippine History', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'LWR 0009', 'Life and Works of Rizal', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'PATHFIT 2', 'Physical Activities Towards Health and Fitness 2 (Exercise-based Fitness Activities)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('1st Year', '2', 'NSTP 2', 'National Service Training Program - ROTC 2/CTWS 2', 3, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'ICC 0103', 'Intermediate Programming (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'ICC 0103.1', 'Intermediate Programming (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'ICC 0104', 'Data Structures and Algorithms (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'ICC 0104.1', 'Data Structures and Algorithms (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'CSC 0211', 'Discrete Structures 2', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'CSC 0223', 'Human Computer Interaction', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'TCW 0005', 'The Contemporary World', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'RPH 0004', 'Readings in Philippine History', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'LWR 0009', 'Life and Works of Rizal', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'PATHFIT 2', 'Physical Activities Towards Health and Fitness 2 (Exercise-based Fitness Activities)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'NSTP 2', 'National Service Training Program - ROTC 2/CTWS 2', 3, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'CSC 0212', 'Object Oriented Programming (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'CSC 0212.1', 'Object Oriented Programming (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'CSC 0213', 'Logic Design and Digital Computer Circuits (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'CSC 0213.1', 'Logic Design and Digital Computer Circuits (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'CSC 0224', 'Operation Research', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'ICC 0105', 'Information Management (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'ICC 0105.1', 'Information Management (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'ITE 0001', 'Living in the IT Era', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'ETH 0008', 'Ethics', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'UTS 0003', 'Understanding the Self', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '1', 'PED 13', 'PE Elective', 2, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'CSC 0212', 'Object Oriented Programming (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'CSC 0212.1', 'Object Oriented Programming (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'CSC 0213', 'Logic Design and Digital Computer Circuits (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'CSC 0213.1', 'Logic Design and Digital Computer Circuits (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'CSC 0224', 'Operation Research', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'ICC 0105', 'Information Management (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'ICC 0105.1', 'Information Management (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'ITE 0001', 'Living in the IT Era', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'ETH 0008', 'Ethics', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'UTS 0003', 'Understanding the Self', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'PED 13', 'PE Elective', 2, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'CSC 0221', 'Algorithm and Complexity', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'CSC 0222', 'Architecture and Organization (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'CSC 0222.1', 'Architecture and Organization (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'ICC 0106', 'Applications Development and Emerging Technologies (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'ICC 0106.1', 'Applications Development and Emerging Technologies (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'CSC 0316', 'Information Assurance Security', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'CBM 0016', 'The Entrepreneurial Mind', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'GES 0013', 'Environmental Science', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'AAP 0007', 'Art Appreciation', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('2nd Year', '2', 'PED 14', 'PE Elective', 2, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'CSC 0221', 'Algorithm and Complexity', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'CSC 0222', 'Architecture and Organization (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'CSC 0222.1', 'Architecture and Organization (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'ICC 0106', 'Applications Development and Emerging Technologies (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'ICC 0106.1', 'Applications Development and Emerging Technologies (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'CSC 0316', 'Information Assurance Security', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'CBM 0016', 'The Entrepreneurial Mind', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'GES 0013', 'Environmental Science', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'AAP 0007', 'Art Appreciation', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'PED 14', 'PE Elective', 2, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0311', 'Automata Theory and Formal Languages', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0312', 'Programming Languages (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0312.1', 'Programming Languages (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0313', 'Software Engineering (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0313.1', 'Software Engineering (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0314', 'Operating System (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0314.1', 'Operating System (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0315', 'Intelligent System (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '1', 'CSC 0315.1', 'Intelligent System (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0311', 'Automata Theory and Formal Languages', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0312', 'Programming Languages (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0312.1', 'Programming Languages (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0313', 'Software Engineering (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0313.1', 'Software Engineering (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0314', 'Operating System (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0314.1', 'Operating System (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0315', 'Intelligent System (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'CSC 0315.1', 'Intelligent System (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0321', 'Software Engineering 2 (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0321.1', 'Software Engineering 2 (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0322', 'Compiler Design (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0322.1', 'Compiler Design (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0323', 'Computational Science (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0323.1', 'Computational Science (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0324', 'CS Elective 1 (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0324.1', 'CS Elective 1 (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', '2', 'CSC 0325', 'Research Writing', 3, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0321', 'Software Engineering 2 (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0321.1', 'Software Engineering 2 (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0322', 'Compiler Design (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0322.1', 'Compiler Design (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0323', 'Computational Science (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0323.1', 'Computational Science (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0324', 'CS Elective 1 (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0324.1', 'CS Elective 1 (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'CSC 0325', 'Research Writing', 3, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('3rd Year', 'S', 'CSC 195.1', 'Practicum (240 hrs)', 2, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', 'S', 'CSC 195.1', 'Practicum (240 hrs)', 2, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '1', 'CSC 0411', 'CS Thesis Writing 1', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '1', 'CSC 0412', 'Networks and Communication (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '1', 'CSC 0412.1', 'Networks and Communication (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '1', 'CSC 0413', 'CS Elective 2 (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '1', 'CSC 0413.1', 'CS Elective 2 (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '1', 'CSC 0414', 'CS Elective 3 (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '1', 'CSC 0414.1', 'CS Elective 3 (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CSC 0411', 'CS Thesis Writing 1', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CSC 0412', 'Networks and Communication (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CSC 0412.1', 'Networks and Communication (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CSC 0413', 'CS Elective 2 (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CSC 0413.1', 'CS Elective 2 (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CSC 0414', 'CS Elective 3 (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CSC 0414.1', 'CS Elective 3 (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
 
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '2', 'CSC 0421', 'CS Thesis Writing 2', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '2', 'CSC 0422', 'Parallel and Distributing Computing (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '2', 'CSC 0422.1', 'Parallel and Distributing Computing (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '2', 'CSC 0423', 'Social Issues and Professional Practice', 3, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '2', 'CSC 0424', 'Graphics and Visual Computing (Lecture)', 2, '2018', 'CET', 'BSCS', 'A');
-INSERT INTO finals.SUBJECT VALUES ('4th Year', '2', 'CSC 0424.1', 'Graphics and Visual Computing (Laboratory)', 1, '2018', 'CET', 'BSCS', 'A');
-
-
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0421', 'CS Thesis Writing 2', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0422', 'Parallel and Distributing Computing (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0422.1', 'Parallel and Distributing Computing (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0423', 'Social Issues and Professional Practice', 3, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0424', 'Graphics and Visual Computing (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0424.1', 'Graphics and Visual Computing (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');

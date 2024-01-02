@@ -1,7 +1,7 @@
 CREATE TABLE finals.sy (
    sy      VARCHAR(10)     NOT NULL
   ,constraint sy_pk PRIMARY KEY(sy)    
-) 
+);
 
 
 INSERT INTO finals.SY VALUES '2019-2020';

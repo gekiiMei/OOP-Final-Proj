@@ -1,11 +1,24 @@
 CREATE TABLE finals.college (
     college_code    VARCHAR(25)     NOT NULL
    ,description     VARCHAR(100)    NOT NULL
-   ,date_opened     VARCHAR(30)     NOT NULL
-   ,date_closed     VARCHAR(30)     NOT NULL
-   ,status          VARCHAR(1)      NOT NULL
+   ,date_opened     date     NOT NULL    default '1990-01-01'
+   ,date_closed     date     NOT NULL    default '9999-12-31'
+   ,status          VARCHAR(1)      NOT NULL    default 'A'
    ,constraint college_pk PRIMARY KEY(college_code, date_opened, date_closed)
    ,constraint college_code_uk UNIQUE (college_code)
-)
+);
 
-INSERT INTO finals.COLLEGE VALUES ('CET','College of Engineering and Technology', '06-01-1970', '12-31-9999', 'A');
+INSERT INTO finals.COLLEGE VALUES ('CET','College of Engineering and Technology', '1970-06-01', '9999-12-31', 'A');
+INSERT INTO finals.COLLEGE VALUES ('CAUP', 'College of Architecture and Urban Planning', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('CED', 'College of Education', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('COE', 'College of Engineering', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('CHASS', 'College of Humanities, Arts, and Social Sciences', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('CM', 'College of Medicine', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('CN', 'College of Nursing', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('CPT', 'College of Physical Theraphy', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('CS', 'College of Science', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('CL', 'College of Law', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('PLMBS', 'PLM Business School', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('SOG', 'School of Government', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('SPH', 'School of Public Health', default, default, default);
+INSERT INTO finals.COLLEGE VALUES ('LLM', 'Graduate School of Law', default, default, default);

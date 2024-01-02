@@ -1,7 +1,7 @@
 CREATE TABLE finals.semester (
     semester   VARCHAR(1)   NOT NULL
    ,constraint semester_pk PRIMARY KEY(semester)  
-)
+);
 
 INSERT INTO finals.semester VALUES '1';
 INSERT INTO finals.semester VALUES '2';
