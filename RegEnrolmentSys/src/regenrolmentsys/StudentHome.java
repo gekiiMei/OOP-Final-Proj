@@ -22,7 +22,6 @@ public class StudentHome extends javax.swing.JPanel {
         initComponents();
         this.sm = sm;
         this.mf = mf;
-        this.currentUser = mf.getUserID();
     }
     
     public void setUserID(String userID) {
@@ -251,7 +250,7 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
         sm.getTabs().setSelectedIndex(3);
-        // TODO: code for displaying grades
+        sm.loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
