@@ -115,7 +115,6 @@ public class AdminMenu extends javax.swing.JPanel {
         btnStudSearch = new javax.swing.JButton();
         txtStuFirstName = new javax.swing.JTextField();
         txtStuLastName = new javax.swing.JTextField();
-        txtStuEmail = new javax.swing.JTextField();
         cmbStuGender = new javax.swing.JComboBox<>();
         txtStuPhone = new javax.swing.JTextField();
         cmbStuCourse = new javax.swing.JComboBox<>();
@@ -126,6 +125,9 @@ public class AdminMenu extends javax.swing.JPanel {
         btnAddStuRec = new javax.swing.JButton();
         btnUpdateStuRec = new javax.swing.JButton();
         btnDeleteStuRec = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        txtStuMidInitial = new javax.swing.JTextField();
+        lblStuEmail = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -217,7 +219,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addComponent(jButton5)
                 .addGap(18, 18, 18)
                 .addComponent(btnHistory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(37, 37, 37))
         );
@@ -341,6 +343,16 @@ public class AdminMenu extends javax.swing.JPanel {
             }
         });
 
+        jLabel12.setText("Middle Inital : ");
+
+        txtStuMidInitial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStuMidInitialActionPerformed(evt);
+            }
+        });
+
+        lblStuEmail.setText("-");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -352,12 +364,16 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtStuMidInitial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtStuFirstName))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cmbStudentNoYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,18 +381,16 @@ public class AdminMenu extends javax.swing.JPanel {
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel5))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                                .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(txtStuEmail)
-                                            .addComponent(txtStuLastName))))
+                                            .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtStuLastName)
+                                            .addComponent(lblStuEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnStudSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(57, 57, 57)
@@ -434,25 +448,36 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(jLabel8)
                     .addComponent(txtStuLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtStuAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel9)
-                    .addComponent(txtStuEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateStuBday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel10)
-                    .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkStuActive))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddStuRec)
-                    .addComponent(btnUpdateStuRec)
-                    .addComponent(btnDeleteStuRec))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(dateStuBday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(chkStuActive)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtStuMidInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(lblStuEmail))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 30, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnUpdateStuRec)
+                        .addComponent(btnDeleteStuRec))
+                    .addComponent(btnAddStuRec))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -466,7 +491,7 @@ public class AdminMenu extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGap(0, 716, Short.MAX_VALUE)
         );
 
         tabs.addTab("", jPanel5);
@@ -479,7 +504,7 @@ public class AdminMenu extends javax.swing.JPanel {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGap(0, 716, Short.MAX_VALUE)
         );
 
         tabs.addTab("", jPanel6);
@@ -492,7 +517,7 @@ public class AdminMenu extends javax.swing.JPanel {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGap(0, 716, Short.MAX_VALUE)
         );
 
         tabs.addTab("", jPanel7);
@@ -505,7 +530,7 @@ public class AdminMenu extends javax.swing.JPanel {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGap(0, 716, Short.MAX_VALUE)
         );
 
         tabs.addTab("", jPanel8);
@@ -538,7 +563,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
@@ -621,7 +646,8 @@ public class AdminMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 txtStuFirstName.setText(rs.getString("first_name"));
                 txtStuLastName.setText(rs.getString("last_name"));
-                txtStuEmail.setText(rs.getString("email"));
+                txtStuMidInitial.setText(rs.getString("mi"));
+                lblStuEmail.setText(rs.getString("email"));
                 if (rs.getString("gender").equals("M"))
                     cmbStuGender.setSelectedIndex(0);
                 else
@@ -680,7 +706,8 @@ public class AdminMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 txtStuFirstName.setText(rs.getString("first_name"));
                 txtStuLastName.setText(rs.getString("last_name"));
-                txtStuEmail.setText(rs.getString("email"));
+                txtStuMidInitial.setText(rs.getString("mi"));
+                lblStuEmail.setText(rs.getString("email"));
                 if (rs.getString("gender").equals("M"))
                     cmbStuGender.setSelectedIndex(0);
                 else
@@ -703,11 +730,12 @@ public class AdminMenu extends javax.swing.JPanel {
         int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (intAnswer == 0) {
             try {
-                ps = con.prepareStatement("INSERT INTO finals.STUDENT VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                ps = con.prepareStatement("INSERT INTO finals.STUDENT (student_no, last_name, first_name, mi, gender, course_code, cp_num, address, bday, status)"
+                        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 ps.setString(1, cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText());
                 ps.setString(2, txtStuLastName.getText());
                 ps.setString(3, txtStuFirstName.getText());
-                ps.setString(4, txtStuEmail.getText());
+                ps.setString(4, txtStuMidInitial.getText());
                 ps.setString(5, cmbStuGender.getSelectedItem().toString());
                 ps.setString(6, cmbStuCourse.getSelectedItem().toString());
                 ps.setString(7, txtStuPhone.getText());
@@ -736,7 +764,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 ps = con.prepareStatement("UPDATE finals.STUDENT " 
                         + "SET last_name = ?"  
                         + ", first_name = ?"  
-                        + ", email = ?" 
+                        + ", mi = ?" 
                         + ", gender = ?"
                         + ", course_code = ?"
                         + ", cp_num = ?"
@@ -747,7 +775,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 );
                 ps.setString(1, txtStuLastName.getText());
                 ps.setString(2, txtStuFirstName.getText());
-                ps.setString(3, txtStuEmail.getText());
+                ps.setString(3, txtStuMidInitial.getText());
                 ps.setString(4, cmbStuGender.getSelectedItem().toString());
                 ps.setString(5, cmbStuCourse.getSelectedItem().toString());
                 ps.setString(6, txtStuPhone.getText());
@@ -784,6 +812,10 @@ public class AdminMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteStuRecActionPerformed
 
+    private void txtStuMidInitialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStuMidInitialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStuMidInitialActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddStuRec;
@@ -805,6 +837,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -824,14 +857,15 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblStuEmail;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblHistory;
     private javax.swing.JTable tblStudents;
     private javax.swing.JTextField txtStuAddress;
     private javax.swing.JLabel txtStuCourseDesc;
-    private javax.swing.JTextField txtStuEmail;
     private javax.swing.JTextField txtStuFirstName;
     private javax.swing.JTextField txtStuLastName;
+    private javax.swing.JTextField txtStuMidInitial;
     private javax.swing.JTextField txtStuPhone;
     private javax.swing.JTextField txtStudentNo;
     // End of variables declaration//GEN-END:variables
