@@ -168,9 +168,16 @@ public class LogInUI extends javax.swing.JPanel {
 
         UserIDField.setBackground(new java.awt.Color(249, 248, 248));
         UserIDField.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        UserIDField.setForeground(new java.awt.Color(102, 102, 102));
+        UserIDField.setText("  Enter User ID");
         UserIDField.setToolTipText("");
         UserIDField.setActionCommand("<Not Set>");
-        UserIDField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        UserIDField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        UserIDField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UserIDFieldFocusGained(evt);
+            }
+        });
         UserIDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UserIDFieldActionPerformed(evt);
@@ -288,6 +295,10 @@ public class LogInUI extends javax.swing.JPanel {
         CloseBTN.setBackground(new Color(254, 86, 86));
 // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNMouseExited
+
+    private void UserIDFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UserIDFieldFocusGained
+        UserIDField.setText("");
+    }//GEN-LAST:event_UserIDFieldFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
