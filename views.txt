@@ -1,0 +1,26 @@
+CREATE VIEW vwCollegeInfo AS
+    SELECT
+        college_code "COLLEGE CODE"
+        , description "DESCRIPTION"
+    FROM finals.COLLEGE;
+
+CREATE VIEW vwSubjectInfo AS
+    SELECT
+        subject_code "SUBJECT CODE"
+        , description "DESCRIPTION"
+    FROM finals.SUBJECT;
+
+CREATE VIEW vwStudentInfo AS
+    SELECT
+        student_no "STUDENT NO"
+        , last_name "LASTNAME"
+        , first_name "FIRSTNAME"
+        , MI
+    FROM finals.STUDENT;
+
+CREATE VIEW vwEmployeeInfo AS
+    SELECT
+        employee_id "EMPLOYEE ID"
+        , last_name "LASTNAME"
+        , first_name "FIRSTNAME"
+    FROM finals.EMPLOYEE;
