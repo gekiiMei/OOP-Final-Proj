@@ -6,6 +6,7 @@ package regenrolmentsys;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 
 
@@ -19,6 +20,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
+    private PreparedStatement psEnrolConfirm = null;
     /**
      * Creates new form StudentMenu
      */
@@ -61,7 +63,6 @@ public class StudentMenu extends javax.swing.JPanel {
             ps.setString(1, currentUser);
             ps.setString(2, cmbGradeSY.getSelectedItem().toString());
             ps.setString(3, cmbGradeSem.getSelectedItem().toString());
-            System.out.println(currentUser + " " + cmbGradeSY.getSelectedItem().toString() + " " + cmbGradeSem.getSelectedItem().toString());
             rs = ps.executeQuery();
             if (rs.next()) {
                 rs = ps.executeQuery();
@@ -90,6 +91,31 @@ public class StudentMenu extends javax.swing.JPanel {
         tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {},
                 new String [] {"No grades found in SY and Sem"}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
+    }
+    
+    public void loadEnrolmentTab() {
+        con = ConnectDB.connect();
+        try {
+             rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+             while (rs.next())
+                 cmbEnrolSy.addItem(rs.getString("sy"));
+             rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+             while (rs.next())
+                 cmbEnrolSem.addItem(rs.getString("semester"));
+         } catch (Exception e) {
+             System.out.println(e); //TODO: ERROR MSG
+         }
+    }
+    
+    private void resetEnrolmentSchedTable() {
+        tblEnrolSchedule.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"Select School Year and Semester"}
                 ) {
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
                         return false;
@@ -138,7 +164,15 @@ public class StudentMenu extends javax.swing.JPanel {
         txtStudentBday = new javax.swing.JTextField();
         txtStudentStatus = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEnrolSchedule = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cmbEnrolSy = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        cmbEnrolSem = new javax.swing.JComboBox<>();
+        btnEnrolConfirm = new javax.swing.JButton();
+        btnEnrolSchedView = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -332,23 +366,86 @@ public class StudentMenu extends javax.swing.JPanel {
 
         tabs.addTab("", jPanel3);
 
-        jLabel2.setText("enrolment!");
+        tblEnrolSchedule.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Select School Year and Semester"
+            }
+        ));
+        jScrollPane2.setViewportView(tblEnrolSchedule);
+
+        jLabel5.setText("Schedule");
+
+        jLabel6.setText("School Year :");
+
+        jLabel2.setText("Semester :");
+
+        cmbEnrolSem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEnrolSemActionPerformed(evt);
+            }
+        });
+
+        btnEnrolConfirm.setText("Confirm Enrolment");
+        btnEnrolConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnrolConfirmActionPerformed(evt);
+            }
+        });
+
+        btnEnrolSchedView.setText("View Schedule");
+        btnEnrolSchedView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnrolSchedViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(305, 305, 305)
-                .addComponent(jLabel2)
-                .addContainerGap(636, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEnrolConfirm))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbEnrolSy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbEnrolSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(btnEnrolSchedView)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jLabel2)
-                .addContainerGap(539, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(155, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(cmbEnrolSy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbEnrolSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnrolSchedView))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEnrolConfirm)
+                .addGap(47, 47, 47))
         );
 
         tabs.addTab("", jPanel4);
@@ -501,6 +598,7 @@ public class StudentMenu extends javax.swing.JPanel {
 
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
         // TODO add your handling code here:
+        loadEnrolmentTab();
         tabs.setSelectedIndex(1);
     }//GEN-LAST:event_btnEnrolmentActionPerformed
 
@@ -529,21 +627,109 @@ public class StudentMenu extends javax.swing.JPanel {
         loadGradesTable();
     }//GEN-LAST:event_btnGradeSearchActionPerformed
 
+    private void cmbEnrolSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnrolSemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEnrolSemActionPerformed
+
+    private void btnEnrolSchedViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolSchedViewActionPerformed
+        // TODO add your handling code here:
+        resetEnrolmentSchedTable();
+        con = ConnectDB.connect();
+        Random rand = new Random();
+        String strSelectedSY = cmbEnrolSy.getSelectedItem().toString(), course = "", course_code = "", block = "", enrollQuery = "";
+        int intCurrYear = 0, intBlockNo = 0, intBlockCount = 1;
+        
+        try {
+            rs = con.prepareStatement("SELECT course_code FROM finals.STUDENT WHERE student_no = '" + currentUser + "'").executeQuery();
+            if (rs.next())
+                course_code = rs.getString("course_code");
+            
+            if (course_code.equals("BSCS-CS"))
+                    course = "CS";
+            if (course_code.equals("BSIT"))
+                    course = "IT";
+            
+            intCurrYear = (Integer.parseInt(strSelectedSY.substring(0, 4)) - Integer.parseInt(currentUser.substring(0, 4))) + 1;
+            
+            if (intCurrYear < 1) {
+                System.out.println("year cannot be earlier than your enrolment year"); //TODO: error msg
+                return;
+            }
+            
+            rs = con.prepareStatement("SELECT sy, semester FROM finals.ENROLLED_SUBJECT WHERE student_no = '" + currentUser + "'").executeQuery();
+            while (rs.next()) {
+                if (rs.getString("sy").equals(strSelectedSY) && rs.getString("semester").equals(cmbEnrolSem.getSelectedItem().toString())) {
+                    System.out.println("already enrolled to this year and semester"); //TODO: error msg
+                    return;
+                }
+            }
+            
+            if (intCurrYear == 1) {
+                rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO WHERE block_no LIKE '" + course + Integer.toString(intCurrYear) + "%'").executeQuery();
+                if (rs.next()) {
+                    while (rs.next())
+                        intBlockCount++;
+                    block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
+                }
+            } else {
+                rs = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = '" + currentUser + "'").executeQuery();
+                if (rs.next()) {
+                    block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                } else {
+                    System.out.println("missing previous enrolments"); //TODO: error msg
+                }
+            }
+            ps = con.prepareStatement("SELECT * FROM finals.SUBJECT_SCHEDULE WHERE SY = ? AND SEMESTER = ? AND BLOCK_NO = ?");
+            ps.setString(1, strSelectedSY);
+            ps.setString(2, cmbEnrolSem.getSelectedItem().toString());
+            ps.setString(3, block);
+            rs = ps.executeQuery();
+            tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+            rs = ps.executeQuery();
+            enrollQuery = "INSERT INTO finals.ENROLLED_SUBJECT VALUES ";
+            while (rs.next()) {
+                enrollQuery += "('" + strSelectedSY + "', '" + cmbEnrolSem.getSelectedItem().toString() + "', '" + currentUser + "', '" + rs.getString("subject_code") + "', '" + block + "', 'Enrolled'), ";
+            }
+            enrollQuery = enrollQuery.substring(0, enrollQuery.length()-2);
+            psEnrolConfirm = con.prepareStatement(enrollQuery);
+        } catch (Exception e) {
+            System.out.println(e); //TODO ERROR MSGS
+            resetEnrolmentSchedTable();
+        }
+    }//GEN-LAST:event_btnEnrolSchedViewActionPerformed
+
+    private void btnEnrolConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolConfirmActionPerformed
+        // TODO add your handling code here:
+        try {
+            psEnrolConfirm.execute(); //TODO: CONFIRMATION MSG
+            resetEnrolmentSchedTable();
+            System.out.println("enrolled wo"); //TODO: REMOVE THIS LINE LMAO
+        } catch (Exception e) {
+            System.out.println(e); //TODO ERROR MSGS
+        }
+    }//GEN-LAST:event_btnEnrolConfirmActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackStudentMenu;
+    private javax.swing.JButton btnEnrolConfirm;
+    private javax.swing.JButton btnEnrolSchedView;
     private javax.swing.JButton btnEnrolment;
     private javax.swing.JButton btnGradeSearch;
     private javax.swing.JButton btnGrades;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnSched;
+    private javax.swing.JComboBox<String> cmbEnrolSem;
+    private javax.swing.JComboBox<String> cmbEnrolSy;
     private javax.swing.JComboBox<String> cmbGradeSY;
     private javax.swing.JComboBox<String> cmbGradeSem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -551,6 +737,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblStudentAddress;
     private javax.swing.JLabel lblStudentBday;
@@ -563,6 +750,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblStudentNo;
     private javax.swing.JLabel lblStudentStatus;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblEnrolSchedule;
     private javax.swing.JTable tblGradesTable;
     private javax.swing.JTextField txtStudentAddress;
     private javax.swing.JTextField txtStudentBday;

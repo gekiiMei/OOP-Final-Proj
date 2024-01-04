@@ -77,12 +77,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnProfile" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
-                          <Component id="btnSched" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
-                          <Component id="btnGrades" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
-                          <Component id="btnLogout" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnEnrolment" alignment="1" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnProfile" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="btnSched" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="btnGrades" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="btnLogout" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
