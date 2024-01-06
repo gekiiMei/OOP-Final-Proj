@@ -1,0 +1,9 @@
+CREATE TABLE finals.admin (
+    admin_id    VARCHAR(4)  NOT NULL
+    , pass      VARCHAR(20) NOT NULL
+    , constraint adminID_pk PRIMARY KEY(admin_id)
+);
+
+INSERT INTO finals."ADMIN" VALUES('A001','adminpass1');
+INSERT INTO finals."ADMIN" VALUES('A002','adminpass2');
+INSERT INTO finals."ADMIN" VALUES('A003','adminpass3');
