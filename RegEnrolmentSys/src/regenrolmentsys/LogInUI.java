@@ -8,23 +8,24 @@ import java.sql.*;
 
  
 public class LogInUI extends javax.swing.JPanel {
+    private AdminHome ah = null;
+    private StudentHome sh = null;
     private MainFrame mf = null;
     private Connection con = null;
     private ResultSet rs = null;
     /**
      * Creates new form LogInUI
      */
-    public LogInUI(MainFrame mf) {
+    public LogInUI(MainFrame mf, StudentHome sh, AdminHome ah) {
         initComponents();
         this.mf = mf;
+        this.sh = sh;
+        this.ah = ah;
         setSize(1280, 720);
         setMinimumSize(new Dimension(1280, 720));
         setMaximumSize(new Dimension(1280, 720));
         setVisible(true);
         setPreferredSize(new Dimension(1280, 720));
-        
-        
-       
     }
     
     private void checkLogin() {
@@ -36,8 +37,10 @@ public class LogInUI extends javax.swing.JPanel {
         } else {
             try {
                 rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + mf.getUserID() + "'").executeQuery();
-                if (rs.next())
+                if (rs.next()){
                     mf.switchCard("StudentHomeCard");
+                    sh.setUserName();
+                }
                 else {
                     rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + mf.getUserID() + "'").executeQuery();
                     if (rs.next())

@@ -142,27 +142,6 @@ public class StudentMenu extends javax.swing.JPanel {
         btnBackStudentMenu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        lblStudentNo = new javax.swing.JLabel();
-        lblStudentLN = new javax.swing.JLabel();
-        lblStudentFN = new javax.swing.JLabel();
-        lblStudentEmail = new javax.swing.JLabel();
-        lblStudentGender = new javax.swing.JLabel();
-        lblStudentCourseCode = new javax.swing.JLabel();
-        lblStudentCPNum = new javax.swing.JLabel();
-        lblStudentAddress = new javax.swing.JLabel();
-        lblStudentBday = new javax.swing.JLabel();
-        lblStudentStatus = new javax.swing.JLabel();
-        txtStudentNo = new javax.swing.JTextField();
-        txtStudentFN = new javax.swing.JTextField();
-        txtStudentLN1 = new javax.swing.JTextField();
-        txtStudentGender = new javax.swing.JTextField();
-        txtStudentEmail = new javax.swing.JTextField();
-        txtStudentCourseCode = new javax.swing.JTextField();
-        txtStudentCPNum = new javax.swing.JTextField();
-        txtStudentAddress = new javax.swing.JTextField();
-        txtStudentBday = new javax.swing.JTextField();
-        txtStudentStatus = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEnrolSchedule = new javax.swing.JTable();
@@ -183,11 +162,22 @@ public class StudentMenu extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cmbGradeSem = new javax.swing.JComboBox<>();
         btnGradeSearch = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblStudentNo = new javax.swing.JLabel();
+        lblStudentLN = new javax.swing.JLabel();
+        lblStudentFN = new javax.swing.JLabel();
+        lblStudentEmail = new javax.swing.JLabel();
+        lblStudentGender = new javax.swing.JLabel();
+        lblStudentCourseCode = new javax.swing.JLabel();
+        lblStudentCPNum = new javax.swing.JLabel();
+        lblStudentAddress = new javax.swing.JLabel();
+        lblStudentBday = new javax.swing.JLabel();
+        lblStudentStatus = new javax.swing.JLabel();
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
 
-        btnProfile.setText("prolfile");
+        btnProfile.setText("profile");
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfileActionPerformed(evt);
@@ -266,105 +256,6 @@ public class StudentMenu extends javax.swing.JPanel {
 
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
-
-        lblStudentNo.setText("STUDENT NUMBER:");
-
-        lblStudentLN.setText("LAST NAME:");
-
-        lblStudentFN.setText("FIRST NAME:");
-
-        lblStudentEmail.setText("EMAIL:");
-
-        lblStudentGender.setText("GENDER:");
-
-        lblStudentCourseCode.setText("COURSE CODE:");
-
-        lblStudentCPNum.setText("CELLPHONE NUMBER:");
-
-        lblStudentAddress.setText("ADDRESS:");
-
-        lblStudentBday.setText("BIRTHDAY:");
-
-        lblStudentStatus.setText("STATUS:");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblStudentStatus)
-                    .addComponent(lblStudentBday)
-                    .addComponent(lblStudentAddress)
-                    .addComponent(lblStudentCPNum)
-                    .addComponent(lblStudentCourseCode)
-                    .addComponent(lblStudentGender)
-                    .addComponent(lblStudentEmail)
-                    .addComponent(lblStudentFN)
-                    .addComponent(lblStudentNo)
-                    .addComponent(lblStudentLN))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtStudentLN1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                    .addComponent(txtStudentFN)
-                    .addComponent(txtStudentEmail)
-                    .addComponent(txtStudentNo)
-                    .addComponent(txtStudentAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                    .addComponent(txtStudentGender)
-                    .addComponent(txtStudentCourseCode)
-                    .addComponent(txtStudentCPNum)
-                    .addComponent(txtStudentBday)
-                    .addComponent(txtStudentStatus))
-                .addContainerGap(588, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStudentNo)
-                    .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStudentLN)
-                    .addComponent(txtStudentLN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStudentFN)
-                    .addComponent(txtStudentFN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStudentEmail)
-                    .addComponent(txtStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStudentGender)
-                    .addComponent(txtStudentGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStudentCourseCode)
-                    .addComponent(txtStudentCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStudentCPNum)
-                    .addComponent(txtStudentCPNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudentAddress))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtStudentBday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudentBday))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtStudentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudentStatus))
-                .addContainerGap(415, Short.MAX_VALUE))
-        );
-
-        tabs.addTab("", jPanel3);
 
         tblEnrolSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -546,6 +437,73 @@ public class StudentMenu extends javax.swing.JPanel {
         );
 
         tabs.addTab("", jPanel6);
+
+        lblStudentNo.setText("STUDENT NUMBER:");
+
+        lblStudentLN.setText("LAST NAME:");
+
+        lblStudentFN.setText("FIRST NAME:");
+
+        lblStudentEmail.setText("EMAIL:");
+
+        lblStudentGender.setText("GENDER:");
+
+        lblStudentCourseCode.setText("COURSE CODE:");
+
+        lblStudentCPNum.setText("CELLPHONE NUMBER:");
+
+        lblStudentAddress.setText("ADDRESS:");
+
+        lblStudentBday.setText("BIRTHDAY:");
+
+        lblStudentStatus.setText("STATUS:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblStudentStatus)
+                    .addComponent(lblStudentBday)
+                    .addComponent(lblStudentAddress)
+                    .addComponent(lblStudentCPNum)
+                    .addComponent(lblStudentCourseCode)
+                    .addComponent(lblStudentGender)
+                    .addComponent(lblStudentEmail)
+                    .addComponent(lblStudentFN)
+                    .addComponent(lblStudentNo)
+                    .addComponent(lblStudentLN))
+                .addContainerGap(822, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblStudentNo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblStudentLN)
+                .addGap(12, 12, 12)
+                .addComponent(lblStudentFN)
+                .addGap(12, 12, 12)
+                .addComponent(lblStudentEmail)
+                .addGap(12, 12, 12)
+                .addComponent(lblStudentGender)
+                .addGap(12, 12, 12)
+                .addComponent(lblStudentCourseCode)
+                .addGap(15, 15, 15)
+                .addComponent(lblStudentCPNum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblStudentAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblStudentBday)
+                .addGap(12, 12, 12)
+                .addComponent(lblStudentStatus)
+                .addContainerGap(433, Short.MAX_VALUE))
+        );
+
+        tabs.addTab("", jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -752,15 +710,5 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblEnrolSchedule;
     private javax.swing.JTable tblGradesTable;
-    private javax.swing.JTextField txtStudentAddress;
-    private javax.swing.JTextField txtStudentBday;
-    private javax.swing.JTextField txtStudentCPNum;
-    private javax.swing.JTextField txtStudentCourseCode;
-    private javax.swing.JTextField txtStudentEmail;
-    private javax.swing.JTextField txtStudentFN;
-    private javax.swing.JTextField txtStudentGender;
-    private javax.swing.JTextField txtStudentLN1;
-    private javax.swing.JTextField txtStudentNo;
-    private javax.swing.JTextField txtStudentStatus;
     // End of variables declaration//GEN-END:variables
 }
