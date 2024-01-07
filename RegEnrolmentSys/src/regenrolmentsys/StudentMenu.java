@@ -39,9 +39,28 @@ public class StudentMenu extends javax.swing.JPanel {
     }
     
     public void profileStudentsTab(){
-        
+        con = ConnectDB.connect();
+        try{
+            rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no='"+mf.getUserID()+"'").executeQuery();
+            while (rs.next()){
+                lblStudentNo.setText("STUDENT NUMBER: " +(rs.getString("student_no")));
+                lblStudentLN.setText("LAST NAME: "+(rs.getString("last_name")));
+                lblStudentFN.setText("FIRST NAME: "+(rs.getString("first_name")));
+                lblStudentEmail.setText("EMAIL: "+(rs.getString("email")));
+                lblStudentGender.setText("GENDER: "+(rs.getString("gender")));
+                lblStudentCourseCode.setText("COURSE CODE: "+(rs.getString("course_code")));
+                lblStudentCPNum.setText("MOBILE NUMBER: "+(rs.getString("cp_num")));
+                lblStudentAddress.setText("ADDRESS: "+(rs.getString("address")));
+                lblStudentBday.setText("BIRTHDAY: "+(rs.getString("bday")));
+                lblStudentStatus.setText("STATUS: "+(rs.getString("status")));
+            }
+       }
+       catch (Exception e){
+            System.out.println(e);
+       } 
     }
     
+        
     public void loadGradesTab() {
          con = ConnectDB.connect();
          try {
@@ -552,6 +571,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(0);
+        profileStudentsTab();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
