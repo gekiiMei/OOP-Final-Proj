@@ -60,6 +60,10 @@ public class StudentMenu extends javax.swing.JPanel {
        } 
     }
     
+    public void studentScheduleTab(){
+        
+    }
+    
         
     public void loadGradesTab() {
          con = ConnectDB.connect();
