@@ -3,41 +3,53 @@ package regenrolmentsys;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.sql.*;
 
 
  
 public class LogInUI extends javax.swing.JPanel {
+    private AdminHome ah = null;
+    private StudentHome sh = null;
     private MainFrame mf = null;
+    private Connection con = null;
+    private ResultSet rs = null;
     /**
      * Creates new form LogInUI
      */
-    public LogInUI(MainFrame mf) {
+    public LogInUI(MainFrame mf, StudentHome sh, AdminHome ah) {
         initComponents();
         this.mf = mf;
+        this.sh = sh;
+        this.ah = ah;
         setSize(1280, 720);
         setMinimumSize(new Dimension(1280, 720));
         setMaximumSize(new Dimension(1280, 720));
         setVisible(true);
         setPreferredSize(new Dimension(1280, 720));
-        
-        
-       
     }
     
     private void checkLogin() {
         mf.setUserID(UserIDField.getText());
+        con = ConnectDB.connect();
         if (UserIDField.getText().isEmpty()) {
-            //error msg
+            //TODO: error msg
             System.out.println("whoa hold on ur input is empty buddy");
         } else {
-            if (UserIDField.getText().equals("0")) //temporary stand-in for student
-                mf.switchCard("StudentHomeCard");
-            else if (UserIDField.getText().equals("1")) //temporary stand-in for faculty
-                mf.switchCard("AdminHomeCard");
-            else {
-                //error msg
-                System.out.println("whoa buddy u dont exist in our database");
+            try {
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + mf.getUserID() + "'").executeQuery();
+                if (rs.next()){
+                    mf.switchCard("StudentHomeCard");
+                    sh.setUserName();
+                }
+                else {
+                    rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + mf.getUserID() + "'").executeQuery();
+                    if (rs.next())
+                        mf.switchCard("AdminHomeCard");
+                    else
+                        System.out.println("whoa buddy u arent in our system"); //TODO: error msg
+                }
+            } catch (Exception e) {
+                System.out.println(e); //TODO: ERROR MSG
             }
         }
         UserIDField.setText("");
@@ -159,9 +171,16 @@ public class LogInUI extends javax.swing.JPanel {
 
         UserIDField.setBackground(new java.awt.Color(249, 248, 248));
         UserIDField.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        UserIDField.setForeground(new java.awt.Color(102, 102, 102));
+        UserIDField.setText("  Enter User ID");
         UserIDField.setToolTipText("");
         UserIDField.setActionCommand("<Not Set>");
-        UserIDField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        UserIDField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        UserIDField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UserIDFieldFocusGained(evt);
+            }
+        });
         UserIDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UserIDFieldActionPerformed(evt);
@@ -279,6 +298,10 @@ public class LogInUI extends javax.swing.JPanel {
         CloseBTN.setBackground(new Color(254, 86, 86));
 // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNMouseExited
+
+    private void UserIDFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UserIDFieldFocusGained
+        UserIDField.setText("");
+    }//GEN-LAST:event_UserIDFieldFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

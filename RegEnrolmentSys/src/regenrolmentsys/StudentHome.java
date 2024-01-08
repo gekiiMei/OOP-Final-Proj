@@ -5,6 +5,9 @@
 package regenrolmentsys;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.sql.*;
+
 
 /**
  *
@@ -14,6 +17,9 @@ public class StudentHome extends javax.swing.JPanel {
     private MainFrame mf = null;
     private StudentMenu sm = null;
     private String currentUser = "";
+    private Connection con = null;
+    private ResultSet rs = null;
+    private PreparedStatement ps = null;
     /**
      * Creates new form StudentHome
      */
@@ -27,6 +33,18 @@ public class StudentHome extends javax.swing.JPanel {
     public void setUserID(String userID) {
         this.currentUser = userID;
         lblTempID.setText("Current ID: " + userID);
+    }
+    
+    public void setUserName(){
+        con = ConnectDB.connect();
+        try{
+            rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no ='"+mf.getUserID()+"'").executeQuery();
+            while (rs.next())
+                lblUserName.setText(rs.getString("first_name"));
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -45,7 +63,6 @@ public class StudentHome extends javax.swing.JPanel {
         btnSched = new javax.swing.JButton();
         btnGrades = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblUserName = new javax.swing.JLabel();
@@ -58,9 +75,13 @@ public class StudentHome extends javax.swing.JPanel {
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jSplitPane1.setDividerLocation(450);
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         btnProfile.setText("profile");
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -97,65 +118,68 @@ public class StudentHome extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("jLabel4");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btnProfile)
-                        .addGap(101, 101, 101)
-                        .addComponent(btnEnrolment)
-                        .addGap(154, 154, 154)
-                        .addComponent(btnSched)
-                        .addGap(149, 149, 149)
-                        .addComponent(btnGrades)
-                        .addGap(155, 155, 155)
-                        .addComponent(btnLogout))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnEnrolment, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnSched, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProfile)
-                    .addComponent(btnEnrolment)
-                    .addComponent(btnSched)
-                    .addComponent(btnGrades)
-                    .addComponent(btnLogout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(16, 16, 16))
+                .addGap(71, 71, 71)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEnrolment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSched, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(98, 98, 98))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
 
         jPanel1.setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 72)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("welcome!");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("WELCOME!");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(680, 90, 270, 160);
+        jLabel1.setBounds(690, 130, 470, 90);
 
+        lblUserName.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        lblUserName.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUserName.setText("name");
         jPanel1.add(lblUserName);
-        lblUserName.setBounds(680, 210, 30, 16);
+        lblUserName.setBounds(840, 210, 180, 70);
 
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("student");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(680, 210, 40, 60);
+        jLabel3.setBounds(870, 250, 120, 60);
 
+        lblTempID.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        lblTempID.setForeground(new java.awt.Color(255, 255, 255));
+        lblTempID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempID.setText("current ID: ");
         jPanel1.add(lblTempID);
-        lblTempID.setBounds(680, 230, 80, 50);
+        lblTempID.setBounds(750, 290, 370, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LogInShortFinal.gif"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -230,32 +254,42 @@ public class StudentHome extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        mf.setUserID("");
-        mf.switchCard("LoginCard");
+        int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (response == 0){
+            mf.setUserID("");
+            mf.switchCard("LoginCard");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Canceled");
+        }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
         sm.getTabs().setSelectedIndex(3);
-        // TODO: code for displaying grades
+        sm.loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
         sm.getTabs().setSelectedIndex(0);
+        sm.profileStudentsTab();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
+        sm.loadEnrolmentTab();
         sm.getTabs().setSelectedIndex(1);
     }//GEN-LAST:event_btnEnrolmentActionPerformed
 
@@ -276,7 +310,7 @@ public class StudentHome extends javax.swing.JPanel {
     }//GEN-LAST:event_MinimizeBTNMouseExited
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-        //minimize
+        //minimize button event here:
 
         // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
@@ -285,14 +319,15 @@ public class StudentHome extends javax.swing.JPanel {
         CloseBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNMouseEntered
-
+ 
     private void CloseBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseExited
         CloseBTN.setBackground(new Color(254, 86, 86));
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNMouseExited
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-
+        //exit button event here:
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
@@ -310,7 +345,6 @@ public class StudentHome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

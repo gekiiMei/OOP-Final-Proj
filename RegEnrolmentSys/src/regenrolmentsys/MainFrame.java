@@ -11,11 +11,11 @@ import java.awt.*;
 public class MainFrame extends javax.swing.JFrame {
     private Container cont = getContentPane();
     private CardLayout cl = new CardLayout();
-    private LogInUI panelLogin = new LogInUI(this);
     private StudentMenu panelStudentMenu = new StudentMenu(this);
     private AdminMenu panelAdminMenu = new AdminMenu(this);
     private AdminHome panelAdminHome = new AdminHome(this, panelAdminMenu);
     private StudentHome panelStudentHome = new StudentHome(this, panelStudentMenu);
+    private LogInUI panelLogin = new LogInUI(this, panelStudentHome, panelAdminHome);
     private String currentUserID = "";
     public MainFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -36,6 +36,9 @@ public class MainFrame extends javax.swing.JFrame {
     public void switchCard(String targetCard) {
         cl.show(cont, targetCard);
         panelStudentHome.setUserID(currentUserID);
+        panelStudentMenu.setUserID(currentUserID);
+        panelAdminHome.setUserID(currentUserID);
+        panelAdminMenu.setUserID(currentUserID);
     }
     //setters
     public void setUserID(String userID) {
