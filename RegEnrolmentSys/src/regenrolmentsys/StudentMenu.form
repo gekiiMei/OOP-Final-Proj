@@ -164,6 +164,117 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel3">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="">
+                        <Property name="tabTitle" type="java.lang.String" value=""/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentNo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="822" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="lblStudentNo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="433" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lblStudentNo">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="STUDENT NUMBER:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentLN">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="LAST NAME:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentFN">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="FIRST NAME:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentEmail">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="EMAIL:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentGender">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="GENDER:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentCourseCode">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="COURSE CODE:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentCPNum">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="CELLPHONE NUMBER:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentAddress">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="ADDRESS:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentBday">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="BIRTHDAY:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblStudentStatus">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="STATUS:"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
                 <Container class="javax.swing.JPanel" name="jPanel4">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -474,117 +585,6 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGradeSearchActionPerformed"/>
                       </Events>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="jPanel3">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="">
-                        <Property name="tabTitle" type="java.lang.String" value=""/>
-                      </JTabbedPaneConstraints>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentNo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="822" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblStudentNo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="433" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblStudentNo">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="STUDENT NUMBER:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentLN">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="LAST NAME:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentFN">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="FIRST NAME:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentEmail">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="EMAIL:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentGender">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="GENDER:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentCourseCode">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="COURSE CODE:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentCPNum">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="CELLPHONE NUMBER:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentAddress">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="ADDRESS:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentBday">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="BIRTHDAY:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblStudentStatus">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="STATUS:"/>
-                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
