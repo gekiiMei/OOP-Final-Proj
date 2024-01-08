@@ -63,7 +63,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblStudents = new javax.swing.JTable();
+        tblClassList = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         cmbStudentNoYear = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
@@ -105,15 +105,15 @@ public class FacultyMenu extends javax.swing.JPanel {
         jLabel33 = new javax.swing.JLabel();
         txtGrade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblGrades = new javax.swing.JTable();
         btnGradeAdd = new javax.swing.JButton();
         btnGradeDelete = new javax.swing.JButton();
         btnGradeEdit = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1243, 756));
         setToolTipText("");
+        setPreferredSize(new java.awt.Dimension(1243, 756));
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
@@ -173,7 +173,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
 
-        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
+        tblClassList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -189,12 +189,12 @@ public class FacultyMenu extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        tblStudents.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblClassList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblStudentsMouseClicked(evt);
+                tblClassListMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tblStudents);
+        jScrollPane3.setViewportView(tblClassList);
 
         jLabel1.setText("Subject Code:");
 
@@ -379,7 +379,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblGrades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -390,7 +390,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblGrades);
 
         btnGradeAdd.setText("ADD");
         btnGradeAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -406,7 +406,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
         });
 
-        btnGradeEdit.setText("EDIT");
+        btnGradeEdit.setText("UPDATE");
         btnGradeEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGradeEditActionPerformed(evt);
@@ -436,12 +436,9 @@ public class FacultyMenu extends javax.swing.JPanel {
                                                     .addComponent(jLabel16))
                                                 .addGap(24, 24, 24)
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                                        .addComponent(jLabel22)
-                                                        .addGap(294, 294, 294))
-                                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                                        .addComponent(jLabel21)
-                                                        .addGap(18, 18, 18)))
+                                                    .addComponent(jLabel22)
+                                                    .addComponent(jLabel21))
+                                                .addGap(294, 294, 294)
                                                 .addComponent(jLabel18))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -700,9 +697,9 @@ public class FacultyMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGradeEditActionPerformed
 
-    private void tblStudentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStudentsMouseClicked
+    private void tblClassListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClassListMouseClicked
 
-    }//GEN-LAST:event_tblStudentsMouseClicked
+    }//GEN-LAST:event_tblClassListMouseClicked
 
     private void cmbStudentNoYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStudentNoYearActionPerformed
         // TODO add your handling code here:
@@ -787,13 +784,13 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCourseCode;
     private javax.swing.JLabel lblCourseDesc;
     private javax.swing.JLabel lblStuStatus;
     private javax.swing.JLabel lblSubjDesc;
     private javax.swing.JTabbedPane tabs;
-    private javax.swing.JTable tblStudents;
+    private javax.swing.JTable tblClassList;
+    private javax.swing.JTable tblGrades;
     private javax.swing.JTextField txtGrade;
     private javax.swing.JLabel txtStuCourseDesc2;
     private javax.swing.JTextField txtStudentNo1;
