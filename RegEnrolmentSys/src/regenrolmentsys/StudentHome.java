@@ -283,6 +283,7 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
         sm.getTabs().setSelectedIndex(0);
+        sm.profileStudentsTab();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
