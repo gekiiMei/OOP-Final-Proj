@@ -226,6 +226,7 @@ public class AdminMenu extends javax.swing.JPanel {
         btnDeleteEmp = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblEmployees = new javax.swing.JTable();
+        btnClearEmp = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHistory = new javax.swing.JTable();
@@ -1159,13 +1160,38 @@ public class AdminMenu extends javax.swing.JPanel {
         ));
         jScrollPane6.setViewportView(tblEmployees);
 
+        btnClearEmp.setText("CLEAR FIELDS");
+        btnClearEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearEmpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel40)
+                        .addGap(427, 427, 427))))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(btnClearEmp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddEmp)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateEmp)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeleteEmp)
+                        .addGap(359, 359, 359))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel43)
@@ -1214,22 +1240,6 @@ public class AdminMenu extends javax.swing.JPanel {
                                     .addComponent(txtEmpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(btnAddEmp)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdateEmp)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeleteEmp)
-                        .addGap(359, 359, 359))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel40)
-                        .addGap(427, 427, 427))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1273,7 +1283,9 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnUpdateEmp)
                         .addComponent(btnDeleteEmp))
-                    .addComponent(btnAddEmp))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAddEmp)
+                        .addComponent(btnClearEmp)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(83, Short.MAX_VALUE))
@@ -1634,6 +1646,10 @@ public class AdminMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteEmpActionPerformed
 
+    private void btnClearEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearEmpActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEmp;
@@ -1641,6 +1657,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnAddSched;
     private javax.swing.JButton btnAddStuRec;
     private javax.swing.JButton btnAddSubj;
+    private javax.swing.JButton btnClearEmp;
     private javax.swing.JButton btnDeleteEmp;
     private javax.swing.JButton btnDeleteSYSem;
     private javax.swing.JButton btnDeleteSched;
