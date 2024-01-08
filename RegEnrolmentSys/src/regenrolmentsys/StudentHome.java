@@ -28,8 +28,6 @@ public class StudentHome extends javax.swing.JPanel {
         this.sm = sm;
         this.mf = mf;
         this.currentUser = mf.getUserID();
-        setUserName();
-
     }
     
     public void setUserID(String userID) {
@@ -41,7 +39,7 @@ public class StudentHome extends javax.swing.JPanel {
         con = ConnectDB.connect();
         try{
             rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no ='"+mf.getUserID()+"'").executeQuery();
-            if (rs.next())
+            while (rs.next())
                 lblUserName.setText(rs.getString("first_name"));
         }
         catch(Exception e) {
@@ -285,6 +283,7 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
         sm.getTabs().setSelectedIndex(0);
+        sm.profileStudentsTab();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
