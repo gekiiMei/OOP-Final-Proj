@@ -61,7 +61,50 @@ public class StudentMenu extends javax.swing.JPanel {
     }
     
     public void studentScheduleTab(){
-        
+        con = ConnectDB.connect();
+        try{
+            ps = con.prepareStatement("SELECT sy, semester, subject_code, block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ?");
+            ps.setString(1, this.currentUser);
+            ps.setString(2, "Enrolled");
+            rs = ps.executeQuery();
+            
+            StringBuilder subCodeBuilder = new StringBuilder(); // StringBuilder for sub_codes
+            String QueredSY = "";
+            String QueredSem = "";
+            String QueredBlk = "";
+            
+                while(rs.next()){             
+                        QueredSY = rs.getString("sy");
+                        QueredSem = rs.getString("semester");
+                        QueredBlk = rs.getString("block_no");
+                        if(subCodeBuilder.length() > 0){ // checks if it has value inside
+                            subCodeBuilder.append(", ");
+                        }
+                        subCodeBuilder.append("'").append(rs.getString("subject_code")).append("'");
+                        }
+                   
+                
+                    if (subCodeBuilder.length() > 0){
+                    String subjectCodesIN = subCodeBuilder.toString();
+                    ps = con.prepareStatement("SELECT * "
+                                            + "FROM finals.SUBJECT_SCHEDULE "
+                                            + "WHERE sy = '"+QueredSY+"' "
+                                            + "AND semester = '"+QueredSem+"'"
+                                            + "AND subject_code IN ("+subjectCodesIN+")"
+                                            + "AND block_no = '"+QueredBlk+"'");
+                    rs = ps.executeQuery();
+                    
+                    if(rs.next()){
+                            rs = ps.executeQuery();
+                            System.out.println(subjectCodesIN);
+                            tblSchedule.setModel(TableUtil.resultSetToTableModel(rs));
+                    }
+                         // TO-DO - CHECKS IF STUDENT HAS ENROLLED YET
+                    }          
+        }
+        catch(Exception e){
+            System.out.println(e);   
+        }
     }
     
         
@@ -187,7 +230,9 @@ public class StudentMenu extends javax.swing.JPanel {
         btnEnrolConfirm = new javax.swing.JButton();
         btnEnrolSchedView = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblSchedule = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblSchedule = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGradesTable = new javax.swing.JTable();
@@ -431,23 +476,40 @@ public class StudentMenu extends javax.swing.JPanel {
 
         tabs.addTab("", jPanel4);
 
-        jLabel3.setText("schedule!");
+        lblSchedule.setText("schedule");
+
+        tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tblSchedule);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(441, 441, 441)
-                .addComponent(jLabel3)
-                .addContainerGap(508, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSchedule)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addComponent(jLabel3)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addComponent(lblSchedule)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel5);
@@ -587,6 +649,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private void btnSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(2);
+        studentScheduleTab();
     }//GEN-LAST:event_btnSchedActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
@@ -708,7 +771,6 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbGradeSem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -720,7 +782,9 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblSchedule;
     private javax.swing.JLabel lblStudentAddress;
     private javax.swing.JLabel lblStudentBday;
     private javax.swing.JLabel lblStudentCPNum;
@@ -734,5 +798,6 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblEnrolSchedule;
     private javax.swing.JTable tblGradesTable;
+    private javax.swing.JTable tblSchedule;
     // End of variables declaration//GEN-END:variables
 }
