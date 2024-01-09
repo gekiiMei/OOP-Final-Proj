@@ -80,6 +80,7 @@ public class LogInUI extends javax.swing.JPanel {
         Background = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(234, 230, 230));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setLayout(null);
 
         LogInBTN.setBackground(new java.awt.Color(254, 86, 86));
