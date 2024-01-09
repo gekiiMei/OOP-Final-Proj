@@ -46,3 +46,4 @@ INSERT INTO finals.EMPLOYEE VALUES('E030', 'Gomez', 'Ysabel', DEFAULT, 'F', '091
 INSERT INTO finals.EMPLOYEE VALUES('E031', 'Lagunzad', 'Herminiño', DEFAULT, 'M', '09197650987', 'Manila', '1986-12-06', 'A');
 INSERT INTO finals.EMPLOYEE VALUES('E032', 'Agustin', 'Vivien', DEFAULT, 'F', '091931654321', 'Manila', '1974-08-29', 'A');
 INSERT INTO finals.EMPLOYEE VALUES('E033', 'Dioses', 'Raymund', DEFAULT, 'M', '09669420360', 'Manila', '1979-09-19', 'A');
+INSERT INTO finals.EMPLOYEE VALUES('E034', 'Guialil', 'Jamilla', DEFAULT, 'M', '09189820360', 'Manila', '1980-01-29', 'A');
