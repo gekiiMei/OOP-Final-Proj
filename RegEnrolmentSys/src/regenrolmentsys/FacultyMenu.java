@@ -635,8 +635,9 @@ public class FacultyMenu extends javax.swing.JPanel {
 
     private void btnStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentsActionPerformed
         // TODO add your handling code here:
-        tabs.setSelectedIndex(0);
-        loadStudentsTab();
+        //COMMENTED OUT: error-inducing
+//        tabs.setSelectedIndex(0);
+//        loadStudentsTab();
     }//GEN-LAST:event_btnStudentsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -661,16 +662,17 @@ public class FacultyMenu extends javax.swing.JPanel {
 
     private void cmbBlockNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBlockNoActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        if (!cmbStuCourseLoaded)
-        return;
-        try {
-            rs = con.prepareStatement("SELECT description FROM finals.COURSE WHERE course_code = '" + cmbStuCourse.getSelectedItem().toString() + "'").executeQuery();
-            if (rs.next())
-            txtStuCourseDesc.setText(rs.getString("description"));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        //COMMENTED OUT: error-inducing
+//        con = ConnectDB.connect();
+//        if (!cmbStuCourseLoaded)
+//        return;
+//        try {
+//            rs = con.prepareStatement("SELECT description FROM finals.COURSE WHERE course_code = '" + cmbStuCourse.getSelectedItem().toString() + "'").executeQuery();
+//            if (rs.next())
+//            txtStuCourseDesc.setText(rs.getString("description"));
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }//GEN-LAST:event_cmbBlockNoActionPerformed
 
     private void cmbSubjCodeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSubjCodeItemStateChanged
@@ -707,28 +709,29 @@ public class FacultyMenu extends javax.swing.JPanel {
 
     private void btnStudSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudSearchActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            String selectedStudentNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
-            rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + selectedStudentNo + "'").executeQuery();
-            if (rs.next()) {
-                txtStuFirstName.setText(rs.getString("first_name"));
-                txtStuLastName.setText(rs.getString("last_name"));
-                txtStuMidInitial.setText(rs.getString("mi"));
-                lblStuEmail.setText(rs.getString("email"));
-                if (rs.getString("gender").equals("M"))
-                cmbStuGender.setSelectedIndex(0);
-                else
-                cmbStuGender.setSelectedIndex(1);
-                txtStuPhone.setText(rs.getString("cp_num"));
-                txtStuAddress.setText(rs.getString("address"));
-                dateStuBday.setDate(rs.getDate("bday").toLocalDate());
-                chkStuActive.setSelected(rs.getString("status").equals("A"));
-                cmbStuCourse.setSelectedItem(rs.getString("course_code"));
-            }
-        } catch (Exception e) {
-            System.out.println(e); //TODO: ADD ERROR MSG
-        }
+        //COMMENTED OUT: error-inducing
+//        con = ConnectDB.connect();
+//        try {
+//            String selectedStudentNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
+//            rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + selectedStudentNo + "'").executeQuery();
+//            if (rs.next()) {
+//                txtStuFirstName.setText(rs.getString("first_name"));
+//                txtStuLastName.setText(rs.getString("last_name"));
+//                txtStuMidInitial.setText(rs.getString("mi"));
+//                lblStuEmail.setText(rs.getString("email"));
+//                if (rs.getString("gender").equals("M"))
+//                cmbStuGender.setSelectedIndex(0);
+//                else
+//                cmbStuGender.setSelectedIndex(1);
+//                txtStuPhone.setText(rs.getString("cp_num"));
+//                txtStuAddress.setText(rs.getString("address"));
+//                dateStuBday.setDate(rs.getDate("bday").toLocalDate());
+//                chkStuActive.setSelected(rs.getString("status").equals("A"));
+//                cmbStuCourse.setSelectedItem(rs.getString("course_code"));
+//            }
+//        } catch (Exception e) {
+//            System.out.println(e); //TODO: ADD ERROR MSG
+//        }
     }//GEN-LAST:event_btnStudSearchActionPerformed
 
     private void cmbStudentNoYear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStudentNoYear1ActionPerformed
