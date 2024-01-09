@@ -116,7 +116,6 @@ public class AdminMenu extends javax.swing.JPanel {
         txtStuFirstName = new javax.swing.JTextField();
         txtStuLastName = new javax.swing.JTextField();
         cmbStuGender = new javax.swing.JComboBox<>();
-        txtStuPhone = new javax.swing.JTextField();
         cmbStuCourse = new javax.swing.JComboBox<>();
         txtStuAddress = new javax.swing.JTextField();
         chkStuActive = new javax.swing.JCheckBox();
@@ -128,10 +127,106 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtStuMidInitial = new javax.swing.JTextField();
         lblStuEmail = new javax.swing.JLabel();
+        txtStuPhone = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        rbSY = new javax.swing.JRadioButton();
+        rbSem = new javax.swing.JRadioButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtSY = new javax.swing.JTextField();
+        txtSem = new javax.swing.JTextField();
+        btnAddSYSem = new javax.swing.JButton();
+        btnDeleteSYSem = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblSYSem = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtSubjCode = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        txtSubjDesc = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtUnits = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txtCurriculum = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtCollegeCode = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        lblCollegeDesc = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        checkSubjStatus = new javax.swing.JCheckBox();
+        btnSearchSubj = new javax.swing.JButton();
+        btnAddSubj = new javax.swing.JButton();
+        btnEditSubj = new javax.swing.JButton();
+        btnDeleteSubj = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblSubjects = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        cmbSchedSY = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        cmbSchedSem = new javax.swing.JComboBox<>();
+        jLabel28 = new javax.swing.JLabel();
+        cmbCollegeCode = new javax.swing.JComboBox<>();
+        jLabel29 = new javax.swing.JLabel();
+        lblCollegeDescSched = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        cmbBlockNo = new javax.swing.JComboBox<>();
+        jLabel31 = new javax.swing.JLabel();
+        cmbSubjCode = new javax.swing.JComboBox<>();
+        jLabel32 = new javax.swing.JLabel();
+        lblSubjDesc = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        cmbDay = new javax.swing.JComboBox<>();
+        jLabel34 = new javax.swing.JLabel();
+        timeSchedTIme = new com.github.lgooddatepicker.components.TimePicker();
+        jLabel35 = new javax.swing.JLabel();
+        txtRoom = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        rbOnline = new javax.swing.JRadioButton();
+        rbF2F = new javax.swing.JRadioButton();
+        jLabel37 = new javax.swing.JLabel();
+        txtSeqNo = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        cmbFacultyID = new javax.swing.JComboBox<>();
+        jLabel39 = new javax.swing.JLabel();
+        lblFacultyName = new javax.swing.JLabel();
+        btnAddSched = new javax.swing.JButton();
+        btnEditSched = new javax.swing.JButton();
+        btnDeleteSched = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblSched = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        txtEmpID = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        txtEmpFirstname = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        txtEmpLastname = new javax.swing.JTextField();
+        btnSearchEmpID = new javax.swing.JButton();
+        btnSearchEmpName = new javax.swing.JButton();
+        jLabel44 = new javax.swing.JLabel();
+        lblEmpEmail = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        cmbEmpGender = new javax.swing.JComboBox<>();
+        jLabel47 = new javax.swing.JLabel();
+        txtEmpCellNo = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        dateEmpBday = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel49 = new javax.swing.JLabel();
+        txtEmpAddress = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        checkEmpStatus = new javax.swing.JCheckBox();
+        btnAddEmp = new javax.swing.JButton();
+        btnUpdateEmp = new javax.swing.JButton();
+        btnDeleteEmp = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblEmployees = new javax.swing.JTable();
+        btnClearEmp = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHistory = new javax.swing.JTable();
@@ -153,28 +248,28 @@ public class AdminMenu extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("SY and Semester");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Subjects");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Schedules");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Employees");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -202,7 +297,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addComponent(btnStudents)
                     .addComponent(btnLogout))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +314,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addComponent(jButton5)
                 .addGap(18, 18, 18)
                 .addComponent(btnHistory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 520, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(37, 37, 37))
         );
@@ -295,12 +390,6 @@ public class AdminMenu extends javax.swing.JPanel {
         });
 
         cmbStuGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
-
-        txtStuPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStuPhoneActionPerformed(evt);
-            }
-        });
 
         cmbStuCourse.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -398,7 +487,7 @@ public class AdminMenu extends javax.swing.JPanel {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
-                                        .addComponent(dateStuBday, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                                        .addComponent(dateStuBday, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7)
@@ -408,19 +497,19 @@ public class AdminMenu extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(chkStuActive)
-                                            .addComponent(txtStuPhone)
                                             .addComponent(txtStuAddress)
                                             .addGroup(jPanel4Layout.createSequentialGroup()
                                                 .addComponent(cmbStuCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtStuCourseDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))))))
+                                                .addComponent(txtStuCourseDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
+                                            .addComponent(txtStuPhone)))))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(btnAddStuRec)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnUpdateStuRec)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDeleteStuRec)))
-                        .addGap(0, 113, Short.MAX_VALUE)))
+                        .addGap(0, 160, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -470,7 +559,7 @@ public class AdminMenu extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 30, Short.MAX_VALUE)
+                .addGap(0, 144, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnUpdateStuRec)
@@ -483,54 +572,723 @@ public class AdminMenu extends javax.swing.JPanel {
 
         tabs.addTab("", jPanel4);
 
+        jLabel13.setText("SY AND SEMESTER RECORDS");
+
+        jLabel14.setText("Select a record to modify:");
+
+        rbSY.setText("SY");
+        rbSY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSYActionPerformed(evt);
+            }
+        });
+
+        rbSem.setText("SEMESTER");
+
+        jLabel15.setText("SY:");
+
+        jLabel16.setText("Semester:");
+
+        btnAddSYSem.setText("ADD");
+        btnAddSYSem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSYSemActionPerformed(evt);
+            }
+        });
+
+        btnDeleteSYSem.setText("DELETE");
+
+        tblSYSem.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblSYSem);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSem, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(271, 271, 271))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(rbSY)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbSem)
+                        .addGap(312, 312, 312))))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(392, 392, 392)
+                        .addComponent(btnAddSYSem)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnDeleteSYSem))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(405, 405, 405)
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(298, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(414, 414, 414)
+                .addComponent(jLabel14)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel13)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbSY)
+                    .addComponent(rbSem))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(txtSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddSYSem)
+                    .addComponent(btnDeleteSYSem))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel5);
+
+        jLabel17.setText("SUBJECT RECORDS");
+
+        jLabel18.setText("Subject Code:");
+
+        jLabel19.setText("Description:");
+
+        jLabel20.setText("Units:");
+
+        txtUnits.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUnitsActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Curriculum:");
+
+        jLabel22.setText("College Code:");
+
+        jLabel23.setText("-");
+
+        lblCollegeDesc.setText("College Description");
+
+        jLabel25.setText("Status:");
+
+        checkSubjStatus.setText("Active");
+        checkSubjStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkSubjStatusActionPerformed(evt);
+            }
+        });
+
+        btnSearchSubj.setText("SEARCH");
+        btnSearchSubj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchSubjActionPerformed(evt);
+            }
+        });
+
+        btnAddSubj.setText("Add");
+        btnAddSubj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSubjActionPerformed(evt);
+            }
+        });
+
+        btnEditSubj.setText("Update");
+        btnEditSubj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditSubjActionPerformed(evt);
+            }
+        });
+
+        btnDeleteSubj.setText("Delete");
+        btnDeleteSubj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSubjActionPerformed(evt);
+            }
+        });
+
+        tblSubjects.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tblSubjects);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel25))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(txtCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCollegeDesc))
+                    .addComponent(txtCurriculum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkSubjStatus)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(txtSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearchSubj)))
+                .addContainerGap(601, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(428, 428, 428))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnAddSubj)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditSubj)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeleteSubj)
+                        .addGap(338, 338, 338))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel17)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchSubj))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txtSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(txtUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(txtCurriculum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(lblCollegeDesc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(checkSubjStatus))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEditSubj)
+                        .addComponent(btnDeleteSubj))
+                    .addComponent(btnAddSubj))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel6);
+
+        jLabel24.setText("SUBJECT SCHEDULE RECORDS");
+
+        jLabel26.setText("SY:");
+
+        jLabel27.setText("Semester:");
+
+        jLabel28.setText("College Code:");
+
+        jLabel29.setText("-");
+
+        lblCollegeDescSched.setText("College Description");
+
+        jLabel30.setText("Block No:");
+
+        jLabel31.setText("Subject Code:");
+
+        jLabel32.setText("-");
+
+        lblSubjDesc.setText("Subject Description");
+
+        jLabel33.setText("Day:");
+
+        cmbDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", " " }));
+
+        jLabel34.setText("Time:");
+
+        jLabel35.setText("Room:");
+
+        jLabel36.setText("Type:");
+
+        rbOnline.setText("Online");
+        rbOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbOnlineActionPerformed(evt);
+            }
+        });
+
+        rbF2F.setText("F2F");
+
+        jLabel37.setText("Sequence No:");
+
+        jLabel38.setText("Faculty ID:");
+
+        jLabel39.setText("Faculty Name:");
+
+        lblFacultyName.setText("----");
+
+        btnAddSched.setText("Add");
+        btnAddSched.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSchedActionPerformed(evt);
+            }
+        });
+
+        btnEditSched.setText("Update");
+        btnEditSched.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditSchedActionPerformed(evt);
+            }
+        });
+
+        btnDeleteSched.setText("Delete");
+        btnDeleteSched.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSchedActionPerformed(evt);
+            }
+        });
+
+        tblSched.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tblSched);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(474, 474, 474)
+                        .addComponent(jLabel24))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel31)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSubjDesc))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel33)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel34)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(timeSchedTIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel35)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel36)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbOnline)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbF2F))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel37)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSeqNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel26)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbSchedSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel27)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmbSchedSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel29)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblCollegeDescSched)))
+                                .addGap(137, 137, 137)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel38)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel39)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblFacultyName, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 74, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnAddSched)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditSched)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeleteSched)
+                        .addGap(366, 366, 366))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel24)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(cmbSchedSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27)
+                    .addComponent(cmbSchedSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38)
+                    .addComponent(cmbFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(cmbCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29)
+                    .addComponent(lblCollegeDescSched)
+                    .addComponent(jLabel39)
+                    .addComponent(lblFacultyName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(cmbSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32)
+                    .addComponent(lblSubjDesc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34)
+                    .addComponent(timeSchedTIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(rbOnline)
+                    .addComponent(rbF2F))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(txtSeqNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEditSched)
+                        .addComponent(btnDeleteSched))
+                    .addComponent(btnAddSched))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel7);
+
+        jLabel40.setText("EMPLOYEE RECORDS");
+
+        jLabel41.setText("Employee ID:");
+
+        jLabel42.setText("First Name:");
+
+        jLabel43.setText("Last Name:");
+
+        btnSearchEmpID.setText("SEARCH ID");
+        btnSearchEmpID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchEmpIDActionPerformed(evt);
+            }
+        });
+
+        btnSearchEmpName.setText("SEARCH NAME");
+        btnSearchEmpName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchEmpNameActionPerformed(evt);
+            }
+        });
+
+        jLabel44.setText("Email:");
+
+        lblEmpEmail.setText("Email Address");
+
+        jLabel46.setText("Gender:");
+
+        cmbEmpGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+        cmbEmpGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEmpGenderActionPerformed(evt);
+            }
+        });
+
+        jLabel47.setText("Cellphone No:");
+
+        jLabel48.setText("Birthday :");
+
+        jLabel49.setText("Address:");
+
+        jLabel50.setText("Status:");
+
+        checkEmpStatus.setText("Active");
+        checkEmpStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkEmpStatusActionPerformed(evt);
+            }
+        });
+
+        btnAddEmp.setText("Add");
+        btnAddEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEmpActionPerformed(evt);
+            }
+        });
+
+        btnUpdateEmp.setText("Update");
+        btnUpdateEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateEmpActionPerformed(evt);
+            }
+        });
+
+        btnDeleteEmp.setText("Delete");
+        btnDeleteEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteEmpActionPerformed(evt);
+            }
+        });
+
+        tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(tblEmployees);
+
+        btnClearEmp.setText("CLEAR FIELDS");
+        btnClearEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearEmpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel40)
+                        .addGap(427, 427, 427))))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(btnClearEmp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddEmp)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateEmp)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeleteEmp)
+                        .addGap(359, 359, 359))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel43)
+                            .addComponent(jLabel44)
+                            .addComponent(jLabel42))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmpFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(lblEmpEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(txtEmpLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnSearchEmpName)
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addGap(24, 24, 24)
+                                .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSearchEmpID)
+                                .addGap(225, 225, 225)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel48)
+                                    .addComponent(jLabel46)
+                                    .addComponent(jLabel50))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dateEmpBday, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(checkEmpStatus)
+                                            .addComponent(cmbEmpGender, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel47)
+                                    .addComponent(jLabel49))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmpCellNo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel40)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchEmpID)
+                    .addComponent(jLabel46)
+                    .addComponent(cmbEmpGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(txtEmpFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel48)
+                    .addComponent(dateEmpBday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(txtEmpLastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchEmpName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel44)
+                    .addComponent(lblEmpEmail)
+                    .addComponent(jLabel50)
+                    .addComponent(checkEmpStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtEmpCellNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49)
+                    .addComponent(txtEmpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnUpdateEmp)
+                        .addComponent(btnDeleteEmp))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAddEmp)
+                        .addComponent(btnClearEmp)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel8);
@@ -555,7 +1313,7 @@ public class AdminMenu extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -563,7 +1321,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
@@ -667,10 +1425,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private void cmbStudentNoYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStudentNoYearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbStudentNoYearActionPerformed
-
-    private void txtStuPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStuPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStuPhoneActionPerformed
 
     private void chkStuActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkStuActiveActionPerformed
         // TODO add your handling code here:
@@ -816,19 +1570,125 @@ public class AdminMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStuMidInitialActionPerformed
 
+    private void rbSYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSYActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbSYActionPerformed
+
+    private void btnAddSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSYSemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddSYSemActionPerformed
+
+    private void checkSubjStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSubjStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkSubjStatusActionPerformed
+
+    private void txtUnitsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUnitsActionPerformed
+
+    private void btnSearchSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchSubjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchSubjActionPerformed
+
+    private void btnAddSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSubjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddSubjActionPerformed
+
+    private void btnEditSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSubjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditSubjActionPerformed
+
+    private void btnDeleteSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSubjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteSubjActionPerformed
+
+    private void rbOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOnlineActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbOnlineActionPerformed
+
+    private void btnAddSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSchedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddSchedActionPerformed
+
+    private void btnEditSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSchedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditSchedActionPerformed
+
+    private void btnDeleteSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSchedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteSchedActionPerformed
+
+    private void btnSearchEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEmpIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchEmpIDActionPerformed
+
+    private void btnSearchEmpNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEmpNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchEmpNameActionPerformed
+
+    private void cmbEmpGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEmpGenderActionPerformed
+
+    private void checkEmpStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkEmpStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkEmpStatusActionPerformed
+
+    private void btnAddEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddEmpActionPerformed
+
+    private void btnUpdateEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateEmpActionPerformed
+
+    private void btnDeleteEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteEmpActionPerformed
+
+    private void btnClearEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearEmpActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddEmp;
+    private javax.swing.JButton btnAddSYSem;
+    private javax.swing.JButton btnAddSched;
     private javax.swing.JButton btnAddStuRec;
+    private javax.swing.JButton btnAddSubj;
+    private javax.swing.JButton btnClearEmp;
+    private javax.swing.JButton btnDeleteEmp;
+    private javax.swing.JButton btnDeleteSYSem;
+    private javax.swing.JButton btnDeleteSched;
     private javax.swing.JButton btnDeleteStuRec;
+    private javax.swing.JButton btnDeleteSubj;
+    private javax.swing.JButton btnEditSched;
+    private javax.swing.JButton btnEditSubj;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnSearchEmpID;
+    private javax.swing.JButton btnSearchEmpName;
+    private javax.swing.JButton btnSearchSubj;
     private javax.swing.JButton btnStudSearch;
     private javax.swing.JButton btnStudents;
+    private javax.swing.JButton btnUpdateEmp;
     private javax.swing.JButton btnUpdateStuRec;
+    private javax.swing.JCheckBox checkEmpStatus;
+    private javax.swing.JCheckBox checkSubjStatus;
     private javax.swing.JCheckBox chkStuActive;
+    private javax.swing.JComboBox<String> cmbBlockNo;
+    private javax.swing.JComboBox<String> cmbCollegeCode;
+    private javax.swing.JComboBox<String> cmbDay;
+    private javax.swing.JComboBox<String> cmbEmpGender;
+    private javax.swing.JComboBox<String> cmbFacultyID;
+    private javax.swing.JComboBox<String> cmbSchedSY;
+    private javax.swing.JComboBox<String> cmbSchedSem;
     private javax.swing.JComboBox<String> cmbStuCourse;
     private javax.swing.JComboBox<String> cmbStuGender;
     private javax.swing.JComboBox<String> cmbStudentNoYear;
+    private javax.swing.JComboBox<String> cmbSubjCode;
+    private com.github.lgooddatepicker.components.DatePicker dateEmpBday;
     private com.github.lgooddatepicker.components.DatePicker dateStuBday;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -838,10 +1698,47 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -855,12 +1752,41 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblCollegeDesc;
+    private javax.swing.JLabel lblCollegeDescSched;
+    private javax.swing.JLabel lblEmpEmail;
+    private javax.swing.JLabel lblFacultyName;
     private javax.swing.JLabel lblStuEmail;
+    private javax.swing.JLabel lblSubjDesc;
+    private javax.swing.JRadioButton rbF2F;
+    private javax.swing.JRadioButton rbOnline;
+    private javax.swing.JRadioButton rbSY;
+    private javax.swing.JRadioButton rbSem;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblEmployees;
     private javax.swing.JTable tblHistory;
+    private javax.swing.JTable tblSYSem;
+    private javax.swing.JTable tblSched;
     private javax.swing.JTable tblStudents;
+    private javax.swing.JTable tblSubjects;
+    private com.github.lgooddatepicker.components.TimePicker timeSchedTIme;
+    private javax.swing.JComboBox<String> txtCollegeCode;
+    private javax.swing.JTextField txtCurriculum;
+    private javax.swing.JTextField txtEmpAddress;
+    private javax.swing.JTextField txtEmpCellNo;
+    private javax.swing.JTextField txtEmpFirstname;
+    private javax.swing.JTextField txtEmpID;
+    private javax.swing.JTextField txtEmpLastname;
+    private javax.swing.JTextField txtRoom;
+    private javax.swing.JTextField txtSY;
+    private javax.swing.JTextField txtSem;
+    private javax.swing.JTextField txtSeqNo;
     private javax.swing.JTextField txtStuAddress;
     private javax.swing.JLabel txtStuCourseDesc;
     private javax.swing.JTextField txtStuFirstName;
@@ -868,5 +1794,8 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JTextField txtStuMidInitial;
     private javax.swing.JTextField txtStuPhone;
     private javax.swing.JTextField txtStudentNo;
+    private javax.swing.JTextField txtSubjCode;
+    private javax.swing.JTextField txtSubjDesc;
+    private javax.swing.JTextField txtUnits;
     // End of variables declaration//GEN-END:variables
 }
