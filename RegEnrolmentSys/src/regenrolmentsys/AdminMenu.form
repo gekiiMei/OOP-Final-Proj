@@ -229,7 +229,10 @@
                                                   </Group>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnStudSearch" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="btnStudSearch" pref="85" max="32767" attributes="0"/>
+                                                  <Component id="btnStuNameSearch" max="32767" attributes="0"/>
+                                              </Group>
                                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
@@ -293,6 +296,7 @@
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtStuFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtStuPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnStuNameSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -331,7 +335,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="144" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnUpdateStuRec" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -550,6 +554,13 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtStuPhone">
+                    <Component class="javax.swing.JButton" name="btnStuNameSearch">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStuNameSearchActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

@@ -128,6 +128,7 @@ public class AdminMenu extends javax.swing.JPanel {
         txtStuMidInitial = new javax.swing.JTextField();
         lblStuEmail = new javax.swing.JLabel();
         txtStuPhone = new javax.swing.JTextField();
+        btnStuNameSearch = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -442,6 +443,13 @@ public class AdminMenu extends javax.swing.JPanel {
 
         lblStuEmail.setText("-");
 
+        btnStuNameSearch.setText("Search");
+        btnStuNameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStuNameSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -481,7 +489,9 @@ public class AdminMenu extends javax.swing.JPanel {
                                             .addComponent(txtStuLastName)
                                             .addComponent(lblStuEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnStudSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnStudSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                    .addComponent(btnStuNameSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(57, 57, 57)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -530,7 +540,8 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(jLabel7)
                     .addComponent(txtStuFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStuPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStuPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStuNameSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -559,7 +570,7 @@ public class AdminMenu extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 144, Short.MAX_VALUE)
+                .addGap(0, 29, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnUpdateStuRec)
@@ -1649,6 +1660,9 @@ public class AdminMenu extends javax.swing.JPanel {
     private void btnClearEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEmpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClearEmpActionPerformed
+    private void btnStuNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStuNameSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStuNameSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1670,6 +1684,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnSearchEmpID;
     private javax.swing.JButton btnSearchEmpName;
     private javax.swing.JButton btnSearchSubj;
+    private javax.swing.JButton btnStuNameSearch;
     private javax.swing.JButton btnStudSearch;
     private javax.swing.JButton btnStudents;
     private javax.swing.JButton btnUpdateEmp;
