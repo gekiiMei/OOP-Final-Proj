@@ -197,6 +197,8 @@ public class StudentMenu extends javax.swing.JPanel {
         cmbGradeSem = new javax.swing.JComboBox<>();
         btnGradeSearch = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
 

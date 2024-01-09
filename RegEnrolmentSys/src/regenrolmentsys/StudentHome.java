@@ -76,6 +76,7 @@ public class StudentHome extends javax.swing.JPanel {
         CloseBTN = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1278, 720));
 
         jSplitPane1.setDividerLocation(450);
         jSplitPane1.setDividerSize(0);
