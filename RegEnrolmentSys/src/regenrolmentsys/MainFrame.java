@@ -13,7 +13,8 @@ public class MainFrame extends javax.swing.JFrame {
     private CardLayout cl = new CardLayout();
     private StudentMenu panelStudentMenu = new StudentMenu(this);
     private AdminMenu panelAdminMenu = new AdminMenu(this);
-    private AdminHome panelAdminHome = new AdminHome(this, panelAdminMenu);
+    private FacultyMenu panelFacultyMenu = new FacultyMenu(this);
+    private AdminHome panelAdminHome = new AdminHome(this, panelFacultyMenu);
     private StudentHome panelStudentHome = new StudentHome(this, panelStudentMenu);
     private LogInUI panelLogin = new LogInUI(this, panelStudentHome, panelAdminHome);
     private String currentUserID = "";
@@ -27,6 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
         cont.add(panelLogin, "LoginCard");
         cont.add(panelAdminHome, "AdminHomeCard");
         cont.add(panelAdminMenu, "AdminMenuCard");
+        cont.add(panelFacultyMenu, "FacultyMenuCard");
         cont.add(panelStudentHome, "StudentHomeCard");
         cont.add(panelStudentMenu, "StudentMenuCard");
         pack();
@@ -37,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         cl.show(cont, targetCard);
         panelStudentHome.setUserID(currentUserID);
         panelStudentMenu.setUserID(currentUserID);
+        panelFacultyMenu.setUserID(currentUserID);
         panelAdminHome.setUserID(currentUserID);
         panelAdminMenu.setUserID(currentUserID);
     }
