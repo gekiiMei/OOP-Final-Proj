@@ -58,17 +58,18 @@ public class StudentHome extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
-        btnProfile = new javax.swing.JButton();
-        btnEnrolment = new javax.swing.JButton();
-        btnSched = new javax.swing.JButton();
-        btnGrades = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
+        BTNProfile = new com.k33ptoo.components.KButton();
+        BTNEnrollment = new com.k33ptoo.components.KButton();
+        BTNSchedule = new com.k33ptoo.components.KButton();
+        BTNGrade = new com.k33ptoo.components.KButton();
+        BTNLogout = new com.k33ptoo.components.KButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Welcome = new javax.swing.JLabel();
         lblUserName = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        Student = new javax.swing.JLabel();
         lblTempID = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        shadow = new javax.swing.JLabel();
+        BG = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         MainLBL = new javax.swing.JLabel();
         PLMLogo = new javax.swing.JLabel();
@@ -84,38 +85,88 @@ public class StudentHome extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnProfile.setText("profile");
-        btnProfile.addActionListener(new java.awt.event.ActionListener() {
+        BTNProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.png"))); // NOI18N
+        BTNProfile.setText("Profile");
+        BTNProfile.setToolTipText("");
+        BTNProfile.setBorderPainted(false);
+        BTNProfile.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BTNProfile.setIconTextGap(100);
+        BTNProfile.setkBorderRadius(20);
+        BTNProfile.setkEndColor(new java.awt.Color(255, 255, 102));
+        BTNProfile.setkHoverEndColor(new java.awt.Color(204, 153, 0));
+        BTNProfile.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNProfile.setkHoverStartColor(new java.awt.Color(204, 0, 0));
+        BTNProfile.setkStartColor(new java.awt.Color(204, 0, 0));
+        BTNProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfileActionPerformed(evt);
+                BTNProfileActionPerformed(evt);
             }
         });
 
-        btnEnrolment.setText("enrolment");
-        btnEnrolment.addActionListener(new java.awt.event.ActionListener() {
+        BTNEnrollment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/2.png"))); // NOI18N
+        BTNEnrollment.setText("Enrollment");
+        BTNEnrollment.setBorderPainted(false);
+        BTNEnrollment.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNEnrollment.setIconTextGap(100);
+        BTNEnrollment.setkBorderRadius(20);
+        BTNEnrollment.setkHoverEndColor(new java.awt.Color(0, 204, 51));
+        BTNEnrollment.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNEnrollment.setkHoverStartColor(new java.awt.Color(51, 153, 0));
+        BTNEnrollment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnrolmentActionPerformed(evt);
+                BTNEnrollmentActionPerformed(evt);
             }
         });
 
-        btnSched.setText("schedule");
-        btnSched.addActionListener(new java.awt.event.ActionListener() {
+        BTNSchedule.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/3.png"))); // NOI18N
+        BTNSchedule.setText("Schedule");
+        BTNSchedule.setBorderPainted(false);
+        BTNSchedule.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNSchedule.setIconTextGap(100);
+        BTNSchedule.setkBorderRadius(20);
+        BTNSchedule.setkEndColor(new java.awt.Color(51, 255, 255));
+        BTNSchedule.setkHoverEndColor(new java.awt.Color(102, 102, 255));
+        BTNSchedule.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNSchedule.setkHoverStartColor(new java.awt.Color(51, 0, 204));
+        BTNSchedule.setkStartColor(new java.awt.Color(153, 0, 255));
+        BTNSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSchedActionPerformed(evt);
+                BTNScheduleActionPerformed(evt);
             }
         });
 
-        btnGrades.setText("grade");
-        btnGrades.addActionListener(new java.awt.event.ActionListener() {
+        BTNGrade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/4.png"))); // NOI18N
+        BTNGrade.setText("Grade");
+        BTNGrade.setBorderPainted(false);
+        BTNGrade.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNGrade.setIconTextGap(100);
+        BTNGrade.setkBorderRadius(20);
+        BTNGrade.setkEndColor(new java.awt.Color(255, 255, 51));
+        BTNGrade.setkHoverEndColor(new java.awt.Color(204, 153, 0));
+        BTNGrade.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNGrade.setkHoverStartColor(new java.awt.Color(255, 102, 0));
+        BTNGrade.setkStartColor(new java.awt.Color(255, 102, 51));
+        BTNGrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGradesActionPerformed(evt);
+                BTNGradeActionPerformed(evt);
             }
         });
 
-        btnLogout.setText("logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+        BTNLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/5.png"))); // NOI18N
+        BTNLogout.setText("Log-out");
+        BTNLogout.setBorderPainted(false);
+        BTNLogout.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNLogout.setIconTextGap(100);
+        BTNLogout.setkBorderRadius(20);
+        BTNLogout.setkEndColor(new java.awt.Color(255, 0, 255));
+        BTNLogout.setkHoverEndColor(new java.awt.Color(153, 0, 153));
+        BTNLogout.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNLogout.setkHoverStartColor(new java.awt.Color(102, 0, 102));
+        BTNLogout.setkStartColor(new java.awt.Color(153, 0, 153));
+        BTNLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+                BTNLogoutActionPerformed(evt);
             }
         });
 
@@ -124,42 +175,41 @@ public class StudentHome extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btnEnrolment, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btnSched, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btnGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addGap(42, 42, 42)
+                .addComponent(BTNProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(BTNEnrollment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(BTNSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(BTNGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(BTNLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEnrolment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSched, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(98, 98, 98))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTNProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTNEnrollment, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTNSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTNGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTNLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(185, 185, 185))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
 
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Poppins", 1, 72)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("WELCOME!");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(690, 130, 470, 90);
+        Welcome.setFont(new java.awt.Font("Poppins", 1, 72)); // NOI18N
+        Welcome.setForeground(new java.awt.Color(255, 255, 255));
+        Welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Welcome.setText("WELCOME!");
+        jPanel1.add(Welcome);
+        Welcome.setBounds(690, 130, 470, 90);
 
         lblUserName.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
         lblUserName.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,12 +218,12 @@ public class StudentHome extends javax.swing.JPanel {
         jPanel1.add(lblUserName);
         lblUserName.setBounds(840, 210, 180, 70);
 
-        jLabel3.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("student");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(870, 250, 120, 60);
+        Student.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        Student.setForeground(new java.awt.Color(255, 255, 255));
+        Student.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Student.setText("student");
+        jPanel1.add(Student);
+        Student.setBounds(870, 250, 120, 60);
 
         lblTempID.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
         lblTempID.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,9 +232,13 @@ public class StudentHome extends javax.swing.JPanel {
         jPanel1.add(lblTempID);
         lblTempID.setBounds(750, 290, 370, 50);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LogInShortFinal.gif"))); // NOI18N
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 30, 1280, 470);
+        shadow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/SHADOW.png"))); // NOI18N
+        jPanel1.add(shadow);
+        shadow.setBounds(470, -60, 1370, 510);
+
+        BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LogInShortFinal.gif"))); // NOI18N
+        jPanel1.add(BG);
+        BG.setBounds(0, 30, 1280, 470);
 
         jPanel3.setBackground(new java.awt.Color(254, 86, 86));
         jPanel3.setLayout(null);
@@ -260,55 +314,65 @@ public class StudentHome extends javax.swing.JPanel {
                 .addGap(61, 61, 61))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+ 
+    private void BTNProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNProfileActionPerformed
         // TODO add your handling code here:
-        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        mf.switchCard("StudentMenuCard");
+        sm.getTabs().setSelectedIndex(0);
+        sm.profileStudentsTab();
+
+    }//GEN-LAST:event_BTNProfileActionPerformed
+
+    private void BTNGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNGradeActionPerformed
+        // TODO add your handling code here:
+         mf.switchCard("StudentMenuCard");
+        sm.getTabs().setSelectedIndex(3);
+        sm.loadGradesTab();
+
+    }//GEN-LAST:event_BTNGradeActionPerformed
+
+    private void BTNEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNEnrollmentActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("StudentMenuCard");
+        sm.loadEnrolmentTab();
+        sm.getTabs().setSelectedIndex(1);
+
+    }//GEN-LAST:event_BTNEnrollmentActionPerformed
+
+    private void BTNScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNScheduleActionPerformed
+        // TODO add your handling code here:
+          mf.switchCard("StudentMenuCard");
+        sm.getTabs().setSelectedIndex(2);
+
+    }//GEN-LAST:event_BTNScheduleActionPerformed
+
+    private void BTNLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogoutActionPerformed
+        // TODO add your handling code here:
+                int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
         }
         else{
-            JOptionPane.showMessageDialog(this, "Canceled");
+            JOptionPane.showMessageDialog(null, "Canceled");
         }
-    }//GEN-LAST:event_btnLogoutActionPerformed
+    }//GEN-LAST:event_BTNLogoutActionPerformed
 
-    private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
-        // TODO add your handling code here:
-        mf.switchCard("StudentMenuCard");
-        sm.getTabs().setSelectedIndex(3);
-        sm.loadGradesTab();
-    }//GEN-LAST:event_btnGradesActionPerformed
+    private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
+        //exit button event here:
 
-    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
-        mf.switchCard("StudentMenuCard");
-        sm.getTabs().setSelectedIndex(0);
-        sm.profileStudentsTab();
-    }//GEN-LAST:event_btnProfileActionPerformed
+    }//GEN-LAST:event_CloseBTNActionPerformed
 
-    private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
+    private void CloseBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseExited
+        CloseBTN.setBackground(new Color(254, 86, 86));
         // TODO add your handling code here:
-        mf.switchCard("StudentMenuCard");
-        sm.loadEnrolmentTab();
-        sm.getTabs().setSelectedIndex(1);
-    }//GEN-LAST:event_btnEnrolmentActionPerformed
+    }//GEN-LAST:event_CloseBTNMouseExited
 
-    private void btnSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedActionPerformed
+    private void CloseBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseEntered
+        CloseBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
-        mf.switchCard("StudentMenuCard");
-        sm.getTabs().setSelectedIndex(2);
-    }//GEN-LAST:event_btnSchedActionPerformed
-
-    private void MinimizeBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseEntered
-        MinimizeBTN.setBackground(new Color(203,68,68));
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinimizeBTNMouseEntered
-
-    private void MinimizeBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseExited
-        MinimizeBTN.setBackground(new Color(254, 86, 86));
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinimizeBTNMouseExited
+    }//GEN-LAST:event_CloseBTNMouseEntered
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
         //minimize button event here:
@@ -316,41 +380,36 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
 
-    private void CloseBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseEntered
-        CloseBTN.setBackground(new Color(203,68,68));
+    private void MinimizeBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseExited
+        MinimizeBTN.setBackground(new Color(254, 86, 86));
         // TODO add your handling code here:
-    }//GEN-LAST:event_CloseBTNMouseEntered
- 
-    private void CloseBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseExited
-        CloseBTN.setBackground(new Color(254, 86, 86));
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CloseBTNMouseExited
+    }//GEN-LAST:event_MinimizeBTNMouseExited
 
-    private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-        //exit button event here:
-        
+    private void MinimizeBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseEntered
+        MinimizeBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
-    }//GEN-LAST:event_CloseBTNActionPerformed
+    }//GEN-LAST:event_MinimizeBTNMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BG;
+    private com.k33ptoo.components.KButton BTNEnrollment;
+    private com.k33ptoo.components.KButton BTNGrade;
+    private com.k33ptoo.components.KButton BTNLogout;
+    private com.k33ptoo.components.KButton BTNProfile;
+    private com.k33ptoo.components.KButton BTNSchedule;
     private javax.swing.JButton CloseBTN;
     private javax.swing.JLabel MainLBL;
     private javax.swing.JButton MinimizeBTN;
     private javax.swing.JLabel PLMLogo;
-    private javax.swing.JButton btnEnrolment;
-    private javax.swing.JButton btnGrades;
-    private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnProfile;
-    private javax.swing.JButton btnSched;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel Student;
+    private javax.swing.JLabel Welcome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblTempID;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel shadow;
     // End of variables declaration//GEN-END:variables
 }
