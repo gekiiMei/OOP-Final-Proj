@@ -20,7 +20,7 @@ CREATE TABLE finals.SUBJECT_SCHEDULE (
     CONSTRAINT FK_SUBJECT_SCHEDULE_COLLEGE
         FOREIGN KEY (college_code)
         REFERENCES finals.college (college_code),
-    CONSTRAINT subject_sched_enrolled_uk UNIQUE (sy, semester, subject_code, block_no)
+    CONSTRAINT subject_sched_enrolled_uk UNIQUE (sy, semester, subject_code, block_no, sequence_no)
 );
 
 --UPDATED DATA SAMPLES
