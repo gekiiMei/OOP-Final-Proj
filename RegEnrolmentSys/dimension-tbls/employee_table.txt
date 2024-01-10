@@ -13,37 +13,43 @@ CREATE TABLE finals.employee (
    ,constraint employee_id_pk PRIMARY KEY(employee_id)
 );
 
-INSERT INTO finals.EMPLOYEE VALUES ('E001', 'Regala', 'Richard', DEFAULT, 'M', '09987654321', 'Manila', null, 'A');
-INSERT INTO finals.EMPLOYEE VALUES ('E002', 'Santos', 'Rene', DEFAULT, 'M', '09997654321', 'Manila', null, 'A');
-INSERT INTO finals.EMPLOYEE VALUES ('E003', 'Cruz', 'Mark', DEFAULT, 'M', '09157654321 ', 'Manila', null, 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E004', 'Santos', 'Jocelyn', DEFAULT, 'F', '09287654321', 'Manila', '1990-05-15', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E005', 'Lazaro', 'Antonio', DEFAULT, 'M', '09387654321', 'Quezon City', '1987-12-10', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E006', 'Villanueva', 'Carmela', DEFAULT, 'F', '09487654321', 'Manila', '1988-08-25', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E007', 'Mendoza', 'Ramon', DEFAULT, 'M', '09587654321', 'Pasig', '1986-04-19', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E008', 'Garcia', 'Maria', DEFAULT, 'F', '09687654321', 'Manila', '1989-10-07', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E009', 'Reyes', 'Francisco', DEFAULT, 'M', '09787654321', 'Makati', '1984-11-28', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E010', 'Pascual', 'Angelica', DEFAULT, 'F', '09887654321', 'Manila', '1992-02-14', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E011', 'Fernandez', 'Gabriel', DEFAULT, 'M', '09987654321', 'Quezon City', '1991-09-03', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E012', 'Lim', 'Veronica', DEFAULT, 'F', '09197654321', 'Manila', '1983-07-23', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E013', 'Torres', 'Daniel', DEFAULT, 'M', '09297654321', 'Pasig', '1993-06-06', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E014', 'Aquino', 'Patricia', DEFAULT, 'F', '09397654321', 'Manila', '1982-01-17', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E015', 'Santiago', 'Javier', DEFAULT, 'M', '09497654321', 'Makati', '1994-08-31', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E016', 'Valdez', 'Sofia', DEFAULT, 'F', '09597654321', 'Manila', '1981-12-12', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E017', 'Ramos', 'Diego', DEFAULT, 'M', '09697654321', 'Quezon City', '1995-04-05', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E018', 'Cruz', 'Isabella', DEFAULT, 'F', '09797654321', 'Manila', '1980-09-27', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E019', 'Ocampo', 'Luis', DEFAULT, 'M', '09897654321', 'Pasig', '1996-11-18', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E020', 'Gonzales', 'Amara', DEFAULT, 'F', '09997654321', 'Manila', '1979-03-08', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E021', 'Dela Cruz', 'Andres', DEFAULT, 'M', '09187654321', 'Makati', '1997-07-01', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E022', 'Velasco', 'Camille', DEFAULT, 'F', '09287654321', 'Manila', '1978-05-21', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E023', 'Bautista', 'Miguel', DEFAULT, 'M', '09387654321', 'Quezon City', '1998-12-14', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E024', 'Castillo', 'Sophia', DEFAULT, 'F', '09487654321', 'Manila', '1977-10-04', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E025', 'Estrada', 'Pedro', DEFAULT, 'M', '09587654321', 'Pasig', '1999-09-24', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E026', 'Magbanua', 'Aurora', DEFAULT, 'F', '09687654321', 'Manila', '1976-08-15', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E027', 'Mendoza', 'Juan', DEFAULT, 'M', '09787654321', 'Makati', '2000-06-07', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E028', 'Gonzaga', 'Angel', DEFAULT, 'F', '09887654321', 'Manila', '1975-02-26', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E029', 'Torres', 'Mateo', DEFAULT, 'M', '09987654321', 'Quezon City', '2001-04-17', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E030', 'Gomez', 'Ysabel', DEFAULT, 'F', '09197654321', 'Manila', '1974-11-08', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E031', 'Lagunzad', 'Herminiño', DEFAULT, 'M', '09197650987', 'Manila', '1986-12-06', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E032', 'Agustin', 'Vivien', DEFAULT, 'F', '091931654321', 'Manila', '1974-08-29', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E033', 'Dioses', 'Raymund', DEFAULT, 'M', '09669420360', 'Manila', '1979-09-19', 'A');
-INSERT INTO finals.EMPLOYEE VALUES('E034', 'Guialil', 'Jamilla', DEFAULT, 'M', '09189820360', 'Manila', '1980-01-29', 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E001', 'Regala',  'Richard',  DEFAULT, 'M', '09987654321', '123 Main Street, Manila',     null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E002', 'Agustin', 'Vivien',   DEFAULT, 'F', '09787254321', '456 Oak Avenue, Quezon City', null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E003', 'Atienza', 'Francis',  DEFAULT, 'M', '09127654421', '789 Pine Road, Makati',       null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E004', 'Blanco',  'Mark',     DEFAULT, 'M', '09489614721', '101 Elm Lane, Taguig',        null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E005', 'Cruz',    'Joel',     DEFAULT, 'M', '09883644311', '202 Maple Court, Pasig',      null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E006', 'Dioses',  'Raymund',  DEFAULT, 'M', '09743664221', '303 Birch Street, Mandaluyong', null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E007', 'Genota',  'Alvin',    DEFAULT, 'M', '09687424351', '404 Cedar Avenue, Marikina',  null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E008', 'Guialil', 'Jamillah', DEFAULT, 'F', '09687945123', '505 Pine Lane, Caloocan',     null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E009', 'Kawabata', 'Jeffrey',  DEFAULT, 'M', '09987654321', '606 Oak Road, Valenzuela',    null, 'I');
+INSERT INTO finals.EMPLOYEE VALUES ('E010', 'Lagunzad','Herminiño',DEFAULT, 'M', '09982123456', '707 Maple Street, Malabon',   null, 'I');
+INSERT INTO finals.EMPLOYEE VALUES ('E011', 'Mahusay', 'Leisyl',   DEFAULT, 'F', '09984345678', '808 Elm Avenue, Navotas',     null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E012', 'Morano',  'Jonathan', DEFAULT, 'M', '09985456789', '909 Birch Lane, Parañaque',   null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E013', 'Pascual', 'Elsa',     DEFAULT, 'F', '09986567890', '1010 Pine Court, Las Piñas',  null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E014', 'Contreras', 'Antonio',     DEFAULT, 'M', '0998677890', '100 Pine Suite, Las Piñas',  null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E015', 'Pineda', 'Dellephine',     DEFAULT, 'M', '0998678758', '100 Pine Apt 5, Las Piñas',  null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E016', 'Cortez', 'Dan Michael',     DEFAULT, 'M', '09065321932', '100 Autumn L5, Las Piñas',  null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES ('E017', 'Canlaz', 'Renz',     DEFAULT, 'M', '09087621932', '199 Autumn L69, Las Piñas',  null, 'A');
+INSERT INTO finals.EMPLOYEE VALUES 
+	('E018', 'Co', 'Joseph', DEFAULT, 'M', '09438673541', '852 Poplar Lane, Quezon City', null, 'A'),
+	('E019', 'Sison', 'Ariel', DEFAULT, 'M', '09639217752', '369 Maple Road, Pasay', null, 'A'),
+	('E020', 'Mercado', 'Mark', DEFAULT, 'M', '09238935567', '963 Sycamore Street, Caloocan', null, 'A'),
+	('E021', 'Santos', 'Myra', DEFAULT, 'F', '09445679953', '2345 Oak Drive, Manila', null, 'A'),
+	('E022', 'Centeno', 'Criselle', DEFAULT, 'F', '09773657432', '1234 Elm Street, Malabon', null, 'A'),
+	('E023', 'Mangrobang', 'Marilou', DEFAULT, 'F', '09639917823', '5678 Pine Road, Taguig', null, 'A'),
+	('E024', 'Abando', 'Diony', DEFAULT, 'M', '09235578761', '159 Willow Way, Mandaluyong', null, 'A'),
+	('E025', 'Libed', 'Jake', DEFAULT, 'M', '09165434842', '852 Aspen Drive, Marikina', null, 'A'),
+	('E026', 'Goneda', 'Mamerto', DEFAULT, 'M', '09437681293', '369 Juniper Boulevard, Manila', null, 'A'),
+	('E027', 'Remoriata', 'Mark', DEFAULT, 'M', '09548825921', '741 Redwood Avenue, San Juan', null, 'A'),
+	('E028', 'Fernandez', 'Ronald', DEFAULT, 'M', '09347178546', '1357 Redwood Lane, Muntinlupa', null, 'A'),
+	('E029', 'DeLeon', 'Jefferson', DEFAULT, 'M', '09185448327', '890 Cedar Lane, Makati', null, 'A'),
+	('E030', 'DeVara', 'Amy', DEFAULT, 'F', '09349459932', '221 Baker Street, Manila', null, 'A'),
+	('E031', 'Mapanao', 'Jay', DEFAULT, 'M', '09278826523', '24 Privet Drive, Malabon', null, 'A'),
+	('E032', 'Gonzales', 'Mary', DEFAULT, 'F', '09672815532', '742 Evergreen Terrace, Makati', null, 'A'),
+	('E033', 'Maupay', 'Ann', DEFAULT, 'F', '09669224873', '308 Negra Arroyo Lane, Pasay', null, 'A'),
+	('E034', 'Marcelo', 'Erwin', DEFAULT, 'M', '09921679442', '124 Hogsmeade, Taguig', null, 'A'),
+	('E035', 'Mendiola', 'Bernard', DEFAULT, 'M', '09275813782', '57 Eccles Street, Manila', null, 'A'),
+	('E036', 'Tanael', 'Domingo', DEFAULT, 'M', '09782173384', '23 Spooner Street, Makati', null, 'A'),
+	('E037', 'Buenaventura', 'Sidney', DEFAULT, 'M', '09775279362', '124 Conch Street, Caloocan', null, 'A'),
+	('E038', 'Bautista', 'Romualdo', DEFAULT, 'M', '09182627834', '29 Acacia Road, Manila', null, 'A'),
+	('E039', 'Lawan', 'Joan', DEFAULT, 'F', '09773482354', '229 Neibolt Street, Manila', null, 'A');
