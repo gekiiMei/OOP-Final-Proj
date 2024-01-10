@@ -1433,6 +1433,15 @@ public class AdminMenu extends javax.swing.JPanel {
                 dateStuBday.setDate(rs.getDate("bday").toLocalDate());
                 chkStuActive.setSelected(rs.getString("status").equals("A"));
                 cmbStuCourse.setSelectedItem(rs.getString("course_code"));
+            } else {
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no LIKE '" + selectedStudentNo + "%'").executeQuery();
+                if (rs.next()) {
+                    rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no LIKE '" + selectedStudentNo + "%'").executeQuery();
+                    tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
+                } else {
+                    loadStudentTable();
+                    //TODO: ERROR MSG "NO STUDENT FOUND"
+                }
             }
         } catch (Exception e) {
             System.out.println(e); //TODO: ADD ERROR MSG
@@ -1670,6 +1679,23 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnStudSearchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudSearchNameActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE first_name LIKE ? OR last_name LIKE ?");
+            ps.setString(1, "%" + txtStuFirstName.getText() + "%");
+            ps.setString(2, "%" + txtStuLastName.getText() + "%");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                rs = ps.executeQuery();
+                tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
+            } else {
+                loadStudentTable();
+                //TODO: ERROR MSG "NO STUDENT FOUND"
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            //TODO: ERROR MSGS
+        }
     }//GEN-LAST:event_btnStudSearchNameActionPerformed
 
 
