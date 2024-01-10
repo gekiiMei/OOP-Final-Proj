@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package regenrolmentsys;
+import java.awt.Point;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.text.DateFormat;
@@ -38,6 +39,13 @@ public class AdminMenu extends javax.swing.JPanel {
     
     public javax.swing.JTable getStudentTable() {
         return tblHistory;
+    }
+    
+    public Point JOptionPaneXY(){ // For fixing JOptionPane frame positioning
+        Point frameLocation = this.getLocation(); 
+        int x = frameLocation.x + (this.getWidth() / 2); 
+        int y = frameLocation.y + (this.getHeight() / 2); 
+        return new Point(x,y);
     }
     
     public void loadStudentsTab() {
@@ -1440,6 +1448,9 @@ public class AdminMenu extends javax.swing.JPanel {
                     tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
                 } else {
                     loadStudentTable();
+                    JOptionPane.showMessageDialog(this, "No student found with matching search parameters!", "Search error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
+                    return;
                     //TODO: ERROR MSG "NO STUDENT FOUND"
                 }
             }
@@ -1690,6 +1701,9 @@ public class AdminMenu extends javax.swing.JPanel {
                 tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
             } else {
                 loadStudentTable();
+                JOptionPane.showMessageDialog(this, "No student found with matching search parameters!", "Search error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
+                return;
                 //TODO: ERROR MSG "NO STUDENT FOUND"
             }
         } catch (Exception e) {

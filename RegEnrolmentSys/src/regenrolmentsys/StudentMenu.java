@@ -721,6 +721,8 @@ public class StudentMenu extends javax.swing.JPanel {
             
             if (intCurrYear < 1) {
                 System.out.println("year cannot be earlier than your enrolment year"); //TODO: error msg
+                JOptionPane.showMessageDialog(this, "You cannot enroll to a year earlier than your admittance year!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
                 return;
             }
             
@@ -728,6 +730,8 @@ public class StudentMenu extends javax.swing.JPanel {
             while (rs.next()) {
                 if (rs.getString("sy").equals(strSelectedSY) && rs.getString("semester").equals(cmbEnrolSem.getSelectedItem().toString())) {
                     System.out.println("already enrolled to this year and semester"); //TODO: error msg
+                    JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
                     return;
                 }
             }
@@ -739,7 +743,9 @@ public class StudentMenu extends javax.swing.JPanel {
                         intBlockCount++;
                     block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
                 }
-            } else {
+            } else if (intCurrYear > 4) { 
+                
+            }else {
                 ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
                 ps.setString(1, currentUser);
                 ps.setString(2, "Finished");
@@ -749,6 +755,9 @@ public class StudentMenu extends javax.swing.JPanel {
                     block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
                 } else {
                     System.out.println("missing previous enrolments"); //TODO: error msg
+                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
+                    return;
                 }
             }
             ps = con.prepareStatement("SELECT * FROM finals.SUBJECT_SCHEDULE WHERE SY = ? AND SEMESTER = ? AND BLOCK_NO = ?");
