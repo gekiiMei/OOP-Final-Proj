@@ -53,8 +53,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnStudents" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGrades" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnClassList" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnLogout" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="88" max="32767" attributes="0"/>
@@ -65,9 +65,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="btnStudents" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnClassList" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGrades" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="586" max="32767" attributes="0"/>
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -84,21 +84,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnStudents">
+            <Component class="javax.swing.JButton" name="btnClassList">
               <Properties>
                 <Property name="text" type="java.lang.String" value="class list"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnStudentsMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentsActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnClassListMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClassListActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="btnGrades">
               <Properties>
                 <Property name="text" type="java.lang.String" value="grades"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGradesActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -164,7 +164,7 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
-                                              <Component id="btnStudSearch" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <Component id="btnClassSearch" min="-2" pref="85" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
@@ -174,9 +174,9 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="cmbStudentNoYear1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cmbBlockNo2" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="cmbStudentNoYear" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cmbSubjCode2" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
@@ -200,17 +200,17 @@
                               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbStudentNoYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbSubjCode2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblSubjDesc" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbStudentNoYear1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbBlockNo2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="btnStudSearch" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnClassSearch" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="60" max="32767" attributes="0"/>
@@ -248,7 +248,7 @@
                         <Property name="text" type="java.lang.String" value="Subject Code:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cmbStudentNoYear">
+                    <Component class="javax.swing.JComboBox" name="cmbSubjCode2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -256,7 +256,7 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbStudentNoYearActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbSubjCode2ActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -267,12 +267,12 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnStudSearch">
+                    <Component class="javax.swing.JButton" name="btnClassSearch">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudSearchActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClassSearchActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel34">
@@ -290,7 +290,7 @@
                         <Property name="text" type="java.lang.String" value="Block No:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cmbStudentNoYear1">
+                    <Component class="javax.swing.JComboBox" name="cmbBlockNo2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -298,7 +298,7 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbStudentNoYear1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbBlockNo2ActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -334,8 +334,8 @@
                                                               </Group>
                                                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="lblStudLastname" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="lblStudFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               </Group>
                                                               <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
                                                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
@@ -345,7 +345,7 @@
                                                                   <Group type="102" alignment="0" attributes="0">
                                                                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                                                      <Component id="lblStudMI" min="-2" max="-2" attributes="0"/>
                                                                   </Group>
                                                                   <Group type="102" alignment="0" attributes="0">
                                                                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -354,7 +354,7 @@
                                                                       <EmptySpace max="-2" attributes="0"/>
                                                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                                                       <EmptySpace max="-2" attributes="0"/>
-                                                                      <Component id="txtStudentNo1" min="-2" pref="105" max="-2" attributes="0"/>
+                                                                      <Component id="txtStudentNo2" min="-2" pref="105" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
                                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -387,14 +387,14 @@
                                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                               <Component id="lblCourseDesc" min="-2" pref="302" max="-2" attributes="0"/>
                                                           </Group>
-                                                          <Component id="lblStuStatus" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblStudStatus" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblStudEmail" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblStudGender" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -444,7 +444,7 @@
                                                       <Component id="btnGradeDelete" min="-2" pref="85" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Component id="txtStuCourseDesc2" max="32767" attributes="0"/>
+                                                  <Component id="txtSubjDesc" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -468,14 +468,14 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmbStudentNoYear2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtStudentNo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtStudentNo2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnGradeStudSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudFirstname" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCourseDesc" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -484,21 +484,21 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudLastname" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudMI" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStuStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStudGender" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -510,7 +510,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtStuCourseDesc2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSubjDesc" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmbSubjCode" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -561,7 +561,7 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtStudentNo1">
+                    <Component class="javax.swing.JTextField" name="txtStudentNo2">
                     </Component>
                     <Component class="javax.swing.JButton" name="btnGradeStudSearch">
                       <Properties>
@@ -601,22 +601,22 @@
                         <Property name="text" type="java.lang.String" value="Status :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblStuStatus">
+                    <Component class="javax.swing.JLabel" name="lblStudStatus">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="---"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel21">
+                    <Component class="javax.swing.JLabel" name="lblStudFirstname">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="----------"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel22">
+                    <Component class="javax.swing.JLabel" name="lblStudLastname">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="----------"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel23">
+                    <Component class="javax.swing.JLabel" name="lblStudMI">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="----------"/>
                       </Properties>
@@ -626,7 +626,7 @@
                         <Property name="text" type="java.lang.String" value="Gender :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel25">
+                    <Component class="javax.swing.JLabel" name="lblStudGender">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="---"/>
                       </Properties>
@@ -698,9 +698,9 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="txtStuCourseDesc2">
+                    <Component class="javax.swing.JLabel" name="txtSubjDesc">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="err"/>
+                        <Property name="text" type="java.lang.String" value="Subject Description"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel32">
@@ -716,6 +716,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbSubjCodeItemStateChanged"/>
+                        <EventHandler event="caretPositionChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="cmbSubjCodeCaretPositionChanged"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbSubjCodeActionPerformed"/>
                       </Events>
                       <AuxValues>
@@ -730,6 +731,7 @@
                     <Component class="javax.swing.JTextField" name="txtGrade">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGradeActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtGradeKeyTyped"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -750,6 +752,9 @@
                               </Table>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblGradesMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -782,7 +787,7 @@
                         <Property name="text" type="java.lang.String" value="Email :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel26">
+                    <Component class="javax.swing.JLabel" name="lblStudEmail">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="----------"/>
                       </Properties>
