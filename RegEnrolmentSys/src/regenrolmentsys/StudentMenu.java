@@ -712,7 +712,6 @@ public class StudentMenu extends javax.swing.JPanel {
             if (intCurrYear < 1) {
                 System.out.println("year cannot be earlier than your enrolment year"); //TODO: error msg
                 JOptionPane.showMessageDialog(this, "You cannot enroll to a year earlier than your admittance year!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
                 return;
             }
             
@@ -721,7 +720,6 @@ public class StudentMenu extends javax.swing.JPanel {
                 if (rs.getString("sy").equals(strSelectedSY) && rs.getString("semester").equals(cmbEnrolSem.getSelectedItem().toString())) {
                     System.out.println("already enrolled to this year and semester"); //TODO: error msg
                     JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
-                    JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
                     return;
                 }
             }
@@ -746,7 +744,6 @@ public class StudentMenu extends javax.swing.JPanel {
                 } else {
                     System.out.println("missing previous enrolments"); //TODO: error msg
                     JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
-                    JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
                     return;
                 }
             }
