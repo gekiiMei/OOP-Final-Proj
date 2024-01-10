@@ -4,12 +4,14 @@ package regenrolmentsys;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 
  
 public class LogInUI extends javax.swing.JPanel {
     private AdminHome ah = null;
     private StudentHome sh = null;
+    private AdminMenu am = null;
     private MainFrame mf = null;
     private Connection con = null;
     private ResultSet rs = null;
@@ -49,9 +51,22 @@ public class LogInUI extends javax.swing.JPanel {
                         lblErrorID.setVisible(false);
                         mf.switchCard("AdminHomeCard");
                     }
-                    else{
-                        System.out.println("whoa buddy u arent in our system"); //TODO: error msg
-                        lblErrorID.setVisible(true);
+                    else {
+                        rs = con.prepareStatement("SELECT * FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                        if (rs.next()) {
+                            var password = JOptionPane.showInputDialog("Enter password: ");
+                            rs = con.prepareStatement("SELECT pass FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                            if (rs.next()) {
+                                if (password.equals(rs.getString("pass"))) {
+                                    mf.switchCard("AdminMenuCard");
+                                    am.loadStudentsTab();
+                                }
+                                else 
+                                    JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR);
+                            }
+                        } else 
+                            JOptionPane.showMessageDialog(null, "User does not exist", "Login failed", JOptionPane.ERROR);  
+                            lblErrorID.setVisible(true);
                     }
                 }
             } catch (Exception e) {
@@ -176,9 +191,9 @@ public class LogInUI extends javax.swing.JPanel {
         lblErrorID.setBackground(new java.awt.Color(255, 51, 51));
         lblErrorID.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblErrorID.setForeground(new java.awt.Color(255, 51, 51));
-        lblErrorID.setText("User ID do not exist!");
+        lblErrorID.setText("User ID does not exist!");
         add(lblErrorID);
-        lblErrorID.setBounds(720, 280, 120, 30);
+        lblErrorID.setBounds(720, 280, 140, 30);
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1077114.png"))); // NOI18N
         add(UserIcon);

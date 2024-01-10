@@ -90,10 +90,10 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
         btnStudents = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnSYSem = new javax.swing.JButton();
+        btnSubjects = new javax.swing.JButton();
+        btnSchedules = new javax.swing.JButton();
+        btnEmployees = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
@@ -253,31 +253,31 @@ public class AdminMenu extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("SY and Semester");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSYSem.setText("SY and Semester");
+        btnSYSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSYSemActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Subjects");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSubjects.setText("Subjects");
+        btnSubjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSubjectsActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Schedules");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSchedules.setText("Schedules");
+        btnSchedules.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSchedulesActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Employees");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnEmployees.setText("Employees");
+        btnEmployees.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnEmployeesActionPerformed(evt);
             }
         });
 
@@ -296,10 +296,10 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHistory)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
+                    .addComponent(btnEmployees)
+                    .addComponent(btnSchedules)
+                    .addComponent(btnSubjects)
+                    .addComponent(btnSYSem)
                     .addComponent(btnStudents)
                     .addComponent(btnLogout))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -310,13 +310,13 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addComponent(btnStudents)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnSYSem)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnSubjects)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnSchedules)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(btnEmployees)
                 .addGap(18, 18, 18)
                 .addComponent(btnHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
@@ -1393,21 +1393,21 @@ public class AdminMenu extends javax.swing.JPanel {
         loadStudentsTab();
     }//GEN-LAST:event_btnStudentsActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSYSemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSYSemActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSubjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubjectsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSubjectsActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnSchedulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedulesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnSchedulesActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnEmployeesActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
@@ -1538,6 +1538,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     ps.setString(10, "I");
                 ps.execute();
                 loadStudentTable();
+                JOptionPane.showMessageDialog(null, "Added record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -1578,6 +1579,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     ps.setString(9, "I");
                 ps.execute();
                 loadStudentTable();
+                JOptionPane.showMessageDialog(null, "Updated record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -1596,6 +1598,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 );
                 ps.execute();
                 loadStudentTable();
+                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -1724,14 +1727,18 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnDeleteSubj;
     private javax.swing.JButton btnEditSched;
     private javax.swing.JButton btnEditSubj;
+    private javax.swing.JButton btnEmployees;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnSYSem;
+    private javax.swing.JButton btnSchedules;
     private javax.swing.JButton btnSearchEmpID;
     private javax.swing.JButton btnSearchEmpName;
     private javax.swing.JButton btnSearchSubj;
     private javax.swing.JButton btnStudSearch;
     private javax.swing.JButton btnStudSearchName;
     private javax.swing.JButton btnStudents;
+    private javax.swing.JButton btnSubjects;
     private javax.swing.JButton btnUpdateEmp;
     private javax.swing.JButton btnUpdateStuRec;
     private javax.swing.JCheckBox checkEmpStatus;
@@ -1750,10 +1757,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbSubjCode;
     private com.github.lgooddatepicker.components.DatePicker dateEmpBday;
     private com.github.lgooddatepicker.components.DatePicker dateStuBday;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
