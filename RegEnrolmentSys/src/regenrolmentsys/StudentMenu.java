@@ -740,7 +740,11 @@ public class StudentMenu extends javax.swing.JPanel {
                     block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
                 }
             } else {
-                rs = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = '" + currentUser + "'").executeQuery();
+                ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                ps.setString(1, currentUser);
+                ps.setString(2, "Finished");
+                ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
+                rs = ps.executeQuery();
                 if (rs.next()) {
                     block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
                 } else {
