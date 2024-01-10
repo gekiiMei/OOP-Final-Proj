@@ -317,7 +317,7 @@ public class StudentHome extends javax.swing.JPanel {
  
     private void BTNProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNProfileActionPerformed
         // TODO add your handling code here:
-             mf.switchCard("StudentMenuCard");
+        mf.switchCard("StudentMenuCard");
         sm.getTabs().setSelectedIndex(0);
         sm.profileStudentsTab();
 

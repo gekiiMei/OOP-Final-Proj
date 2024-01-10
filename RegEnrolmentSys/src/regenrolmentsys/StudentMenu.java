@@ -4,10 +4,13 @@
  */
 package regenrolmentsys;
 
+
+import java.awt.Point;
 import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.util.Random;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -38,6 +41,7 @@ public class StudentMenu extends javax.swing.JPanel {
     public void setUserID(String userID) {
         this.currentUser = userID;
     }
+    
     
     public void profileStudentsTab(){
         con = ConnectDB.connect();
@@ -73,17 +77,20 @@ public class StudentMenu extends javax.swing.JPanel {
             String QueredSY = "";
             String QueredSem = "";
             String QueredBlk = "";
-            
-                while(rs.next()){             
+                
+                if (!rs.next()) {
+                    JOptionPane.showMessageDialog(this, "You haven't enrolled any subjects yet!", "No Subjects Enrolled", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                     do{
                         QueredSY = rs.getString("sy");
                         QueredSem = rs.getString("semester");
                         QueredBlk = rs.getString("block_no");
-                        if(subCodeBuilder.length() > 0){ // checks if it has value inside
-                            subCodeBuilder.append(", ");
-                        }
-                        subCodeBuilder.append("'").append(rs.getString("subject_code")).append("'");
-                        }
-                   
+                        if (subCodeBuilder.length() > 0) { // checks if it has value inside
+                             subCodeBuilder.append(", ");
+                            }
+                            subCodeBuilder.append("'").append(rs.getString("subject_code")).append("'");
+                        } while (rs.next());
+                    }
                 
                     if (subCodeBuilder.length() > 0){
                     String subjectCodesIN = subCodeBuilder.toString();
@@ -100,12 +107,16 @@ public class StudentMenu extends javax.swing.JPanel {
                             System.out.println(subjectCodesIN);
                             tblSchedule.setModel(TableUtil.resultSetToTableModel(rs));
                     }
-                         // TO-DO - CHECKS IF STUDENT HAS ENROLLED YET
                     }          
         }
         catch(Exception e){
             System.out.println(e);   
         }
+    }
+    
+    public void resetSchedTable(){
+        DefaultTableModel model = new DefaultTableModel();
+        tblSchedule.setModel(model);
     }
     
         
@@ -691,14 +702,15 @@ public class StudentMenu extends javax.swing.JPanel {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         
-        int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
             resetGradesTable();
+            resetSchedTable();
         }
         else{
-            JOptionPane.showMessageDialog(null, "Cancelled");
+            JOptionPane.showMessageDialog(this, "Cancelled");
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
@@ -766,6 +778,7 @@ public class StudentMenu extends javax.swing.JPanel {
             
             if (intCurrYear < 1) {
                 System.out.println("year cannot be earlier than your enrolment year"); //TODO: error msg
+                JOptionPane.showMessageDialog(this, "You cannot enroll to a year earlier than your admittance year!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
             
@@ -773,6 +786,7 @@ public class StudentMenu extends javax.swing.JPanel {
             while (rs.next()) {
                 if (rs.getString("sy").equals(strSelectedSY) && rs.getString("semester").equals(cmbEnrolSem.getSelectedItem().toString())) {
                     System.out.println("already enrolled to this year and semester"); //TODO: error msg
+                    JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
             }
@@ -784,12 +798,20 @@ public class StudentMenu extends javax.swing.JPanel {
                         intBlockCount++;
                     block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
                 }
-            } else {
-                rs = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = '" + currentUser + "'").executeQuery();
+            } else if (intCurrYear > 4) { 
+                
+            }else {
+                ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                ps.setString(1, currentUser);
+                ps.setString(2, "Finished");
+                ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
+                rs = ps.executeQuery();
                 if (rs.next()) {
                     block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
                 } else {
                     System.out.println("missing previous enrolments"); //TODO: error msg
+                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                    return;
                 }
             }
             ps = con.prepareStatement("SELECT * FROM finals.SUBJECT_SCHEDULE WHERE SY = ? AND SEMESTER = ? AND BLOCK_NO = ?");

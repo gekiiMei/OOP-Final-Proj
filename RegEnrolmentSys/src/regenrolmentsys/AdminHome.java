@@ -4,20 +4,22 @@
  */
 package regenrolmentsys;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author harley
  */
 public class AdminHome extends javax.swing.JPanel {
     private MainFrame mf = null;
-    private AdminMenu am = null;
+    private FacultyMenu fm = null;
     private String currentUser = "";
     /**
      * Creates new form AdminHome
      */
-    public AdminHome(MainFrame mf, AdminMenu am) {
+    public AdminHome(MainFrame mf, FacultyMenu fm) {
         initComponents();
-        this.am = am;
+        this.fm = fm;
         this.mf = mf;
         this.currentUser = mf.getUserID();
     }
@@ -42,8 +44,8 @@ public class AdminHome extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
-        btnStudents = new javax.swing.JButton();
-        btnHistory = new javax.swing.JButton();
+        btnClassList = new javax.swing.JButton();
+        btnGrades = new javax.swing.JButton();
 
         jSplitPane1.setDividerLocation(450);
         jSplitPane1.setDividerSize(0);
@@ -95,17 +97,17 @@ public class AdminHome extends javax.swing.JPanel {
             }
         });
 
-        btnStudents.setText("students");
-        btnStudents.addActionListener(new java.awt.event.ActionListener() {
+        btnClassList.setText("Class list");
+        btnClassList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStudentsActionPerformed(evt);
+                btnClassListActionPerformed(evt);
             }
         });
 
-        btnHistory.setText("history");
-        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+        btnGrades.setText("Grades");
+        btnGrades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHistoryActionPerformed(evt);
+                btnGradesActionPerformed(evt);
             }
         });
 
@@ -115,9 +117,9 @@ public class AdminHome extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addComponent(btnStudents)
+                .addComponent(btnClassList)
                 .addGap(736, 736, 736)
-                .addComponent(btnHistory)
+                .addComponent(btnGrades)
                 .addGap(59, 59, 59)
                 .addComponent(btnLogout)
                 .addContainerGap(183, Short.MAX_VALUE))
@@ -127,8 +129,8 @@ public class AdminHome extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnStudents)
-                    .addComponent(btnHistory)
+                    .addComponent(btnClassList)
+                    .addComponent(btnGrades)
                     .addComponent(btnLogout))
                 .addContainerGap(136, Short.MAX_VALUE))
         );
@@ -149,29 +151,35 @@ public class AdminHome extends javax.swing.JPanel {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        mf.setUserID("");
-        mf.switchCard("LoginCard");
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (response == 0){
+            mf.setUserID("");
+            mf.switchCard("LoginCard");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Canceled");
+        }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentsActionPerformed
+    private void btnClassListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassListActionPerformed
         // TODO add your handling code here:
-        mf.switchCard("AdminMenuCard");
-        am.getTabs().setSelectedIndex(0);
-        am.loadStudentsTab();
-    }//GEN-LAST:event_btnStudentsActionPerformed
+        mf.switchCard("FacultyMenuCard");
+        fm.getTabs().setSelectedIndex(0);
+    }//GEN-LAST:event_btnClassListActionPerformed
 
-    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
+    private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
-        mf.switchCard("AdminMenuCard");
-        am.getTabs().setSelectedIndex(5);
+        mf.switchCard("FacultyMenuCard");
+        fm.getTabs().setSelectedIndex(1);
+        fm.loadGradesTab();
         //TODO: code for displaying history table
-    }//GEN-LAST:event_btnHistoryActionPerformed
+    }//GEN-LAST:event_btnGradesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHistory;
+    private javax.swing.JButton btnClassList;
+    private javax.swing.JButton btnGrades;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnStudents;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

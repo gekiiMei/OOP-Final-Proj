@@ -4,12 +4,14 @@ package regenrolmentsys;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 
  
 public class LogInUI extends javax.swing.JPanel {
     private AdminHome ah = null;
     private StudentHome sh = null;
+    private AdminMenu am = null;
     private MainFrame mf = null;
     private Connection con = null;
     private ResultSet rs = null;
@@ -26,6 +28,7 @@ public class LogInUI extends javax.swing.JPanel {
         setMaximumSize(new Dimension(1280, 720));
         setVisible(true);
         setPreferredSize(new Dimension(1280, 720));
+        lblErrorID.setVisible(false);
     }
     
     private void checkLogin() {
@@ -40,13 +43,31 @@ public class LogInUI extends javax.swing.JPanel {
                 if (rs.next()){
                     mf.switchCard("StudentHomeCard");
                     sh.setUserName();
+                    lblErrorID.setVisible(false);
                 }
                 else {
                     rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + mf.getUserID() + "'").executeQuery();
-                    if (rs.next())
+                    if (rs.next()){
+                        lblErrorID.setVisible(false);
                         mf.switchCard("AdminHomeCard");
-                    else
-                        System.out.println("whoa buddy u arent in our system"); //TODO: error msg
+                    }
+                    else {
+                        rs = con.prepareStatement("SELECT * FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                        if (rs.next()) {
+                            var password = JOptionPane.showInputDialog("Enter password: ");
+                            rs = con.prepareStatement("SELECT pass FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                            if (rs.next()) {
+                                if (password.equals(rs.getString("pass"))) {
+                                    mf.switchCard("AdminMenuCard");
+                                    am.loadStudentsTab();
+                                }
+                                else 
+                                    JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR);
+                            }
+                        } else 
+                            JOptionPane.showMessageDialog(null, "User does not exist", "Login failed", JOptionPane.ERROR);  
+                            lblErrorID.setVisible(true);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println(e); //TODO: ERROR MSG
@@ -70,6 +91,7 @@ public class LogInUI extends javax.swing.JPanel {
         PLMLogo = new javax.swing.JLabel();
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
+        lblErrorID = new javax.swing.JLabel();
         UserIcon = new javax.swing.JLabel();
         UserIDField = new javax.swing.JTextField();
         EnrlmntLBL = new javax.swing.JLabel();
@@ -165,6 +187,13 @@ public class LogInUI extends javax.swing.JPanel {
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1280, 30);
+
+        lblErrorID.setBackground(new java.awt.Color(255, 51, 51));
+        lblErrorID.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblErrorID.setForeground(new java.awt.Color(255, 51, 51));
+        lblErrorID.setText("User ID does not exist!");
+        add(lblErrorID);
+        lblErrorID.setBounds(720, 280, 140, 30);
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1077114.png"))); // NOI18N
         add(UserIcon);
@@ -320,5 +349,6 @@ public class LogInUI extends javax.swing.JPanel {
     private javax.swing.JTextField UserIDField;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblErrorID;
     // End of variables declaration//GEN-END:variables
 }

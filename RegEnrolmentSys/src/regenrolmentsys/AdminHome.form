@@ -114,9 +114,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="btnStudents" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnClassList" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="736" max="-2" attributes="0"/>
-                      <Component id="btnHistory" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGrades" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="183" max="32767" attributes="0"/>
@@ -128,8 +128,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnStudents" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnHistory" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnClassList" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGrades" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnLogout" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="136" max="32767" attributes="0"/>
@@ -146,20 +146,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnStudents">
+            <Component class="javax.swing.JButton" name="btnClassList">
               <Properties>
-                <Property name="text" type="java.lang.String" value="students"/>
+                <Property name="text" type="java.lang.String" value="Class list"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClassListActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnHistory">
+            <Component class="javax.swing.JButton" name="btnGrades">
               <Properties>
-                <Property name="text" type="java.lang.String" value="history"/>
+                <Property name="text" type="java.lang.String" value="Grades"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistoryActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGradesActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
