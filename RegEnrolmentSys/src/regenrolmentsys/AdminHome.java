@@ -118,9 +118,9 @@ public class AdminHome extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(btnClassList)
-                .addGap(736, 736, 736)
+                .addGap(33, 33, 33)
                 .addComponent(btnGrades)
-                .addGap(59, 59, 59)
+                .addGap(762, 762, 762)
                 .addComponent(btnLogout)
                 .addContainerGap(183, Short.MAX_VALUE))
         );

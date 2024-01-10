@@ -46,6 +46,15 @@ public class FacultyMenu extends javax.swing.JPanel {
     public void loadGradesTab() {
         con = ConnectDB.connect();
         try {
+            lblStudFirstname.setText("----------");
+            lblStudLastname.setText("----------");
+            lblStudMI.setText("-");
+            lblStudGender.setText("-");
+            lblCourseCode.setText("----");
+            lblCourseDesc.setText("----------");
+            lblStudEmail.setText("----------");
+            lblStudStatus.setText("-----");
+            
             //load comboboxes
             //load student no SY combobox
             rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
@@ -66,7 +75,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
             
             //load subject code combobox
-            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT").executeQuery();
+            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT ORDER BY subject_code").executeQuery();
             while (rs.next()) {
                 cmbSubjCode.addItem(rs.getString("subject_code"));
             }
@@ -748,6 +757,16 @@ public class FacultyMenu extends javax.swing.JPanel {
                     lblStudStatus.setText("INACTIVE");
                 lblCourseCode.setText(rs.getString("course_code"));
                 lblCourseDesc.setText(rs.getString("course_desc"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Student not found", "ERROR", JOptionPane.ERROR_MESSAGE);
+                lblStudFirstname.setText("----------");
+                lblStudLastname.setText("----------");
+                lblStudMI.setText("-");
+                lblStudGender.setText("-");
+                lblCourseCode.setText("----");
+                lblCourseDesc.setText("----------");
+                lblStudEmail.setText("----------");
+                lblStudStatus.setText("-----");
             }
             
             rs = con.prepareStatement("SELECT * FROM finals.GRADE WHERE student_no = '" + selectedStudentNo + "'").executeQuery();
@@ -771,18 +790,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbBlockNoItemStateChanged
 
     private void cmbBlockNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBlockNoActionPerformed
-        // TODO add your handling code here:
-        // COMMENTED OUT: error-inducing
-//        con = ConnectDB.connect();
-//        if (!cmbStuCourseLoaded)
-//        return;
-//        try {
-//            rs = con.prepareStatement("SELECT description FROM finals.COURSE WHERE course_code = '" + cmbStuCourse.getSelectedItem().toString() + "'").executeQuery();
-//            if (rs.next())
-//            txtStuCourseDesc.setText(rs.getString("description"));
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+
     }//GEN-LAST:event_cmbBlockNoActionPerformed
 
     private void cmbSubjCodeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSubjCodeItemStateChanged
@@ -815,9 +823,15 @@ public class FacultyMenu extends javax.swing.JPanel {
         int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (intAnswer == 0) {
             try {
-                rs = con.prepareStatement("SELECT status FROM finals.ENROLLED_SUBJECT "
-                        + "WHERE SY = ?, semester = ?, student_No = ?, subject_code = ?, block_no = ?").executeQuery();
-                while (rs.next())
+                ps = con.prepareStatement("SELECT status FROM finals.ENROLLED_SUBJECT "
+                        + "WHERE SY = ? AND semester = ? AND student_No = ? AND subject_code = ? AND block_no = ?");
+                    ps.setString(1, cmbSY.getSelectedItem().toString());
+                    ps.setString(2, cmbSem.getSelectedItem().toString());
+                    ps.setString(3, selectedStudntNo);
+                    ps.setString(4, cmbSubjCode.getSelectedItem().toString());
+                    ps.setString(5,cmbBlockNo.getSelectedItem().toString());
+                rs = ps.executeQuery();
+                if (rs.next()) {
                     if (rs.getString("status").equals("Enrolled")) {
                         ps = con.prepareStatement("INSERT INTO finals.GRADE VALUES (?,?,?,?,?,?)");
                         ps.setString(1, cmbSY.getSelectedItem().toString());
@@ -825,25 +839,28 @@ public class FacultyMenu extends javax.swing.JPanel {
                         ps.setString(3, selectedStudntNo);
                         ps.setString(4, cmbSubjCode.getSelectedItem().toString());
                         ps.setString(5,cmbBlockNo.getSelectedItem().toString());
-                        ps.setString(6, txtGrade.getText());
+                        ps.setDouble(6, Double.parseDouble(txtGrade.getText()));
                         ps.execute();
                         loadGradesTable();
                         
                         ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
-                        + "status = 'Finished' "
-                        + "WHERE SY = ?, semester = ?, student_No = ?, subject_code = ?, block_no = ?");
+                        + "SET status = 'Finished' "
+                        + "WHERE SY = ? AND semester = ? AND student_No = ? AND subject_code = ? AND block_no = ?");
                         
                         ps.setString(1, cmbSY.getSelectedItem().toString());
                         ps.setString(2, cmbSem.getSelectedItem().toString());
                         ps.setString(3, selectedStudntNo);
                         ps.setString(4, cmbSubjCode.getSelectedItem().toString());
                         ps.setString(5, cmbBlockNo.getSelectedItem().toString());
-                        ps.execute();
+                        ps.execute(); 
+                        
                         JOptionPane.showMessageDialog(null, "Added record successfully.");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Cannot enter grade to a subject the student is not enrolled to", "ERROR", JOptionPane.ERROR);
-                        System.out.println("Cannot enter grade to a subject not enrolled to");
+                        JOptionPane.showMessageDialog(null, "Student is already graded", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot enter grade to a subject the student is not enrolled to", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -858,23 +875,27 @@ public class FacultyMenu extends javax.swing.JPanel {
         if (intAnswer == 0) {
             try {
                 ps = con.prepareStatement("DELETE FROM finals.GRADE "
-                    + "WHERE sy = '" + cmbSY.getSelectedItem().toString() + "', "
-                    + "semester = '" + cmbSem.getSelectedItem().toString() + "', "
-                    + "student_no = '" + selectedStudntNo + "',"
+                    + "WHERE sy = '" + cmbSY.getSelectedItem().toString() + "' AND "
+                    + "semester = '" + cmbSem.getSelectedItem().toString() + "' AND "
+                    + "student_no = '" + selectedStudntNo + "' AND "
                     + "subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'");
                 ps.execute();
-                loadGradesTable();
                 
-                ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
-                    + "status = 'Enrolled' "
-                    + "WHERE SY = ?, semester = ?, student_No = ?, subject_code = ?, block_no = ?");
-                ps.setString(1, cmbSY.getSelectedItem().toString());
-                ps.setString(2, cmbSem.getSelectedItem().toString());
-                ps.setString(3, selectedStudntNo);
-                ps.setString(4, cmbSubjCode.getSelectedItem().toString());
-                ps.setString(5, cmbBlockNo.getSelectedItem().toString());
-                ps.execute();
-                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                if (!ps.execute())
+                    JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                else {
+                    ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
+                    + "SET status = 'Enrolled' "
+                    + "WHERE SY = ? AND semester = ? AND student_No = ? AND subject_code = ? AND block_no = ?");
+                    ps.setString(1, cmbSY.getSelectedItem().toString());
+                    ps.setString(2, cmbSem.getSelectedItem().toString());
+                    ps.setString(3, selectedStudntNo);
+                    ps.setString(4, cmbSubjCode.getSelectedItem().toString());
+                    ps.setString(5, cmbBlockNo.getSelectedItem().toString());
+                    ps.execute();
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                }
+                loadGradesTable();
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -889,16 +910,26 @@ public class FacultyMenu extends javax.swing.JPanel {
         int intAnswer = JOptionPane.showConfirmDialog(null, "Update a record?", "Updating Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (intAnswer == 0) {
             try {
-                ps = con.prepareStatement("UPDATE finals.GRADE "
-                    + "SET sy = '" + cmbSY.getSelectedItem().toString() + "', "
-                    + "semester = '" + cmbSem.getSelectedItem().toString() + "', "
-                    + "subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "', "
-                    + "block_no = '" + cmbBlockNo.getSelectedItem().toString() + "', "
-                    + "grade = " + txtGrade.getText().toString() + " "
-                    + "WHERE student_no = '" + selectedStudntNo + "'");
-                ps.execute();
+                
+                if (Double.parseDouble(txtGrade.getText()) < 1.00 || Double.parseDouble(txtGrade.getText()) > 5.00 ) {
+                    JOptionPane.showMessageDialog(null, "Invalid Grade", "ERROR", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ps = con.prepareStatement("UPDATE finals.GRADE "
+                    + "SET grade = " + txtGrade.getText().toString() + " "
+                    + "WHERE student_no = '" + selectedStudntNo + "' AND "
+                    + "sy = '" + cmbSY.getSelectedItem().toString() + "' AND "
+                    + "semester = '" + cmbSem.getSelectedItem().toString() + "' AND "
+                    + "subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "' AND "
+                    + "block_no = '" + cmbBlockNo.getSelectedItem().toString() + "'");
+                    ps.execute();
+                    
+                    if (!ps.execute())
+                        JOptionPane.showMessageDialog(null, "Only grade values can be modified", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    else {
+                        JOptionPane.showMessageDialog(null, "Updated record successfully.");
+                    }
+                }
                 loadGradesTable();  
-                JOptionPane.showMessageDialog(null, "Updated record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -914,30 +945,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbSubjCode2ActionPerformed
 
     private void btnClassSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassSearchActionPerformed
-        // TODO add your handling code here:
-        //COMMENTED OUT: error-inducing
-//        con = ConnectDB.connect();
-//        try {
-//            String selectedStudentNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
-//            rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + selectedStudentNo + "'").executeQuery();
-//            if (rs.next()) {
-//                txtStuFirstName.setText(rs.getString("first_name"));
-//                txtStuLastName.setText(rs.getString("last_name"));
-//                txtStuMidInitial.setText(rs.getString("mi"));
-//                lblStuEmail.setText(rs.getString("email"));
-//                if (rs.getString("gender").equals("M"))
-//                cmbStuGender.setSelectedIndex(0);
-//                else
-//                cmbStuGender.setSelectedIndex(1);
-//                txtStuPhone.setText(rs.getString("cp_num"));
-//                txtStuAddress.setText(rs.getString("address"));
-//                dateStuBday.setDate(rs.getDate("bday").toLocalDate());
-//                chkStuActive.setSelected(rs.getString("status").equals("A"));
-//                cmbStuCourse.setSelectedItem(rs.getString("course_code"));
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e); //TODO: ADD ERROR MSG
-//        }
+
     }//GEN-LAST:event_btnClassSearchActionPerformed
 
     private void cmbBlockNo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBlockNo2ActionPerformed
