@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package regenrolmentsys;
+import java.awt.Point;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.text.DateFormat;
@@ -1446,6 +1447,8 @@ public class AdminMenu extends javax.swing.JPanel {
                     tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
                 } else {
                     loadStudentTable();
+                    JOptionPane.showMessageDialog(this, "No student found with matching search parameters!", "Search error", JOptionPane.INFORMATION_MESSAGE);
+                    return;
                     //TODO: ERROR MSG "NO STUDENT FOUND"
                 }
             }
@@ -1696,6 +1699,8 @@ public class AdminMenu extends javax.swing.JPanel {
                 tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
             } else {
                 loadStudentTable();
+                JOptionPane.showMessageDialog(this, "No student found with matching search parameters!", "Search error", JOptionPane.INFORMATION_MESSAGE);
+                return;
                 //TODO: ERROR MSG "NO STUDENT FOUND"
             }
         } catch (Exception e) {
