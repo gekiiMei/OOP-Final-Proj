@@ -4,7 +4,9 @@
  */
 package regenrolmentsys;
 
+
 import java.awt.Point;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.util.Random;
@@ -251,6 +253,11 @@ public class StudentMenu extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cmbGradeSem = new javax.swing.JComboBox<>();
         btnGradeSearch = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        MainLBL = new javax.swing.JLabel();
+        PLMLogo = new javax.swing.JLabel();
+        MinimizeBTN = new javax.swing.JButton();
+        CloseBTN = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
@@ -312,12 +319,12 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(btnSched)
                     .addComponent(btnEnrolment)
                     .addComponent(btnProfile))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(39, 39, 39)
                 .addComponent(btnProfile)
                 .addGap(36, 36, 36)
                 .addComponent(btnEnrolment)
@@ -325,7 +332,7 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addComponent(btnSched)
                 .addGap(38, 38, 38)
                 .addComponent(btnGrades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
                 .addComponent(btnBackStudentMenu)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout)
@@ -334,7 +341,7 @@ public class StudentMenu extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
+        tabs.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabs.setToolTipText("");
 
         lblStudentNo.setText("STUDENT NUMBER:");
@@ -374,7 +381,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(lblStudentFN)
                     .addComponent(lblStudentNo)
                     .addComponent(lblStudentLN))
-                .addContainerGap(829, Short.MAX_VALUE))
+                .addContainerGap(823, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,7 +406,7 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addComponent(lblStudentBday)
                 .addGap(12, 12, 12)
                 .addComponent(lblStudentStatus)
-                .addContainerGap(433, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
@@ -447,7 +454,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnEnrolConfirm))
@@ -465,12 +472,12 @@ public class StudentMenu extends javax.swing.JPanel {
                                 .addGap(33, 33, 33)
                                 .addComponent(btnEnrolSchedView)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cmbEnrolSy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -512,16 +519,16 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel5);
@@ -571,7 +578,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -588,7 +595,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cmbGradeSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -597,7 +604,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(btnGradeSearch))
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel6);
@@ -607,28 +614,88 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabs)
+                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(35, 35, 35)
                 .addComponent(tabs)
                 .addContainerGap())
         );
 
         jSplitPane1.setRightComponent(jPanel2);
 
+        jPanel7.setBackground(new java.awt.Color(254, 86, 86));
+        jPanel7.setLayout(null);
+
+        MainLBL.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        MainLBL.setForeground(new java.awt.Color(255, 255, 255));
+        MainLBL.setText("Enrollment System for Regular Students");
+        jPanel7.add(MainLBL);
+        MainLBL.setBounds(40, 0, 290, 30);
+
+        PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
+        jPanel7.add(PLMLogo);
+        PLMLogo.setBounds(10, 0, 30, 30);
+
+        MinimizeBTN.setBackground(new java.awt.Color(254, 86, 86));
+        MinimizeBTN.setFont(new java.awt.Font("Boldfinger", 0, 24)); // NOI18N
+        MinimizeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        MinimizeBTN.setText("-");
+        MinimizeBTN.setToolTipText("");
+        MinimizeBTN.setBorder(null);
+        MinimizeBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MinimizeBTNMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MinimizeBTNMouseExited(evt);
+            }
+        });
+        MinimizeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinimizeBTNActionPerformed(evt);
+            }
+        });
+        jPanel7.add(MinimizeBTN);
+        MinimizeBTN.setBounds(1220, 0, 30, 30);
+
+        CloseBTN.setBackground(new java.awt.Color(254, 86, 86));
+        CloseBTN.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
+        CloseBTN.setForeground(new java.awt.Color(255, 255, 255));
+        CloseBTN.setText("X");
+        CloseBTN.setBorder(null);
+        CloseBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CloseBTNMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CloseBTNMouseExited(evt);
+            }
+        });
+        CloseBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseBTNActionPerformed(evt);
+            }
+        });
+        jPanel7.add(CloseBTN);
+        CloseBTN.setBounds(1250, 0, 30, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -777,8 +844,44 @@ public class StudentMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnEnrolConfirmActionPerformed
 
+    private void MinimizeBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseEntered
+        MinimizeBTN.setBackground(new Color(203,68,68));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNMouseEntered
+
+    private void MinimizeBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseExited
+        MinimizeBTN.setBackground(new Color(254, 86, 86));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNMouseExited
+
+    private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
+        //minimize button event here:
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNActionPerformed
+
+    private void CloseBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseEntered
+        CloseBTN.setBackground(new Color(203,68,68));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNMouseEntered
+
+    private void CloseBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseExited
+        CloseBTN.setBackground(new Color(254, 86, 86));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNMouseExited
+
+    private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
+        //exit button event here:
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CloseBTN;
+    private javax.swing.JLabel MainLBL;
+    private javax.swing.JButton MinimizeBTN;
+    private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnEnrolConfirm;
     private javax.swing.JButton btnEnrolSchedView;
@@ -804,6 +907,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
