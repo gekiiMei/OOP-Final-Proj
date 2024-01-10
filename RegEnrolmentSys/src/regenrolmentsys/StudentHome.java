@@ -263,13 +263,13 @@ public class StudentHome extends javax.swing.JPanel {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
         }
         else{
-            JOptionPane.showMessageDialog(null, "Canceled");
+            JOptionPane.showMessageDialog(this, "Canceled");
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 

@@ -1376,8 +1376,14 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        mf.setUserID("");
-        mf.switchCard("LoginCard");
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (response == 0){
+            mf.setUserID("");
+            mf.switchCard("LoginCard");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Canceled");
+        }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentsActionPerformed
