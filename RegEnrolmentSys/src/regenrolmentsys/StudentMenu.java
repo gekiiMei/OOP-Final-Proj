@@ -40,13 +40,6 @@ public class StudentMenu extends javax.swing.JPanel {
         this.currentUser = userID;
     }
     
-    public Point JOptionPaneXY(){ // For fixing JOptionPane frame positioning
-        Point frameLocation = this.getLocation(); 
-        int x = frameLocation.x + (this.getWidth() / 2); 
-        int y = frameLocation.y + (this.getHeight() / 2); 
-        return new Point(x,y);
-    }
-
     
     public void profileStudentsTab(){
         con = ConnectDB.connect();
@@ -85,7 +78,6 @@ public class StudentMenu extends javax.swing.JPanel {
                 
                 if (!rs.next()) {
                     JOptionPane.showMessageDialog(this, "You haven't enrolled any subjects yet!", "No Subjects Enrolled", JOptionPane.INFORMATION_MESSAGE);
-                    JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
                 }else{
                      do{
                         QueredSY = rs.getString("sy");
@@ -644,7 +636,6 @@ public class StudentMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
@@ -653,7 +644,6 @@ public class StudentMenu extends javax.swing.JPanel {
         }
         else{
             JOptionPane.showMessageDialog(this, "Cancelled");
-            JOptionPane.getRootFrame().setLocation(this.JOptionPaneXY());
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
