@@ -231,6 +231,7 @@ public class StudentMenu extends javax.swing.JPanel {
         lblStudentAddress = new javax.swing.JLabel();
         lblStudentBday = new javax.swing.JLabel();
         lblStudentStatus = new javax.swing.JLabel();
+        btnChangePassword = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEnrolSchedule = new javax.swing.JTable();
@@ -364,6 +365,13 @@ public class StudentMenu extends javax.swing.JPanel {
 
         lblStudentStatus.setText("STATUS:");
 
+        btnChangePassword.setText("Change password");
+        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangePasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -371,6 +379,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnChangePassword)
                     .addComponent(lblStudentStatus)
                     .addComponent(lblStudentBday)
                     .addComponent(lblStudentAddress)
@@ -381,7 +390,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(lblStudentFN)
                     .addComponent(lblStudentNo)
                     .addComponent(lblStudentLN))
-                .addContainerGap(823, Short.MAX_VALUE))
+                .addContainerGap(761, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,7 +415,9 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addComponent(lblStudentBday)
                 .addGap(12, 12, 12)
                 .addComponent(lblStudentStatus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(btnChangePassword)
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
@@ -778,7 +789,7 @@ public class StudentMenu extends javax.swing.JPanel {
             
             if (intCurrYear < 1) {
                 System.out.println("year cannot be earlier than your enrolment year"); //TODO: error msg
-                JOptionPane.showMessageDialog(this, "You cannot enroll to a year earlier than your admittance year!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "You cannot enroll to a year earlier than your admittance year!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
@@ -786,7 +797,7 @@ public class StudentMenu extends javax.swing.JPanel {
             while (rs.next()) {
                 if (rs.getString("sy").equals(strSelectedSY) && rs.getString("semester").equals(cmbEnrolSem.getSelectedItem().toString())) {
                     System.out.println("already enrolled to this year and semester"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -810,7 +821,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
                 } else {
                     System.out.println("missing previous enrolments"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -837,9 +848,14 @@ public class StudentMenu extends javax.swing.JPanel {
     private void btnEnrolConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolConfirmActionPerformed
         // TODO add your handling code here:
         try {
-            psEnrolConfirm.execute(); //TODO: CONFIRMATION MSG
-            resetEnrolmentSchedTable();
-            System.out.println("enrolled wo"); //TODO: REMOVE THIS LINE LMAO
+            int intAnswer = JOptionPane.showConfirmDialog(null, "Finalize enrollment?", "Enrolling subjects", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (intAnswer == 0) {
+                psEnrolConfirm.execute(); //TODO: CONFIRMATION MSG
+                resetEnrolmentSchedTable();
+                JOptionPane.showMessageDialog(null, "Enrollment successful.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Enrollment canceled.");
+            }
         } catch (Exception e) {
             System.out.println(e); //TODO ERROR MSGS
         }
@@ -877,6 +893,27 @@ public class StudentMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
+    private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        String newPassword = JOptionPane.showInputDialog(this, "Enter new password:", "Changing password..", JOptionPane.QUESTION_MESSAGE);
+        if (newPassword.isEmpty())
+            JOptionPane.showMessageDialog(this, "Password cannot be empty!", "Password error", JOptionPane.ERROR_MESSAGE);
+        else {
+            String confirmPassword = JOptionPane.showInputDialog(this, "Confirm password:", "Changing password..", JOptionPane.QUESTION_MESSAGE);
+            if (newPassword.equals(confirmPassword)) {
+                try {
+                    con.prepareStatement("UPDATE finals.PASSWORD SET password = '" + newPassword + "' WHERE user_id = '" + currentUser + "'").execute();
+                    JOptionPane.showMessageDialog(this, "Passwords successfully updated!", "Changing password..", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Passwords do not match!", "Password error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnChangePasswordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
@@ -884,6 +921,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JButton MinimizeBTN;
     private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnBackStudentMenu;
+    private javax.swing.JButton btnChangePassword;
     private javax.swing.JButton btnEnrolConfirm;
     private javax.swing.JButton btnEnrolSchedView;
     private javax.swing.JButton btnEnrolment;
