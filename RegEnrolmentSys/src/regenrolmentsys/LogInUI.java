@@ -30,6 +30,7 @@ public class LogInUI extends javax.swing.JPanel {
         setVisible(true);
         setPreferredSize(new Dimension(1280, 720));
         lblWrongPassword.setVisible(false);
+        lblErrorID1.setVisible(false);
         this.HidePass.setVisible(false);
     }
     
@@ -41,34 +42,54 @@ public class LogInUI extends javax.swing.JPanel {
             System.out.println("whoa hold on ur input is empty buddy");
         } else {
             try {
-                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + mf.getUserID() + "'").executeQuery();
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + UserIDField.getText() + "'").executeQuery();
                 if (rs.next()){
-                    mf.switchCard("StudentHomeCard");
-                    sh.setUserName();
-                    lblWrongPassword.setVisible(false);
-                }
-                else {
-                    rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + mf.getUserID() + "'").executeQuery();
-                    if (rs.next()){
+                    rs = con.prepareStatement("SELECT * FROM finals.PASSWORD WHERE user_id = '" + UserIDField.getText() + "' AND password = '" + String.valueOf(password.getPassword()) + "'").executeQuery();
+                    if (rs.next()) {
+                        mf.switchCard("StudentHomeCard");
+                        sh.setUserName();
+                        lblErrorID1.setVisible(false);
                         lblWrongPassword.setVisible(false);
-                        mf.switchCard("AdminHomeCard");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR_MESSAGE);
+                        lblErrorID1.setVisible(false);
+                        lblWrongPassword.setVisible(true);
                     }
-                    else {
-                        rs = con.prepareStatement("SELECT * FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                } else {
+                    rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + UserIDField.getText() + "'").executeQuery();
+                    if (rs.next()){
+                        rs = con.prepareStatement("SELECT * FROM finals.PASSWORD WHERE user_id = '" + UserIDField.getText() + "' AND password = '" + String.valueOf(password.getPassword()) + "'").executeQuery();
                         if (rs.next()) {
-                            var password = JOptionPane.showInputDialog("Enter password: ");
-                            rs = con.prepareStatement("SELECT pass FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                            mf.switchCard("AdminHomeCard");
+                            lblErrorID1.setVisible(false);
+                            lblWrongPassword.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR_MESSAGE);
+                            lblErrorID1.setVisible(false);
+                            lblWrongPassword.setVisible(true);
+                        }
+                    } else {
+                        rs = con.prepareStatement("SELECT * FROM finals.ADMIN WHERE admin_id = '" + UserIDField.getText() + "'").executeQuery();
+                        if (rs.next()) {
+                            rs = con.prepareStatement("SELECT pass FROM finals.ADMIN WHERE admin_id = '" + UserIDField.getText() + "'").executeQuery();
                             if (rs.next()) {
-                                if (password.equals(rs.getString("pass"))) {
+                                if (String.valueOf(password.getPassword()).equals(rs.getString("pass"))) {
                                     mf.switchCard("AdminMenuCard");
                                     am.loadStudentsTab();
+                                    lblErrorID1.setVisible(false);
+                                    lblWrongPassword.setVisible(false);
                                 }
-                                else 
-                                    JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR);
+                                else  {
+                                    JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR_MESSAGE);
+                                    lblErrorID1.setVisible(false);
+                                    lblWrongPassword.setVisible(true);
+                                }
                             }
-                        } else 
-                            JOptionPane.showMessageDialog(null, "User does not exist", "Login failed", JOptionPane.ERROR);  
-                            lblWrongPassword.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "User does not exist", "Login failed", JOptionPane.ERROR_MESSAGE);  
+                            lblErrorID1.setVisible(true);
+                            lblWrongPassword.setVisible(false);
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -247,6 +268,11 @@ public class LogInUI extends javax.swing.JPanel {
                 passwordFocusGained(evt);
             }
         });
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
+            }
+        });
         add(password);
         password.setBounds(720, 350, 450, 70);
 
@@ -345,7 +371,13 @@ public class LogInUI extends javax.swing.JPanel {
 
     private void SupportBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupportBTNActionPerformed
     //support
-      
+      JOptionPane.showMessageDialog(null, "For inquiries, refer to the following contacts:\n\n\n" +
+                "Office of the University Registrar \t-\t registrar@plm.edu.ph\n\n" +
+                "Admissions Office \t-\t admission_office@plm.edu.ph\n\n" +
+                "Information and Communicaions Technology Office \t-\t ithelp@plm.edu.ph\n\n" +
+                "Human Resource Development Office \t-\t hrdo@plm.edu.ph\n\n" +
+                "College Of Engineering and Technology \t-\t cet_group@plm.edu.ph", "Contact support\n\n "
+                , JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_SupportBTNActionPerformed
 
     private void LogInBTNMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInBTNMousePressed
@@ -409,6 +441,11 @@ public class LogInUI extends javax.swing.JPanel {
         // TODO add your handling code here:
         password.setText("");
     }//GEN-LAST:event_passwordFocusGained
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+        checkLogin();
+    }//GEN-LAST:event_passwordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
