@@ -64,6 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
       
     public void close(){
         this.dispose();
+        System.exit(0);
     }
       
 }
