@@ -24,3 +24,36 @@ CREATE VIEW vwEmployeeInfo AS
         , last_name "LASTNAME"
         , first_name "FIRSTNAME"
     FROM finals.EMPLOYEE;
+
+CREATE VIEW vwGrade_StudentInfo AS
+    SELECT 
+        stu.STUDENT_NO
+        , stu.FIRST_NAME
+        , stu.LAST_NAME
+        , stu.MI
+        , stu.GENDER
+        , stu.COURSE_CODE 
+        , c.DESCRIPTION COURSE_DESC
+        , stu.EMAIL
+        , stu.STATUS
+    FROM finals.STUDENT stu
+        INNER JOIN finals.COURSE c
+            ON stu.COURSE_CODE = c.COURSE_CODE;
+
+CREATE VIEW vwClassList AS
+    SELECT
+        ensub.SY
+        , ensub.SEMESTER
+        , ensub.STUDENT_NO "STUDENT NO"
+        , stu.LAST_NAME "LAST NAME"
+        , stu.FIRST_NAME "FIRST NAME"
+        , stu.MI
+        , ensub.SUBJECT_CODE "SUBJECT CODE"
+        , ensub.BLOCK_NO "BLOCK NO"
+    FROM finals.ENROLLED_SUBJECT ensub
+        INNER JOIN finals.STUDENT stu
+            ON ensub.STUDENT_NO = stu.STUDENT_NO
+        INNER JOIN finals.SUBJECT sub
+            ON ensub.SUBJECT_CODE = sub.SUBJECT_CODE
+    WHERE ensub.STATUS = 'Enrolled'
+    ORDER BY ensub.SUBJECT_CODE;
