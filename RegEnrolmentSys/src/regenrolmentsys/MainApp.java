@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package regenrolmentsys;
+
+import java.awt.Toolkit;
+
 /**
  *
  * @author harley
@@ -17,6 +20,8 @@ public class MainApp {
         MainFrame mf = new MainFrame();
         mf.setLocationRelativeTo(null);
         mf.setVisible(true);
+        //mf.setIconImage(); change icon in taskbar
+        mf.setIconImage(Toolkit.getDefaultToolkit().getImage(mf.getClass().getResource("/assets/plmsealicon.png")));
         ConnectDB.connect();
     }
     

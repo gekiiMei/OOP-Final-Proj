@@ -52,10 +52,9 @@ public class AdminHome extends javax.swing.JPanel {
         CloseBTN2 = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
-        btnLogout = new javax.swing.JButton();
-        btnClassList = new javax.swing.JButton();
-        btnGrades = new javax.swing.JButton();
-        kButton1 = new com.k33ptoo.components.KButton();
+        BTNClasslist = new com.k33ptoo.components.KButton();
+        BTNGrades = new com.k33ptoo.components.KButton();
+        BTNLogout = new com.k33ptoo.components.KButton();
         jPanel1 = new javax.swing.JPanel();
         Welcome1 = new javax.swing.JLabel();
         lblUserName1 = new javax.swing.JLabel();
@@ -170,56 +169,83 @@ public class AdminHome extends javax.swing.JPanel {
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnLogout.setText("logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        BTNClasslist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.png"))); // NOI18N
+        BTNClasslist.setText("Class List");
+        BTNClasslist.setToolTipText("");
+        BTNClasslist.setBorderPainted(false);
+        BTNClasslist.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNClasslist.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BTNClasslist.setIconTextGap(180);
+        BTNClasslist.setkBorderRadius(20);
+        BTNClasslist.setkEndColor(new java.awt.Color(51, 255, 51));
+        BTNClasslist.setkHoverEndColor(new java.awt.Color(0, 153, 51));
+        BTNClasslist.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNClasslist.setkHoverStartColor(new java.awt.Color(51, 102, 0));
+        BTNClasslist.setkStartColor(new java.awt.Color(0, 102, 0));
+        BTNClasslist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+                BTNClasslistActionPerformed(evt);
             }
         });
 
-        btnClassList.setText("Class list");
-        btnClassList.addActionListener(new java.awt.event.ActionListener() {
+        BTNGrades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/4.png"))); // NOI18N
+        BTNGrades.setText("Grades");
+        BTNGrades.setBorderPainted(false);
+        BTNGrades.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNGrades.setIconTextGap(180);
+        BTNGrades.setkBorderRadius(20);
+        BTNGrades.setkEndColor(new java.awt.Color(153, 255, 255));
+        BTNGrades.setkHoverEndColor(new java.awt.Color(51, 0, 255));
+        BTNGrades.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNGrades.setkHoverStartColor(new java.awt.Color(0, 0, 153));
+        BTNGrades.setkStartColor(new java.awt.Color(51, 51, 255));
+        BTNGrades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClassListActionPerformed(evt);
+                BTNGradesActionPerformed(evt);
             }
         });
 
-        btnGrades.setText("Grades");
-        btnGrades.addActionListener(new java.awt.event.ActionListener() {
+        BTNLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/5.png"))); // NOI18N
+        BTNLogout.setText("Log-out");
+        BTNLogout.setBorderPainted(false);
+        BTNLogout.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        BTNLogout.setIconTextGap(100);
+        BTNLogout.setkBorderRadius(20);
+        BTNLogout.setkEndColor(new java.awt.Color(255, 0, 255));
+        BTNLogout.setkHoverEndColor(new java.awt.Color(153, 0, 153));
+        BTNLogout.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        BTNLogout.setkHoverStartColor(new java.awt.Color(102, 0, 102));
+        BTNLogout.setkStartColor(new java.awt.Color(153, 0, 153));
+        BTNLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGradesActionPerformed(evt);
+                BTNLogoutActionPerformed(evt);
             }
         });
-
-        kButton1.setText("kButton1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnClassList)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnGrades)
-                        .addGap(762, 762, 762)
-                        .addComponent(btnLogout)))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(BTNClasslist, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(BTNGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                .addComponent(BTNLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClassList)
-                    .addComponent(btnGrades)
-                    .addComponent(btnLogout))
-                .addGap(18, 18, 18)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(BTNClasslist, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTNGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTNLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -331,43 +357,17 @@ public class AdminHome extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
-        // TODO add your handling code here:
-        mf.switchCard("FacultyMenuCard");
-        fm.getTabs().setSelectedIndex(1);
-        fm.loadGradesTab();
-        //TODO: code for displaying history table
-    }//GEN-LAST:event_btnGradesActionPerformed
-
-    private void btnClassListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassListActionPerformed
-        // TODO add your handling code here:
-        mf.switchCard("FacultyMenuCard");
-        fm.getTabs().setSelectedIndex(0);
-    }//GEN-LAST:event_btnClassListActionPerformed
-
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        if (response == 0){
-            mf.setUserID("");
-            mf.switchCard("LoginCard");
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Canceled");
-        }
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void MinimizeBTN2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN2MouseEntered
+    private void MinimizeBTN2MouseEntered(java.awt.event.MouseEvent evt) {                                          
         MinimizeBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
         mf.switchCard("FacultyMenuCard");
         fm.getTabs().setSelectedIndex(0);
         fm.loadClassTab();
-    }//GEN-LAST:event_btnClassListActionPerformed
+    }                                            
 
     private void MinimizeBTN2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN2MouseExited
         MinimizeBTN.setBackground(new Color(254, 86, 86));
@@ -428,10 +428,39 @@ public class AdminHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
+    private void BTNClasslistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNClasslistActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("FacultyMenuCard");
+        fm.getTabs().setSelectedIndex(0);
+    }//GEN-LAST:event_BTNClasslistActionPerformed
+
+    private void BTNGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNGradesActionPerformed
+        // TODO add your handling code here:
+        
+        mf.switchCard("FacultyMenuCard");
+        fm.getTabs().setSelectedIndex(1);
+        fm.loadGradesTab();
+    }//GEN-LAST:event_BTNGradesActionPerformed
+
+    private void BTNLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogoutActionPerformed
+        // TODO add your handling code here:
+        int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (response == 0){
+            mf.setUserID("");
+            mf.switchCard("LoginCard");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Canceled");
+        }
+    }//GEN-LAST:event_BTNLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
     private javax.swing.JLabel BG1;
+    private com.k33ptoo.components.KButton BTNClasslist;
+    private com.k33ptoo.components.KButton BTNGrades;
+    private com.k33ptoo.components.KButton BTNLogout;
     private javax.swing.JButton CloseBTN;
     private javax.swing.JButton CloseBTN2;
     private javax.swing.JLabel Faculty;
@@ -444,16 +473,12 @@ public class AdminHome extends javax.swing.JPanel {
     private javax.swing.JLabel Student;
     private javax.swing.JLabel Welcome;
     private javax.swing.JLabel Welcome1;
-    private javax.swing.JButton btnClassList;
-    private javax.swing.JButton btnGrades;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSplitPane jSplitPane1;
-    private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JLabel lblTempID;
     private javax.swing.JLabel lblTempID1;
     private javax.swing.JLabel lblUserName;
