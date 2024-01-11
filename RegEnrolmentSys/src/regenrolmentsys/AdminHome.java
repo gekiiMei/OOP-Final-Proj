@@ -347,6 +347,7 @@ public class AdminHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("FacultyMenuCard");
         fm.getTabs().setSelectedIndex(0);
+        fm.loadClassTab();
     }//GEN-LAST:event_btnClassListActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -361,13 +362,13 @@ public class AdminHome extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void MinimizeBTN2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN2MouseEntered
+    private void MinimizeBTN2MouseEntered(java.awt.event.MouseEvent evt) {                                          
         MinimizeBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
         mf.switchCard("FacultyMenuCard");
         fm.getTabs().setSelectedIndex(0);
         fm.loadClassTab();
-    }//GEN-LAST:event_btnClassListActionPerformed
+    }                                            
 
     private void MinimizeBTN2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN2MouseExited
         MinimizeBTN.setBackground(new Color(254, 86, 86));

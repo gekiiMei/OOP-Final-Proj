@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package regenrolmentsys;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -22,9 +23,11 @@ public class FacultyMenu extends javax.swing.JPanel {
     private ResultSet rs = null;
     private PreparedStatement ps = null;
     private boolean cmbSubjCodeLoaded = false, cmbSubjCodeLoaded2 = false;
+    
     /**
      * Creates new form AdminMenu
      */
+    
     public FacultyMenu(MainFrame mf) {
         initComponents();
         this.mf = mf;
@@ -93,6 +96,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 rs = con.prepareStatement("SELECT * FROM finals.VWCLASSLIST").executeQuery(); 
                 tblClassList.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblClassList);
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -164,11 +168,35 @@ public class FacultyMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 rs = con.prepareStatement("SELECT * FROM finals.GRADE").executeQuery(); 
                 tblGrades.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblGrades);
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+    
+    private void resetClassTable() {
+        tblClassList.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"Select the sy, semester, subject code, and block no."}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
+    }
+    
+    private void resetGradesTable() {
+        tblGrades.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"No grade records found."}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -242,7 +270,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         lblStudEmail = new javax.swing.JLabel();
 
         setToolTipText("");
-        setPreferredSize(new java.awt.Dimension(1243, 756));
+        setPreferredSize(new java.awt.Dimension(1243, 720));
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
@@ -860,6 +888,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 rs = con.prepareStatement("SELECT * FROM finals.GRADE WHERE student_no = '" + selectedStudentNo + "'").executeQuery();
                 tblGrades.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblGrades);
             }
             
         } catch (Exception e) {
@@ -1023,7 +1052,21 @@ public class FacultyMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGradeEditActionPerformed
 
     private void tblClassListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClassListMouseClicked
-
+        int intRow = tblClassList.getSelectedRow(); 
+        con = ConnectDB.connect();
+        
+        try {          
+            cmbSY2.setSelectedItem(tblClassList.getValueAt(intRow, 0).toString());
+            cmbSem2.setSelectedItem(tblClassList.getValueAt(intRow, 1).toString());
+            cmbSubjCode2.setSelectedItem(tblClassList.getValueAt(intRow, 6).toString());
+            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT "
+                    + "WHERE subject_code = '" + cmbSubjCode2.getSelectedItem().toString() + "'").executeQuery();
+            while (rs.next())
+                lblSubjDesc.setText(rs.getString("description"));
+            cmbBlockNo2.setSelectedItem(tblClassList.getValueAt(intRow,  7).toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_tblClassListMouseClicked
 
     private void cmbSubjCode2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubjCode2ActionPerformed
@@ -1052,9 +1095,10 @@ public class FacultyMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 rs = ps.executeQuery();
                 tblClassList.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblGrades);
             } else {
                 JOptionPane.showMessageDialog(null, "No class records", "ERROR", JOptionPane.ERROR_MESSAGE);
-                tblClassList.removeAll();
+                resetClassTable(); 
             }
             
         } catch (Exception e) {
@@ -1074,7 +1118,6 @@ public class FacultyMenu extends javax.swing.JPanel {
         else {
             try {
                 Double.parseDouble(txtGrade.getText()+evt.getKeyChar());
-            
             } catch (NumberFormatException e) {
                 evt.consume();
             }
@@ -1114,7 +1157,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             cmbSem.setSelectedItem(tblGrades.getValueAt(intRow, 1).toString());
             cmbSubjCode.setSelectedItem(tblGrades.getValueAt(intRow, 3).toString());
             rs = con.prepareStatement("SELECT * FROM finals.SUBJECT "
-                    + "WHERE subject_code '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+                    + "WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
             while (rs.next())
                 txtSubjDesc.setText(rs.getString("description"));
             cmbBlockNo.setSelectedItem(tblGrades.getValueAt(intRow, 4).toString());
