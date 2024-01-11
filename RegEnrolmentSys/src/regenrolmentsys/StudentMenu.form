@@ -75,14 +75,16 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnBackStudentMenu" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnGrades" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnSched" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnEnrolment" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="btnProfile" min="-2" pref="131" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnProfile" max="32767" attributes="0"/>
+                                  <Component id="btnEnrolment" pref="131" max="32767" attributes="0"/>
+                                  <Component id="btnSched" max="32767" attributes="0"/>
+                                  <Component id="btnGrades" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
@@ -95,12 +97,12 @@
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnProfile" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnEnrolment" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="btnSched" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="btnGrades" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="371" max="32767" attributes="0"/>
+                      <Component id="btnEnrolment" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnSched" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnGrades" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace pref="354" max="32767" attributes="0"/>
                       <Component id="btnBackStudentMenu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>

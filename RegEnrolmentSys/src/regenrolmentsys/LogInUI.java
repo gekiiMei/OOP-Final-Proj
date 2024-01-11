@@ -114,6 +114,7 @@ public class LogInUI extends javax.swing.JPanel {
         PLMLogo = new javax.swing.JLabel();
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
+        lblWrongPassword1 = new javax.swing.JLabel();
         lblWrongPassword = new javax.swing.JLabel();
         lblErrorID1 = new javax.swing.JLabel();
         HidePass = new javax.swing.JLabel();
@@ -216,6 +217,13 @@ public class LogInUI extends javax.swing.JPanel {
 
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1280, 30);
+
+        lblWrongPassword1.setBackground(new java.awt.Color(255, 51, 51));
+        lblWrongPassword1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblWrongPassword1.setForeground(new java.awt.Color(255, 51, 51));
+        lblWrongPassword1.setText("Caps Lock is on");
+        add(lblWrongPassword1);
+        lblWrongPassword1.setBounds(1100, 420, 140, 30);
 
         lblWrongPassword.setBackground(new java.awt.Color(255, 51, 51));
         lblWrongPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -469,6 +477,7 @@ public class LogInUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblErrorID1;
     private javax.swing.JLabel lblWrongPassword;
+    private javax.swing.JLabel lblWrongPassword1;
     private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }
