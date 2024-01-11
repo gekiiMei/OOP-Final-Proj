@@ -342,6 +342,7 @@ public class StudentHome extends javax.swing.JPanel {
     private void BTNScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNScheduleActionPerformed
         // TODO add your handling code here:
           mf.switchCard("StudentMenuCard");
+        sm.studentScheduleTab();
         sm.getTabs().setSelectedIndex(2);
 
     }//GEN-LAST:event_BTNScheduleActionPerformed
