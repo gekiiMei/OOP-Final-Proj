@@ -823,9 +823,10 @@ public class StudentMenu extends javax.swing.JPanel {
             rs = ps.executeQuery();
             enrollQuery = "INSERT INTO finals.ENROLLED_SUBJECT VALUES ";
             while (rs.next()) {
-                enrollQuery += "('" + strSelectedSY + "', '" + cmbEnrolSem.getSelectedItem().toString() + "', '" + currentUser + "', '" + rs.getString("subject_code") + "', '" + block + "', 'Enrolled'), ";
+                enrollQuery += "('" + strSelectedSY + "', '" + cmbEnrolSem.getSelectedItem().toString() + "', '" + currentUser + "', '" + rs.getString("subject_code") + "', '" + block + "', '" + rs.getString("sequence_no") + "', 'Enrolled'), ";
             }
             enrollQuery = enrollQuery.substring(0, enrollQuery.length()-2);
+            System.out.println(enrollQuery);
             psEnrolConfirm = con.prepareStatement(enrollQuery);
         } catch (Exception e) {
             System.out.println(e); //TODO ERROR MSGS
