@@ -4,6 +4,7 @@
  */
 package regenrolmentsys;
 import java.awt.*;
+import javax.swing.JFrame;
 /**
  *
  * @author harley
@@ -56,4 +57,14 @@ public class MainFrame extends javax.swing.JFrame {
     public CardLayout getCardLayout() {
         return cl;
     }
+    
+    public void minimize(){
+        this.setState(this.ICONIFIED);
+    }
+      
+    public void close(){
+        this.dispose();
+        System.exit(0);
+    }
+      
 }
