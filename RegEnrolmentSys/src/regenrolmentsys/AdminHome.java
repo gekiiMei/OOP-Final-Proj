@@ -361,13 +361,13 @@ public class AdminHome extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void MinimizeBTN2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN2MouseEntered
+    private void MinimizeBTN2MouseEntered(java.awt.event.MouseEvent evt) {                                          
         MinimizeBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
         mf.switchCard("FacultyMenuCard");
         fm.getTabs().setSelectedIndex(0);
         fm.loadClassTab();
-    }//GEN-LAST:event_btnClassListActionPerformed
+    }                                            
 
     private void MinimizeBTN2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN2MouseExited
         MinimizeBTN.setBackground(new Color(254, 86, 86));
@@ -407,7 +407,7 @@ public class AdminHome extends javax.swing.JPanel {
     }//GEN-LAST:event_MinimizeBTNMouseExited
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-        //minimize button event here:
+        mf.minimize();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
@@ -423,8 +423,7 @@ public class AdminHome extends javax.swing.JPanel {
     }//GEN-LAST:event_CloseBTNMouseExited
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-        //exit button event here:
-
+        mf.close();
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 

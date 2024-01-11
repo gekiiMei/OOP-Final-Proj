@@ -894,9 +894,7 @@ public class StudentMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_MinimizeBTNMouseExited
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-        //minimize button event here:
-
-        // TODO add your handling code here:
+        mf.minimize();
     }//GEN-LAST:event_MinimizeBTNActionPerformed
 
     private void CloseBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseEntered
@@ -910,8 +908,7 @@ public class StudentMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_CloseBTNMouseExited
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-        //exit button event here:
-
+        mf.close();
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
