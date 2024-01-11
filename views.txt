@@ -58,3 +58,25 @@ CREATE VIEW vwClassList AS
             ON ensub.SUBJECT_CODE = sub.SUBJECT_CODE
     WHERE ensub.STATUS = 'Enrolled'
     ORDER BY ensub.SUBJECT_CODE;
+
+
+CREATE VIEW finals.vwSchedule AS
+SELECT en.SY 
+      ,en.SEMESTER
+      ,en.STUDENT_NO
+      ,en.SUBJECT_CODE as "Subject code"
+      ,en.BLOCK_NO as "Block"
+      ,s.DESCRIPTION as "Subject"
+      ,sc.DAY as "Day"
+      ,sc.TIME as "Time"
+      ,sc.ROOM as "Room"
+      ,sc.TYPE as "Modality"
+      ,en.SEQUENCE_NO
+      ,(e.first_name || ' ' || e.last_name) as "Faculty"
+FROM finals.ENROLLED_SUBJECT en
+INNER JOIN finals.SUBJECT_SCHEDULE sc
+    ON en.SY = sc.SY AND en.SEMESTER = sc.SEMESTER AND en.SUBJECT_CODE = sc.SUBJECT_CODE AND en.BLOCK_NO = sc.BLOCK_NO AND en.SEQUENCE_NO = sc.SEQUENCE_NO
+INNER JOIN finals.SUBJECT s
+    ON en.SUBJECT_CODE = s.SUBJECT_CODE
+INNER JOIN finals.EMPLOYEE e
+    ON sc.FACULTY_ID = e.EMPLOYEE_ID;
