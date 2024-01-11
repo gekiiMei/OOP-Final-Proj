@@ -3,6 +3,8 @@ package regenrolmentsys;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
@@ -30,6 +32,7 @@ public class LogInUI extends javax.swing.JPanel {
         setVisible(true);
         setPreferredSize(new Dimension(1280, 720));
         lblWrongPassword.setVisible(false);
+        lblWrongPassword1.setVisible(false);
         lblErrorID1.setVisible(false);
         this.HidePass.setVisible(false);
     }
@@ -281,6 +284,11 @@ public class LogInUI extends javax.swing.JPanel {
                 passwordActionPerformed(evt);
             }
         });
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordKeyPressed(evt);
+            }
+        });
         add(password);
         password.setBounds(740, 350, 450, 70);
 
@@ -448,12 +456,28 @@ public class LogInUI extends javax.swing.JPanel {
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
         // TODO add your handling code here:
         password.setText("");
+        boolean blCapsOn = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+        if (blCapsOn) {
+            lblWrongPassword1.setVisible(true);
+        } else {
+            lblWrongPassword1.setVisible(false);
+        }
     }//GEN-LAST:event_passwordFocusGained
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
         checkLogin();
     }//GEN-LAST:event_passwordActionPerformed
+
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+        // TODO add your handling code here:
+        boolean blCapsOn = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+        if (blCapsOn) {
+            lblWrongPassword1.setVisible(true);
+        } else {
+            lblWrongPassword1.setVisible(false);
+        }
+    }//GEN-LAST:event_passwordKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
