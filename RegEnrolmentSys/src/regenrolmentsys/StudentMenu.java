@@ -260,10 +260,13 @@ public class StudentMenu extends javax.swing.JPanel {
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(230, 68, 68));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
+
+        jPanel1.setBackground(new java.awt.Color(230, 68, 68));
 
         btnProfile.setText("profile");
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -312,28 +315,32 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBackStudentMenu)
-                    .addComponent(btnLogout)
-                    .addComponent(btnGrades)
-                    .addComponent(btnSched)
-                    .addComponent(btnEnrolment)
-                    .addComponent(btnProfile))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBackStudentMenu)
+                            .addComponent(btnLogout)
+                            .addComponent(btnGrades)
+                            .addComponent(btnSched)
+                            .addComponent(btnEnrolment)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(btnProfile)
-                .addGap(36, 36, 36)
+                .addGap(38, 38, 38)
+                .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnEnrolment)
                 .addGap(29, 29, 29)
                 .addComponent(btnSched)
                 .addGap(38, 38, 38)
                 .addComponent(btnGrades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                 .addComponent(btnBackStudentMenu)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout)
@@ -342,8 +349,12 @@ public class StudentMenu extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        tabs.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jPanel2.setBackground(new java.awt.Color(230, 68, 68));
+
+        tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         lblStudentNo.setText("STUDENT NUMBER:");
 
@@ -390,7 +401,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(lblStudentFN)
                     .addComponent(lblStudentNo)
                     .addComponent(lblStudentLN))
-                .addContainerGap(761, Short.MAX_VALUE))
+                .addContainerGap(860, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,10 +428,12 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addComponent(lblStudentStatus)
                 .addGap(36, 36, 36)
                 .addComponent(btnChangePassword)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         tblEnrolSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -465,7 +478,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnEnrolConfirm))
@@ -483,7 +496,7 @@ public class StudentMenu extends javax.swing.JPanel {
                                 .addGap(33, 33, 33)
                                 .addComponent(btnEnrolSchedView)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                .addGap(63, 63, 63))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,6 +518,8 @@ public class StudentMenu extends javax.swing.JPanel {
         );
 
         tabs.addTab("", jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setText("SCHEDULE");
 
@@ -543,6 +558,8 @@ public class StudentMenu extends javax.swing.JPanel {
         );
 
         tabs.addTab("", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -589,7 +606,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -599,9 +616,8 @@ public class StudentMenu extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnGradeSearch)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnGradeSearch)))
+                .addGap(67, 67, 67))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,14 +640,15 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1066, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(tabs)
                 .addContainerGap())
         );
@@ -698,15 +715,19 @@ public class StudentMenu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
