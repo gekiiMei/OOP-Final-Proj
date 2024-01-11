@@ -21,7 +21,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
-    private boolean cmbSubjCodeLoaded = false;
+    private boolean cmbSubjCodeLoaded = false, cmbSubjCodeLoaded2 = false;
     /**
      * Creates new form AdminMenu
      */
@@ -41,6 +41,62 @@ public class FacultyMenu extends javax.swing.JPanel {
 
     public FacultyMenu() {
         initComponents();
+    }
+    
+    public void loadClassTab() {
+        con = ConnectDB.connect();
+        try {
+            lblSubjDesc.setText("----------");
+            
+            //load SY combobox
+            rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+            while (rs.next()) {
+                cmbSY2.addItem(rs.getString("SY"));
+            }
+            
+            //load semester combobox
+            rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+            while (rs.next()) {
+                cmbSem2.addItem(rs.getString("Semester"));
+            }
+            
+            //load subject code combobox
+            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT ORDER BY subject_code").executeQuery();
+            while (rs.next()) {
+                cmbSubjCode2.addItem(rs.getString("subject_code"));
+            }
+            
+            rs = con.prepareStatement("SELECT description FROM finals.SUBJECT "
+                    + "WHERE subject_code = '" + cmbSubjCode2.getSelectedItem().toString() + "'").executeQuery();
+            while (rs.next()) {
+                lblSubjDesc.setText(rs.getString("description"));
+            }
+            
+            cmbSubjCodeLoaded2 = true;
+  
+            //load block no combobox
+            rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO").executeQuery();
+            while (rs.next()) {
+                cmbBlockNo2.addItem(rs.getString("block_no"));
+            }
+            
+            loadClassTable();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    private void loadClassTable(){
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.VWCLASSLIST").executeQuery(); 
+            if (rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.VWCLASSLIST").executeQuery(); 
+                tblClassList.setModel(TableUtil.resultSetToTableModel(rs));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     public void loadGradesTab() {
@@ -101,7 +157,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         }
     }
     
-    public void loadGradesTable() {
+    private void loadGradesTable() {
         con = ConnectDB.connect();
         try {
             rs = con.prepareStatement("SELECT * FROM finals.GRADE").executeQuery(); 
@@ -141,6 +197,10 @@ public class FacultyMenu extends javax.swing.JPanel {
         lblSubjDesc = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cmbBlockNo2 = new javax.swing.JComboBox<>();
+        jLabel35 = new javax.swing.JLabel();
+        cmbSY2 = new javax.swing.JComboBox<>();
+        jLabel36 = new javax.swing.JLabel();
+        cmbSem2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         cmbStudentNoYear2 = new javax.swing.JComboBox<>();
@@ -247,7 +307,7 @@ public class FacultyMenu extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No existing student records found"
+                "No existing class records found"
             }
         ) {
             Class[] types = new Class [] {
@@ -296,6 +356,16 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
         });
 
+        jLabel35.setText("SY:");
+
+        cmbSY2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSY2ActionPerformed(evt);
+            }
+        });
+
+        jLabel36.setText("Semester: ");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -329,13 +399,29 @@ public class FacultyMenu extends javax.swing.JPanel {
                                         .addComponent(lblSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel35)
+                .addGap(18, 18, 18)
+                .addComponent(cmbSY2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel34)
-                .addGap(88, 88, 88)
+                .addGap(56, 56, 56)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35)
+                    .addComponent(jLabel36)
+                    .addComponent(cmbSY2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cmbSubjCode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -723,7 +809,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         //COMMENTED OUT: error-inducing
         tabs.setSelectedIndex(0);
-//        loadStudentsTab();
+        loadClassTab();
     }//GEN-LAST:event_btnClassListActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
@@ -881,10 +967,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                     + "subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'");
                 ps.execute();
                 
-                if (!ps.execute())
-                    JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
-                else {
-                    ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
+                ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
                     + "SET status = 'Enrolled' "
                     + "WHERE SY = ? AND semester = ? AND student_No = ? AND subject_code = ? AND block_no = ?");
                     ps.setString(1, cmbSY.getSelectedItem().toString());
@@ -892,9 +975,13 @@ public class FacultyMenu extends javax.swing.JPanel {
                     ps.setString(3, selectedStudntNo);
                     ps.setString(4, cmbSubjCode.getSelectedItem().toString());
                     ps.setString(5, cmbBlockNo.getSelectedItem().toString());
-                    ps.execute();
+                int rowsAffected = ps.executeUpdate();
+                    
+                if (rowsAffected > 0)
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                }
+                else
+                    JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+
                 loadGradesTable();
             } catch (Exception e) {
                 System.out.println(e);
@@ -921,13 +1008,12 @@ public class FacultyMenu extends javax.swing.JPanel {
                     + "semester = '" + cmbSem.getSelectedItem().toString() + "' AND "
                     + "subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "' AND "
                     + "block_no = '" + cmbBlockNo.getSelectedItem().toString() + "'");
-                    ps.execute();
+                    int rowsAffected = ps.executeUpdate();
                     
-                    if (!ps.execute())
-                        JOptionPane.showMessageDialog(null, "Only grade values can be modified", "ERROR", JOptionPane.ERROR_MESSAGE);
-                    else {
+                    if (rowsAffected > 0)
                         JOptionPane.showMessageDialog(null, "Updated record successfully.");
-                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Only grade values can be modified", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 loadGradesTable();  
             } catch (Exception e) {
@@ -942,10 +1028,38 @@ public class FacultyMenu extends javax.swing.JPanel {
 
     private void cmbSubjCode2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubjCode2ActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        if (!cmbSubjCodeLoaded2)
+            return;
+        try {
+            rs = con.prepareStatement("SELECT description FROM finals.SUBJECT WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next())
+                lblSubjDesc.setText(rs.getString("description"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_cmbSubjCode2ActionPerformed
 
     private void btnClassSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassSearchActionPerformed
-
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement ("SELECT * FROM finals.vwCLASSLIST WHERE "
+                    + "SY = '" + cmbSY2.getSelectedItem().toString() + "' AND "
+                    + "SEMESTER = '" + cmbSem2.getSelectedItem().toString() + "' AND "
+                    + "\"SUBJECT CODE\" = '" + cmbSubjCode2.getSelectedItem().toString() + "' AND "
+                    + "\"BLOCK NO\" = '" + cmbBlockNo2.getSelectedItem().toString() + "'");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                rs = ps.executeQuery();
+                tblClassList.setModel(TableUtil.resultSetToTableModel(rs));
+            } else {
+                JOptionPane.showMessageDialog(null, "No class records", "ERROR", JOptionPane.ERROR_MESSAGE);
+                tblClassList.removeAll();
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnClassSearchActionPerformed
 
     private void cmbBlockNo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBlockNo2ActionPerformed
@@ -1015,6 +1129,10 @@ public class FacultyMenu extends javax.swing.JPanel {
         
     }//GEN-LAST:event_cmbSubjCodeCaretPositionChanged
 
+    private void cmbSY2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSY2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSY2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClassList;
@@ -1028,7 +1146,9 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbBlockNo;
     private javax.swing.JComboBox<String> cmbBlockNo2;
     private javax.swing.JComboBox<String> cmbSY;
+    private javax.swing.JComboBox<String> cmbSY2;
     private javax.swing.JComboBox<String> cmbSem;
+    private javax.swing.JComboBox<String> cmbSem2;
     private javax.swing.JComboBox<String> cmbStudentNoYear2;
     private javax.swing.JComboBox<String> cmbSubjCode;
     private javax.swing.JComboBox<String> cmbSubjCode2;
@@ -1052,6 +1172,8 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
