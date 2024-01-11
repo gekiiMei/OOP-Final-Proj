@@ -122,6 +122,8 @@ public class StudentMenu extends javax.swing.JPanel {
         
     public void loadGradesTab() {
          con = ConnectDB.connect();
+         cmbGradeSY.removeAllItems();
+         cmbGradeSem.removeAllItems();
          try {
              rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
              while (rs.next())
@@ -178,6 +180,8 @@ public class StudentMenu extends javax.swing.JPanel {
     
     public void loadEnrolmentTab() {
         con = ConnectDB.connect();
+        cmbEnrolSy.removeAllItems();
+        cmbEnrolSem.removeAllItems();
         try {
              rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
              while (rs.next())
@@ -255,14 +259,17 @@ public class StudentMenu extends javax.swing.JPanel {
         cmbGradeSem = new javax.swing.JComboBox<>();
         btnGradeSearch = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        MainLBL = new javax.swing.JLabel();
+        smallpf = new javax.swing.JLabel();
         PLMLogo = new javax.swing.JLabel();
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
+        MainLBL1 = new javax.swing.JLabel();
+        NameTopBar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(230, 68, 68));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
+        jSplitPane1.setBackground(new java.awt.Color(230, 68, 68));
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
 
@@ -389,27 +396,45 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(lblStudentNo))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(lblStudentLN))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(lblStudentFN))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(lblStudentEmail))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(lblStudentGender))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(lblStudentCourseCode))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(lblStudentCPNum))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(lblStudentAddress))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(lblStudentBday))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(lblStudentStatus))
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnChangePassword)
-                    .addComponent(lblStudentStatus)
-                    .addComponent(lblStudentBday)
-                    .addComponent(lblStudentAddress)
-                    .addComponent(lblStudentCPNum)
-                    .addComponent(lblStudentCourseCode)
-                    .addComponent(lblStudentGender)
-                    .addComponent(lblStudentEmail)
-                    .addComponent(lblStudentFN)
-                    .addComponent(lblStudentNo)
-                    .addComponent(lblStudentLN))
-                .addContainerGap(860, Short.MAX_VALUE))
+                .addComponent(btnChangePassword))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblStudentNo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(lblStudentLN)
                 .addGap(12, 12, 12)
                 .addComponent(lblStudentFN)
@@ -421,15 +446,14 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addComponent(lblStudentCourseCode)
                 .addGap(15, 15, 15)
                 .addComponent(lblStudentCPNum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(lblStudentAddress)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(lblStudentBday)
                 .addGap(12, 12, 12)
                 .addComponent(lblStudentStatus)
                 .addGap(36, 36, 36)
-                .addComponent(btnChangePassword)
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addComponent(btnChangePassword))
         );
 
         tabs.addTab("", jPanel3);
@@ -659,11 +683,11 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(254, 86, 86));
         jPanel7.setLayout(null);
 
-        MainLBL.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        MainLBL.setForeground(new java.awt.Color(255, 255, 255));
-        MainLBL.setText("Enrollment System for Regular Students");
-        jPanel7.add(MainLBL);
-        MainLBL.setBounds(40, 0, 290, 30);
+        smallpf.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        smallpf.setForeground(new java.awt.Color(255, 255, 255));
+        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
+        jPanel7.add(smallpf);
+        smallpf.setBounds(1040, 0, 40, 30);
 
         PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
         jPanel7.add(PLMLogo);
@@ -711,6 +735,18 @@ public class StudentMenu extends javax.swing.JPanel {
         });
         jPanel7.add(CloseBTN);
         CloseBTN.setBounds(1250, 0, 30, 30);
+
+        MainLBL1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        MainLBL1.setForeground(new java.awt.Color(255, 255, 255));
+        MainLBL1.setText("Enrollment System for Regular Students");
+        jPanel7.add(MainLBL1);
+        MainLBL1.setBounds(40, 0, 290, 30);
+
+        NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
+        NameTopBar.setText(" Name | Student");
+        jPanel7.add(NameTopBar);
+        NameTopBar.setBounds(1060, 0, 120, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -936,8 +972,9 @@ public class StudentMenu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
-    private javax.swing.JLabel MainLBL;
+    private javax.swing.JLabel MainLBL1;
     private javax.swing.JButton MinimizeBTN;
+    private javax.swing.JLabel NameTopBar;
     private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnChangePassword;
@@ -980,6 +1017,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblStudentLN;
     private javax.swing.JLabel lblStudentNo;
     private javax.swing.JLabel lblStudentStatus;
+    private javax.swing.JLabel smallpf;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblEnrolSchedule;
     private javax.swing.JTable tblGradesTable;
