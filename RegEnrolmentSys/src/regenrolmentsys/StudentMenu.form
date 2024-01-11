@@ -189,6 +189,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btnChangePassword" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
@@ -200,7 +201,7 @@
                                   <Component id="lblStudentNo" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="823" max="32767" attributes="0"/>
+                              <EmptySpace pref="761" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -227,7 +228,9 @@
                               <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="btnChangePassword" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="335" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -282,6 +285,14 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="STATUS:"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnChangePassword">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Change password"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChangePasswordActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
