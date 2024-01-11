@@ -361,6 +361,32 @@ public class AdminHome extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("FacultyMenuCard");
+        fm.getTabs().setSelectedIndex(1);
+        fm.loadGradesTab();
+        //TODO: code for displaying history table
+    }//GEN-LAST:event_btnGradesActionPerformed
+
+    private void btnClassListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassListActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("FacultyMenuCard");
+        fm.getTabs().setSelectedIndex(0);
+    }//GEN-LAST:event_btnClassListActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (response == 0){
+            mf.setUserID("");
+            mf.switchCard("LoginCard");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Canceled");
+        }
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     private void MinimizeBTN2MouseEntered(java.awt.event.MouseEvent evt) {                                          
         MinimizeBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
@@ -407,7 +433,7 @@ public class AdminHome extends javax.swing.JPanel {
     }//GEN-LAST:event_MinimizeBTNMouseExited
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-        //minimize button event here:
+        mf.minimize();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
@@ -423,8 +449,7 @@ public class AdminHome extends javax.swing.JPanel {
     }//GEN-LAST:event_CloseBTNMouseExited
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-        //exit button event here:
-
+        mf.close();
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 

@@ -7,7 +7,9 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.HashSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
  
@@ -401,16 +403,14 @@ public class LogInUI extends javax.swing.JPanel {
     }//GEN-LAST:event_LogInBTNMousePressed
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-//minimize
-         
+    //minimize 
         // TODO add your handling code here:
+       mf.minimize();
     }//GEN-LAST:event_MinimizeBTNActionPerformed
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-         
-         
-         
-        // TODO add your handling code here:
+
+      mf.close();
     }//GEN-LAST:event_CloseBTNActionPerformed
 
     private void MinimizeBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseEntered
