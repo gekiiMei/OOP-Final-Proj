@@ -77,7 +77,7 @@ public class StudentHome extends javax.swing.JPanel {
         CloseBTN = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1278, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jSplitPane1.setDividerLocation(450);
         jSplitPane1.setDividerSize(0);
@@ -311,7 +311,7 @@ public class StudentHome extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
+                .addGap(46, 46, 46))
         );
     }// </editor-fold>//GEN-END:initComponents
  
