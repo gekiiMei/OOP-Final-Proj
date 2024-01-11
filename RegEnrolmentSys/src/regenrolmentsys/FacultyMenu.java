@@ -4,6 +4,7 @@
  */
 package regenrolmentsys;
 
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
