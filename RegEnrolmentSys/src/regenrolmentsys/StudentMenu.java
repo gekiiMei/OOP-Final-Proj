@@ -122,6 +122,8 @@ public class StudentMenu extends javax.swing.JPanel {
         
     public void loadGradesTab() {
          con = ConnectDB.connect();
+         cmbGradeSY.removeAllItems();
+         cmbGradeSem.removeAllItems();
          try {
              rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
              while (rs.next())
@@ -178,6 +180,8 @@ public class StudentMenu extends javax.swing.JPanel {
     
     public void loadEnrolmentTab() {
         con = ConnectDB.connect();
+        cmbEnrolSy.removeAllItems();
+        cmbEnrolSem.removeAllItems();
         try {
              rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
              while (rs.next())
