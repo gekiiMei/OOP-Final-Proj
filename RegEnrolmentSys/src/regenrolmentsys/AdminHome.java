@@ -165,6 +165,7 @@ public class AdminHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("FacultyMenuCard");
         fm.getTabs().setSelectedIndex(0);
+        fm.loadClassTab();
     }//GEN-LAST:event_btnClassListActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
