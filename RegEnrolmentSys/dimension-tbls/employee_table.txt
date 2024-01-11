@@ -53,3 +53,7 @@ INSERT INTO finals.EMPLOYEE VALUES
 	('E037', 'Buenaventura', 'Sidney', DEFAULT, 'M', '09775279362', '124 Conch Street, Caloocan', null, 'A'),
 	('E038', 'Bautista', 'Romualdo', DEFAULT, 'M', '09182627834', '29 Acacia Road, Manila', null, 'A'),
 	('E039', 'Lawan', 'Joan', DEFAULT, 'F', '09773482354', '229 Neibolt Street, Manila', null, 'A');
+	('E040', 'Tenio', 'John Ray', DEFAULT, 'M', '09924569442', '124 Hogwartse, Taguig', null, 'A'),
+	('E041', 'Lawan', 'Joan', DEFAULT, 'F', '09924559442', '124 Hogwarts, Taguig', null, 'A'),
+	('E042', 'Doctor', 'Joan', DEFAULT, 'F', '099459569442', '224 Hogwarts, Taguig', null, 'A'),
+	('E043', 'Larezo Jr.', 'Leopaldo', DEFAULT, 'M', '09669507402', '324 Hogwarts, Taguig', null, 'A'),
