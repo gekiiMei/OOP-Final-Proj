@@ -70,11 +70,60 @@ public class AdminMenu extends javax.swing.JPanel {
         try {
             rs = con.prepareStatement("SELECT * FROM finals.STUDENT").executeQuery(); // TODO: REPLACE WITH VIEW
             if (rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT").executeQuery();
                 tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    private void loadSYSemTab() {
+        rbSY.setSelected(false);
+        rbSem.setSelected(false);
+        txtSY.setText("");
+        txtSem.setText("");
+        txtSY.setEnabled(false);
+        txtSem.setEnabled(false);
+        
+        resetSYSemTable();
+    }
+    
+    private void loadSYTable() {
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+            while(rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+                tblSYSem.setModel(TableUtil.resultSetToTableModel(rs));
+            }
+        } catch (Exception e) {
+            System.out.println();
+        }
+    }
+    
+    private void loadSemTable() {
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+            while(rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+                tblSYSem.setModel(TableUtil.resultSetToTableModel(rs));
+            }
+        } catch (Exception e) {
+            System.out.println();
+        }
+    }
+    
+    private void resetSYSemTable() {
+        tblSYSem.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"Select a record to modify."}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
     }
 
     /**
@@ -601,6 +650,11 @@ public class AdminMenu extends javax.swing.JPanel {
         });
 
         rbSem.setText("SEMESTER");
+        rbSem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSemActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("SY:");
 
@@ -614,18 +668,43 @@ public class AdminMenu extends javax.swing.JPanel {
         });
 
         btnDeleteSYSem.setText("DELETE");
+        btnDeleteSYSem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSYSemActionPerformed(evt);
+            }
+        });
 
         tblSYSem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Choose a record to modify"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblSYSem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSYSemMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblSYSem);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -638,7 +717,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSY, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -662,7 +741,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(414, 414, 414)
                 .addComponent(jLabel14)
@@ -691,7 +770,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(btnDeleteSYSem))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel5);
@@ -1395,18 +1474,23 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSYSemActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(1);
+        loadSYSemTab();
     }//GEN-LAST:event_btnSYSemActionPerformed
 
     private void btnSubjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubjectsActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(2);
     }//GEN-LAST:event_btnSubjectsActionPerformed
 
     private void btnSchedulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedulesActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(3);
     }//GEN-LAST:event_btnSchedulesActionPerformed
 
     private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(4);
     }//GEN-LAST:event_btnEmployeesActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
@@ -1611,10 +1695,50 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void rbSYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSYActionPerformed
         // TODO add your handling code here:
+        rbSem.setSelected(false);
+        txtSem.setEnabled(false);
+        txtSY.setEnabled(true);
+        txtSem.setText("");
+        
+        loadSYTable();
     }//GEN-LAST:event_rbSYActionPerformed
 
     private void btnAddSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSYSemActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        
+        try{
+            if (rbSY.isSelected()) {
+                if(!(txtSY.getText().toString().equals(""))) {
+                    ps = con.prepareStatement("INSERT INTO finals.SY VALUES ('" + txtSY.getText().toString() + "')");
+                    int rowsAffected = ps.executeUpdate();
+                    if (rowsAffected > 0)
+                        JOptionPane.showMessageDialog(null, "Added record successfully.");
+                    else
+                        JOptionPane.showMessageDialog(null, "Invalid SY", "ERROR", JOptionPane.ERROR_MESSAGE);
+                     loadSYTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot enter empty value", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } else if (rbSem.isSelected()) {
+                if(!(txtSem.getText().toString().equals(""))) {
+                    ps = con.prepareStatement("INSERT INTO finals.SEMESTER VALUES ('" + txtSem.getText().toString() + "')");
+                    int rowsAffected = ps.executeUpdate();
+                    if (rowsAffected > 0)
+                        JOptionPane.showMessageDialog(null, "Added record successfully.");
+                    else
+                        JOptionPane.showMessageDialog(null, "Invalid Semester", "ERROR", JOptionPane.ERROR_MESSAGE);
+                     loadSemTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot enter empty value", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAddSYSemActionPerformed
 
     private void checkSubjStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSubjStatusActionPerformed
@@ -1711,6 +1835,57 @@ public class AdminMenu extends javax.swing.JPanel {
             //TODO: ERROR MSGS
         }
     }//GEN-LAST:event_btnStudSearchNameActionPerformed
+
+    private void rbSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSemActionPerformed
+        // TODO add your handling code here:
+        rbSY.setSelected(false);
+        txtSY.setEnabled(false);
+        txtSem.setEnabled(true);
+        txtSY.setText("");
+        
+        loadSemTable();
+    }//GEN-LAST:event_rbSemActionPerformed
+
+    private void btnDeleteSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSYSemActionPerformed
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        
+        try{
+            if (rbSY.isSelected()) {
+                ps = con.prepareStatement("DELETE FROM finals.SY WHERE SY = '" + txtSY.getText().toString() + "'");
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "SY does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                 loadSYTable();
+            } else if (rbSem.isSelected()) {
+                ps = con.prepareStatement("DELETE FROM finals.SEMESTER WHERE SEMESTER = '" + txtSem.getText().toString() + "'");
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Semester does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                 loadSemTable();
+            } else {
+                JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cannot delete SY/SEMESTER in use", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteSYSemActionPerformed
+
+    private void tblSYSemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSYSemMouseClicked
+        // TODO add your handling code here:
+        int intRow = tblSYSem.getSelectedRow(); 
+
+        if (rbSY.isSelected()) {
+            txtSY.setText(tblSYSem.getValueAt(intRow, 0).toString());
+        } else if (rbSem.isSelected()) {
+            txtSem.setText(tblSYSem.getValueAt(intRow, 0).toString());
+        }
+    }//GEN-LAST:event_tblSYSemMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
