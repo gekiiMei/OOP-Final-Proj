@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package regenrolmentsys;
+import java.awt.Color;
 import java.awt.Point;
 import java.sql.*;
 import javax.swing.JOptionPane;
