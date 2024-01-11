@@ -231,6 +231,7 @@ public class StudentMenu extends javax.swing.JPanel {
         lblStudentAddress = new javax.swing.JLabel();
         lblStudentBday = new javax.swing.JLabel();
         lblStudentStatus = new javax.swing.JLabel();
+        btnChangePassword = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEnrolSchedule = new javax.swing.JTable();
@@ -259,10 +260,13 @@ public class StudentMenu extends javax.swing.JPanel {
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(230, 68, 68));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
+
+        jPanel1.setBackground(new java.awt.Color(230, 68, 68));
 
         btnProfile.setText("profile");
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -311,28 +315,33 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBackStudentMenu)
-                    .addComponent(btnLogout)
-                    .addComponent(btnGrades)
-                    .addComponent(btnSched)
-                    .addComponent(btnEnrolment)
-                    .addComponent(btnProfile))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBackStudentMenu)
+                            .addComponent(btnLogout)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEnrolment, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(btnSched, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGrades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(13, 13, 13))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(btnProfile)
-                .addGap(36, 36, 36)
-                .addComponent(btnEnrolment)
-                .addGap(29, 29, 29)
-                .addComponent(btnSched)
                 .addGap(38, 38, 38)
-                .addComponent(btnGrades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
+                .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEnrolment, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSched, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
                 .addComponent(btnBackStudentMenu)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout)
@@ -341,8 +350,12 @@ public class StudentMenu extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        tabs.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jPanel2.setBackground(new java.awt.Color(230, 68, 68));
+
+        tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         lblStudentNo.setText("STUDENT NUMBER:");
 
@@ -364,6 +377,13 @@ public class StudentMenu extends javax.swing.JPanel {
 
         lblStudentStatus.setText("STATUS:");
 
+        btnChangePassword.setText("Change password");
+        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangePasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -371,6 +391,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnChangePassword)
                     .addComponent(lblStudentStatus)
                     .addComponent(lblStudentBday)
                     .addComponent(lblStudentAddress)
@@ -381,7 +402,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(lblStudentFN)
                     .addComponent(lblStudentNo)
                     .addComponent(lblStudentLN))
-                .addContainerGap(823, Short.MAX_VALUE))
+                .addContainerGap(860, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,10 +427,14 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addComponent(lblStudentBday)
                 .addGap(12, 12, 12)
                 .addComponent(lblStudentStatus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(btnChangePassword)
+                .addContainerGap(364, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         tblEnrolSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -454,7 +479,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnEnrolConfirm))
@@ -472,7 +497,7 @@ public class StudentMenu extends javax.swing.JPanel {
                                 .addGap(33, 33, 33)
                                 .addComponent(btnEnrolSchedView)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                .addGap(63, 63, 63))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,6 +519,8 @@ public class StudentMenu extends javax.swing.JPanel {
         );
 
         tabs.addTab("", jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setText("SCHEDULE");
 
@@ -532,6 +559,8 @@ public class StudentMenu extends javax.swing.JPanel {
         );
 
         tabs.addTab("", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -578,7 +607,7 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -588,9 +617,8 @@ public class StudentMenu extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnGradeSearch)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnGradeSearch)))
+                .addGap(67, 67, 67))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,14 +641,15 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1066, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(tabs)
                 .addContainerGap())
         );
@@ -687,15 +716,19 @@ public class StudentMenu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -778,7 +811,7 @@ public class StudentMenu extends javax.swing.JPanel {
             
             if (intCurrYear < 1) {
                 System.out.println("year cannot be earlier than your enrolment year"); //TODO: error msg
-                JOptionPane.showMessageDialog(this, "You cannot enroll to a year earlier than your admittance year!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "You cannot enroll to a year earlier than your admittance year!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
@@ -786,7 +819,7 @@ public class StudentMenu extends javax.swing.JPanel {
             while (rs.next()) {
                 if (rs.getString("sy").equals(strSelectedSY) && rs.getString("semester").equals(cmbEnrolSem.getSelectedItem().toString())) {
                     System.out.println("already enrolled to this year and semester"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -810,7 +843,7 @@ public class StudentMenu extends javax.swing.JPanel {
                     block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
                 } else {
                     System.out.println("missing previous enrolments"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -823,9 +856,10 @@ public class StudentMenu extends javax.swing.JPanel {
             rs = ps.executeQuery();
             enrollQuery = "INSERT INTO finals.ENROLLED_SUBJECT VALUES ";
             while (rs.next()) {
-                enrollQuery += "('" + strSelectedSY + "', '" + cmbEnrolSem.getSelectedItem().toString() + "', '" + currentUser + "', '" + rs.getString("subject_code") + "', '" + block + "', 'Enrolled'), ";
+                enrollQuery += "('" + strSelectedSY + "', '" + cmbEnrolSem.getSelectedItem().toString() + "', '" + currentUser + "', '" + rs.getString("subject_code") + "', '" + block + "', '" + rs.getString("sequence_no") + "', 'Enrolled'), ";
             }
             enrollQuery = enrollQuery.substring(0, enrollQuery.length()-2);
+            System.out.println(enrollQuery);
             psEnrolConfirm = con.prepareStatement(enrollQuery);
         } catch (Exception e) {
             System.out.println(e); //TODO ERROR MSGS
@@ -836,9 +870,14 @@ public class StudentMenu extends javax.swing.JPanel {
     private void btnEnrolConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolConfirmActionPerformed
         // TODO add your handling code here:
         try {
-            psEnrolConfirm.execute(); //TODO: CONFIRMATION MSG
-            resetEnrolmentSchedTable();
-            System.out.println("enrolled wo"); //TODO: REMOVE THIS LINE LMAO
+            int intAnswer = JOptionPane.showConfirmDialog(null, "Finalize enrollment?", "Enrolling subjects", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (intAnswer == 0) {
+                psEnrolConfirm.execute(); //TODO: CONFIRMATION MSG
+                resetEnrolmentSchedTable();
+                JOptionPane.showMessageDialog(null, "Enrollment successful.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Enrollment canceled.");
+            }
         } catch (Exception e) {
             System.out.println(e); //TODO ERROR MSGS
         }
@@ -876,6 +915,27 @@ public class StudentMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
+    private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        String newPassword = JOptionPane.showInputDialog(this, "Enter new password:", "Changing password..", JOptionPane.QUESTION_MESSAGE);
+        if (newPassword.isEmpty())
+            JOptionPane.showMessageDialog(this, "Password cannot be empty!", "Password error", JOptionPane.ERROR_MESSAGE);
+        else {
+            String confirmPassword = JOptionPane.showInputDialog(this, "Confirm password:", "Changing password..", JOptionPane.QUESTION_MESSAGE);
+            if (newPassword.equals(confirmPassword)) {
+                try {
+                    con.prepareStatement("UPDATE finals.PASSWORD SET password = '" + newPassword + "' WHERE user_id = '" + currentUser + "'").execute();
+                    JOptionPane.showMessageDialog(this, "Passwords successfully updated!", "Changing password..", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Passwords do not match!", "Password error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnChangePasswordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
@@ -883,6 +943,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JButton MinimizeBTN;
     private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnBackStudentMenu;
+    private javax.swing.JButton btnChangePassword;
     private javax.swing.JButton btnEnrolConfirm;
     private javax.swing.JButton btnEnrolSchedView;
     private javax.swing.JButton btnEnrolment;

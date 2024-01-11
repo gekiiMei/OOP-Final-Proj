@@ -4,6 +4,7 @@ package regenrolmentsys;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.sql.*;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 
@@ -28,7 +29,9 @@ public class LogInUI extends javax.swing.JPanel {
         setMaximumSize(new Dimension(1280, 720));
         setVisible(true);
         setPreferredSize(new Dimension(1280, 720));
-        lblErrorID.setVisible(false);
+        lblWrongPassword.setVisible(false);
+        lblErrorID1.setVisible(false);
+        this.HidePass.setVisible(false);
     }
     
     private void checkLogin() {
@@ -39,34 +42,54 @@ public class LogInUI extends javax.swing.JPanel {
             System.out.println("whoa hold on ur input is empty buddy");
         } else {
             try {
-                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + mf.getUserID() + "'").executeQuery();
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + UserIDField.getText() + "'").executeQuery();
                 if (rs.next()){
-                    mf.switchCard("StudentHomeCard");
-                    sh.setUserName();
-                    lblErrorID.setVisible(false);
-                }
-                else {
-                    rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + mf.getUserID() + "'").executeQuery();
-                    if (rs.next()){
-                        lblErrorID.setVisible(false);
-                        mf.switchCard("AdminHomeCard");
+                    rs = con.prepareStatement("SELECT * FROM finals.PASSWORD WHERE user_id = '" + UserIDField.getText() + "' AND password = '" + String.valueOf(password.getPassword()) + "'").executeQuery();
+                    if (rs.next()) {
+                        mf.switchCard("StudentHomeCard");
+                        sh.setUserName();
+                        lblErrorID1.setVisible(false);
+                        lblWrongPassword.setVisible(false);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR_MESSAGE);
+                        lblErrorID1.setVisible(false);
+                        lblWrongPassword.setVisible(true);
                     }
-                    else {
-                        rs = con.prepareStatement("SELECT * FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                } else {
+                    rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + UserIDField.getText() + "'").executeQuery();
+                    if (rs.next()){
+                        rs = con.prepareStatement("SELECT * FROM finals.PASSWORD WHERE user_id = '" + UserIDField.getText() + "' AND password = '" + String.valueOf(password.getPassword()) + "'").executeQuery();
                         if (rs.next()) {
-                            var password = JOptionPane.showInputDialog("Enter password: ");
-                            rs = con.prepareStatement("SELECT pass FROM finals.ADMIN WHERE admin_id = '" + mf.getUserID() + "'").executeQuery();
+                            mf.switchCard("AdminHomeCard");
+                            lblErrorID1.setVisible(false);
+                            lblWrongPassword.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR_MESSAGE);
+                            lblErrorID1.setVisible(false);
+                            lblWrongPassword.setVisible(true);
+                        }
+                    } else {
+                        rs = con.prepareStatement("SELECT * FROM finals.ADMIN WHERE admin_id = '" + UserIDField.getText() + "'").executeQuery();
+                        if (rs.next()) {
+                            rs = con.prepareStatement("SELECT pass FROM finals.ADMIN WHERE admin_id = '" + UserIDField.getText() + "'").executeQuery();
                             if (rs.next()) {
-                                if (password.equals(rs.getString("pass"))) {
+                                if (String.valueOf(password.getPassword()).equals(rs.getString("pass"))) {
                                     mf.switchCard("AdminMenuCard");
                                     am.loadStudentsTab();
+                                    lblErrorID1.setVisible(false);
+                                    lblWrongPassword.setVisible(false);
                                 }
-                                else 
-                                    JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR);
+                                else  {
+                                    JOptionPane.showMessageDialog(null, "Incorrect password", "Login failed", JOptionPane.ERROR_MESSAGE);
+                                    lblErrorID1.setVisible(false);
+                                    lblWrongPassword.setVisible(true);
+                                }
                             }
-                        } else 
-                            JOptionPane.showMessageDialog(null, "User does not exist", "Login failed", JOptionPane.ERROR);  
-                            lblErrorID.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "User does not exist", "Login failed", JOptionPane.ERROR_MESSAGE);  
+                            lblErrorID1.setVisible(true);
+                            lblWrongPassword.setVisible(false);
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -91,11 +114,18 @@ public class LogInUI extends javax.swing.JPanel {
         PLMLogo = new javax.swing.JLabel();
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
-        lblErrorID = new javax.swing.JLabel();
+        lblWrongPassword1 = new javax.swing.JLabel();
+        lblWrongPassword = new javax.swing.JLabel();
+        lblErrorID1 = new javax.swing.JLabel();
+        HidePass = new javax.swing.JLabel();
+        SeePass = new javax.swing.JLabel();
+        PasswordIcon = new javax.swing.JLabel();
         UserIcon = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
         UserIDField = new javax.swing.JTextField();
         EnrlmntLBL = new javax.swing.JLabel();
         LogInLBL = new javax.swing.JLabel();
+        Password = new javax.swing.JLabel();
         UserID = new javax.swing.JLabel();
         SupportBTN = new javax.swing.JButton();
         LogInPanel = new javax.swing.JLabel();
@@ -127,7 +157,7 @@ public class LogInUI extends javax.swing.JPanel {
             }
         });
         add(LogInBTN);
-        LogInBTN.setBounds(840, 380, 240, 50);
+        LogInBTN.setBounds(840, 490, 240, 50);
 
         jPanel1.setBackground(new java.awt.Color(254, 86, 86));
         jPanel1.setLayout(null);
@@ -188,16 +218,71 @@ public class LogInUI extends javax.swing.JPanel {
         add(jPanel1);
         jPanel1.setBounds(0, 0, 1280, 30);
 
-        lblErrorID.setBackground(new java.awt.Color(255, 51, 51));
-        lblErrorID.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblErrorID.setForeground(new java.awt.Color(255, 51, 51));
-        lblErrorID.setText("User ID does not exist!");
-        add(lblErrorID);
-        lblErrorID.setBounds(720, 280, 140, 30);
+        lblWrongPassword1.setBackground(new java.awt.Color(255, 51, 51));
+        lblWrongPassword1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblWrongPassword1.setForeground(new java.awt.Color(255, 51, 51));
+        lblWrongPassword1.setText("Caps Lock is on");
+        add(lblWrongPassword1);
+        lblWrongPassword1.setBounds(1100, 420, 140, 30);
+
+        lblWrongPassword.setBackground(new java.awt.Color(255, 51, 51));
+        lblWrongPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblWrongPassword.setForeground(new java.awt.Color(255, 51, 51));
+        lblWrongPassword.setText("Incorrect Password!");
+        add(lblWrongPassword);
+        lblWrongPassword.setBounds(740, 420, 140, 30);
+
+        lblErrorID1.setBackground(new java.awt.Color(255, 51, 51));
+        lblErrorID1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblErrorID1.setForeground(new java.awt.Color(255, 51, 51));
+        lblErrorID1.setText("User ID does not exist!");
+        add(lblErrorID1);
+        lblErrorID1.setBounds(740, 280, 140, 30);
+
+        HidePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hidepass.png"))); // NOI18N
+        HidePass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HidePassMousePressed(evt);
+            }
+        });
+        add(HidePass);
+        HidePass.setBounds(690, 360, 40, 50);
+
+        SeePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/seepass.png"))); // NOI18N
+        SeePass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                SeePassMousePressed(evt);
+            }
+        });
+        add(SeePass);
+        SeePass.setBounds(690, 360, 40, 50);
+
+        PasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/passicon.png"))); // NOI18N
+        add(PasswordIcon);
+        PasswordIcon.setBounds(1140, 360, 40, 50);
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1077114.png"))); // NOI18N
         add(UserIcon);
-        UserIcon.setBounds(1120, 210, 50, 70);
+        UserIcon.setBounds(1140, 210, 50, 70);
+
+        password.setBackground(new java.awt.Color(249, 248, 248));
+        password.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        password.setForeground(new java.awt.Color(102, 102, 102));
+        password.setText(" Enter Password");
+        password.setToolTipText("");
+        password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        password.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFocusGained(evt);
+            }
+        });
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
+            }
+        });
+        add(password);
+        password.setBounds(740, 350, 450, 70);
 
         UserIDField.setBackground(new java.awt.Color(249, 248, 248));
         UserIDField.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -217,7 +302,7 @@ public class LogInUI extends javax.swing.JPanel {
             }
         });
         add(UserIDField);
-        UserIDField.setBounds(720, 210, 450, 70);
+        UserIDField.setBounds(740, 210, 450, 70);
 
         EnrlmntLBL.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         EnrlmntLBL.setForeground(new java.awt.Color(255, 255, 255));
@@ -233,10 +318,15 @@ public class LogInUI extends javax.swing.JPanel {
         add(LogInLBL);
         LogInLBL.setBounds(690, 70, 190, 80);
 
+        Password.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        Password.setText("Password");
+        add(Password);
+        Password.setBounds(740, 320, 180, 30);
+
         UserID.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         UserID.setText("User ID");
         add(UserID);
-        UserID.setBounds(720, 180, 180, 30);
+        UserID.setBounds(740, 180, 180, 30);
 
         SupportBTN.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         SupportBTN.setForeground(new java.awt.Color(254, 86, 86));
@@ -289,7 +379,13 @@ public class LogInUI extends javax.swing.JPanel {
 
     private void SupportBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupportBTNActionPerformed
     //support
-      
+      JOptionPane.showMessageDialog(null, "For inquiries, refer to the following contacts:\n\n\n" +
+                "Office of the University Registrar \t-\t registrar@plm.edu.ph\n\n" +
+                "Admissions Office \t-\t admission_office@plm.edu.ph\n\n" +
+                "Information and Communicaions Technology Office \t-\t ithelp@plm.edu.ph\n\n" +
+                "Human Resource Development Office \t-\t hrdo@plm.edu.ph\n\n" +
+                "College Of Engineering and Technology \t-\t cet_group@plm.edu.ph", "Contact support\n\n "
+                , JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_SupportBTNActionPerformed
 
     private void LogInBTNMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInBTNMousePressed
@@ -333,22 +429,55 @@ public class LogInUI extends javax.swing.JPanel {
         UserIDField.setText("");
     }//GEN-LAST:event_UserIDFieldFocusGained
 
+    private void SeePassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeePassMousePressed
+        // TODO add your handling code here:
+        HidePass.setVisible(true);
+        SeePass.setVisible(false);
+        password.setEchoChar((char)0);
+        
+    }//GEN-LAST:event_SeePassMousePressed
+
+    private void HidePassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HidePassMousePressed
+        // TODO add your handling code here:
+        HidePass.setVisible(false);
+        SeePass.setVisible(true);
+        password.setEchoChar((char)'•');
+        
+    }//GEN-LAST:event_HidePassMousePressed
+
+    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
+        // TODO add your handling code here:
+        password.setText("");
+    }//GEN-LAST:event_passwordFocusGained
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+        checkLogin();
+    }//GEN-LAST:event_passwordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JButton CloseBTN;
     private javax.swing.JLabel EnrlmntLBL;
+    private javax.swing.JLabel HidePass;
     private javax.swing.JButton LogInBTN;
     private javax.swing.JLabel LogInLBL;
     private javax.swing.JLabel LogInPanel;
     private javax.swing.JLabel MainLBL;
     private javax.swing.JButton MinimizeBTN;
     private javax.swing.JLabel PLMLogo;
+    private javax.swing.JLabel Password;
+    private javax.swing.JLabel PasswordIcon;
+    private javax.swing.JLabel SeePass;
     private javax.swing.JButton SupportBTN;
     private javax.swing.JLabel UserID;
     private javax.swing.JTextField UserIDField;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblErrorID;
+    private javax.swing.JLabel lblErrorID1;
+    private javax.swing.JLabel lblWrongPassword;
+    private javax.swing.JLabel lblWrongPassword1;
+    private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }
