@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package regenrolmentsys;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -240,12 +241,22 @@ public class FacultyMenu extends javax.swing.JPanel {
         btnGradeEdit = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         lblStudEmail = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        smallpf = new javax.swing.JLabel();
+        PLMLogo = new javax.swing.JLabel();
+        MinimizeBTN = new javax.swing.JButton();
+        CloseBTN = new javax.swing.JButton();
+        MainLBL1 = new javax.swing.JLabel();
+        NameTopBar = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(230, 68, 68));
         setToolTipText("");
         setPreferredSize(new java.awt.Dimension(1243, 756));
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
+
+        jPanel1.setBackground(new java.awt.Color(230, 68, 68));
 
         btnLogout.setText("logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +294,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                     .addComponent(btnGrades)
                     .addComponent(btnClassList)
                     .addComponent(btnLogout))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,12 +303,14 @@ public class FacultyMenu extends javax.swing.JPanel {
                 .addComponent(btnClassList)
                 .addGap(18, 18, 18)
                 .addComponent(btnGrades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 586, Short.MAX_VALUE)
+                .addGap(516, 516, 516)
                 .addComponent(btnLogout)
                 .addGap(37, 37, 37))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
@@ -373,42 +386,38 @@ public class FacultyMenu extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE))
+                        .addGap(370, 370, 370)
+                        .addComponent(jLabel34))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(357, 357, 357)
+                        .addComponent(btnClassSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbBlockNo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(cmbSubjCode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(370, 370, 370)
-                                .addComponent(jLabel34))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(357, 357, 357)
-                                .addComponent(btnClassSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
+                                .addComponent(jLabel35)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbSY2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbBlockNo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(cmbSubjCode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel35)
-                .addGap(18, 18, 18)
-                .addComponent(cmbSY2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel36)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1056, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,10 +444,12 @@ public class FacultyMenu extends javax.swing.JPanel {
                 .addComponent(btnClassSearch)
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setText("Student No. :");
 
@@ -677,7 +688,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmbBlockNo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtGrade))
-                                .addGap(0, 834, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel31)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -760,7 +771,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                     .addComponent(btnGradeEdit))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel5);
@@ -770,28 +781,105 @@ public class FacultyMenu extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(tabs)
-                .addContainerGap())
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabs)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jSplitPane1.setRightComponent(jPanel2);
 
+        jPanel7.setBackground(new java.awt.Color(254, 86, 86));
+        jPanel7.setLayout(null);
+
+        smallpf.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        smallpf.setForeground(new java.awt.Color(255, 255, 255));
+        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
+        jPanel7.add(smallpf);
+        smallpf.setBounds(1040, 0, 40, 30);
+
+        PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
+        jPanel7.add(PLMLogo);
+        PLMLogo.setBounds(10, 0, 30, 30);
+
+        MinimizeBTN.setBackground(new java.awt.Color(254, 86, 86));
+        MinimizeBTN.setFont(new java.awt.Font("Boldfinger", 0, 24)); // NOI18N
+        MinimizeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        MinimizeBTN.setText("-");
+        MinimizeBTN.setToolTipText("");
+        MinimizeBTN.setBorder(null);
+        MinimizeBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MinimizeBTNMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MinimizeBTNMouseExited(evt);
+            }
+        });
+        MinimizeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinimizeBTNActionPerformed(evt);
+            }
+        });
+        jPanel7.add(MinimizeBTN);
+        MinimizeBTN.setBounds(1220, 0, 30, 30);
+
+        CloseBTN.setBackground(new java.awt.Color(254, 86, 86));
+        CloseBTN.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
+        CloseBTN.setForeground(new java.awt.Color(255, 255, 255));
+        CloseBTN.setText("X");
+        CloseBTN.setBorder(null);
+        CloseBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CloseBTNMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CloseBTNMouseExited(evt);
+            }
+        });
+        CloseBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseBTNActionPerformed(evt);
+            }
+        });
+        jPanel7.add(CloseBTN);
+        CloseBTN.setBounds(1250, 0, 30, 30);
+
+        MainLBL1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        MainLBL1.setForeground(new java.awt.Color(255, 255, 255));
+        MainLBL1.setText("Enrollment System for Regular Students");
+        jPanel7.add(MainLBL1);
+        MainLBL1.setBounds(40, 0, 290, 30);
+
+        NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
+        NameTopBar.setText(" Name | Faculty");
+        jPanel7.add(NameTopBar);
+        NameTopBar.setBounds(1060, 0, 120, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 995, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1133,8 +1221,45 @@ public class FacultyMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbSY2ActionPerformed
 
+    private void MinimizeBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseEntered
+        MinimizeBTN.setBackground(new Color(203,68,68));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNMouseEntered
+
+    private void MinimizeBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseExited
+        MinimizeBTN.setBackground(new Color(254,86,86));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNMouseExited
+
+    private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
+        //minimize button event here:
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MinimizeBTNActionPerformed
+
+    private void CloseBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseEntered
+        CloseBTN.setBackground(new Color(203,68,68));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNMouseEntered
+
+    private void CloseBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseExited
+        CloseBTN.setBackground(new Color(254, 86, 86));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNMouseExited
+
+    private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
+        //exit button event here:
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CloseBTNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CloseBTN;
+    private javax.swing.JLabel MainLBL1;
+    private javax.swing.JButton MinimizeBTN;
+    private javax.swing.JLabel NameTopBar;
+    private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnClassList;
     private javax.swing.JButton btnClassSearch;
     private javax.swing.JButton btnGradeAdd;
@@ -1178,6 +1303,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
@@ -1190,6 +1316,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblStudMI;
     private javax.swing.JLabel lblStudStatus;
     private javax.swing.JLabel lblSubjDesc;
+    private javax.swing.JLabel smallpf;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblClassList;
     private javax.swing.JTable tblGrades;
