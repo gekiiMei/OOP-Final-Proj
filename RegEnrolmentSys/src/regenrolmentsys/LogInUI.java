@@ -41,8 +41,7 @@ public class LogInUI extends javax.swing.JPanel {
         mf.setUserID(UserIDField.getText());
         con = ConnectDB.connect();
         if (UserIDField.getText().isEmpty()) {
-            //TODO: error msg
-            System.out.println("whoa hold on ur input is empty buddy");
+            JOptionPane.showMessageDialog(null, "User ID cannot be empty!", "Login failed", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + UserIDField.getText() + "'").executeQuery();
@@ -100,6 +99,7 @@ public class LogInUI extends javax.swing.JPanel {
             }
         }
         UserIDField.setText("");
+        password.setText("");
     }
 
     /**
