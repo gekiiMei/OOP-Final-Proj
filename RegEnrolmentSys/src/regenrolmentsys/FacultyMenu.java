@@ -198,6 +198,15 @@ public class FacultyMenu extends javax.swing.JPanel {
                 });
     }
     
+    public void toggleSelected(int index) {
+        javax.swing.JPanel covers[] = {select1, select2}; //just fill with the cover JPanels for other menus
+        for (int i=0; i<covers.length; ++i) {
+            if (i == index) 
+                covers[i].setVisible(true);
+            else
+                covers[i].setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -210,9 +219,16 @@ public class FacultyMenu extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
+        pficon1 = new javax.swing.JLabel();
+        pficon4 = new javax.swing.JLabel();
+        pficon = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnClassList = new javax.swing.JButton();
         btnGrades = new javax.swing.JButton();
+        select2 = new javax.swing.JPanel();
+        select1 = new javax.swing.JPanel();
+        pficon5 = new javax.swing.JLabel();
+        btnBackStudentMenu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -230,6 +246,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         cmbSY2 = new javax.swing.JComboBox<>();
         jLabel36 = new javax.swing.JLabel();
         cmbSem2 = new javax.swing.JComboBox<>();
+        plmbg = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         cmbStudentNoYear2 = new javax.swing.JComboBox<>();
@@ -269,6 +286,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         btnGradeEdit = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         lblStudEmail = new javax.swing.JLabel();
+        plmbg1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         smallpf = new javax.swing.JLabel();
         PLMLogo = new javax.swing.JLabel();
@@ -278,22 +296,45 @@ public class FacultyMenu extends javax.swing.JPanel {
         NameTopBar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(230, 68, 68));
-        setToolTipText("");
         setPreferredSize(new java.awt.Dimension(1243, 720));
+        setToolTipText("");
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
 
         jPanel1.setBackground(new java.awt.Color(230, 68, 68));
+        jPanel1.setLayout(null);
 
-        btnLogout.setText("logout");
+        pficon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallpfside.png"))); // NOI18N
+        jPanel1.add(pficon1);
+        pficon1.setBounds(20, 30, 40, 40);
+
+        pficon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallgrades.png"))); // NOI18N
+        jPanel1.add(pficon4);
+        pficon4.setBounds(20, 90, 40, 60);
+
+        pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
+        jPanel1.add(pficon);
+        pficon.setBounds(20, 560, 40, 50);
+
+        btnLogout.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setText("Log-out");
+        btnLogout.setBorder(null);
+        btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
+        jPanel1.add(btnLogout);
+        btnLogout.setBounds(3, 570, 200, 28);
 
-        btnClassList.setText("class list");
+        btnClassList.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnClassList.setForeground(new java.awt.Color(255, 255, 255));
+        btnClassList.setText("Class List");
+        btnClassList.setBorder(null);
+        btnClassList.setContentAreaFilled(false);
         btnClassList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnClassListMouseClicked(evt);
@@ -304,37 +345,72 @@ public class FacultyMenu extends javax.swing.JPanel {
                 btnClassListActionPerformed(evt);
             }
         });
+        jPanel1.add(btnClassList);
+        btnClassList.setBounds(-4, 19, 210, 70);
 
-        btnGrades.setText("grades");
+        btnGrades.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnGrades.setForeground(new java.awt.Color(255, 255, 255));
+        btnGrades.setText("Grades");
+        btnGrades.setBorder(null);
+        btnGrades.setContentAreaFilled(false);
         btnGrades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGradesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnGrades);
+        btnGrades.setBounds(0, 87, 200, 70);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGrades)
-                    .addComponent(btnClassList)
-                    .addComponent(btnLogout))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        select2.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select2Layout = new javax.swing.GroupLayout(select2);
+        select2.setLayout(select2Layout);
+        select2Layout.setHorizontalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(btnClassList)
-                .addGap(18, 18, 18)
-                .addComponent(btnGrades)
-                .addGap(516, 516, 516)
-                .addComponent(btnLogout)
-                .addGap(37, 37, 37))
+        select2Layout.setVerticalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(select2);
+        select2.setBounds(0, 90, 200, 70);
+
+        select1.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select1Layout = new javax.swing.GroupLayout(select1);
+        select1.setLayout(select1Layout);
+        select1Layout.setHorizontalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select1Layout.setVerticalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select1);
+        select1.setBounds(0, 20, 200, 70);
+
+        pficon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backsmall.png"))); // NOI18N
+        jPanel1.add(pficon5);
+        pficon5.setBounds(20, 500, 40, 50);
+
+        btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
+        btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnBackStudentMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnBackStudentMenu.setText("              Back");
+        btnBackStudentMenu.setBorder(null);
+        btnBackStudentMenu.setContentAreaFilled(false);
+        btnBackStudentMenu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBackStudentMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackStudentMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBackStudentMenu);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -342,6 +418,8 @@ public class FacultyMenu extends javax.swing.JPanel {
 
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         tblClassList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -407,6 +485,8 @@ public class FacultyMenu extends javax.swing.JPanel {
 
         jLabel36.setText("Semester: ");
 
+        plmbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -446,6 +526,10 @@ public class FacultyMenu extends javax.swing.JPanel {
                                 .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1056, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addComponent(plmbg, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 28, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,7 +556,12 @@ public class FacultyMenu extends javax.swing.JPanel {
                 .addComponent(btnClassSearch)
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(plmbg, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         tabs.addTab("", jPanel4);
@@ -628,6 +717,8 @@ public class FacultyMenu extends javax.swing.JPanel {
 
         lblStudEmail.setText("----------");
 
+        plmbg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -704,7 +795,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                                 .addComponent(jLabel30)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 243, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -736,6 +827,10 @@ public class FacultyMenu extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 28, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -799,7 +894,12 @@ public class FacultyMenu extends javax.swing.JPanel {
                     .addComponent(btnGradeEdit))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         tabs.addTab("", jPanel5);
@@ -896,9 +996,9 @@ public class FacultyMenu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1309, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -923,14 +1023,16 @@ public class FacultyMenu extends javax.swing.JPanel {
 
     private void btnClassListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassListActionPerformed
         // TODO add your handling code here:
-        //COMMENTED OUT: error-inducing
+        
         tabs.setSelectedIndex(0);
+        toggleSelected(0);
         loadClassTab();
     }//GEN-LAST:event_btnClassListActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(1);
+        toggleSelected(1);
         loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
 
@@ -1296,6 +1398,11 @@ public class FacultyMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
+    private void btnBackStudentMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackStudentMenuActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("AdminHomeCard");
+    }//GEN-LAST:event_btnBackStudentMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
@@ -1303,6 +1410,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JButton MinimizeBTN;
     private javax.swing.JLabel NameTopBar;
     private javax.swing.JLabel PLMLogo;
+    private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnClassList;
     private javax.swing.JButton btnClassSearch;
     private javax.swing.JButton btnGradeAdd;
@@ -1359,6 +1467,14 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblStudMI;
     private javax.swing.JLabel lblStudStatus;
     private javax.swing.JLabel lblSubjDesc;
+    private javax.swing.JLabel pficon;
+    private javax.swing.JLabel pficon1;
+    private javax.swing.JLabel pficon4;
+    private javax.swing.JLabel pficon5;
+    private javax.swing.JLabel plmbg;
+    private javax.swing.JLabel plmbg1;
+    private javax.swing.JPanel select1;
+    private javax.swing.JPanel select2;
     private javax.swing.JLabel smallpf;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblClassList;
