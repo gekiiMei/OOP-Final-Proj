@@ -235,6 +235,13 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
+        pficon1 = new javax.swing.JLabel();
+        pficon2 = new javax.swing.JLabel();
+        pficon3 = new javax.swing.JLabel();
+        pficon4 = new javax.swing.JLabel();
+        pficon5 = new javax.swing.JLabel();
+        pficon6 = new javax.swing.JLabel();
+        pficon = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnStudents = new javax.swing.JButton();
         btnSYSem = new javax.swing.JButton();
@@ -242,6 +249,12 @@ public class AdminMenu extends javax.swing.JPanel {
         btnSchedules = new javax.swing.JButton();
         btnEmployees = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
+        select1 = new javax.swing.JPanel();
+        select2 = new javax.swing.JPanel();
+        select3 = new javax.swing.JPanel();
+        select4 = new javax.swing.JPanel();
+        select5 = new javax.swing.JPanel();
+        select6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -408,91 +421,222 @@ public class AdminMenu extends javax.swing.JPanel {
         jSplitPane1.setMaximumSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBackground(new java.awt.Color(230, 68, 68));
+        jPanel1.setLayout(null);
 
-        btnLogout.setText("logout");
+        pficon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallhistory.png"))); // NOI18N
+        jPanel1.add(pficon1);
+        pficon1.setBounds(20, 370, 40, 70);
+
+        pficon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallpfside.png"))); // NOI18N
+        jPanel1.add(pficon2);
+        pficon2.setBounds(20, 30, 40, 50);
+
+        pficon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallsy.png"))); // NOI18N
+        jPanel1.add(pficon3);
+        pficon3.setBounds(20, 90, 40, 60);
+
+        pficon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallsubjects.png"))); // NOI18N
+        jPanel1.add(pficon4);
+        pficon4.setBounds(20, 170, 40, 50);
+
+        pficon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallschedside.png"))); // NOI18N
+        jPanel1.add(pficon5);
+        pficon5.setBounds(20, 240, 40, 50);
+
+        pficon6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallemployee.png"))); // NOI18N
+        jPanel1.add(pficon6);
+        pficon6.setBounds(20, 310, 40, 60);
+
+        pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
+        jPanel1.add(pficon);
+        pficon.setBounds(30, 560, 40, 50);
+
+        btnLogout.setText("Log-out");
+        btnLogout.setBorder(null);
+        btnLogout.setContentAreaFilled(false);
+        btnLogout.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
+        jPanel1.add(btnLogout);
+        btnLogout.setBounds(0, 570, 230, 25);
 
-        btnStudents.setText("students");
+        btnStudents.setText("Students");
+        btnStudents.setBorder(null);
+        btnStudents.setContentAreaFilled(false);
+        btnStudents.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnStudents.setForeground(new java.awt.Color(255, 255, 255));
         btnStudents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStudentsActionPerformed(evt);
             }
         });
+        jPanel1.add(btnStudents);
+        btnStudents.setBounds(-4, 19, 200, 70);
 
-        btnSYSem.setText("SY and Semester");
+        btnSYSem.setText("      SY and Semester");
+        btnSYSem.setBorder(null);
+        btnSYSem.setContentAreaFilled(false);
+        btnSYSem.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        btnSYSem.setForeground(new java.awt.Color(255, 255, 255));
         btnSYSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSYSemActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSYSem);
+        btnSYSem.setBounds(-1, 87, 200, 70);
 
         btnSubjects.setText("Subjects");
+        btnSubjects.setBorder(null);
+        btnSubjects.setContentAreaFilled(false);
+        btnSubjects.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnSubjects.setForeground(new java.awt.Color(255, 255, 255));
         btnSubjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubjectsActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSubjects);
+        btnSubjects.setBounds(-5, 160, 210, 70);
 
         btnSchedules.setText("Schedules");
+        btnSchedules.setBorder(null);
+        btnSchedules.setContentAreaFilled(false);
+        btnSchedules.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnSchedules.setForeground(new java.awt.Color(255, 255, 255));
         btnSchedules.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSchedulesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSchedules);
+        btnSchedules.setBounds(-5, 233, 210, 70);
 
         btnEmployees.setText("Employees");
+        btnEmployees.setBorder(null);
+        btnEmployees.setContentAreaFilled(false);
+        btnEmployees.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnEmployees.setForeground(new java.awt.Color(255, 255, 255));
         btnEmployees.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmployeesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEmployees);
+        btnEmployees.setBounds(-5, 306, 210, 70);
 
-        btnHistory.setText("history");
+        btnHistory.setText("History");
+        btnHistory.setBorder(null);
+        btnHistory.setContentAreaFilled(false);
+        btnHistory.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnHistory.setForeground(new java.awt.Color(255, 255, 255));
         btnHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistoryActionPerformed(evt);
             }
         });
+        jPanel1.add(btnHistory);
+        btnHistory.setBounds(-5, 369, 210, 70);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHistory)
-                    .addComponent(btnEmployees)
-                    .addComponent(btnSchedules)
-                    .addComponent(btnSubjects)
-                    .addComponent(btnSYSem)
-                    .addComponent(btnStudents)
-                    .addComponent(btnLogout))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        select1.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select1Layout = new javax.swing.GroupLayout(select1);
+        select1.setLayout(select1Layout);
+        select1Layout.setHorizontalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(btnStudents)
-                .addGap(18, 18, 18)
-                .addComponent(btnSYSem)
-                .addGap(18, 18, 18)
-                .addComponent(btnSubjects)
-                .addGap(18, 18, 18)
-                .addComponent(btnSchedules)
-                .addGap(18, 18, 18)
-                .addComponent(btnEmployees)
-                .addGap(18, 18, 18)
-                .addComponent(btnHistory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
-                .addComponent(btnLogout)
-                .addGap(37, 37, 37))
+        select1Layout.setVerticalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(select1);
+        select1.setBounds(0, 20, 200, 70);
+
+        select2.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select2Layout = new javax.swing.GroupLayout(select2);
+        select2.setLayout(select2Layout);
+        select2Layout.setHorizontalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select2Layout.setVerticalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select2);
+        select2.setBounds(0, 90, 200, 70);
+
+        select3.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select3Layout = new javax.swing.GroupLayout(select3);
+        select3.setLayout(select3Layout);
+        select3Layout.setHorizontalGroup(
+            select3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select3Layout.setVerticalGroup(
+            select3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select3);
+        select3.setBounds(0, 160, 200, 70);
+
+        select4.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select4Layout = new javax.swing.GroupLayout(select4);
+        select4.setLayout(select4Layout);
+        select4Layout.setHorizontalGroup(
+            select4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select4Layout.setVerticalGroup(
+            select4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select4);
+        select4.setBounds(0, 230, 200, 70);
+
+        select5.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select5Layout = new javax.swing.GroupLayout(select5);
+        select5.setLayout(select5Layout);
+        select5Layout.setHorizontalGroup(
+            select5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select5Layout.setVerticalGroup(
+            select5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select5);
+        select5.setBounds(0, 300, 200, 70);
+
+        select6.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select6Layout = new javax.swing.GroupLayout(select6);
+        select6.setLayout(select6Layout);
+        select6Layout.setHorizontalGroup(
+            select6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select6Layout.setVerticalGroup(
+            select6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select6);
+        select6.setBounds(0, 370, 200, 70);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -1731,12 +1875,12 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel9.add(PLMLogo);
         PLMLogo.setBounds(10, 0, 30, 30);
 
+        MinimizeBTN.setText("-");
         MinimizeBTN.setBackground(new java.awt.Color(254, 86, 86));
+        MinimizeBTN.setBorder(null);
         MinimizeBTN.setFont(new java.awt.Font("Boldfinger", 0, 24)); // NOI18N
         MinimizeBTN.setForeground(new java.awt.Color(255, 255, 255));
-        MinimizeBTN.setText("-");
         MinimizeBTN.setToolTipText("");
-        MinimizeBTN.setBorder(null);
         MinimizeBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MinimizeBTNMouseEntered(evt);
@@ -2725,10 +2869,23 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblSem;
     private javax.swing.JLabel lblStuEmail;
     private javax.swing.JLabel lblSubjDesc;
+    private javax.swing.JLabel pficon;
+    private javax.swing.JLabel pficon1;
+    private javax.swing.JLabel pficon2;
+    private javax.swing.JLabel pficon3;
+    private javax.swing.JLabel pficon4;
+    private javax.swing.JLabel pficon5;
+    private javax.swing.JLabel pficon6;
     private javax.swing.JRadioButton rbF2F;
     private javax.swing.JRadioButton rbOnline;
     private javax.swing.JRadioButton rbSY;
     private javax.swing.JRadioButton rbSem;
+    private javax.swing.JPanel select1;
+    private javax.swing.JPanel select2;
+    private javax.swing.JPanel select3;
+    private javax.swing.JPanel select4;
+    private javax.swing.JPanel select5;
+    private javax.swing.JPanel select6;
     private javax.swing.JLabel smallpf;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblEmployees;
