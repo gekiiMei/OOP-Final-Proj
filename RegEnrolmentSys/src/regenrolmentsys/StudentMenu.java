@@ -107,11 +107,8 @@ public class StudentMenu extends javax.swing.JPanel {
                             rs = ps.executeQuery();
                             System.out.println(subjectCodesIN);
                             tblSchedule.setModel(TableUtil.resultSetToTableModel(rs));
-                            
-                            tblSchedule.getTableHeader().setBackground(new Color(255,81,212));
-                            tblSchedule.getTableHeader().setFont(new Font("Poppins", Font.BOLD,12));
-                            tblSchedule.getTableHeader().setOpaque(false);
-                            tblSchedule.getTableHeader().setForeground(new Color(0,0,0,300));
+                            TableUtil.styleTable(tblSchedule);
+                            TableUtil.resizeColumnWidth(tblSchedule);
                     }
                     }          
         }
@@ -151,6 +148,8 @@ public class StudentMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 rs = ps.executeQuery();
                 tblGradesTable.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.styleTable(tblGradesTable);
+                TableUtil.resizeColumnWidth(tblGradesTable);
             }
             else {
                 gradesTableEmpty();
@@ -364,7 +363,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(-1, 570, 200, 28);
+        btnLogout.setBounds(-1, 570, 200, 24);
 
         btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
         btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -379,7 +378,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnBackStudentMenu);
-        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 24);
 
         pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
         jPanel1.add(pficon);
@@ -552,7 +551,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel3.setText("SCHEDULE");
         jPanel5.add(jLabel3);
-        jLabel3.setBounds(50, 30, 140, 37);
+        jLabel3.setBounds(50, 30, 140, 32);
 
         tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -820,11 +819,8 @@ public class StudentMenu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1279, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1022,6 +1018,8 @@ public class StudentMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 rs = ps.executeQuery();
                 tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+                TableUtil.styleTable(tblEnrolSchedule);
+                TableUtil.resizeColumnWidth(tblEnrolSchedule);
             } else {
                 JOptionPane.showMessageDialog(this, "No viable schedules found!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                 return;
