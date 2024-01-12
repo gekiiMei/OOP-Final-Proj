@@ -76,6 +76,6 @@ public class TableUtil {
         table.getTableHeader().setBackground(new Color(255,81,212));
         table.getTableHeader().setFont(new Font("Poppins", Font.BOLD,12));
         table.getTableHeader().setOpaque(false);
-        table.getTableHeader().setForeground(new Color(0,0,0,300));
+        table.getTableHeader().setForeground(new Color(0,0,0,255));
     }
 }
