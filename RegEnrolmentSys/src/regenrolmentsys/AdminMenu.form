@@ -1172,7 +1172,7 @@
                                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="lblCollegeDesc" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="610" max="32767" attributes="0"/>
+                                              <EmptySpace pref="605" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
@@ -1201,13 +1201,15 @@
                                                                   <Component id="txtCurriculum" alignment="0" pref="80" max="32767" attributes="0"/>
                                                                   <Component id="txtUnits" alignment="0" max="32767" attributes="0"/>
                                                               </Group>
-                                                              <EmptySpace min="-2" pref="493" max="-2" attributes="0"/>
+                                                              <EmptySpace max="32767" attributes="0"/>
+                                                              <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="cmbSem2" min="-2" pref="93" max="-2" attributes="0"/>
                                                           <Component id="checkSubjStatus" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="chkGradesEncoding" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -1274,6 +1276,8 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCurriculum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkGradesEncoding" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1289,7 +1293,7 @@
                                   <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCourseDesc" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="34" max="32767" attributes="0"/>
+                              <EmptySpace pref="58" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="btnEditSubj" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1518,6 +1522,19 @@
                           <Image iconType="3" name="/assets/plm.png"/>
                         </Property>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel52">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Encoding of Grades:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="chkGradesEncoding">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Active"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkGradesEncodingMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
