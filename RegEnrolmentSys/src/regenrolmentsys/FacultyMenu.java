@@ -1157,9 +1157,15 @@ public class FacultyMenu extends javax.swing.JPanel {
                         ps.execute();
                         loadGradesTable();
                         
-                        ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
-                        + "SET status = 'Finished' "
-                        + "WHERE SY = ? AND semester = ? AND student_No = ? AND subject_code = ? AND block_no = ?");
+                        if (Double.parseDouble(txtGrade.getText()) > 3.00) {
+                            ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
+                            + "SET status = 'Failed' "
+                            + "WHERE SY = ? AND semester = ? AND student_No = ? AND subject_code = ? AND block_no = ?");
+                        } else {
+                            ps = con.prepareStatement("UPDATE finals.ENROLLED_SUBJECT "
+                            + "SET status = 'Finished' "
+                            + "WHERE SY = ? AND semester = ? AND student_No = ? AND subject_code = ? AND block_no = ?");
+                        }
                         
                         ps.setString(1, cmbSY.getSelectedItem().toString());
                         ps.setString(2, cmbSem.getSelectedItem().toString());
