@@ -364,7 +364,7 @@ public class StudentHome extends javax.swing.JPanel {
 
     private void BTNLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogoutActionPerformed
         // TODO add your handling code here:
-        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION, 2, new ImageIcon("assets\\question.png"));  
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);  
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
