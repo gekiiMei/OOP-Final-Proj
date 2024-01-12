@@ -198,6 +198,15 @@ public class FacultyMenu extends javax.swing.JPanel {
                 });
     }
     
+    public void toggleSelected(int index) {
+        javax.swing.JPanel covers[] = {select1, select2}; //just fill with the cover JPanels for other menus
+        for (int i=0; i<covers.length; ++i) {
+            if (i == index) 
+                covers[i].setVisible(true);
+            else
+                covers[i].setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -990,12 +999,14 @@ public class FacultyMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         tabs.setSelectedIndex(0);
+        toggleSelected(0);
         loadClassTab();
     }//GEN-LAST:event_btnClassListActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(1);
+        toggleSelected(1);
         loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
 
