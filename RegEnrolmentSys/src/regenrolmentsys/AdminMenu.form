@@ -803,6 +803,9 @@
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtStudentNo">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStudentNoKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel11">
                       <Properties>
@@ -900,6 +903,7 @@
                     <Component class="javax.swing.JTextField" name="txtStuMidInitial">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStuMidInitialActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStuMidInitialKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblStuEmail">
@@ -908,6 +912,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtStuPhone">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStuPhoneKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnStudSearchName">
                       <Properties>
@@ -1073,8 +1080,14 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtSY">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSYKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtSem">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSemKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnAddSYSem">
                       <Properties>
@@ -1343,6 +1356,7 @@
                     <Component class="javax.swing.JTextField" name="txtUnits">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUnitsActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUnitsKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel21">
@@ -2264,6 +2278,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmpID">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmpIDKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel42">
                       <Properties>
@@ -2332,6 +2349,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmpCellNo">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmpCellNoKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel48">
                       <Properties>

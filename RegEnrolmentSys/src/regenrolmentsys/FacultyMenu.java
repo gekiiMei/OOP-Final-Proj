@@ -65,7 +65,8 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
             
             //load subject code combobox
-            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT ORDER BY subject_code").executeQuery();
+            rs = con.prepareStatement("SELECT * FROM finals.vwFaculty_Subject "
+                    + "WHERE faculty_id = '" + this.currentUser + "'").executeQuery();
             while (rs.next()) {
                 cmbSubjCode2.addItem(rs.getString("subject_code"));
             }
@@ -93,9 +94,11 @@ public class FacultyMenu extends javax.swing.JPanel {
     private void loadClassTable(){
         con = ConnectDB.connect();
         try {
-            rs = con.prepareStatement("SELECT * FROM finals.VWCLASSLIST").executeQuery(); 
+            ps = con.prepareStatement("SELECT SY, SEMESTER, \"STUDENT NO\",  \"LAST NAME\", \"FIRST NAME\", MI, \"SUBJECT CODE\", \"BLOCK NO\" FROM finals.vwFaculty_ClassList "
+                    + "WHERE FACULTY_ID = '" + this.currentUser + "'"); 
+            rs = ps.executeQuery();
             if (rs.next()) {
-                rs = con.prepareStatement("SELECT * FROM finals.VWCLASSLIST").executeQuery(); 
+                rs = ps.executeQuery();
                 tblClassList.setModel(TableUtil.resultSetToTableModel(rs));
                 TableUtil.resizeColumnWidth(tblClassList);
             }
@@ -136,7 +139,8 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
             
             //load subject code combobox
-            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT ORDER BY subject_code").executeQuery();
+            rs = con.prepareStatement("SELECT * FROM finals.vwFaculty_Subject "
+                    + "WHERE faculty_id = '" + this.currentUser + "'").executeQuery();
             while (rs.next()) {
                 cmbSubjCode.addItem(rs.getString("subject_code"));
             }
@@ -165,9 +169,11 @@ public class FacultyMenu extends javax.swing.JPanel {
     private void loadGradesTable() {
         con = ConnectDB.connect();
         try {
-            rs = con.prepareStatement("SELECT * FROM finals.GRADE").executeQuery(); 
+            ps = con.prepareStatement("SELECT SY, SEMESTER, \"STUDENT NO\", \"SUBJECT CODE\", \"BLOCK NO\", GRADE FROM finals.vwFaculty_GradesList "
+                    + "WHERE FACULTY_ID = '" + this.currentUser + "'"); 
+            rs = ps.executeQuery();
             if (rs.next()) {
-                rs = con.prepareStatement("SELECT * FROM finals.GRADE").executeQuery(); 
+                rs = ps.executeQuery();
                 tblGrades.setModel(TableUtil.resultSetToTableModel(rs));
                 TableUtil.resizeColumnWidth(tblGrades);
             }
@@ -296,8 +302,8 @@ public class FacultyMenu extends javax.swing.JPanel {
         NameTopBar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(230, 68, 68));
-        setPreferredSize(new java.awt.Dimension(1243, 720));
         setToolTipText("");
+        setPreferredSize(new java.awt.Dimension(1243, 720));
 
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
@@ -328,7 +334,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(3, 570, 200, 28);
+        btnLogout.setBounds(3, 570, 200, 24);
 
         btnClassList.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnClassList.setForeground(new java.awt.Color(255, 255, 255));
@@ -410,7 +416,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnBackStudentMenu);
-        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 24);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -579,6 +585,15 @@ public class FacultyMenu extends javax.swing.JPanel {
 
         jLabel14.setText("-");
 
+        txtStudentNo2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtStudentNo2KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStudentNo2KeyTyped(evt);
+            }
+        });
+
         btnGradeStudSearch.setText("Search");
         btnGradeStudSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -676,15 +691,30 @@ public class FacultyMenu extends javax.swing.JPanel {
 
         tblGrades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No grade records found"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblGrades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblGradesMouseClicked(evt);
@@ -1109,7 +1139,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         if (!cmbSubjCodeLoaded)
             return;
         try {
-            rs = con.prepareStatement("SELECT description FROM finals.SUBJECT WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+            rs = con.prepareStatement("SELECT description FROM finals.SUBJECT WHERE subject_code = '" + cmbSubjCode2.getSelectedItem().toString() + "'").executeQuery();
             if (rs.next())
                 txtSubjDesc.setText(rs.getString("description"));
         } catch (Exception e) {
@@ -1282,11 +1312,14 @@ public class FacultyMenu extends javax.swing.JPanel {
     private void btnClassSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassSearchActionPerformed
         con = ConnectDB.connect();
         try {
-            ps = con.prepareStatement ("SELECT * FROM finals.vwCLASSLIST WHERE "
-                    + "SY = '" + cmbSY2.getSelectedItem().toString() + "' AND "
-                    + "SEMESTER = '" + cmbSem2.getSelectedItem().toString() + "' AND "
-                    + "\"SUBJECT CODE\" = '" + cmbSubjCode2.getSelectedItem().toString() + "' AND "
-                    + "\"BLOCK NO\" = '" + cmbBlockNo2.getSelectedItem().toString() + "'");
+            ps = con.prepareStatement("SELECT * FROM finals.vwFaculty_ClassList "
+                    + "WHERE SY = ? AND SEMESTER = ? AND \"SUBJECT CODE\" = ? AND \"BLOCK NO\" = ? AND FACULTY_ID = ? "
+                    + "ORDER BY \"LAST NAME\"");
+            ps.setString(1, cmbSY2.getSelectedItem().toString());
+            ps.setString(2, cmbSem2.getSelectedItem().toString());
+            ps.setString(3, cmbSubjCode2.getSelectedItem().toString());
+            ps.setString(4, cmbBlockNo2.getSelectedItem().toString());
+            ps.setString(5, currentUser);
             rs = ps.executeQuery();
             if (rs.next()) {
                 rs = ps.executeQuery();
@@ -1408,6 +1441,26 @@ public class FacultyMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("AdminHomeCard");
     }//GEN-LAST:event_btnBackStudentMenuActionPerformed
+
+    private void txtStudentNo2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStudentNo2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStudentNo2KeyPressed
+
+    private void txtStudentNo2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStudentNo2KeyTyped
+        // TODO add your handling code here:
+        if (Character.isLetter(evt.getKeyChar()))
+            evt.consume();
+        else {
+            try {
+                Integer.parseInt(txtStudentNo2.getText()+evt.getKeyChar());
+            } catch (NumberFormatException e) {
+                evt.consume();
+            }
+        }
+        
+        if (txtStudentNo2.getText().length() >= 5 )
+            evt.consume(); 
+    }//GEN-LAST:event_txtStudentNo2KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
