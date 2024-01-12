@@ -20,7 +20,6 @@ public class MainApp {
         MainFrame mf = new MainFrame();
         mf.setLocationRelativeTo(null);
         mf.setVisible(true);
-        //mf.setIconImage(); change icon in taskbar
         mf.setIconImage(Toolkit.getDefaultToolkit().getImage(mf.getClass().getResource("/assets/plmsealicon.png")));
         ConnectDB.connect();
     }
