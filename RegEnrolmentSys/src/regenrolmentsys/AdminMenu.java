@@ -9,6 +9,8 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 /**
  *
  * @author harley
@@ -40,6 +42,25 @@ public class AdminMenu extends javax.swing.JPanel {
     
     public javax.swing.JTable getStudentTable() {
         return tblHistory;
+    }
+    
+    private void logAction(String action) {
+        con = ConnectDB.connect();
+        LocalTime localCurrTime = LocalTime.now();
+        LocalDate localCurrDate = LocalDate.now();
+        Time currTime = Time.valueOf(localCurrTime);
+        Date currDate = Date.valueOf(localCurrDate);
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, currentUser);
+            ps.setString(2, action);
+            ps.setString(3, "Admin");
+            ps.setDate(4, currDate);
+            ps.setTime(5, currTime);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     public void loadStudentsTab() {
@@ -1991,17 +2012,26 @@ public class AdminMenu extends javax.swing.JPanel {
 
         tblHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "History log is empty"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblHistory.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(tblHistory);
+        tblHistory.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (tblHistory.getColumnModel().getColumnCount() > 0) {
+            tblHistory.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         plmbg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
@@ -2838,13 +2868,21 @@ public class AdminMenu extends javax.swing.JPanel {
     private void btnStudSearchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudSearchNameActionPerformed
         // TODO add your handling code here:
         con = ConnectDB.connect();
+        String query = "";
+        if (!txtStuFirstName.getText().isEmpty() && !txtStuLastName.getText().isEmpty()) {
+            query = "SELECT * FROM finals.STUDENT WHERE first_name LIKE '%"+txtStuFirstName.getText()+"%' AND last_name LIKE '%"+txtStuLastName.getText()+"%'";
+        } else if (!txtStuFirstName.getText().isEmpty()) {
+            query = "SELECT * FROM finals.STUDENT WHERE first_name LIKE '%"+txtStuFirstName.getText()+"%'";
+        } else if (!txtStuLastName.getText().isEmpty()) {
+            query = "SELECT * FROM finals.STUDENT WHERE last_name LIKE '%"+txtStuLastName.getText()+"%'";
+        } else {
+            loadStudentTable();
+        }
         try {
-            ps = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE first_name LIKE ? OR last_name LIKE ?");
-            ps.setString(1, "%" + txtStuFirstName.getText() + "%");
-            ps.setString(2, "%" + txtStuLastName.getText() + "%");
-            rs = ps.executeQuery();
+            System.out.println(query);
+            rs = con.prepareStatement(query).executeQuery();
             if (rs.next()) {
-                rs = ps.executeQuery();
+                rs = con.prepareStatement(query).executeQuery();
                 tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
             } else {
                 loadStudentTable();
