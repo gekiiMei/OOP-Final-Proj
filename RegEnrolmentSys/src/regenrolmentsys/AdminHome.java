@@ -6,12 +6,15 @@ package regenrolmentsys;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
  * @author harley
  */
 public class AdminHome extends javax.swing.JPanel {
+    private Connection con = null;
+    private ResultSet rs = null;
     private MainFrame mf = null;
     private FacultyMenu fm = null;
     private String currentUser = "";
@@ -27,6 +30,19 @@ public class AdminHome extends javax.swing.JPanel {
     
     public void setUserID(String userID) {
         this.currentUser = userID;
+        lblTempID1.setText("Current ID: " + userID);
+    }
+    
+    public void setUserName(){
+        con = ConnectDB.connect();
+        try{
+            rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id ='"+currentUser+"'").executeQuery();
+            if (rs.next())
+                lblUserName1.setText(rs.getString("first_name"));
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**

@@ -69,6 +69,8 @@ public class LogInUI extends javax.swing.JPanel {
                     if (rs.next()){
                         rs = con.prepareStatement("SELECT * FROM finals.PASSWORD WHERE user_id = '" + UserIDField.getText() + "' AND password = '" + String.valueOf(password.getPassword()) + "'").executeQuery();
                         if (rs.next()) {
+                            ah.setUserID(UserIDField.getText());
+                            ah.setUserName();
                             mf.switchCard("AdminHomeCard");
                             lblErrorID1.setVisible(false);
                             lblWrongPassword.setVisible(false);
