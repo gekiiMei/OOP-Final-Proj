@@ -291,7 +291,7 @@
             <Container class="javax.swing.JPanel" name="select4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="44" green="44" red="e6" type="rgb"/>
+                  <Color blue="34" green="34" red="b3" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -316,7 +316,7 @@
             <Container class="javax.swing.JPanel" name="select3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="44" green="44" red="e6" type="rgb"/>
+                  <Color blue="34" green="34" red="b3" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -341,7 +341,7 @@
             <Container class="javax.swing.JPanel" name="select2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="44" green="44" red="e6" type="rgb"/>
+                  <Color blue="34" green="34" red="b3" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -366,7 +366,7 @@
             <Container class="javax.swing.JPanel" name="select1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="44" green="44" red="e6" type="rgb"/>
+                  <Color blue="34" green="34" red="b3" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -559,7 +559,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="870" y="500" width="132" height="-1"/>
+                          <AbsoluteConstraints x="710" y="510" width="132" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -670,10 +670,9 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane1" min="-2" pref="968" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -685,8 +684,9 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnGradeSearch" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jScrollPane1" alignment="0" min="-2" pref="857" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -708,9 +708,9 @@
                                   <Component id="cmbGradeSem" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnGradeSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="508" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="101" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -940,14 +940,14 @@
                     <Container class="javax.swing.JPanel" name="jPanel8">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="30" y="10" width="990" height="340"/>
+                          <AbsoluteConstraints x="30" y="10" width="820" height="340"/>
                         </Constraint>
                       </Constraints>
 
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="990" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="820" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">

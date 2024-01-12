@@ -2605,8 +2605,7 @@ public class AdminMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_MinimizeBTNMouseExited
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-        //minimize button event here:
-
+        mf.minimize();
         // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
 
@@ -2621,7 +2620,7 @@ public class AdminMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_CloseBTNMouseExited
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-        //exit button event here:
+       mf.close();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
