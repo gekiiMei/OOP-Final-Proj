@@ -189,7 +189,6 @@ public class AdminHome extends javax.swing.JPanel {
 
         BTNClasslist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.png"))); // NOI18N
         BTNClasslist.setText("Class List");
-        BTNClasslist.setToolTipText("");
         BTNClasslist.setBorderPainted(false);
         BTNClasslist.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
         BTNClasslist.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -200,6 +199,7 @@ public class AdminHome extends javax.swing.JPanel {
         BTNClasslist.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         BTNClasslist.setkHoverStartColor(new java.awt.Color(51, 102, 0));
         BTNClasslist.setkStartColor(new java.awt.Color(0, 102, 0));
+        BTNClasslist.setToolTipText("");
         BTNClasslist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTNClasslistActionPerformed(evt);
@@ -275,26 +275,26 @@ public class AdminHome extends javax.swing.JPanel {
         jPanel1.add(Welcome1);
         Welcome1.setBounds(690, 130, 470, 90);
 
-        lblUserName1.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
-        lblUserName1.setForeground(new java.awt.Color(255, 255, 255));
         lblUserName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUserName1.setText("name");
+        lblUserName1.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        lblUserName1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(lblUserName1);
-        lblUserName1.setBounds(840, 210, 180, 70);
+        lblUserName1.setBounds(730, 210, 390, 70);
 
-        Faculty.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
-        Faculty.setForeground(new java.awt.Color(255, 255, 255));
         Faculty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Faculty.setText("faculty");
+        Faculty.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        Faculty.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(Faculty);
-        Faculty.setBounds(870, 250, 120, 60);
+        Faculty.setBounds(860, 250, 120, 60);
 
-        lblTempID1.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
-        lblTempID1.setForeground(new java.awt.Color(255, 255, 255));
         lblTempID1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempID1.setText("current ID: ");
+        lblTempID1.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        lblTempID1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(lblTempID1);
-        lblTempID1.setBounds(750, 290, 370, 50);
+        lblTempID1.setBounds(740, 290, 370, 50);
 
         shadow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/SHADOW.png"))); // NOI18N
         jPanel1.add(shadow1);
@@ -317,12 +317,12 @@ public class AdminHome extends javax.swing.JPanel {
         jPanel6.add(PLMLogo);
         PLMLogo.setBounds(10, 0, 30, 30);
 
+        MinimizeBTN.setText("-");
         MinimizeBTN.setBackground(new java.awt.Color(254, 86, 86));
+        MinimizeBTN.setBorder(null);
         MinimizeBTN.setFont(new java.awt.Font("Boldfinger", 0, 24)); // NOI18N
         MinimizeBTN.setForeground(new java.awt.Color(255, 255, 255));
-        MinimizeBTN.setText("-");
         MinimizeBTN.setToolTipText("");
-        MinimizeBTN.setBorder(null);
         MinimizeBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MinimizeBTNMouseEntered(evt);
@@ -339,11 +339,11 @@ public class AdminHome extends javax.swing.JPanel {
         jPanel6.add(MinimizeBTN);
         MinimizeBTN.setBounds(1220, 0, 30, 30);
 
+        CloseBTN.setText("X");
         CloseBTN.setBackground(new java.awt.Color(254, 86, 86));
+        CloseBTN.setBorder(null);
         CloseBTN.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
         CloseBTN.setForeground(new java.awt.Color(255, 255, 255));
-        CloseBTN.setText("X");
-        CloseBTN.setBorder(null);
         CloseBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CloseBTNMouseEntered(evt);
