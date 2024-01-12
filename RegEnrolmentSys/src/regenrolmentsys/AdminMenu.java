@@ -19,7 +19,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
-    private boolean cmbStuCourseLoaded = false, cmbStuCourseLoaded2 = false, cmbCollegeLoaded = false;
+    private boolean cmbStuCourseLoaded = false, cmbStuCourseLoaded2 = false, cmbCollegeLoaded = false, cmbSubjCodeLoaded = false, cmbFacultyLoaded = false;
     /**
      * Creates new form AdminMenu
      */
@@ -161,10 +161,10 @@ public class AdminMenu extends javax.swing.JPanel {
             }
             
             rs = con.prepareStatement("SELECT description FROM finals.COURSE WHERE course_code = '" + cmbCourseCode.getSelectedItem().toString() + "'").executeQuery();
-            if (rs.next())
+            if (rs.next()) {
                 lblCourseDesc.setText(rs.getString("description"));
-            cmbStuCourseLoaded2 = true;
-            
+                cmbStuCourseLoaded2 = true;
+            }
             loadSubjectTable();
             
         } catch (Exception e) {
@@ -196,6 +196,69 @@ public class AdminMenu extends javax.swing.JPanel {
                         return false;
                     }
                 });
+    }
+    
+    private void loadSchedulesTab() {
+        con = ConnectDB.connect();
+        try {
+            
+            rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+            while (rs.next()) {
+                cmbSchedSY.addItem(rs.getString("SY"));
+            }
+            
+            rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+            while (rs.next()) {
+                cmbSchedSem.addItem(rs.getString("Semester"));
+            }
+            
+            rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO").executeQuery();
+            while (rs.next()) {
+                cmbBlockNo.addItem(rs.getString("block_no"));
+            }
+            
+            rs = con.prepareStatement("SELECT subject_code FROM finals.SUBJECT").executeQuery();
+            while (rs.next()) {
+                cmbSubjCode.addItem(rs.getString("subject_code"));
+            }
+            
+            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next()) {
+                lblSubjDesc.setText(rs.getString("subj_desc"));
+                lblCollegeCodeSched.setText(rs.getString("college_code"));
+                lblCollegeDescSched.setText(rs.getString("college_desc"));
+                lblCourseCodeSched.setText(rs.getString("course_code"));
+                lblCourseDescSched.setText(rs.getString("course_desc"));
+                cmbSubjCodeLoaded = true;
+            }
+            
+            rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE").executeQuery();
+            while (rs.next()) {
+                cmbFacultyID.addItem(rs.getString("employee_id"));
+            }
+            
+            rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + cmbFacultyID.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next()) {
+                lblFacultyName.setText(rs.getString("first_name")+" "+rs.getString("last_name"));
+                cmbFacultyLoaded = true;
+            }
+            loadScheduleTable();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    private void loadScheduleTable(){
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT_SCHEDULE").executeQuery();
+            while (rs.next()) {
+                tblSched.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblSched);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     private void loadEmployeesTab() {
@@ -338,14 +401,12 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel33 = new javax.swing.JLabel();
         cmbDay = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
-        timeSchedTImeStart = new com.github.lgooddatepicker.components.TimePicker();
         jLabel35 = new javax.swing.JLabel();
         txtRoom = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         rbOnline = new javax.swing.JRadioButton();
         rbF2F = new javax.swing.JRadioButton();
         jLabel37 = new javax.swing.JLabel();
-        txtSeqNo = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         cmbFacultyID = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
@@ -356,12 +417,12 @@ public class AdminMenu extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         tblSched = new javax.swing.JTable();
         lblCollegeCodeSched = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        timeSchedTImeEnd = new com.github.lgooddatepicker.components.TimePicker();
         jLabel53 = new javax.swing.JLabel();
         lblCourseCodeSched = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         lblCourseDescSched = new javax.swing.JLabel();
+        cmbSequenceNo = new javax.swing.JComboBox<>();
+        txtTime = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -1169,13 +1230,19 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jLabel31.setText("Subject Code:");
 
+        cmbSubjCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSubjCodeActionPerformed(evt);
+            }
+        });
+
         jLabel32.setText("-");
 
         lblSubjDesc.setText("Subject Description");
 
         jLabel33.setText("Day:");
 
-        cmbDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN" }));
+        cmbDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "T", "W", "Th", "F", "S" }));
 
         jLabel34.setText("Time:");
 
@@ -1191,10 +1258,21 @@ public class AdminMenu extends javax.swing.JPanel {
         });
 
         rbF2F.setText("F2F");
+        rbF2F.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbF2FActionPerformed(evt);
+            }
+        });
 
         jLabel37.setText("Sequence No:");
 
         jLabel38.setText("Faculty ID:");
+
+        cmbFacultyID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultyIDActionPerformed(evt);
+            }
+        });
 
         jLabel39.setText("Faculty Name:");
 
@@ -1229,7 +1307,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 {null}
             },
             new String [] {
-                "No schedule records found"
+                "No existing schedule records found"
             }
         ) {
             Class[] types = new Class [] {
@@ -1240,11 +1318,14 @@ public class AdminMenu extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        tblSched.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSchedMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(tblSched);
 
         lblCollegeCodeSched.setText("College Code");
-
-        jLabel52.setText("-");
 
         jLabel53.setText("Course:");
 
@@ -1253,6 +1334,8 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel54.setText("-");
 
         lblCourseDescSched.setText("Course Description");
+
+        cmbSequenceNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", " " }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1269,28 +1352,22 @@ public class AdminMenu extends javax.swing.JPanel {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                                                .addComponent(jLabel37)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtSeqNo))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                                                .addComponent(jLabel33)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel34)))
+                                        .addComponent(jLabel33)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(timeSchedTImeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel34)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel52)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(timeSchedTImeEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                                         .addComponent(jLabel30)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel37)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmbSequenceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(jLabel53)
@@ -1402,9 +1479,7 @@ public class AdminMenu extends javax.swing.JPanel {
                             .addComponent(jLabel33)
                             .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel34)
-                            .addComponent(timeSchedTImeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel52)
-                            .addComponent(timeSchedTImeEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
@@ -1429,7 +1504,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
-                    .addComponent(txtSeqNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbSequenceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1839,6 +1914,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private void btnSchedulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedulesActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(3);
+        loadSchedulesTab();
     }//GEN-LAST:event_btnSchedulesActionPerformed
 
     private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
@@ -2214,18 +2290,113 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void rbOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOnlineActionPerformed
         // TODO add your handling code here:
+        rbF2F.setSelected(false);
     }//GEN-LAST:event_rbOnlineActionPerformed
 
     private void btnAddSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSchedActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        String college_code = "";
+        
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+            while (rs.next())
+                college_code = rs.getString("college_code");
+            
+            ps = con.prepareStatement("INSERT INTO finals.SUBJECT_SCHEDULE VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, cmbSchedSY.getSelectedItem().toString());
+            ps.setString(2, cmbSchedSem.getSelectedItem().toString());
+            ps.setString(3, college_code);
+            ps.setString(4, cmbBlockNo.getSelectedItem().toString());
+            ps.setString(5, cmbSubjCode.getSelectedItem().toString());
+            ps.setString(6, cmbDay.getSelectedItem().toString());
+            ps.setString(7, txtTime.getText().toString());
+            ps.setString(8, txtRoom.getText().toString());
+            if (rbOnline.isSelected())
+                ps.setString(9, "OL");
+            else 
+                ps.setString(9, "F2F");
+            ps.setString(10, cmbSequenceNo.getSelectedItem().toString());
+            ps.setString(11, cmbFacultyID.getSelectedItem().toString());
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Added record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
+            loadScheduleTable();   
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnAddSchedActionPerformed
 
     private void btnEditSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSchedActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        String college_code = "";
+        
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+            while (rs.next())
+                college_code = rs.getString("college_code");
+            
+            ps = con.prepareStatement("UPDATE finals.SUBJECT_SCHEDULE "
+                    + "SET day = ?, time = ?, room = ?, type = ?, faculty_id = ? "
+                    + "WHERE sy = ? AND semester = ? AND college_code = ? AND block_no = ? AND subject_code = ? AND sequence_no = ?");
+            ps.setString(6, cmbSchedSY.getSelectedItem().toString());
+            ps.setString(7, cmbSchedSem.getSelectedItem().toString());
+            ps.setString(8, college_code);
+            ps.setString(9, cmbBlockNo.getSelectedItem().toString());
+            ps.setString(10, cmbSubjCode.getSelectedItem().toString());
+            ps.setString(1, cmbDay.getSelectedItem().toString());
+            ps.setString(2, txtTime.getText().toString());
+            ps.setString(3, txtRoom.getText().toString());
+            if (rbOnline.isSelected())
+                ps.setString(4, "OL");
+            else 
+                ps.setString(4, "F2F");
+            ps.setString(11, cmbSequenceNo.getSelectedItem().toString());
+            ps.setString(5, cmbFacultyID.getSelectedItem().toString());
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Updated record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Cannot update", "ERROR", JOptionPane.ERROR_MESSAGE);
+            loadScheduleTable();   
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnEditSchedActionPerformed
 
     private void btnDeleteSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSchedActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        String college_code = "";
+        
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+            while (rs.next())
+                college_code = rs.getString("college_code");
+            
+            ps = con.prepareStatement("DELETE FROM finals.SUBJECT_SCHEDULE "
+                    + "WHERE sy = ? AND semester = ? AND college_code = ? AND block_no = ? AND subject_code = ? AND sequence_no = ?");
+            ps.setString(1, cmbSchedSY.getSelectedItem().toString());
+            ps.setString(2, cmbSchedSem.getSelectedItem().toString());
+            ps.setString(3, college_code);
+            ps.setString(4, cmbBlockNo.getSelectedItem().toString());
+            ps.setString(5, cmbSubjCode.getSelectedItem().toString());
+            ps.setString(6, cmbSequenceNo.getSelectedItem().toString());
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Cannot delete", "ERROR", JOptionPane.ERROR_MESSAGE);
+            loadScheduleTable();   
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnDeleteSchedActionPerformed
 
     private void btnSearchEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEmpIDActionPerformed
@@ -2593,6 +2764,68 @@ public class AdminMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblEmployeesMouseClicked
 
+    private void cmbSubjCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubjCodeActionPerformed
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        if (!cmbSubjCodeLoaded)
+            return;
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next()) {
+                lblSubjDesc.setText(rs.getString("subj_desc"));
+                lblCollegeCodeSched.setText(rs.getString("college_code"));
+                lblCollegeDescSched.setText(rs.getString("college_desc"));
+                lblCourseCodeSched.setText(rs.getString("course_code"));
+                lblCourseDescSched.setText(rs.getString("course_desc"));
+                cmbSubjCodeLoaded = true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_cmbSubjCodeActionPerformed
+
+    private void cmbFacultyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultyIDActionPerformed
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        if (!cmbFacultyLoaded)
+            return;
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = '" + cmbFacultyID.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next()) 
+                lblFacultyName.setText(rs.getString("first_name")+" "+rs.getString("last_name"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_cmbFacultyIDActionPerformed
+
+    private void tblSchedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSchedMouseClicked
+        // TODO add your handling code here:
+        int intRow = tblSched.getSelectedRow();
+        
+        cmbSchedSY.setSelectedItem(tblSched.getValueAt(intRow, 0).toString());
+        cmbSchedSem.setSelectedItem(tblSched.getValueAt(intRow, 1).toString());
+        lblCollegeCodeSched.setText(tblSched.getValueAt(intRow, 2).toString());
+        cmbBlockNo.setSelectedItem(tblSched.getValueAt(intRow, 3).toString());
+        cmbSubjCode.setSelectedItem(tblSched.getValueAt(intRow, 4).toString());
+        cmbDay.setSelectedItem(tblSched.getValueAt(intRow, 5).toString());
+        txtTime.setText(tblSched.getValueAt(intRow, 6).toString());
+        txtRoom.setText(tblSched.getValueAt(intRow, 7).toString());
+        if(tblSched.getValueAt(intRow, 8).toString().equals("OL")) {
+            rbOnline.setSelected(true);
+            rbF2F.setSelected(false);
+        } else {
+            rbOnline.setSelected(false);
+            rbF2F.setSelected(true);
+        }
+        cmbSequenceNo.setSelectedItem(tblSched.getValueAt(intRow, 9).toString());
+        cmbFacultyID.setSelectedItem(tblSched.getValueAt(intRow, 10).toString());
+    }//GEN-LAST:event_tblSchedMouseClicked
+
+    private void rbF2FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbF2FActionPerformed
+        // TODO add your handling code here:
+        rbOnline.setSelected(false);
+    }//GEN-LAST:event_rbF2FActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
     private javax.swing.JLabel MainLBL1;
@@ -2638,6 +2871,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbSchedSY;
     private javax.swing.JComboBox<String> cmbSchedSem;
     private javax.swing.JComboBox<String> cmbSem2;
+    private javax.swing.JComboBox<String> cmbSequenceNo;
     private javax.swing.JComboBox<String> cmbStuCourse;
     private javax.swing.JComboBox<String> cmbStuGender;
     private javax.swing.JComboBox<String> cmbStudentNoYear;
@@ -2691,7 +2925,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
@@ -2738,8 +2971,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JTable tblSched;
     private javax.swing.JTable tblStudents;
     private javax.swing.JTable tblSubjects;
-    private com.github.lgooddatepicker.components.TimePicker timeSchedTImeEnd;
-    private com.github.lgooddatepicker.components.TimePicker timeSchedTImeStart;
     private javax.swing.JTextField txtCurriculum;
     private javax.swing.JTextField txtEmpAddress;
     private javax.swing.JTextField txtEmpCellNo;
@@ -2749,7 +2980,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JTextField txtRoom;
     private javax.swing.JTextField txtSY;
     private javax.swing.JTextField txtSem;
-    private javax.swing.JTextField txtSeqNo;
     private javax.swing.JTextField txtStuAddress;
     private javax.swing.JLabel txtStuCourseDesc;
     private javax.swing.JTextField txtStuFirstName;
@@ -2759,6 +2989,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JTextField txtStudentNo;
     private javax.swing.JTextField txtSubjCode;
     private javax.swing.JTextField txtSubjDesc;
+    private javax.swing.JTextField txtTime;
     private javax.swing.JTextField txtUnits;
     // End of variables declaration//GEN-END:variables
 }
