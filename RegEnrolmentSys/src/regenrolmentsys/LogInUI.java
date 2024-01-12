@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +21,7 @@ public class LogInUI extends javax.swing.JPanel {
     private AdminMenu am = null;
     private MainFrame mf = null;
     private Connection con = null;
+    private PreparedStatement ps = null;
     private ResultSet rs = null;
     /**
      * Creates new form LogInUI
@@ -55,6 +58,7 @@ public class LogInUI extends javax.swing.JPanel {
                 if (rs.next()){
                     rs = con.prepareStatement("SELECT * FROM finals.PASSWORD WHERE user_id = '" + UserIDField.getText() + "' AND password = '" + String.valueOf(password.getPassword()) + "'").executeQuery();
                     if (rs.next()) {
+                        logAction(UserIDField.getText(), "Student");
                         mf.switchCard("StudentHomeCard");
                         sh.setUserName();
                         lblErrorID1.setVisible(false);
@@ -69,6 +73,7 @@ public class LogInUI extends javax.swing.JPanel {
                     if (rs.next()){
                         rs = con.prepareStatement("SELECT * FROM finals.PASSWORD WHERE user_id = '" + UserIDField.getText() + "' AND password = '" + String.valueOf(password.getPassword()) + "'").executeQuery();
                         if (rs.next()) {
+                            logAction(UserIDField.getText(), "Faculty");
                             ah.setUserID(UserIDField.getText());
                             ah.setUserName();
                             mf.switchCard("AdminHomeCard");
@@ -85,6 +90,7 @@ public class LogInUI extends javax.swing.JPanel {
                             rs = con.prepareStatement("SELECT pass FROM finals.ADMIN WHERE admin_id = '" + UserIDField.getText() + "'").executeQuery();
                             if (rs.next()) {
                                 if (String.valueOf(password.getPassword()).equals(rs.getString("pass"))) {
+                                    logAction(UserIDField.getText(), "Admin");
                                     mf.switchCard("AdminMenuCard");
                                     am.loadStudentsTab();
                                     am.toggleSelected(0);
@@ -110,6 +116,26 @@ public class LogInUI extends javax.swing.JPanel {
         }
         UserIDField.setText("");
         password.setText("");
+    }
+    
+    private void logAction(String user, String userType) {
+        con = ConnectDB.connect();
+        LocalTime localCurrTime = LocalTime.now();
+        LocalDate localCurrDate = LocalDate.now();
+        Time currTime = Time.valueOf(localCurrTime);
+        Date currDate = Date.valueOf(localCurrDate);
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, user);
+            ps.setString(2, "Logged in");
+            ps.setString(3, userType);
+            ps.setDate(4, currDate);
+            ps.setTime(5, currTime);
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
