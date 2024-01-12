@@ -235,6 +235,13 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
+        pficon1 = new javax.swing.JLabel();
+        pficon2 = new javax.swing.JLabel();
+        pficon3 = new javax.swing.JLabel();
+        pficon4 = new javax.swing.JLabel();
+        pficon5 = new javax.swing.JLabel();
+        pficon6 = new javax.swing.JLabel();
+        pficon = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnStudents = new javax.swing.JButton();
         btnSYSem = new javax.swing.JButton();
@@ -416,7 +423,36 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(230, 68, 68));
         jPanel1.setLayout(null);
 
+        pficon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallhistory.png"))); // NOI18N
+        jPanel1.add(pficon1);
+        pficon1.setBounds(20, 370, 40, 70);
+
+        pficon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallpfside.png"))); // NOI18N
+        jPanel1.add(pficon2);
+        pficon2.setBounds(20, 30, 40, 50);
+
+        pficon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallsy.png"))); // NOI18N
+        jPanel1.add(pficon3);
+        pficon3.setBounds(20, 90, 40, 60);
+
+        pficon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallsubjects.png"))); // NOI18N
+        jPanel1.add(pficon4);
+        pficon4.setBounds(20, 170, 40, 50);
+
+        pficon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallschedside.png"))); // NOI18N
+        jPanel1.add(pficon5);
+        pficon5.setBounds(20, 240, 40, 50);
+
+        pficon6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallemployee.png"))); // NOI18N
+        jPanel1.add(pficon6);
+        pficon6.setBounds(20, 310, 40, 60);
+
+        pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
+        jPanel1.add(pficon);
+        pficon.setBounds(30, 560, 40, 50);
+
         btnLogout.setText("Log-out");
+        btnLogout.setBorder(null);
         btnLogout.setContentAreaFilled(false);
         btnLogout.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(255, 255, 255));
@@ -426,9 +462,10 @@ public class AdminMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(-1, 615, 230, 32);
+        btnLogout.setBounds(0, 570, 230, 25);
 
         btnStudents.setText("Students");
+        btnStudents.setBorder(null);
         btnStudents.setContentAreaFilled(false);
         btnStudents.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnStudents.setForeground(new java.awt.Color(255, 255, 255));
@@ -440,9 +477,10 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel1.add(btnStudents);
         btnStudents.setBounds(-4, 19, 200, 70);
 
-        btnSYSem.setText("SY and Semester");
+        btnSYSem.setText("      SY and Semester");
+        btnSYSem.setBorder(null);
         btnSYSem.setContentAreaFilled(false);
-        btnSYSem.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnSYSem.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btnSYSem.setForeground(new java.awt.Color(255, 255, 255));
         btnSYSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -453,6 +491,7 @@ public class AdminMenu extends javax.swing.JPanel {
         btnSYSem.setBounds(-1, 87, 200, 70);
 
         btnSubjects.setText("Subjects");
+        btnSubjects.setBorder(null);
         btnSubjects.setContentAreaFilled(false);
         btnSubjects.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnSubjects.setForeground(new java.awt.Color(255, 255, 255));
@@ -465,6 +504,7 @@ public class AdminMenu extends javax.swing.JPanel {
         btnSubjects.setBounds(-5, 160, 210, 70);
 
         btnSchedules.setText("Schedules");
+        btnSchedules.setBorder(null);
         btnSchedules.setContentAreaFilled(false);
         btnSchedules.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnSchedules.setForeground(new java.awt.Color(255, 255, 255));
@@ -477,6 +517,7 @@ public class AdminMenu extends javax.swing.JPanel {
         btnSchedules.setBounds(-5, 233, 210, 70);
 
         btnEmployees.setText("Employees");
+        btnEmployees.setBorder(null);
         btnEmployees.setContentAreaFilled(false);
         btnEmployees.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnEmployees.setForeground(new java.awt.Color(255, 255, 255));
@@ -489,6 +530,7 @@ public class AdminMenu extends javax.swing.JPanel {
         btnEmployees.setBounds(-5, 306, 210, 70);
 
         btnHistory.setText("History");
+        btnHistory.setBorder(null);
         btnHistory.setContentAreaFilled(false);
         btnHistory.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnHistory.setForeground(new java.awt.Color(255, 255, 255));
@@ -2827,6 +2869,13 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblSem;
     private javax.swing.JLabel lblStuEmail;
     private javax.swing.JLabel lblSubjDesc;
+    private javax.swing.JLabel pficon;
+    private javax.swing.JLabel pficon1;
+    private javax.swing.JLabel pficon2;
+    private javax.swing.JLabel pficon3;
+    private javax.swing.JLabel pficon4;
+    private javax.swing.JLabel pficon5;
+    private javax.swing.JLabel pficon6;
     private javax.swing.JRadioButton rbF2F;
     private javax.swing.JRadioButton rbOnline;
     private javax.swing.JRadioButton rbSY;

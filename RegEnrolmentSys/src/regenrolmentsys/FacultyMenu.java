@@ -218,6 +218,8 @@ public class FacultyMenu extends javax.swing.JPanel {
         btnGrades = new javax.swing.JButton();
         select2 = new javax.swing.JPanel();
         select1 = new javax.swing.JPanel();
+        pficon5 = new javax.swing.JLabel();
+        btnBackStudentMenu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -307,6 +309,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         btnLogout.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Log-out");
+        btnLogout.setBorder(null);
         btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,11 +317,12 @@ public class FacultyMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(3, 570, 200, 35);
+        btnLogout.setBounds(3, 570, 200, 28);
 
         btnClassList.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnClassList.setForeground(new java.awt.Color(255, 255, 255));
         btnClassList.setText("Class List");
+        btnClassList.setBorder(null);
         btnClassList.setContentAreaFilled(false);
         btnClassList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -336,6 +340,7 @@ public class FacultyMenu extends javax.swing.JPanel {
         btnGrades.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnGrades.setForeground(new java.awt.Color(255, 255, 255));
         btnGrades.setText("Grades");
+        btnGrades.setBorder(null);
         btnGrades.setContentAreaFilled(false);
         btnGrades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,6 +381,25 @@ public class FacultyMenu extends javax.swing.JPanel {
 
         jPanel1.add(select1);
         select1.setBounds(0, 20, 200, 70);
+
+        pficon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backsmall.png"))); // NOI18N
+        jPanel1.add(pficon5);
+        pficon5.setBounds(20, 500, 40, 50);
+
+        btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
+        btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnBackStudentMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnBackStudentMenu.setText("              Back");
+        btnBackStudentMenu.setBorder(null);
+        btnBackStudentMenu.setContentAreaFilled(false);
+        btnBackStudentMenu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBackStudentMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackStudentMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBackStudentMenu);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -1337,6 +1361,11 @@ public class FacultyMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
+    private void btnBackStudentMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackStudentMenuActionPerformed
+        // TODO add your handling code here:
+        mf.switchCard("AdminHomeCard");
+    }//GEN-LAST:event_btnBackStudentMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
@@ -1344,6 +1373,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JButton MinimizeBTN;
     private javax.swing.JLabel NameTopBar;
     private javax.swing.JLabel PLMLogo;
+    private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnClassList;
     private javax.swing.JButton btnClassSearch;
     private javax.swing.JButton btnGradeAdd;
@@ -1403,6 +1433,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     private javax.swing.JLabel pficon;
     private javax.swing.JLabel pficon1;
     private javax.swing.JLabel pficon4;
+    private javax.swing.JLabel pficon5;
     private javax.swing.JPanel select1;
     private javax.swing.JPanel select2;
     private javax.swing.JLabel smallpf;
