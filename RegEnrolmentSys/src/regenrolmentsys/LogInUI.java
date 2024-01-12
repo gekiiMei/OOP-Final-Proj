@@ -23,11 +23,12 @@ public class LogInUI extends javax.swing.JPanel {
     /**
      * Creates new form LogInUI
      */
-    public LogInUI(MainFrame mf, StudentHome sh, AdminHome ah) {
+    public LogInUI(MainFrame mf, StudentHome sh, AdminHome ah, AdminMenu am) {
         initComponents();
         this.mf = mf;
         this.sh = sh;
         this.ah = ah;
+        this.am = am;
         setSize(1280, 720);
         setMinimumSize(new Dimension(1280, 720));
         setMaximumSize(new Dimension(1280, 720));
@@ -42,6 +43,10 @@ public class LogInUI extends javax.swing.JPanel {
     private void checkLogin() {
         mf.setUserID(UserIDField.getText());
         con = ConnectDB.connect();
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Connection to database failed!", "Connection failed", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if (UserIDField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "User ID cannot be empty!", "Login failed", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -80,6 +85,7 @@ public class LogInUI extends javax.swing.JPanel {
                                 if (String.valueOf(password.getPassword()).equals(rs.getString("pass"))) {
                                     mf.switchCard("AdminMenuCard");
                                     am.loadStudentsTab();
+                                    am.toggleSelected(0);
                                     lblErrorID1.setVisible(false);
                                     lblWrongPassword.setVisible(false);
                                 }
