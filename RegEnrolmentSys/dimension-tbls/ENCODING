@@ -1,0 +1,5 @@
+CREATE TABLE finals.ENCODING (
+  state int NOT NULL
+);
+
+INSERT INTO finals.ENCODING VALUES (0);
