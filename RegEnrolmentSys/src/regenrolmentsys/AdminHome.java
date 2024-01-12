@@ -458,6 +458,7 @@ public class AdminHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("FacultyMenuCard");
         fm.getTabs().setSelectedIndex(0);
+        fm.toggleSelected(0);
     }//GEN-LAST:event_BTNClasslistActionPerformed
 
     private void BTNGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNGradesActionPerformed
@@ -466,6 +467,7 @@ public class AdminHome extends javax.swing.JPanel {
         mf.switchCard("FacultyMenuCard");
         fm.getTabs().setSelectedIndex(1);
         fm.loadGradesTab();
+        fm.toggleSelected(1);
     }//GEN-LAST:event_BTNGradesActionPerformed
 
     private void BTNLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogoutActionPerformed
