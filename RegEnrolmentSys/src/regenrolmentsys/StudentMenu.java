@@ -222,6 +222,16 @@ public class StudentMenu extends javax.swing.JPanel {
         btnGrades = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         btnBackStudentMenu = new javax.swing.JButton();
+        pficon = new javax.swing.JLabel();
+        pficon1 = new javax.swing.JLabel();
+        pficon2 = new javax.swing.JLabel();
+        pficon3 = new javax.swing.JLabel();
+        pficon4 = new javax.swing.JLabel();
+        pficon5 = new javax.swing.JLabel();
+        select4 = new javax.swing.JPanel();
+        select3 = new javax.swing.JPanel();
+        select2 = new javax.swing.JPanel();
+        select1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -234,12 +244,12 @@ public class StudentMenu extends javax.swing.JPanel {
         cmbEnrolSem = new javax.swing.JComboBox<>();
         btnEnrolConfirm = new javax.swing.JButton();
         btnEnrolSchedView = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        plmbg3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblSchedule = new javax.swing.JTable();
-        jLabel18 = new javax.swing.JLabel();
+        plmbg2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGradesTable = new javax.swing.JTable();
@@ -248,6 +258,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cmbGradeSem = new javax.swing.JComboBox<>();
         btnGradeSearch = new javax.swing.JButton();
+        plmbg1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblStudentNo = new javax.swing.JLabel();
         lblStudentLN = new javax.swing.JLabel();
@@ -261,66 +272,12 @@ public class StudentMenu extends javax.swing.JPanel {
         lblStudentStatus = new javax.swing.JLabel();
         btnChangePassword = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        plmbg = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         MainLBL = new javax.swing.JLabel();
         PLMLogo = new javax.swing.JLabel();
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        jPanel10 = new javax.swing.JPanel();
-        btnProfile1 = new javax.swing.JButton();
-        btnEnrolment1 = new javax.swing.JButton();
-        btnSched1 = new javax.swing.JButton();
-        btnGrades1 = new javax.swing.JButton();
-        btnLogout1 = new javax.swing.JButton();
-        btnBackStudentMenu1 = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        tabs1 = new javax.swing.JTabbedPane();
-        jPanel12 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblEnrolSchedule1 = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        cmbEnrolSy1 = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        cmbEnrolSem1 = new javax.swing.JComboBox<>();
-        btnEnrolConfirm1 = new javax.swing.JButton();
-        btnEnrolSchedView1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblSchedule1 = new javax.swing.JTable();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tblGradesTable1 = new javax.swing.JTable();
-        jLabel14 = new javax.swing.JLabel();
-        cmbGradeSY1 = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        cmbGradeSem1 = new javax.swing.JComboBox<>();
-        btnGradeSearch1 = new javax.swing.JButton();
-        jPanel15 = new javax.swing.JPanel();
-        lblStudentNo1 = new javax.swing.JLabel();
-        lblStudentLN1 = new javax.swing.JLabel();
-        lblStudentFN1 = new javax.swing.JLabel();
-        lblStudentEmail1 = new javax.swing.JLabel();
-        lblStudentGender1 = new javax.swing.JLabel();
-        lblStudentCourseCode1 = new javax.swing.JLabel();
-        lblStudentCPNum1 = new javax.swing.JLabel();
-        lblStudentAddress1 = new javax.swing.JLabel();
-        lblStudentBday1 = new javax.swing.JLabel();
-        lblStudentStatus1 = new javax.swing.JLabel();
-        btnChangePassword1 = new javax.swing.JButton();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        MainLBL1 = new javax.swing.JLabel();
-        PLMLogo1 = new javax.swing.JLabel();
-        MinimizeBTN1 = new javax.swing.JButton();
-        CloseBTN1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(230, 68, 68));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -331,89 +288,174 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(230, 68, 68));
         jPanel1.setLayout(null);
 
-        btnProfile.setBackground(new java.awt.Color(230, 68, 68));
-        btnProfile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnProfile.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnProfile.setForeground(new java.awt.Color(255, 255, 255));
-        btnProfile.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\1 (2).png")); // NOI18N
         btnProfile.setText("Profile");
         btnProfile.setBorder(null);
+        btnProfile.setContentAreaFilled(false);
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfileActionPerformed(evt);
             }
         });
         jPanel1.add(btnProfile);
-        btnProfile.setBounds(0, 6, 160, 50);
+        btnProfile.setBounds(0, 20, 200, 70);
 
-        btnEnrolment.setBackground(new java.awt.Color(230, 68, 68));
-        btnEnrolment.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEnrolment.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnEnrolment.setForeground(new java.awt.Color(255, 255, 255));
-        btnEnrolment.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\2 (1).png")); // NOI18N
         btnEnrolment.setText("Enrollment");
         btnEnrolment.setBorder(null);
+        btnEnrolment.setContentAreaFilled(false);
         btnEnrolment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnrolmentActionPerformed(evt);
             }
         });
         jPanel1.add(btnEnrolment);
-        btnEnrolment.setBounds(0, 80, 170, 60);
+        btnEnrolment.setBounds(0, 90, 200, 70);
 
-        btnSched.setBackground(new java.awt.Color(230, 68, 68));
-        btnSched.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSched.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnSched.setForeground(new java.awt.Color(255, 255, 255));
-        btnSched.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\3 (1).png")); // NOI18N
         btnSched.setText("Schedule");
         btnSched.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnSched.setContentAreaFilled(false);
         btnSched.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSchedActionPerformed(evt);
             }
         });
         jPanel1.add(btnSched);
-        btnSched.setBounds(0, 140, 160, 60);
+        btnSched.setBounds(0, 160, 200, 70);
 
-        btnGrades.setBackground(new java.awt.Color(230, 68, 68));
-        btnGrades.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnGrades.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnGrades.setForeground(new java.awt.Color(255, 255, 255));
-        btnGrades.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\4 (1).png")); // NOI18N
         btnGrades.setText("Grades");
         btnGrades.setBorder(null);
+        btnGrades.setContentAreaFilled(false);
         btnGrades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGradesActionPerformed(evt);
             }
         });
         jPanel1.add(btnGrades);
-        btnGrades.setBounds(0, 210, 140, 60);
+        btnGrades.setBounds(0, 230, 200, 70);
 
         btnLogout.setBackground(new java.awt.Color(230, 68, 68));
-        btnLogout.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnLogout.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\5 (1).png")); // NOI18N
-        btnLogout.setText("LogOut");
+        btnLogout.setText("Log-out");
         btnLogout.setBorder(null);
+        btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(20, 550, 139, 60);
+        btnLogout.setBounds(-1, 570, 200, 28);
 
         btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
-        btnBackStudentMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnBackStudentMenu.setForeground(new java.awt.Color(255, 255, 255));
-        btnBackStudentMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\icons8-back-arrow-50.png")); // NOI18N
-        btnBackStudentMenu.setText("Back");
+        btnBackStudentMenu.setText("              Back");
         btnBackStudentMenu.setBorder(null);
+        btnBackStudentMenu.setContentAreaFilled(false);
+        btnBackStudentMenu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBackStudentMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackStudentMenuActionPerformed(evt);
             }
         });
         jPanel1.add(btnBackStudentMenu);
-        btnBackStudentMenu.setBounds(10, 490, 125, 50);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
+
+        pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
+        jPanel1.add(pficon);
+        pficon.setBounds(20, 560, 40, 50);
+
+        pficon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallpfside.png"))); // NOI18N
+        jPanel1.add(pficon1);
+        pficon1.setBounds(20, 30, 40, 50);
+
+        pficon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallenrollside.png"))); // NOI18N
+        jPanel1.add(pficon2);
+        pficon2.setBounds(20, 90, 40, 70);
+
+        pficon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallschedside.png"))); // NOI18N
+        jPanel1.add(pficon3);
+        pficon3.setBounds(20, 160, 40, 70);
+
+        pficon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallgrades.png"))); // NOI18N
+        jPanel1.add(pficon4);
+        pficon4.setBounds(20, 230, 40, 70);
+
+        pficon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backsmall.png"))); // NOI18N
+        jPanel1.add(pficon5);
+        pficon5.setBounds(20, 500, 40, 50);
+
+        select4.setBackground(new java.awt.Color(230, 68, 68));
+
+        javax.swing.GroupLayout select4Layout = new javax.swing.GroupLayout(select4);
+        select4.setLayout(select4Layout);
+        select4Layout.setHorizontalGroup(
+            select4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select4Layout.setVerticalGroup(
+            select4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select4);
+        select4.setBounds(0, 230, 200, 70);
+
+        select3.setBackground(new java.awt.Color(230, 68, 68));
+
+        javax.swing.GroupLayout select3Layout = new javax.swing.GroupLayout(select3);
+        select3.setLayout(select3Layout);
+        select3Layout.setHorizontalGroup(
+            select3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select3Layout.setVerticalGroup(
+            select3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select3);
+        select3.setBounds(0, 160, 200, 70);
+
+        select2.setBackground(new java.awt.Color(230, 68, 68));
+
+        javax.swing.GroupLayout select2Layout = new javax.swing.GroupLayout(select2);
+        select2.setLayout(select2Layout);
+        select2Layout.setHorizontalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select2Layout.setVerticalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select2);
+        select2.setBounds(0, 90, 200, 70);
+
+        select1.setBackground(new java.awt.Color(230, 68, 68));
+
+        javax.swing.GroupLayout select1Layout = new javax.swing.GroupLayout(select1);
+        select1.setLayout(select1Layout);
+        select1Layout.setHorizontalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select1Layout.setVerticalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select1);
+        select1.setBounds(0, 20, 200, 70);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -441,7 +483,7 @@ public class StudentMenu extends javax.swing.JPanel {
 
         jLabel5.setText("Schedule");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(6, 62, 48, 16);
+        jLabel5.setBounds(20, 70, 48, 16);
 
         jLabel6.setText("School Year :");
         jPanel4.add(jLabel6);
@@ -452,7 +494,7 @@ public class StudentMenu extends javax.swing.JPanel {
 
         jLabel2.setText("Semester :");
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(176, 24, 54, 16);
+        jLabel2.setBounds(180, 30, 54, 16);
 
         cmbEnrolSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,7 +502,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel4.add(cmbEnrolSem);
-        cmbEnrolSem.setBounds(242, 21, 72, 22);
+        cmbEnrolSem.setBounds(240, 30, 72, 22);
 
         btnEnrolConfirm.setText("Confirm Enrolment");
         btnEnrolConfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -478,12 +520,11 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel4.add(btnEnrolSchedView);
-        btnEnrolSchedView.setBounds(347, 21, 106, 23);
+        btnEnrolSchedView.setBounds(350, 30, 106, 23);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\background plm.png")); // NOI18N
-        jLabel8.setText("jLabel8");
-        jPanel4.add(jLabel8);
-        jLabel8.setBounds(0, 0, 1040, 610);
+        plmbg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+        jPanel4.add(plmbg3);
+        plmbg3.setBounds(0, 10, 1050, 700);
 
         tabs.addTab("", jPanel4);
 
@@ -510,10 +551,9 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel5.add(jScrollPane3);
         jScrollPane3.setBounds(10, 80, 810, 523);
 
-        jLabel18.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\PLM_background.jpeg")); // NOI18N
-        jLabel18.setText("jLabel18");
-        jPanel5.add(jLabel18);
-        jLabel18.setBounds(6, 6, 860, 680);
+        plmbg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+        jPanel5.add(plmbg2);
+        plmbg2.setBounds(0, 10, 1050, 700);
 
         tabs.addTab("", jPanel5);
 
@@ -558,6 +598,8 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
 
+        plmbg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -577,6 +619,11 @@ public class StudentMenu extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnGradeSearch)))
                 .addGap(67, 67, 67))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -591,6 +638,11 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         tabs.addTab("", jPanel6);
@@ -661,10 +713,9 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel3.add(jPanel8);
         jPanel8.setBounds(30, 10, 990, 340);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\background plm.png")); // NOI18N
-        jLabel7.setText("jLabel7");
-        jPanel3.add(jLabel7);
-        jLabel7.setBounds(20, 10, 1050, 700);
+        plmbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+        jPanel3.add(plmbg);
+        plmbg.setBounds(0, 10, 1050, 700);
 
         tabs.addTab("", jPanel3);
 
@@ -743,445 +794,6 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel7.add(CloseBTN);
         CloseBTN.setBounds(1250, 0, 30, 30);
 
-        jPanel9.setBackground(new java.awt.Color(230, 68, 68));
-        jPanel9.setPreferredSize(new java.awt.Dimension(1280, 720));
-
-        jSplitPane2.setDividerLocation(200);
-        jSplitPane2.setDividerSize(0);
-
-        jPanel10.setBackground(new java.awt.Color(230, 68, 68));
-        jPanel10.setLayout(null);
-
-        btnProfile1.setBackground(new java.awt.Color(230, 68, 68));
-        btnProfile1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnProfile1.setForeground(new java.awt.Color(255, 255, 255));
-        btnProfile1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\1 (2).png")); // NOI18N
-        btnProfile1.setText("Profile");
-        btnProfile1.setBorder(null);
-        btnProfile1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfile1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnProfile1);
-        btnProfile1.setBounds(0, 10, 160, 50);
-
-        btnEnrolment1.setBackground(new java.awt.Color(230, 68, 68));
-        btnEnrolment1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnEnrolment1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEnrolment1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\2 (1).png")); // NOI18N
-        btnEnrolment1.setText("Enrollment");
-        btnEnrolment1.setBorder(null);
-        btnEnrolment1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnrolment1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnEnrolment1);
-        btnEnrolment1.setBounds(0, 80, 170, 60);
-
-        btnSched1.setBackground(new java.awt.Color(230, 68, 68));
-        btnSched1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnSched1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSched1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\3 (1).png")); // NOI18N
-        btnSched1.setText("Schedule");
-        btnSched1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        btnSched1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSched1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnSched1);
-        btnSched1.setBounds(0, 140, 160, 60);
-
-        btnGrades1.setBackground(new java.awt.Color(230, 68, 68));
-        btnGrades1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnGrades1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGrades1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\4 (1).png")); // NOI18N
-        btnGrades1.setText("Grades");
-        btnGrades1.setBorder(null);
-        btnGrades1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrades1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnGrades1);
-        btnGrades1.setBounds(0, 210, 140, 60);
-
-        btnLogout1.setBackground(new java.awt.Color(230, 68, 68));
-        btnLogout1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnLogout1.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogout1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\5 (1).png")); // NOI18N
-        btnLogout1.setText("LogOut");
-        btnLogout1.setBorder(null);
-        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnLogout1);
-        btnLogout1.setBounds(20, 550, 139, 60);
-
-        btnBackStudentMenu1.setBackground(new java.awt.Color(230, 68, 68));
-        btnBackStudentMenu1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBackStudentMenu1.setForeground(new java.awt.Color(255, 255, 255));
-        btnBackStudentMenu1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\icons8-back-arrow-50.png")); // NOI18N
-        btnBackStudentMenu1.setText("Back");
-        btnBackStudentMenu1.setBorder(null);
-        btnBackStudentMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackStudentMenu1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnBackStudentMenu1);
-        btnBackStudentMenu1.setBounds(10, 490, 125, 50);
-
-        jSplitPane2.setLeftComponent(jPanel10);
-
-        jPanel11.setBackground(new java.awt.Color(230, 68, 68));
-
-        tabs1.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
-        tabs1.setToolTipText("");
-
-        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setLayout(null);
-
-        tblEnrolSchedule1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Select School Year and Semester"
-            }
-        ));
-        jScrollPane4.setViewportView(tblEnrolSchedule1);
-
-        jPanel12.add(jScrollPane4);
-        jScrollPane4.setBounds(10, 80, 870, 402);
-
-        jLabel9.setText("Schedule");
-        jPanel12.add(jLabel9);
-        jLabel9.setBounds(6, 62, 48, 16);
-
-        jLabel10.setText("School Year :");
-        jPanel12.add(jLabel10);
-        jLabel10.setBounds(10, 30, 68, 16);
-
-        jPanel12.add(cmbEnrolSy1);
-        cmbEnrolSy1.setBounds(80, 30, 72, 22);
-
-        jLabel11.setText("Semester :");
-        jPanel12.add(jLabel11);
-        jLabel11.setBounds(176, 24, 54, 16);
-
-        cmbEnrolSem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbEnrolSem1ActionPerformed(evt);
-            }
-        });
-        jPanel12.add(cmbEnrolSem1);
-        cmbEnrolSem1.setBounds(242, 21, 72, 22);
-
-        btnEnrolConfirm1.setText("Confirm Enrolment");
-        btnEnrolConfirm1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnrolConfirm1ActionPerformed(evt);
-            }
-        });
-        jPanel12.add(btnEnrolConfirm1);
-        btnEnrolConfirm1.setBounds(870, 500, 132, 23);
-
-        btnEnrolSchedView1.setText("View Schedule");
-        btnEnrolSchedView1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnrolSchedView1ActionPerformed(evt);
-            }
-        });
-        jPanel12.add(btnEnrolSchedView1);
-        btnEnrolSchedView1.setBounds(347, 21, 106, 23);
-
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\background plm.png")); // NOI18N
-        jLabel12.setText("jLabel8");
-        jPanel12.add(jLabel12);
-        jLabel12.setBounds(0, 0, 1040, 610);
-
-        tabs1.addTab("", jPanel12);
-
-        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setLayout(null);
-
-        jLabel13.setText("SCHEDULE");
-        jPanel13.add(jLabel13);
-        jLabel13.setBounds(54, 39, 70, 16);
-
-        tblSchedule1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane5.setViewportView(tblSchedule1);
-
-        jPanel13.add(jScrollPane5);
-        jScrollPane5.setBounds(10, 70, 850, 523);
-
-        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\PLM_background.jpeg")); // NOI18N
-        jLabel17.setText("jLabel17");
-        jPanel13.add(jLabel17);
-        jLabel17.setBounds(0, 0, 1040, 610);
-
-        tabs1.addTab("", jPanel13);
-
-        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-
-        tblGradesTable1.setBackground(new java.awt.Color(102, 102, 102));
-        tblGradesTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Select SY and Sem"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(tblGradesTable1);
-        if (tblGradesTable1.getColumnModel().getColumnCount() > 0) {
-            tblGradesTable1.getColumnModel().getColumn(0).setResizable(false);
-        }
-
-        jLabel14.setText("School year :");
-
-        cmbGradeSY1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbGradeSY1ActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setText("Semester");
-
-        btnGradeSearch1.setText("Search");
-        btnGradeSearch1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGradeSearch1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbGradeSY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbGradeSem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGradeSearch1)))
-                .addGap(67, 67, 67))
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(cmbGradeSY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(cmbGradeSem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGradeSearch1))
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tabs1.addTab("", jPanel14);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setLayout(null);
-
-        lblStudentNo1.setText("STUDENT NUMBER:");
-        jPanel15.add(lblStudentNo1);
-        lblStudentNo1.setBounds(76, 22, 103, 16);
-
-        lblStudentLN1.setText("LAST NAME:");
-        jPanel15.add(lblStudentLN1);
-        lblStudentLN1.setBounds(115, 44, 66, 16);
-
-        lblStudentFN1.setText("FIRST NAME:");
-        jPanel15.add(lblStudentFN1);
-        lblStudentFN1.setBounds(113, 72, 68, 16);
-
-        lblStudentEmail1.setText("EMAIL:");
-        jPanel15.add(lblStudentEmail1);
-        lblStudentEmail1.setBounds(145, 100, 37, 16);
-
-        lblStudentGender1.setText("GENDER:");
-        jPanel15.add(lblStudentGender1);
-        lblStudentGender1.setBounds(133, 128, 47, 16);
-
-        lblStudentCourseCode1.setText("COURSE CODE:");
-        jPanel15.add(lblStudentCourseCode1);
-        lblStudentCourseCode1.setBounds(100, 156, 81, 16);
-
-        lblStudentCPNum1.setText("CELLPHONE NUMBER:");
-        jPanel15.add(lblStudentCPNum1);
-        lblStudentCPNum1.setBounds(63, 187, 120, 16);
-
-        lblStudentAddress1.setText("ADDRESS:");
-        jPanel15.add(lblStudentAddress1);
-        lblStudentAddress1.setBounds(127, 209, 52, 16);
-
-        lblStudentBday1.setText("BIRTHDAY:");
-        jPanel15.add(lblStudentBday1);
-        lblStudentBday1.setBounds(123, 231, 58, 16);
-
-        lblStudentStatus1.setText("STATUS:");
-        jPanel15.add(lblStudentStatus1);
-        lblStudentStatus1.setBounds(137, 259, 43, 16);
-
-        btnChangePassword1.setText("Change password");
-        btnChangePassword1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangePassword1ActionPerformed(evt);
-            }
-        });
-        jPanel15.add(btnChangePassword1);
-        btnChangePassword1.setBounds(57, 311, 124, 23);
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 990, Short.MAX_VALUE)
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
-        );
-
-        jPanel15.add(jPanel16);
-        jPanel16.setBounds(30, 10, 990, 340);
-
-        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\ENDRIX\\OneDrive\\Pictures\\Saved Pictures\\background plm.png")); // NOI18N
-        jLabel16.setText("jLabel7");
-        jPanel15.add(jLabel16);
-        jLabel16.setBounds(20, 10, 1050, 700);
-
-        tabs1.addTab("", jPanel15);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabs1, javax.swing.GroupLayout.PREFERRED_SIZE, 1066, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabs1)
-                .addContainerGap())
-        );
-
-        jSplitPane2.setRightComponent(jPanel11);
-
-        jPanel17.setBackground(new java.awt.Color(254, 86, 86));
-        jPanel17.setLayout(null);
-
-        MainLBL1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        MainLBL1.setForeground(new java.awt.Color(255, 255, 255));
-        MainLBL1.setText("Enrollment System for Regular Students");
-        jPanel17.add(MainLBL1);
-        MainLBL1.setBounds(40, 0, 290, 30);
-
-        PLMLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
-        jPanel17.add(PLMLogo1);
-        PLMLogo1.setBounds(10, 0, 30, 30);
-
-        MinimizeBTN1.setBackground(new java.awt.Color(254, 86, 86));
-        MinimizeBTN1.setFont(new java.awt.Font("Boldfinger", 0, 24)); // NOI18N
-        MinimizeBTN1.setForeground(new java.awt.Color(255, 255, 255));
-        MinimizeBTN1.setText("-");
-        MinimizeBTN1.setToolTipText("");
-        MinimizeBTN1.setBorder(null);
-        MinimizeBTN1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                MinimizeBTN1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                MinimizeBTN1MouseExited(evt);
-            }
-        });
-        MinimizeBTN1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MinimizeBTN1ActionPerformed(evt);
-            }
-        });
-        jPanel17.add(MinimizeBTN1);
-        MinimizeBTN1.setBounds(1220, 0, 30, 30);
-
-        CloseBTN1.setBackground(new java.awt.Color(254, 86, 86));
-        CloseBTN1.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
-        CloseBTN1.setForeground(new java.awt.Color(255, 255, 255));
-        CloseBTN1.setText("X");
-        CloseBTN1.setBorder(null);
-        CloseBTN1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                CloseBTN1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                CloseBTN1MouseExited(evt);
-            }
-        });
-        CloseBTN1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CloseBTN1ActionPerformed(evt);
-            }
-        });
-        jPanel17.add(CloseBTN1);
-        CloseBTN1.setBounds(1250, 0, 30, 30);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -1190,18 +802,14 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1223,24 +831,40 @@ public class StudentMenu extends javax.swing.JPanel {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+        select1.setBackground(new Color(179,52,52));
+        select2.setBackground(new Color(230, 68, 68));
+        select3.setBackground(new Color(230, 68, 68));
+        select4.setBackground(new Color(230, 68, 68));
         tabs.setSelectedIndex(0);
         profileStudentsTab();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
         // TODO add your handling code here:
+        select1.setBackground(new Color(230, 68, 68));
+        select2.setBackground(new Color(179,52,52));
+        select3.setBackground(new Color(230, 68, 68));
+        select4.setBackground(new Color(230, 68, 68));
         loadEnrolmentTab();
         tabs.setSelectedIndex(1);
     }//GEN-LAST:event_btnEnrolmentActionPerformed
 
     private void btnSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedActionPerformed
         // TODO add your handling code here:
+        select1.setBackground(new Color(230, 68, 68));
+        select2.setBackground(new Color(230, 68, 68));
+        select3.setBackground(new Color(179,52,52));
+        select4.setBackground(new Color(230, 68, 68));
         tabs.setSelectedIndex(2);
         studentScheduleTab();
     }//GEN-LAST:event_btnSchedActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
+        select1.setBackground(new Color(230, 68, 68));
+        select2.setBackground(new Color(230, 68, 68));
+        select3.setBackground(new Color(230, 68, 68));
+        select4.setBackground(new Color(179,52,52));
         tabs.setSelectedIndex(3);
         loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
@@ -1410,143 +1034,33 @@ public class StudentMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
-    private void btnProfile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfile1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProfile1ActionPerformed
-
-    private void btnEnrolment1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolment1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnrolment1ActionPerformed
-
-    private void btnSched1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSched1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSched1ActionPerformed
-
-    private void btnGrades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrades1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGrades1ActionPerformed
-
-    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogout1ActionPerformed
-
-    private void btnBackStudentMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackStudentMenu1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBackStudentMenu1ActionPerformed
-
-    private void cmbEnrolSem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnrolSem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbEnrolSem1ActionPerformed
-
-    private void btnEnrolConfirm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolConfirm1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnrolConfirm1ActionPerformed
-
-    private void btnEnrolSchedView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolSchedView1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnrolSchedView1ActionPerformed
-
-    private void cmbGradeSY1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGradeSY1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbGradeSY1ActionPerformed
-
-    private void btnGradeSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeSearch1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGradeSearch1ActionPerformed
-
-    private void btnChangePassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePassword1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnChangePassword1ActionPerformed
-
-    private void MinimizeBTN1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinimizeBTN1MouseEntered
-
-    private void MinimizeBTN1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTN1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinimizeBTN1MouseExited
-
-    private void MinimizeBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTN1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinimizeBTN1ActionPerformed
-
-    private void CloseBTN1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTN1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CloseBTN1MouseEntered
-
-    private void CloseBTN1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTN1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CloseBTN1MouseExited
-
-    private void CloseBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTN1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CloseBTN1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
-    private javax.swing.JButton CloseBTN1;
     private javax.swing.JLabel MainLBL;
-    private javax.swing.JLabel MainLBL1;
     private javax.swing.JButton MinimizeBTN;
-    private javax.swing.JButton MinimizeBTN1;
     private javax.swing.JLabel PLMLogo;
-    private javax.swing.JLabel PLMLogo1;
     private javax.swing.JButton btnBackStudentMenu;
-    private javax.swing.JButton btnBackStudentMenu1;
     private javax.swing.JButton btnChangePassword;
-    private javax.swing.JButton btnChangePassword1;
     private javax.swing.JButton btnEnrolConfirm;
-    private javax.swing.JButton btnEnrolConfirm1;
     private javax.swing.JButton btnEnrolSchedView;
-    private javax.swing.JButton btnEnrolSchedView1;
     private javax.swing.JButton btnEnrolment;
-    private javax.swing.JButton btnEnrolment1;
     private javax.swing.JButton btnGradeSearch;
-    private javax.swing.JButton btnGradeSearch1;
     private javax.swing.JButton btnGrades;
-    private javax.swing.JButton btnGrades1;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnLogout1;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JButton btnProfile1;
     private javax.swing.JButton btnSched;
-    private javax.swing.JButton btnSched1;
     private javax.swing.JComboBox<String> cmbEnrolSem;
-    private javax.swing.JComboBox<String> cmbEnrolSem1;
     private javax.swing.JComboBox<String> cmbEnrolSy;
-    private javax.swing.JComboBox<String> cmbEnrolSy1;
     private javax.swing.JComboBox<String> cmbGradeSY;
-    private javax.swing.JComboBox<String> cmbGradeSY1;
     private javax.swing.JComboBox<String> cmbGradeSem;
-    private javax.swing.JComboBox<String> cmbGradeSem1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1554,42 +1068,37 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JLabel lblStudentAddress;
-    private javax.swing.JLabel lblStudentAddress1;
     private javax.swing.JLabel lblStudentBday;
-    private javax.swing.JLabel lblStudentBday1;
     private javax.swing.JLabel lblStudentCPNum;
-    private javax.swing.JLabel lblStudentCPNum1;
     private javax.swing.JLabel lblStudentCourseCode;
-    private javax.swing.JLabel lblStudentCourseCode1;
     private javax.swing.JLabel lblStudentEmail;
-    private javax.swing.JLabel lblStudentEmail1;
     private javax.swing.JLabel lblStudentFN;
-    private javax.swing.JLabel lblStudentFN1;
     private javax.swing.JLabel lblStudentGender;
-    private javax.swing.JLabel lblStudentGender1;
     private javax.swing.JLabel lblStudentLN;
-    private javax.swing.JLabel lblStudentLN1;
     private javax.swing.JLabel lblStudentNo;
-    private javax.swing.JLabel lblStudentNo1;
     private javax.swing.JLabel lblStudentStatus;
-    private javax.swing.JLabel lblStudentStatus1;
+    private javax.swing.JLabel pficon;
+    private javax.swing.JLabel pficon1;
+    private javax.swing.JLabel pficon2;
+    private javax.swing.JLabel pficon3;
+    private javax.swing.JLabel pficon4;
+    private javax.swing.JLabel pficon5;
+    private javax.swing.JLabel plmbg;
+    private javax.swing.JLabel plmbg1;
+    private javax.swing.JLabel plmbg2;
+    private javax.swing.JLabel plmbg3;
+    private javax.swing.JPanel select1;
+    private javax.swing.JPanel select2;
+    private javax.swing.JPanel select3;
+    private javax.swing.JPanel select4;
     private javax.swing.JTabbedPane tabs;
-    private javax.swing.JTabbedPane tabs1;
     private javax.swing.JTable tblEnrolSchedule;
-    private javax.swing.JTable tblEnrolSchedule1;
     private javax.swing.JTable tblGradesTable;
-    private javax.swing.JTable tblGradesTable1;
     private javax.swing.JTable tblSchedule;
-    private javax.swing.JTable tblSchedule1;
     // End of variables declaration//GEN-END:variables
 }
