@@ -914,26 +914,55 @@ public class StudentMenu extends javax.swing.JPanel {
             }
             
             if (intCurrYear == 1) {
-                rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO WHERE block_no LIKE '" + course + Integer.toString(intCurrYear) + "%'").executeQuery();
-                if (rs.next()) {
-                    while (rs.next())
-                        intBlockCount++;
-                    block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
+                if (cmbEnrolSem.getSelectedItem().toString().equals("1")) {
+                    rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO WHERE block_no LIKE '" + course + Integer.toString(intCurrYear) + "%'").executeQuery();
+                    if (rs.next()) {
+                        while (rs.next())
+                            intBlockCount++;
+                        block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
+                    }
+                } else {
+                    ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + "1%");
+                    if (rs.next()) {
+                        block = course + "1" + rs.getString("block_no").substring(3);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
+                
             } else if (intCurrYear > 4) { 
                 
             }else {
-                ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
-                ps.setString(1, currentUser);
-                ps.setString(2, "Finished");
-                ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
-                rs = ps.executeQuery();
-                if (rs.next()) {
-                    block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                if (cmbEnrolSem.getSelectedItem().toString().equals("1")) {
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                    } else {
+                        System.out.println("missing previous enrolments"); //TODO: error msg
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 } else {
-                    System.out.println("missing previous enrolments"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
-                    return;
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + Integer.toString(intCurrYear) + "%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                    } else {
+                        System.out.println("missing previous enrolments"); //TODO: error msg
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
             }
             ps = con.prepareStatement("SELECT * FROM finals.SUBJECT_SCHEDULE WHERE SY = ? AND SEMESTER = ? AND BLOCK_NO = ?");
