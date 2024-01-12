@@ -7,6 +7,8 @@ package regenrolmentsys;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  *
@@ -15,6 +17,7 @@ import java.sql.*;
 public class AdminHome extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
+    private PreparedStatement ps = null;
     private MainFrame mf = null;
     private FacultyMenu fm = null;
     private String currentUser = "";
@@ -41,6 +44,26 @@ public class AdminHome extends javax.swing.JPanel {
                 lblUserName1.setText(rs.getString("first_name"));
         }
         catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    private void logAction(String action) {
+        con = ConnectDB.connect();
+        LocalTime localCurrTime = LocalTime.now();
+        LocalDate localCurrDate = LocalDate.now();
+        Time currTime = Time.valueOf(localCurrTime);
+        Date currDate = Date.valueOf(localCurrDate);
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, currentUser);
+            ps.setString(2, action);
+            ps.setString(3, "Admin");
+            ps.setDate(4, currDate);
+            ps.setTime(5, currTime);
+            ps.execute();
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -491,6 +514,7 @@ public class AdminHome extends javax.swing.JPanel {
         int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (response == 0){
             mf.setUserID("");
+            logAction("Logged out");
             mf.switchCard("LoginCard");
         }
         else{

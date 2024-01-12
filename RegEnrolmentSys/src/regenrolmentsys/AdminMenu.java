@@ -58,9 +58,21 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(3, "Admin");
             ps.setDate(4, currDate);
             ps.setTime(5, currTime);
+            ps.execute();
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    private void resetHistoryTable() {
+        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"History log is empty"}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
     }
     
     public void loadStudentsTab() {
@@ -324,6 +336,23 @@ public class AdminMenu extends javax.swing.JPanel {
                 covers[i].setVisible(true);
             else
                 covers[i].setVisible(false);
+        }
+    }
+    
+    public void loadHistoryTable() {
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
+            if (rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
+                tblHistory.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.styleTable(tblHistory);
+                TableUtil.resizeColumnWidth(tblHistory);
+            } else {
+                resetHistoryTable();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
@@ -2176,6 +2205,7 @@ public class AdminMenu extends javax.swing.JPanel {
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
+            logAction("Logged out");
         }
         else{
             JOptionPane.showMessageDialog(this, "Canceled");
@@ -2219,6 +2249,7 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
+        loadHistoryTable();
         tabs.setSelectedIndex(5);
         toggleSelected(5);
         //TODO: code for displaying history table
@@ -2347,6 +2378,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     ps.setString(10, "I");
                 ps.execute();
                 loadStudentTable();
+                logAction("Added student record");
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
@@ -2388,6 +2420,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     ps.setString(9, "I");
                 ps.execute();
                 loadStudentTable();
+                logAction("Updated student record");
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
@@ -2407,6 +2440,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 );
                 ps.execute();
                 loadStudentTable();
+                logAction("Deleted student record");
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
@@ -2437,9 +2471,10 @@ public class AdminMenu extends javax.swing.JPanel {
                 if(!(txtSY.getText().toString().equals(""))) {
                     ps = con.prepareStatement("INSERT INTO finals.SY VALUES ('" + txtSY.getText().toString() + "')");
                     int rowsAffected = ps.executeUpdate();
-                    if (rowsAffected > 0)
+                    if (rowsAffected > 0) {
+                        logAction("Added school year record");
                         JOptionPane.showMessageDialog(null, "Added record successfully.");
-                    else
+                    } else
                         JOptionPane.showMessageDialog(null, "Invalid SY", "ERROR", JOptionPane.ERROR_MESSAGE);
                      loadSYTable();
                 } else {
@@ -2449,9 +2484,10 @@ public class AdminMenu extends javax.swing.JPanel {
                 if(!(txtSem.getText().toString().equals(""))) {
                     ps = con.prepareStatement("INSERT INTO finals.SEMESTER VALUES ('" + txtSem.getText().toString() + "')");
                     int rowsAffected = ps.executeUpdate();
-                    if (rowsAffected > 0)
+                    if (rowsAffected > 0) {
+                        logAction("Added semester record");
                         JOptionPane.showMessageDialog(null, "Added record successfully.");
-                    else
+                    } else
                         JOptionPane.showMessageDialog(null, "Invalid Semester", "ERROR", JOptionPane.ERROR_MESSAGE);
                      loadSemTable();
                 } else {
@@ -2513,9 +2549,10 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
+                logAction("Added subject record");
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
             
             loadSubjectTable();
@@ -2548,9 +2585,10 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
+                logAction("Updated subject record");
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Cannot modify subject code", "ERROR", JOptionPane.ERROR_MESSAGE);
             
             loadSubjectTable();
@@ -2570,9 +2608,10 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
+                logAction("Deleted subject record");
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Subject does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
             
             loadSubjectTable();
@@ -2615,9 +2654,10 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(11, cmbFacultyID.getSelectedItem().toString());
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
+                logAction("Added schedule record");
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadScheduleTable();   
         } catch (Exception e) {
@@ -2654,9 +2694,10 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(5, cmbFacultyID.getSelectedItem().toString());
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
+                logAction("Updated schedule record");
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Cannot update", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadScheduleTable();   
         } catch (Exception e) {
@@ -2684,9 +2725,10 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(6, cmbSequenceNo.getSelectedItem().toString());
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
+                logAction("Added schedule record");
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Cannot delete", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadScheduleTable();   
         } catch (Exception e) {
@@ -2796,9 +2838,10 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
+                logAction("Added employee record");
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadEmployeeTable();   
         } catch (Exception e) {
@@ -2833,9 +2876,10 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            else
+                logAction("Updated employee record");
+            } else
                 JOptionPane.showMessageDialog(null, "Cannot modify employee ID1", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadEmployeeTable();   
         } catch (Exception e) {
@@ -2854,9 +2898,10 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0)
+            if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            else
+                logAction("Deleted employee record");
+            } else
                 JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadEmployeeTable();   
         } catch (Exception e) {
@@ -2946,17 +2991,19 @@ public class AdminMenu extends javax.swing.JPanel {
             if (rbSY.isSelected()) {
                 ps = con.prepareStatement("DELETE FROM finals.SY WHERE SY = '" + txtSY.getText().toString() + "'");
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected > 0)
+                if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                else
+                    logAction("Deleted SY record");
+                } else
                     JOptionPane.showMessageDialog(null, "SY does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
                  loadSYTable();
             } else if (rbSem.isSelected()) {
                 ps = con.prepareStatement("DELETE FROM finals.SEMESTER WHERE SEMESTER = '" + txtSem.getText().toString() + "'");
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected > 0)
+                if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                else
+                    logAction("Deleted semester record");
+                } else
                     JOptionPane.showMessageDialog(null, "Semester does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
                  loadSemTable();
             } else {
