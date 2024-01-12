@@ -479,7 +479,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(null);
 
-        tblEnrolSchedule.setBackground(new java.awt.Color(153, 153, 153));
+        tblEnrolSchedule.setBackground(new java.awt.Color(244, 241, 187));
         tblEnrolSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -491,39 +491,45 @@ public class StudentMenu extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblEnrolSchedule);
 
         jPanel4.add(jScrollPane2);
-        jScrollPane2.setBounds(20, 100, 820, 402);
+        jScrollPane2.setBounds(20, 110, 820, 402);
 
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
         jLabel5.setText("Schedule");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(20, 70, 48, 16);
+        jLabel5.setBounds(30, 70, 160, 37);
 
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel6.setText("School Year :");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(10, 30, 68, 16);
+        jLabel6.setBounds(30, 30, 100, 19);
 
+        cmbEnrolSy.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jPanel4.add(cmbEnrolSy);
-        cmbEnrolSy.setBounds(80, 30, 72, 22);
+        cmbEnrolSy.setBounds(130, 30, 72, 25);
 
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel2.setText("Semester :");
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(180, 30, 54, 16);
+        jLabel2.setBounds(250, 29, 70, 10);
 
+        cmbEnrolSem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         cmbEnrolSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEnrolSemActionPerformed(evt);
             }
         });
         jPanel4.add(cmbEnrolSem);
-        cmbEnrolSem.setBounds(240, 30, 72, 22);
+        cmbEnrolSem.setBounds(320, 30, 72, 22);
 
         btnEnrolConfirm.setText("Confirm Enrolment");
+        btnEnrolConfirm.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnEnrolConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnrolConfirmActionPerformed(evt);
             }
         });
         jPanel4.add(btnEnrolConfirm);
-        btnEnrolConfirm.setBounds(710, 510, 132, 23);
+        btnEnrolConfirm.setBounds(720, 530, 132, 20);
 
         btnEnrolSchedView.setText("View Schedule");
         btnEnrolSchedView.addActionListener(new java.awt.event.ActionListener() {
@@ -532,7 +538,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel4.add(btnEnrolSchedView);
-        btnEnrolSchedView.setBounds(350, 30, 106, 23);
+        btnEnrolSchedView.setBounds(520, 40, 106, 23);
 
         plmbg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
         jPanel4.add(plmbg3);
@@ -850,6 +856,11 @@ public class StudentMenu extends javax.swing.JPanel {
         toggleSelected(1);
         loadEnrolmentTab();
         tabs.setSelectedIndex(0);
+        
+         tblSchedule.getTableHeader().setBackground(new Color(255,81,212));
+                            tblSchedule.getTableHeader().setFont(new Font("Poppins", Font.BOLD,12));
+                            tblSchedule.getTableHeader().setOpaque(false);
+                            tblSchedule.getTableHeader().setForeground(new Color(0,0,0,300));
     }//GEN-LAST:event_btnEnrolmentActionPerformed
 
     private void btnSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedActionPerformed
