@@ -102,3 +102,20 @@ INNER JOIN finals.SUBJECT s
     ON en.SUBJECT_CODE = s.SUBJECT_CODE
 INNER JOIN finals.EMPLOYEE e
     ON sc.FACULTY_ID = e.EMPLOYEE_ID;
+
+
+CREATE VIEW finals.VWSTUDENTGRADES as
+SELECT g.SY
+      ,g.SEMESTER as Semester
+      ,g.STUDENT_NO
+      ,g.SUBJECT_CODE
+      ,s.DESCRIPTION as Subject
+      ,s.UNITS as Units
+      ,g.BLOCK_NO
+      ,g.GRADE as Grade
+      ,case when g.GRADE > 3.00 then 'Failed'
+            else 'Passed'
+       end as Remarks
+FROM finals.GRADE g
+INNER JOIN finals.SUBJECT S
+    ON g.SUBJECT_CODE = s.SUBJECT_CODE
