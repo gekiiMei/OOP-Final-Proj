@@ -312,6 +312,8 @@ public class StudentMenu extends javax.swing.JPanel {
         PLMLogo = new javax.swing.JLabel();
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
+        smallpf = new javax.swing.JLabel();
+        NameTopBar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(230, 68, 68));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -838,6 +840,18 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel7.add(CloseBTN);
         CloseBTN.setBounds(1250, 0, 30, 30);
 
+        smallpf.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        smallpf.setForeground(new java.awt.Color(255, 255, 255));
+        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
+        jPanel7.add(smallpf);
+        smallpf.setBounds(1040, 0, 40, 30);
+
+        NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
+        NameTopBar.setText(" Name | Student");
+        jPanel7.add(NameTopBar);
+        NameTopBar.setBounds(1060, 0, 120, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -1149,6 +1163,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JButton CloseBTN;
     private javax.swing.JLabel MainLBL;
     private javax.swing.JButton MinimizeBTN;
+    private javax.swing.JLabel NameTopBar;
     private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnChangePassword;
@@ -1206,6 +1221,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JPanel select2;
     private javax.swing.JPanel select3;
     private javax.swing.JPanel select4;
+    private javax.swing.JLabel smallpf;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblEnrolSchedule;
     private javax.swing.JTable tblGradesTable;
