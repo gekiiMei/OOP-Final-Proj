@@ -953,7 +953,7 @@ public class StudentMenu extends javax.swing.JPanel {
             while (rs.next()) {
                 if (rs.getString("sy").equals(strSelectedSY) && rs.getString("semester").equals(cmbEnrolSem.getSelectedItem().toString())) {
                     System.out.println("already enrolled to this year and semester"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You're already enrolled to this school year and semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "You're already enrolled to, or have finished this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -968,18 +968,18 @@ public class StudentMenu extends javax.swing.JPanel {
                         System.out.println(block);
                     }
                 } else {
-                    ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
                     ps.setString(1, currentUser);
                     ps.setString(2, "Finished");
                     ps.setString(3, course + "1%");
                     rs = ps.executeQuery();
-                    if (rs.next()) {
-                        ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                    if (!rs.next()) {
+                        ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
                         ps.setString(1, currentUser);
                         ps.setString(2, "Finished");
                         ps.setString(3, course + "1%");
                         rs = ps.executeQuery();
-                        if (!rs.next())
+                        if (rs.next())
                             block = course + "1" + rs.getString("block_no").substring(3);
                         else {
                             JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
@@ -995,18 +995,18 @@ public class StudentMenu extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "You cannot go beyond the regular school years for your course!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
             }else {
                 if (cmbEnrolSem.getSelectedItem().toString().equals("1")) {
-                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
                     ps.setString(1, currentUser);
                     ps.setString(2, "Finished");
                     ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
                     rs = ps.executeQuery();
-                    if (rs.next()) {
-                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                    if (!rs.next()) {
+                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
                         ps.setString(1, currentUser);
                         ps.setString(2, "Finished");
                         ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
                         rs = ps.executeQuery();
-                        if (!rs.next())
+                        if (rs.next())
                             block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
                         else {
                             JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
@@ -1018,18 +1018,18 @@ public class StudentMenu extends javax.swing.JPanel {
                         return;
                     }
                 } else {
-                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
                     ps.setString(1, currentUser);
                     ps.setString(2, "Finished");
                     ps.setString(3, course + Integer.toString(intCurrYear) + "%");
                     rs = ps.executeQuery();
-                    if (rs.next()) {
-                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                    if (!rs.next()) {
+                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
                         ps.setString(1, currentUser);
                         ps.setString(2, "Finished");
                         ps.setString(3, course + Integer.toString(intCurrYear) + "%");
                         rs = ps.executeQuery();
-                        if (!rs.next())
+                        if (rs.next())
                             block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
                         else {
                             JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);

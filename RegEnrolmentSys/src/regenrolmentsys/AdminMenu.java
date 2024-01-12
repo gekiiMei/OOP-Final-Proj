@@ -1285,11 +1285,6 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel52.setText("Encoding of Grades:");
 
         chkGradesEncoding.setText("Active");
-        chkGradesEncoding.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                chkGradesEncodingMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -3094,20 +3089,6 @@ public class AdminMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         rbOnline.setSelected(false);
     }//GEN-LAST:event_rbF2FActionPerformed
-
-    private void chkGradesEncodingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkGradesEncodingMouseClicked
-        // TODO add your handling code here:
-        con = ConnectDB.connect();
-        boolean blActive = chkGradesEncoding.isSelected();
-        try {
-            if (blActive)
-                con.prepareStatement("UPDATE finals.ENCODING SET state = 1").execute();
-            else
-                con.prepareStatement("UPDATE finals.ENCODING SET state = 0").execute();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }//GEN-LAST:event_chkGradesEncodingMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
