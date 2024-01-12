@@ -7,6 +7,7 @@ package regenrolmentsys;
 
 //import java.awt.Point;
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.util.Random;
@@ -28,10 +29,6 @@ public class StudentMenu extends javax.swing.JPanel {
     /**
      * Creates new form StudentMenu
      */
-    public StudentMenu(){
-        initComponents();
-        jPanel8.setBackground(new Color(0,0,0,300));
-    }
     public StudentMenu(MainFrame mf) {
         initComponents();
         this.mf = mf;
@@ -110,6 +107,11 @@ public class StudentMenu extends javax.swing.JPanel {
                             rs = ps.executeQuery();
                             System.out.println(subjectCodesIN);
                             tblSchedule.setModel(TableUtil.resultSetToTableModel(rs));
+                            
+                            tblSchedule.getTableHeader().setBackground(new Color(255,81,212));
+                            tblSchedule.getTableHeader().setFont(new Font("Poppins", Font.BOLD,12));
+                            tblSchedule.getTableHeader().setOpaque(false);
+                            tblSchedule.getTableHeader().setForeground(new Color(0,0,0,300));
                     }
                     }          
         }
@@ -362,7 +364,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(-1, 570, 200, 24);
+        btnLogout.setBounds(-1, 570, 200, 28);
 
         btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
         btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -377,7 +379,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnBackStudentMenu);
-        btnBackStudentMenu.setBounds(-5, 510, 210, 24);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
 
         pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
         jPanel1.add(pficon);
@@ -541,9 +543,10 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(null);
 
+        jLabel3.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel3.setText("SCHEDULE");
         jPanel5.add(jLabel3);
-        jLabel3.setBounds(54, 39, 60, 16);
+        jLabel3.setBounds(50, 30, 140, 37);
 
         tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -559,7 +562,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tblSchedule);
 
         jPanel5.add(jScrollPane3);
-        jScrollPane3.setBounds(10, 80, 810, 523);
+        jScrollPane3.setBounds(10, 70, 820, 523);
 
         plmbg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
         jPanel5.add(plmbg2);
@@ -570,6 +573,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         tblGradesTable.setBackground(new java.awt.Color(102, 102, 102));
+        tblGradesTable.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -591,6 +595,7 @@ public class StudentMenu extends javax.swing.JPanel {
             tblGradesTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel1.setText("School year :");
 
         cmbGradeSY.addActionListener(new java.awt.event.ActionListener() {
@@ -599,6 +604,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel4.setText("Semester");
 
         btnGradeSearch.setText("Search");
@@ -914,26 +920,87 @@ public class StudentMenu extends javax.swing.JPanel {
             }
             
             if (intCurrYear == 1) {
-                rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO WHERE block_no LIKE '" + course + Integer.toString(intCurrYear) + "%'").executeQuery();
-                if (rs.next()) {
-                    while (rs.next())
-                        intBlockCount++;
-                    block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
-                }
-            } else if (intCurrYear > 4) { 
-                
-            }else {
-                ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
-                ps.setString(1, currentUser);
-                ps.setString(2, "Finished");
-                ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
-                rs = ps.executeQuery();
-                if (rs.next()) {
-                    block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                if (cmbEnrolSem.getSelectedItem().toString().equals("1")) {
+                    rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO WHERE block_no LIKE '" + course + Integer.toString(intCurrYear) + "%'").executeQuery();
+                    if (rs.next()) {
+                        while (rs.next())
+                            intBlockCount++;
+                        block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
+                        System.out.println(block);
+                    }
                 } else {
-                    System.out.println("missing previous enrolments"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
-                    return;
+                    ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + "1%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                        ps.setString(1, currentUser);
+                        ps.setString(2, "Finished");
+                        ps.setString(3, course + "1%");
+                        rs = ps.executeQuery();
+                        if (!rs.next())
+                            block = course + "1" + rs.getString("block_no").substring(3);
+                        else {
+                            JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
+                
+            } else if (intCurrYear > 4) { 
+                JOptionPane.showMessageDialog(this, "You cannot go beyond the regular school years for your course!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+            }else {
+                if (cmbEnrolSem.getSelectedItem().toString().equals("1")) {
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                        ps.setString(1, currentUser);
+                        ps.setString(2, "Finished");
+                        ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
+                        rs = ps.executeQuery();
+                        if (!rs.next())
+                            block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                        else {
+                            JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } else {
+                        System.out.println("missing previous enrolments"); //TODO: error msg
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                } else {
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + Integer.toString(intCurrYear) + "%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                        ps.setString(1, currentUser);
+                        ps.setString(2, "Finished");
+                        ps.setString(3, course + Integer.toString(intCurrYear) + "%");
+                        rs = ps.executeQuery();
+                        if (!rs.next())
+                            block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                        else {
+                            JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } else {
+                        System.out.println("missing previous enrolments"); //TODO: error msg
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
             }
             ps = con.prepareStatement("SELECT * FROM finals.SUBJECT_SCHEDULE WHERE SY = ? AND SEMESTER = ? AND BLOCK_NO = ?");
@@ -941,7 +1008,13 @@ public class StudentMenu extends javax.swing.JPanel {
             ps.setString(2, cmbEnrolSem.getSelectedItem().toString());
             ps.setString(3, block);
             rs = ps.executeQuery();
-            tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+            if (rs.next()) {
+                rs = ps.executeQuery();
+                tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+            } else {
+                JOptionPane.showMessageDialog(this, "No viable schedules found!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             rs = ps.executeQuery();
             enrollQuery = "INSERT INTO finals.ENROLLED_SUBJECT VALUES ";
             while (rs.next()) {

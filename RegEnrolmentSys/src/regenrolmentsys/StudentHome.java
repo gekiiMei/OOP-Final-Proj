@@ -216,7 +216,7 @@ public class StudentHome extends javax.swing.JPanel {
         lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUserName.setText("name");
         jPanel1.add(lblUserName);
-        lblUserName.setBounds(840, 210, 180, 70);
+        lblUserName.setBounds(730, 210, 400, 70);
 
         Student.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
         Student.setForeground(new java.awt.Color(255, 255, 255));
