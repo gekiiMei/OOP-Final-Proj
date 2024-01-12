@@ -197,6 +197,32 @@ public class AdminMenu extends javax.swing.JPanel {
                     }
                 });
     }
+    
+    private void loadEmployeesTab() {
+        txtEmpID.setText("");
+        txtEmpFirstname.setText("");
+        txtEmpLastname.setText("");
+        txtEmpCellNo.setText("");
+        txtEmpAddress.setText("");
+        cmbEmpGender.setSelectedIndex(0);
+        checkEmpStatus.setSelected(false);
+        
+        loadEmployeeTable();
+    }
+    
+    private void loadEmployeeTable(){
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE").executeQuery();
+            if (rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.EMPLOYEE").executeQuery();
+                tblEmployees.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblEmployees);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -218,6 +244,39 @@ public class AdminMenu extends javax.swing.JPanel {
         btnHistory = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblStudents = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        cmbStudentNoYear = new javax.swing.JComboBox<>();
+        txtStudentNo = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        btnStudSearch = new javax.swing.JButton();
+        txtStuFirstName = new javax.swing.JTextField();
+        txtStuLastName = new javax.swing.JTextField();
+        cmbStuGender = new javax.swing.JComboBox<>();
+        cmbStuCourse = new javax.swing.JComboBox<>();
+        txtStuAddress = new javax.swing.JTextField();
+        chkStuActive = new javax.swing.JCheckBox();
+        dateStuBday = new com.github.lgooddatepicker.components.DatePicker();
+        txtStuCourseDesc = new javax.swing.JLabel();
+        btnAddStuRec = new javax.swing.JButton();
+        btnUpdateStuRec = new javax.swing.JButton();
+        btnDeleteStuRec = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        txtStuMidInitial = new javax.swing.JTextField();
+        lblStuEmail = new javax.swing.JLabel();
+        txtStuPhone = new javax.swing.JTextField();
+        btnStudSearchName = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -268,7 +327,6 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         cmbSchedSem = new javax.swing.JComboBox<>();
         jLabel28 = new javax.swing.JLabel();
-        cmbCollegeCode = new javax.swing.JComboBox<>();
         jLabel29 = new javax.swing.JLabel();
         lblCollegeDescSched = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -280,7 +338,7 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel33 = new javax.swing.JLabel();
         cmbDay = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
-        timeSchedTIme = new com.github.lgooddatepicker.components.TimePicker();
+        timeSchedTImeStart = new com.github.lgooddatepicker.components.TimePicker();
         jLabel35 = new javax.swing.JLabel();
         txtRoom = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
@@ -297,6 +355,13 @@ public class AdminMenu extends javax.swing.JPanel {
         btnDeleteSched = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblSched = new javax.swing.JTable();
+        lblCollegeCodeSched = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        timeSchedTImeEnd = new com.github.lgooddatepicker.components.TimePicker();
+        jLabel53 = new javax.swing.JLabel();
+        lblCourseCodeSched = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        lblCourseDescSched = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -324,43 +389,9 @@ public class AdminMenu extends javax.swing.JPanel {
         btnDeleteEmp = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblEmployees = new javax.swing.JTable();
-        btnClearEmp = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHistory = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblStudents = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        cmbStudentNoYear = new javax.swing.JComboBox<>();
-        txtStudentNo = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        btnStudSearch = new javax.swing.JButton();
-        txtStuFirstName = new javax.swing.JTextField();
-        txtStuLastName = new javax.swing.JTextField();
-        cmbStuGender = new javax.swing.JComboBox<>();
-        cmbStuCourse = new javax.swing.JComboBox<>();
-        txtStuAddress = new javax.swing.JTextField();
-        chkStuActive = new javax.swing.JCheckBox();
-        dateStuBday = new com.github.lgooddatepicker.components.DatePicker();
-        txtStuCourseDesc = new javax.swing.JLabel();
-        btnAddStuRec = new javax.swing.JButton();
-        btnUpdateStuRec = new javax.swing.JButton();
-        btnDeleteStuRec = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        txtStuMidInitial = new javax.swing.JTextField();
-        lblStuEmail = new javax.swing.JLabel();
-        txtStuPhone = new javax.swing.JTextField();
-        btnStudSearchName = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         smallpf = new javax.swing.JLabel();
         PLMLogo = new javax.swing.JLabel();
@@ -471,6 +502,265 @@ public class AdminMenu extends javax.swing.JPanel {
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setPreferredSize(new java.awt.Dimension(1003, 720));
         tabs.setToolTipText("");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No existing student records found"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblStudents.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblStudentsMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblStudents);
+
+        jLabel1.setText("Student No. :");
+
+        jLabel2.setText("First Name :");
+
+        jLabel3.setText("Last Name");
+
+        jLabel4.setText("Email :");
+
+        jLabel5.setText("Gender :");
+
+        jLabel6.setText("Course :");
+
+        jLabel7.setText("Phone No. :");
+
+        jLabel8.setText("Address :");
+
+        jLabel9.setText("Birthday :");
+
+        jLabel10.setText("Status :");
+
+        cmbStudentNoYear.setToolTipText("");
+        cmbStudentNoYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbStudentNoYearActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("-");
+
+        btnStudSearch.setText("Search ID");
+        btnStudSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudSearchActionPerformed(evt);
+            }
+        });
+
+        txtStuFirstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStuFirstNameActionPerformed(evt);
+            }
+        });
+
+        cmbStuGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+
+        cmbStuCourse.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbStuCourseItemStateChanged(evt);
+            }
+        });
+        cmbStuCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbStuCourseActionPerformed(evt);
+            }
+        });
+
+        chkStuActive.setText("Active");
+        chkStuActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkStuActiveActionPerformed(evt);
+            }
+        });
+
+        txtStuCourseDesc.setText("err");
+
+        btnAddStuRec.setText("Add");
+        btnAddStuRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStuRecActionPerformed(evt);
+            }
+        });
+
+        btnUpdateStuRec.setText("Update");
+        btnUpdateStuRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateStuRecActionPerformed(evt);
+            }
+        });
+
+        btnDeleteStuRec.setText("Delete");
+        btnDeleteStuRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteStuRecActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Middle Inital : ");
+
+        txtStuMidInitial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStuMidInitialActionPerformed(evt);
+            }
+        });
+
+        lblStuEmail.setText("-");
+
+        btnStudSearchName.setText("Search Name");
+        btnStudSearchName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudSearchNameActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtStuMidInitial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtStuFirstName))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbStudentNoYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtStuLastName)
+                                            .addComponent(lblStuEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnStudSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnStudSearchName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(57, 57, 57)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(dateStuBday, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel10))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(chkStuActive)
+                                            .addComponent(txtStuAddress)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(cmbStuCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtStuCourseDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
+                                            .addComponent(txtStuPhone)))))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnAddStuRec)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnUpdateStuRec)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnDeleteStuRec)))
+                        .addGap(0, 143, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel6)
+                    .addComponent(cmbStudentNoYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(btnStudSearch)
+                    .addComponent(cmbStuCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStuCourseDesc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7)
+                    .addComponent(txtStuFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStuPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStudSearchName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8)
+                    .addComponent(txtStuLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStuAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(dateStuBday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(chkStuActive)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtStuMidInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(lblStuEmail))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddStuRec)
+                    .addComponent(btnUpdateStuRec)
+                    .addComponent(btnDeleteStuRec))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tabs.addTab("", jPanel4);
 
         jLabel13.setText("SY AND SEMESTER RECORDS");
 
@@ -604,7 +894,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(btnDeleteSYSem))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel5);
@@ -869,7 +1159,7 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jLabel27.setText("Semester:");
 
-        jLabel28.setText("College Code:");
+        jLabel28.setText("College :");
 
         jLabel29.setText("-");
 
@@ -885,7 +1175,7 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jLabel33.setText("Day:");
 
-        cmbDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", " " }));
+        cmbDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN" }));
 
         jLabel34.setText("Time:");
 
@@ -908,7 +1198,7 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jLabel39.setText("Faculty Name:");
 
-        lblFacultyName.setText("----");
+        lblFacultyName.setText("----------");
 
         btnAddSched.setText("Add");
         btnAddSched.addActionListener(new java.awt.event.ActionListener() {
@@ -933,16 +1223,36 @@ public class AdminMenu extends javax.swing.JPanel {
 
         tblSched.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No schedule records found"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane5.setViewportView(tblSched);
+
+        lblCollegeCodeSched.setText("College Code");
+
+        jLabel52.setText("-");
+
+        jLabel53.setText("Course:");
+
+        lblCourseCodeSched.setText("Course Code");
+
+        jLabel54.setText("-");
+
+        lblCourseDescSched.setText("Course Description");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -954,42 +1264,50 @@ public class AdminMenu extends javax.swing.JPanel {
                         .addGap(474, 474, 474)
                         .addComponent(jLabel24))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
+                        .addGap(197, 197, 197)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel31)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel32)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblSubjDesc))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel33)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel34)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(timeSchedTIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel35)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel36)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbOnline)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbF2F))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel37)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtSeqNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                                                .addComponent(jLabel37)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtSeqNo))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                                                .addComponent(jLabel33)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel34)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(timeSchedTImeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel52)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(timeSchedTImeEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel30)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel53)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(lblCourseCodeSched)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jLabel54)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblCourseDescSched))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblCollegeCodeSched)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel29)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(lblCollegeDescSched))))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -1001,14 +1319,14 @@ public class AdminMenu extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cmbSchedSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(jLabel28)
+                                        .addComponent(jLabel31)
                                         .addGap(18, 18, 18)
-                                        .addComponent(cmbCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel29)
+                                        .addComponent(jLabel32)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblCollegeDescSched)))
-                                .addGap(137, 137, 137)
+                                        .addComponent(lblSubjDesc)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(jLabel38)
@@ -1017,10 +1335,23 @@ public class AdminMenu extends javax.swing.JPanel {
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(jLabel39)
                                         .addGap(18, 18, 18)
-                                        .addComponent(lblFacultyName, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(lblFacultyName, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel35)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel36)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rbOnline)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbF2F)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(78, 78, 78))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 65, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(btnAddSched)
@@ -1038,38 +1369,54 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel24)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(cmbSchedSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27)
-                    .addComponent(cmbSchedSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel38)
-                    .addComponent(cmbFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(cmbCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29)
-                    .addComponent(lblCollegeDescSched)
-                    .addComponent(jLabel39)
-                    .addComponent(lblFacultyName))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(cmbSchedSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27)
+                            .addComponent(cmbSchedSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel31)
+                            .addComponent(cmbSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel32)
+                            .addComponent(lblSubjDesc)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(cmbFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel39)
+                            .addComponent(lblFacultyName))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(cmbSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32)
-                    .addComponent(lblSubjDesc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel34)
-                    .addComponent(timeSchedTIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel30)
+                            .addComponent(cmbBlockNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel33)
+                            .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34)
+                            .addComponent(timeSchedTImeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel52)
+                            .addComponent(timeSchedTImeEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel29)
+                            .addComponent(lblCollegeDescSched)
+                            .addComponent(lblCollegeCodeSched))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel53)
+                            .addComponent(jLabel54)
+                            .addComponent(lblCourseDescSched)
+                            .addComponent(lblCourseCodeSched))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
@@ -1169,23 +1516,33 @@ public class AdminMenu extends javax.swing.JPanel {
 
         tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No existing employee records found"
             }
-        ));
-        jScrollPane6.setViewportView(tblEmployees);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
 
-        btnClearEmp.setText("CLEAR FIELDS");
-        btnClearEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearEmpActionPerformed(evt);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        tblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEmployeesMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tblEmployees);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1204,8 +1561,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addGap(120, 120, 120)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(btnClearEmp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAddEmp)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateEmp)
@@ -1244,7 +1600,7 @@ public class AdminMenu extends javax.swing.JPanel {
                                     .addComponent(jLabel50))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateEmpBday, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                                    .addComponent(dateEmpBday, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(checkEmpStatus)
@@ -1303,9 +1659,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnUpdateEmp)
                         .addComponent(btnDeleteEmp))
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAddEmp)
-                        .addComponent(btnClearEmp)))
+                    .addComponent(btnAddEmp))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1341,269 +1695,10 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel3);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "No existing student records found"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tblStudents.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblStudentsMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tblStudents);
-
-        jLabel1.setText("Student No. :");
-
-        jLabel2.setText("First Name :");
-
-        jLabel3.setText("Last Name");
-
-        jLabel4.setText("Email :");
-
-        jLabel5.setText("Gender :");
-
-        jLabel6.setText("Course :");
-
-        jLabel7.setText("Phone No. :");
-
-        jLabel8.setText("Address :");
-
-        jLabel9.setText("Birthday :");
-
-        jLabel10.setText("Status :");
-
-        cmbStudentNoYear.setToolTipText("");
-        cmbStudentNoYear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbStudentNoYearActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("-");
-
-        btnStudSearch.setText("Search ID");
-        btnStudSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStudSearchActionPerformed(evt);
-            }
-        });
-
-        txtStuFirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStuFirstNameActionPerformed(evt);
-            }
-        });
-
-        cmbStuGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
-
-        cmbStuCourse.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbStuCourseItemStateChanged(evt);
-            }
-        });
-        cmbStuCourse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbStuCourseActionPerformed(evt);
-            }
-        });
-
-        chkStuActive.setText("Active");
-        chkStuActive.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkStuActiveActionPerformed(evt);
-            }
-        });
-
-        txtStuCourseDesc.setText("err");
-
-        btnAddStuRec.setText("Add");
-        btnAddStuRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddStuRecActionPerformed(evt);
-            }
-        });
-
-        btnUpdateStuRec.setText("Update");
-        btnUpdateStuRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateStuRecActionPerformed(evt);
-            }
-        });
-
-        btnDeleteStuRec.setText("Delete");
-        btnDeleteStuRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteStuRecActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setText("Middle Inital : ");
-
-        txtStuMidInitial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStuMidInitialActionPerformed(evt);
-            }
-        });
-
-        lblStuEmail.setText("-");
-
-        btnStudSearchName.setText("Search Name");
-        btnStudSearchName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStudSearchNameActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtStuMidInitial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtStuFirstName))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbStudentNoYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtStuLastName)
-                                            .addComponent(lblStuEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnStudSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnStudSearchName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(57, 57, 57)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(dateStuBday, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel10))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(chkStuActive)
-                                            .addComponent(txtStuAddress)
-                                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                                .addComponent(cmbStuCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtStuCourseDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
-                                            .addComponent(txtStuPhone)))))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnAddStuRec)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnUpdateStuRec)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDeleteStuRec)))
-                        .addGap(0, 143, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
-                    .addComponent(cmbStudentNoYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(btnStudSearch)
-                    .addComponent(cmbStuCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStuCourseDesc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(txtStuFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStuPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnStudSearchName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8)
-                    .addComponent(txtStuLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStuAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(dateStuBday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(chkStuActive)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(txtStuMidInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(lblStuEmail))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cmbStuGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddStuRec)
-                    .addComponent(btnUpdateStuRec)
-                    .addComponent(btnDeleteStuRec))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        tabs.addTab("", jPanel4);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1630,7 +1725,7 @@ public class AdminMenu extends javax.swing.JPanel {
         smallpf.setForeground(new java.awt.Color(255, 255, 255));
         smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
         jPanel9.add(smallpf);
-        smallpf.setBounds(1040, 0, 40, 30);
+        smallpf.setBounds(1050, 0, 30, 30);
 
         PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
         jPanel9.add(PLMLogo);
@@ -1687,19 +1782,18 @@ public class AdminMenu extends javax.swing.JPanel {
 
         NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
-        NameTopBar.setText(" Name | Faculty");
+        NameTopBar.setText(" Admin");
         jPanel9.add(NameTopBar);
-        NameTopBar.setBounds(1060, 0, 120, 30);
+        NameTopBar.setBounds(1070, 0, 110, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1750,6 +1844,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(4);
+        loadEmployeesTab();
     }//GEN-LAST:event_btnEmployeesActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
@@ -2017,8 +2112,8 @@ public class AdminMenu extends javax.swing.JPanel {
             rs = ps.executeQuery();
             if (rs.next()) {
                 rs = ps.executeQuery();
-                tblSubjects.setModel(TableUtil.resultSetToTableModel(rs));
-                TableUtil.resizeColumnWidth(tblSubjects);
+                tblEmployees.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblEmployees);
             } else {
                 JOptionPane.showMessageDialog(null, "Subject code does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -2135,10 +2230,72 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnSearchEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEmpIDActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE employee_id = ?");
+            ps.setString(1,txtEmpID.getText().toString());
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                txtEmpFirstname.setText(rs.getString("first_name").toString());
+                txtEmpLastname.setText(rs.getString("last_name").toString());
+                txtEmpCellNo.setText(rs.getString("cp_num").toString());
+                txtEmpAddress.setText(rs.getString("address").toString());
+                lblEmpEmail.setText(rs.getString("email").toString());
+                cmbEmpGender.setSelectedItem(rs.getString("gender").toString());
+                if (!(rs.getDate("bday")==null)) 
+                    dateEmpBday.setDate(rs.getDate("bday").toLocalDate());
+                if (rs.getString("status").toString().equals("A"))
+                    checkEmpStatus.setSelected(true);
+                else
+                    checkEmpStatus.setSelected(false);
+                
+                rs = ps.executeQuery();
+                tblEmployees.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblEmployees);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Employee does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnSearchEmpIDActionPerformed
 
     private void btnSearchEmpNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEmpNameActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE first_name LIKE ? OR last_name LIKE ?");
+            ps.setString(1, "%" + txtEmpFirstname.getText() + "%");
+            ps.setString(2, "%" + txtEmpLastname.getText() + "%");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                txtEmpID.setText(rs.getString("employee_id").toString());
+                txtEmpFirstname.setText(rs.getString("first_name").toString());
+                txtEmpLastname.setText(rs.getString("last_name").toString());
+                txtEmpCellNo.setText(rs.getString("cp_num").toString());
+                txtEmpAddress.setText(rs.getString("address").toString());
+                lblEmpEmail.setText(rs.getString("email").toString());
+                cmbEmpGender.setSelectedItem(rs.getString("gender").toString());
+                if (!(rs.getDate("bday")==null)) 
+                    dateEmpBday.setDate(rs.getDate("bday").toLocalDate());
+                if (rs.getString("status").toString().equals("A"))
+                    checkEmpStatus.setSelected(true);
+                else
+                    checkEmpStatus.setSelected(false);
+                
+                rs = ps.executeQuery();
+                tblEmployees.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblEmployees);
+            } else {
+                loadStudentTable();
+                JOptionPane.showMessageDialog(this, "No employee found with matching search parameters!", "Search error", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnSearchEmpNameActionPerformed
 
     private void cmbEmpGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpGenderActionPerformed
@@ -2151,19 +2308,96 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnAddEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmpActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.EMPLOYEE VALUES (?,?,?,default,?,?,?,?,?)");
+            ps.setString(1, txtEmpID.getText().toString());
+            ps.setString(2, txtEmpLastname.getText().toString());
+            ps.setString(3, txtEmpFirstname.getText().toString());
+            ps.setString(4, cmbEmpGender.getSelectedItem().toString());
+            ps.setString(5, txtEmpCellNo.getText().toString());
+            ps.setString(6, txtEmpAddress.getText().toString());
+            if (!(dateEmpBday.toString()=="")) {
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                ps.setDate(7, new java.sql.Date(df.parse(dateEmpBday.toString()).getTime()));
+            } else {
+                ps.setDate(7, null);
+            }
+            if (cmbEmpGender.getSelectedItem().equals("A"))
+                ps.setString(8,"A");
+            else
+                ps.setString(8,"I");
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Added record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
+            loadEmployeeTable();   
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnAddEmpActionPerformed
 
     private void btnUpdateEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmpActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("UPDATE finals.EMPLOYEE SET "
+                    + "last_name = ?, first_name = ?, gender = ?, cp_num = ?, address = ?, bday = ?, status = ? "
+                    + "WHERE employee_id = ?");
+            ps.setString(8, txtEmpID.getText().toString());
+            ps.setString(1, txtEmpLastname.getText().toString());
+            ps.setString(2, txtEmpFirstname.getText().toString());
+            ps.setString(3, cmbEmpGender.getSelectedItem().toString());
+            ps.setString(4, txtEmpCellNo.getText().toString());
+            ps.setString(5, txtEmpAddress.getText().toString());
+            if (!(dateEmpBday.toString()=="")) {
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                ps.setDate(6, new java.sql.Date(df.parse(dateEmpBday.toString()).getTime()));
+            } else {
+                ps.setDate(6, null);
+            }
+            if (cmbEmpGender.getSelectedItem().equals("A"))
+                ps.setString(7,"A");
+            else
+                ps.setString(7,"I");
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Updated record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Cannot modify employee ID1", "ERROR", JOptionPane.ERROR_MESSAGE);
+            loadEmployeeTable();   
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cannot modify existing employee ID", "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnUpdateEmpActionPerformed
 
     private void btnDeleteEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmpActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("DELETE FROM finals.EMPLOYEE "
+                    + "WHERE employee_id = ?");
+            ps.setString(1, txtEmpID.getText().toString());
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+            loadEmployeeTable();   
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cannot delete employee ID in use", "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnDeleteEmpActionPerformed
-
-    private void btnClearEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearEmpActionPerformed
 
     private void btnStudSearchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudSearchNameActionPerformed
         // TODO add your handling code here:
@@ -2330,6 +2564,35 @@ public class AdminMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblSubjectsMouseEntered
 
+    private void tblEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmployeesMouseClicked
+        // TODO add your handling code here:
+        int intRow = tblEmployees.getSelectedRow();
+        
+        con = ConnectDB.connect();
+        String selectedEmployee = tblEmployees.getValueAt(intRow, 0).toString();
+        try {
+            ps = con.prepareStatement("SELECT * FROM finals.EMPLOYEE WHERE "
+                    + "employee_id = '" + selectedEmployee + "'");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                txtEmpID.setText(rs.getString("employee_id").toString());
+                txtEmpLastname.setText(rs.getString("last_name").toString());
+                txtEmpFirstname.setText(rs.getString("first_name").toString());
+                lblEmpEmail.setText(rs.getString("email").toString());
+                cmbEmpGender.setSelectedItem(rs.getString("gender").toString());
+                txtEmpCellNo.setText(rs.getString("cp_num").toString());
+                txtEmpAddress.setText(rs.getString("address").toString());
+                if (!(rs.getDate("bday")==null))
+                    dateEmpBday.setDate(rs.getDate("bday").toLocalDate());
+                else
+                    dateEmpBday.clear();
+                checkEmpStatus.setSelected(rs.getString("status").equals("A"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_tblEmployeesMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
     private javax.swing.JLabel MainLBL1;
@@ -2341,7 +2604,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnAddSched;
     private javax.swing.JButton btnAddStuRec;
     private javax.swing.JButton btnAddSubj;
-    private javax.swing.JButton btnClearEmp;
     private javax.swing.JButton btnDeleteEmp;
     private javax.swing.JButton btnDeleteSYSem;
     private javax.swing.JButton btnDeleteSched;
@@ -2367,7 +2629,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JCheckBox checkSubjStatus;
     private javax.swing.JCheckBox chkStuActive;
     private javax.swing.JComboBox<String> cmbBlockNo;
-    private javax.swing.JComboBox<String> cmbCollegeCode;
     private javax.swing.JComboBox<String> cmbCollegeCode2;
     private javax.swing.JComboBox<String> cmbCollegeYr;
     private javax.swing.JComboBox<String> cmbCourseCode;
@@ -2430,6 +2691,9 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2450,10 +2714,13 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblCollegeCodeSched;
     private javax.swing.JLabel lblCollegeDesc;
     private javax.swing.JLabel lblCollegeDescSched;
     private javax.swing.JLabel lblCollegeYear;
+    private javax.swing.JLabel lblCourseCodeSched;
     private javax.swing.JLabel lblCourseDesc;
+    private javax.swing.JLabel lblCourseDescSched;
     private javax.swing.JLabel lblEmpEmail;
     private javax.swing.JLabel lblFacultyName;
     private javax.swing.JLabel lblSem;
@@ -2471,7 +2738,8 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JTable tblSched;
     private javax.swing.JTable tblStudents;
     private javax.swing.JTable tblSubjects;
-    private com.github.lgooddatepicker.components.TimePicker timeSchedTIme;
+    private com.github.lgooddatepicker.components.TimePicker timeSchedTImeEnd;
+    private com.github.lgooddatepicker.components.TimePicker timeSchedTImeStart;
     private javax.swing.JTextField txtCurriculum;
     private javax.swing.JTextField txtEmpAddress;
     private javax.swing.JTextField txtEmpCellNo;
