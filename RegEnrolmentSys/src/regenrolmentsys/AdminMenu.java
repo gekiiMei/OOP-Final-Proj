@@ -1536,6 +1536,7 @@ public class AdminMenu extends javax.swing.JPanel {
         lblCourseDescSched.setText("Course Description");
 
         plmbg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+
         cmbSequenceNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", " " }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -2020,7 +2021,7 @@ public class AdminMenu extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1068, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2035,9 +2036,9 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(254, 86, 86));
         jPanel9.setLayout(null);
 
+        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
         smallpf.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         smallpf.setForeground(new java.awt.Color(255, 255, 255));
-        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
         jPanel9.add(smallpf);
         smallpf.setBounds(1050, 0, 30, 30);
 
@@ -2067,11 +2068,11 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel9.add(MinimizeBTN);
         MinimizeBTN.setBounds(1220, 0, 30, 30);
 
+        CloseBTN.setText("X");
         CloseBTN.setBackground(new java.awt.Color(254, 86, 86));
+        CloseBTN.setBorder(null);
         CloseBTN.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
         CloseBTN.setForeground(new java.awt.Color(255, 255, 255));
-        CloseBTN.setText("X");
-        CloseBTN.setBorder(null);
         CloseBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CloseBTNMouseEntered(evt);
@@ -2088,15 +2089,15 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel9.add(CloseBTN);
         CloseBTN.setBounds(1250, 0, 30, 30);
 
+        MainLBL1.setText("Enrollment System for Regular Students");
         MainLBL1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         MainLBL1.setForeground(new java.awt.Color(255, 255, 255));
-        MainLBL1.setText("Enrollment System for Regular Students");
         jPanel9.add(MainLBL1);
         MainLBL1.setBounds(40, 0, 290, 30);
 
+        NameTopBar.setText(" Admin");
         NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
-        NameTopBar.setText(" Admin");
         jPanel9.add(NameTopBar);
         NameTopBar.setBounds(1070, 0, 110, 30);
 
@@ -2107,7 +2108,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1279, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
