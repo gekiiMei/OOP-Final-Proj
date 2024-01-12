@@ -1725,7 +1725,7 @@ public class AdminMenu extends javax.swing.JPanel {
         smallpf.setForeground(new java.awt.Color(255, 255, 255));
         smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
         jPanel9.add(smallpf);
-        smallpf.setBounds(1040, 0, 40, 30);
+        smallpf.setBounds(1050, 0, 30, 30);
 
         PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
         jPanel9.add(PLMLogo);
@@ -1782,9 +1782,9 @@ public class AdminMenu extends javax.swing.JPanel {
 
         NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
-        NameTopBar.setText(" Name | Faculty");
+        NameTopBar.setText(" Admin");
         jPanel9.add(NameTopBar);
-        NameTopBar.setBounds(1060, 0, 120, 30);
+        NameTopBar.setBounds(1070, 0, 110, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
