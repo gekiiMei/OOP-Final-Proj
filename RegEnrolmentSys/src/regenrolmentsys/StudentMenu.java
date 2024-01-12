@@ -204,6 +204,16 @@ public class StudentMenu extends javax.swing.JPanel {
                     }
                 });
     }
+    
+    public void toggleSelected(int index) {
+        javax.swing.JPanel covers[] = {select1, select2, select3, select4}; //just fill with the cover JPanels for other menus
+        for (int i=0; i<covers.length; ++i) {
+            if (i == index) 
+                covers[i].setVisible(true);
+            else
+                covers[i].setVisible(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -352,7 +362,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(-1, 570, 200, 28);
+        btnLogout.setBounds(-1, 570, 200, 24);
 
         btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
         btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -367,7 +377,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnBackStudentMenu);
-        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 24);
 
         pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
         jPanel1.add(pficon);
@@ -393,7 +403,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel1.add(pficon5);
         pficon5.setBounds(20, 500, 40, 50);
 
-        select4.setBackground(new java.awt.Color(230, 68, 68));
+        select4.setBackground(new java.awt.Color(179, 52, 52));
 
         javax.swing.GroupLayout select4Layout = new javax.swing.GroupLayout(select4);
         select4.setLayout(select4Layout);
@@ -409,7 +419,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel1.add(select4);
         select4.setBounds(0, 230, 200, 70);
 
-        select3.setBackground(new java.awt.Color(230, 68, 68));
+        select3.setBackground(new java.awt.Color(179, 52, 52));
 
         javax.swing.GroupLayout select3Layout = new javax.swing.GroupLayout(select3);
         select3.setLayout(select3Layout);
@@ -425,7 +435,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel1.add(select3);
         select3.setBounds(0, 160, 200, 70);
 
-        select2.setBackground(new java.awt.Color(230, 68, 68));
+        select2.setBackground(new java.awt.Color(179, 52, 52));
 
         javax.swing.GroupLayout select2Layout = new javax.swing.GroupLayout(select2);
         select2.setLayout(select2Layout);
@@ -441,7 +451,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel1.add(select2);
         select2.setBounds(0, 90, 200, 70);
 
-        select1.setBackground(new java.awt.Color(230, 68, 68));
+        select1.setBackground(new java.awt.Color(179, 52, 52));
 
         javax.swing.GroupLayout select1Layout = new javax.swing.GroupLayout(select1);
         select1.setLayout(select1Layout);
@@ -511,7 +521,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel4.add(btnEnrolConfirm);
-        btnEnrolConfirm.setBounds(870, 500, 132, 23);
+        btnEnrolConfirm.setBounds(710, 510, 132, 23);
 
         btnEnrolSchedView.setText("View Schedule");
         btnEnrolSchedView.addActionListener(new java.awt.event.ActionListener() {
@@ -607,7 +617,6 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -617,8 +626,9 @@ public class StudentMenu extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnGradeSearch)))
-                .addGap(67, 67, 67))
+                        .addComponent(btnGradeSearch))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -635,9 +645,9 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGradeSearch))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -703,7 +713,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 990, Short.MAX_VALUE)
+            .addGap(0, 820, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -711,7 +721,7 @@ public class StudentMenu extends javax.swing.JPanel {
         );
 
         jPanel3.add(jPanel8);
-        jPanel8.setBounds(30, 10, 990, 340);
+        jPanel8.setBounds(30, 10, 820, 340);
 
         plmbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
         jPanel3.add(plmbg);
@@ -829,43 +839,24 @@ public class StudentMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
-        // TODO add your handling code here:
-        select1.setBackground(new Color(179,52,52));
-        select2.setBackground(new Color(230, 68, 68));
-        select3.setBackground(new Color(230, 68, 68));
-        select4.setBackground(new Color(230, 68, 68));
-        tabs.setSelectedIndex(0);
-        profileStudentsTab();
-    }//GEN-LAST:event_btnProfileActionPerformed
-
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
         // TODO add your handling code here:
-        select1.setBackground(new Color(230, 68, 68));
-        select2.setBackground(new Color(179,52,52));
-        select3.setBackground(new Color(230, 68, 68));
-        select4.setBackground(new Color(230, 68, 68));
+        toggleSelected(1);
         loadEnrolmentTab();
-        tabs.setSelectedIndex(1);
+        tabs.setSelectedIndex(0);
     }//GEN-LAST:event_btnEnrolmentActionPerformed
 
     private void btnSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedActionPerformed
         // TODO add your handling code here:
-        select1.setBackground(new Color(230, 68, 68));
-        select2.setBackground(new Color(230, 68, 68));
-        select3.setBackground(new Color(179,52,52));
-        select4.setBackground(new Color(230, 68, 68));
-        tabs.setSelectedIndex(2);
+        toggleSelected(2);
+        tabs.setSelectedIndex(1);
         studentScheduleTab();
     }//GEN-LAST:event_btnSchedActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
-        select1.setBackground(new Color(230, 68, 68));
-        select2.setBackground(new Color(230, 68, 68));
-        select3.setBackground(new Color(230, 68, 68));
-        select4.setBackground(new Color(179,52,52));
-        tabs.setSelectedIndex(3);
+        toggleSelected(3);
+        tabs.setSelectedIndex(2);
         loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
 
@@ -992,7 +983,7 @@ public class StudentMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_MinimizeBTNMouseExited
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
-        //minimize button event here:
+        mf.minimize();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
@@ -1008,7 +999,7 @@ public class StudentMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_CloseBTNMouseExited
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
-        //exit button event here:
+        mf.close();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
@@ -1033,6 +1024,13 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnChangePasswordActionPerformed
+
+    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
+        // TODO add your handling code here:
+        toggleSelected(0);
+        tabs.setSelectedIndex(3);
+        profileStudentsTab();
+    }//GEN-LAST:event_btnProfileActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
