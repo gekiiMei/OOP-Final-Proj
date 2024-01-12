@@ -8,8 +8,6 @@ import java.awt.Color;
 
 import javax.swing.JOptionPane;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import javax.swing.*;
 
 
@@ -56,26 +54,6 @@ public class StudentHome extends javax.swing.JPanel {
                 lblUserName.setText(rs.getString("first_name"));
         }
         catch(Exception e) {
-            System.out.println(e);
-        }
-    }
-    
-    private void logAction(String action) {
-        con = ConnectDB.connect();
-        LocalTime localCurrTime = LocalTime.now();
-        LocalDate localCurrDate = LocalDate.now();
-        Time currTime = Time.valueOf(localCurrTime);
-        Date currDate = Date.valueOf(localCurrDate);
-        
-        try {
-            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, currentUser);
-            ps.setString(2, action);
-            ps.setString(3, "Student");
-            ps.setDate(4, currDate);
-            ps.setTime(5, currTime);
-            ps.execute();
-        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -386,11 +364,10 @@ public class StudentHome extends javax.swing.JPanel {
 
     private void BTNLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogoutActionPerformed
         // TODO add your handling code here:
-        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION, 2, new ImageIcon("assets\\question.png"));  
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);  
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
-            logAction("Logged out");
         }
         else{
             JOptionPane.showMessageDialog(null, "Canceled");
