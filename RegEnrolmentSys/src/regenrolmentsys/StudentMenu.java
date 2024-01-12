@@ -9,6 +9,7 @@ package regenrolmentsys;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.*;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import java.util.Random;
 import javax.swing.table.DefaultTableModel;
@@ -139,8 +140,10 @@ public class StudentMenu extends javax.swing.JPanel {
     
     private void loadGradesTable() {
         con = ConnectDB.connect();
+        double gwa = 0.0;
+        int totalUnits = 0;
         try {
-            ps = con.prepareStatement("SELECT * FROM finals.GRADE WHERE student_no = ? AND SY = ? AND SEMESTER = ?"); //TODO: REPLACE WITH VIEW
+            ps = con.prepareStatement("SELECT subject, units, grade, Remarks FROM finals.vwSTUDENTGRADES WHERE student_no = ? AND SY = ? AND Semester = ?"); //TODO: REPLACE WITH VIEW
             ps.setString(1, currentUser);
             ps.setString(2, cmbGradeSY.getSelectedItem().toString());
             ps.setString(3, cmbGradeSem.getSelectedItem().toString());
@@ -150,6 +153,13 @@ public class StudentMenu extends javax.swing.JPanel {
                 tblGradesTable.setModel(TableUtil.resultSetToTableModel(rs));
                 TableUtil.styleTable(tblGradesTable);
                 TableUtil.resizeColumnWidth(tblGradesTable);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    totalUnits += rs.getInt("units");
+                    gwa += rs.getDouble("grade") * rs.getInt("units");
+                }
+                gwa /= totalUnits;
+                lblGradeGWA.setText("GWA: " + new DecimalFormat("#.##").format(gwa));
             }
             else {
                 gradesTableEmpty();
@@ -272,6 +282,7 @@ public class StudentMenu extends javax.swing.JPanel {
         cmbGradeSem = new javax.swing.JComboBox<>();
         btnGradeSearch = new javax.swing.JButton();
         plmbg1 = new javax.swing.JLabel();
+        lblGradeGWA = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblStudentNo = new javax.swing.JLabel();
         btnChangePassword = new javax.swing.JButton();
@@ -366,7 +377,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(-1, 570, 200, 28);
+        btnLogout.setBounds(-1, 570, 200, 24);
 
         btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
         btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -381,7 +392,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnBackStudentMenu);
-        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 24);
 
         pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
         jPanel1.add(pficon);
@@ -555,7 +566,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel3.setText("SCHEDULE");
         jPanel5.add(jLabel3);
-        jLabel3.setBounds(50, 30, 140, 37);
+        jLabel3.setBounds(50, 30, 140, 32);
 
         tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -630,6 +641,8 @@ public class StudentMenu extends javax.swing.JPanel {
 
         plmbg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
+        lblGradeGWA.setText("GWA: ");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -648,7 +661,8 @@ public class StudentMenu extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnGradeSearch))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGradeGWA))
                 .addGap(187, 187, 187))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
@@ -670,7 +684,9 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(btnGradeSearch))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblGradeGWA)
+                .addContainerGap(69, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1186,6 +1202,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblGradeGWA;
     private javax.swing.JLabel lblGuideText;
     private javax.swing.JLabel lblStudentAddress;
     private javax.swing.JLabel lblStudentBday;

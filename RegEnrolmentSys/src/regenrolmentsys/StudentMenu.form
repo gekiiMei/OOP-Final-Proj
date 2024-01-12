@@ -703,6 +703,7 @@
                                   </Group>
                                   <Component id="jScrollPane1" alignment="0" min="-2" pref="857" max="-2" attributes="0"/>
                                   <Component id="jLabel7" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="lblGradeGWA" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
                           </Group>
@@ -730,7 +731,9 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="508" max="-2" attributes="0"/>
-                              <EmptySpace pref="97" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblGradeGWA" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="69" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -845,6 +848,11 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/plm.png"/>
                         </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblGradeGWA">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="GWA: "/>
                       </Properties>
                     </Component>
                   </SubComponents>
