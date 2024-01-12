@@ -22,7 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        //setUndecorated(true);
+        setUndecorated(true);
         setTitle("Enrollment System for Regular Students");
         
         cont.setLayout(cl);
