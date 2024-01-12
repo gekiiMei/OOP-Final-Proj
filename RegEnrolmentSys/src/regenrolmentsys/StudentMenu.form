@@ -875,16 +875,6 @@
                     <Property name="useNullLayout" type="boolean" value="true"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblStudentNo">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="STUDENT NUMBER:"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="76" y="22" width="150" height="-1"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                     <Component class="javax.swing.JButton" name="btnChangePassword">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Change password"/>
@@ -909,63 +899,150 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="lblStudentStatus" alignment="1" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="lblStudentStatus" min="-2" pref="58" max="-2" attributes="0"/>
+                                                          <Component id="lblStudentBday" min="-2" pref="73" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="bday" min="-2" pref="233" max="-2" attributes="0"/>
+                                                          <Component id="status" min="-2" pref="233" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="mobileNumber" min="-2" pref="233" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="address" min="-2" pref="233" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="83" pref="83" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="lblStudentFN" min="-2" pref="83" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="firstName" min="-2" pref="233" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lblStudentLN" min="-2" pref="83" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="studentNo" min="-2" pref="233" max="-2" attributes="0"/>
+                                                          <Component id="lastName" min="-2" pref="233" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                              <Component id="lblStudentNo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                                  <Component id="lblStudentFN" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                                  <Component id="lblStudentCourseCode" min="-2" pref="94" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="courseCode" min="-2" pref="240" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="lblStudentEmail" alignment="1" min="-2" pref="53" max="-2" attributes="0"/>
-                                                      <Component id="lblStudentGender" alignment="1" min="-2" pref="63" max="-2" attributes="0"/>
-                                                      <Component id="lblStudentCourseCode" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
-                                                      <Component id="lblStudentCPNum" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
-                                                      <Component id="lblStudentAddress" alignment="1" min="-2" pref="67" max="-2" attributes="0"/>
-                                                      <Component id="lblStudentBday" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                                                      <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="email" min="-2" pref="238" max="-2" attributes="0"/>
+                                                      <Component id="gender" min="-2" pref="238" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                          <Component id="lblStudentLN" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="647" max="32767" attributes="0"/>
+                                  <EmptySpace pref="372" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="lblStudentLN" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lblStudentNo" max="32767" attributes="0"/>
+                                      <Component id="studentNo" max="32767" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lblStudentLN" max="32767" attributes="0"/>
+                                      <Component id="lastName" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblStudentFN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="firstName" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblStudentEmail" min="-2" max="-2" attributes="0"/>
+                                      <Component id="email" min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblStudentGender" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblStudentGender" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="gender" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="courseCode" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Component id="lblStudentCourseCode" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
+                                      <Component id="mobileNumber" min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblStudentCPNum" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="address" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblStudentAddress" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bday" min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblStudentBday" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="93" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="status" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Component id="lblStudentStatus" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="87" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lblStudentNo">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="STUDENT NUMBER:"/>
+                          </Properties>
+                        </Component>
                         <Component class="javax.swing.JLabel" name="lblStudentFN">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="FIRST NAME:"/>
@@ -988,7 +1065,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblStudentCPNum">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="CELLPHONE NUMBER:"/>
+                            <Property name="text" type="java.lang.String" value="MOBILE NUMBER:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblStudentAddress">
@@ -1010,6 +1087,31 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="LAST NAME:"/>
                           </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="studentNo">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="66" green="66" red="ff" type="rgb"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lastName">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="firstName">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="email">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="gender">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="courseCode">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="mobileNumber">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="address">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="bday">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="status">
                         </Component>
                       </SubComponents>
                     </Container>
