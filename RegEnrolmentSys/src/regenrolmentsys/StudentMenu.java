@@ -9,6 +9,9 @@ package regenrolmentsys;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 import java.util.Random;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +44,26 @@ public class StudentMenu extends javax.swing.JPanel {
     
     public void setUserID(String userID) {
         this.currentUser = userID;
+    }
+    
+    private void logAction(String action) {
+        con = ConnectDB.connect();
+        LocalTime localCurrTime = LocalTime.now();
+        LocalDate localCurrDate = LocalDate.now();
+        Time currTime = Time.valueOf(localCurrTime);
+        Date currDate = Date.valueOf(localCurrDate);
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, currentUser);
+            ps.setString(2, action);
+            ps.setString(3, "Student");
+            ps.setDate(4, currDate);
+            ps.setTime(5, currTime);
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     
@@ -1522,6 +1545,7 @@ public class StudentMenu extends javax.swing.JPanel {
 
     private void btnGradeSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeSearchActionPerformed
         // TODO add your handling code here:
+        logAction("Viewed grades");
         loadGradesTable();
     }//GEN-LAST:event_btnGradeSearchActionPerformed
 
@@ -1683,6 +1707,7 @@ public class StudentMenu extends javax.swing.JPanel {
             if (intAnswer == 0) {
                 psEnrolConfirm.execute(); //TODO: CONFIRMATION MSG
                 resetEnrolmentSchedTable();
+                logAction("Enrolled subjects");
                 JOptionPane.showMessageDialog(null, "Enrollment successful.");
             } else {
                 JOptionPane.showMessageDialog(null, "Enrollment canceled.");
@@ -1728,13 +1753,14 @@ public class StudentMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         con = ConnectDB.connect();
         String newPassword = JOptionPane.showInputDialog(this, "Enter new password:", "Changing password..", JOptionPane.QUESTION_MESSAGE);
-        if (newPassword.isEmpty())
+        if (newPassword == null || newPassword.isEmpty())
             JOptionPane.showMessageDialog(this, "Password cannot be empty!", "Password error", JOptionPane.ERROR_MESSAGE);
         else {
             String confirmPassword = JOptionPane.showInputDialog(this, "Confirm password:", "Changing password..", JOptionPane.QUESTION_MESSAGE);
             if (newPassword.equals(confirmPassword)) {
                 try {
                     con.prepareStatement("UPDATE finals.PASSWORD SET password = '" + newPassword + "' WHERE user_id = '" + currentUser + "'").execute();
+                    logAction("Changed password");
                     JOptionPane.showMessageDialog(this, "Passwords successfully updated!", "Changing password..", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception e) {
                     System.out.println(e);

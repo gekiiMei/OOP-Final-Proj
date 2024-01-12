@@ -6,6 +6,8 @@ package regenrolmentsys;
 
 import java.awt.Color;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -205,6 +207,26 @@ public class FacultyMenu extends javax.swing.JPanel {
                 covers[i].setVisible(true);
             else
                 covers[i].setVisible(false);
+        }
+    }
+    
+    private void logAction(String action) {
+        con = ConnectDB.connect();
+        LocalTime localCurrTime = LocalTime.now();
+        LocalDate localCurrDate = LocalDate.now();
+        Time currTime = Time.valueOf(localCurrTime);
+        Date currDate = Date.valueOf(localCurrDate);
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, currentUser);
+            ps.setString(2, action);
+            ps.setString(3, "Faculty");
+            ps.setDate(4, currDate);
+            ps.setTime(5, currTime);
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
     /**
@@ -1174,6 +1196,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                         ps.setString(5, cmbBlockNo.getSelectedItem().toString());
                         ps.execute(); 
                         
+                        logAction("Encoded grade");
                         JOptionPane.showMessageDialog(null, "Added record successfully.");
                     } else {
                         JOptionPane.showMessageDialog(null, "Student is already graded", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -1211,9 +1234,10 @@ public class FacultyMenu extends javax.swing.JPanel {
                     ps.setString(5, cmbBlockNo.getSelectedItem().toString());
                 int rowsAffected = ps.executeUpdate();
                     
-                if (rowsAffected > 0)
+                if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                else
+                    logAction("Deleted grade");
+                } else
                     JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
 
                 loadGradesTable();
@@ -1244,9 +1268,10 @@ public class FacultyMenu extends javax.swing.JPanel {
                     + "block_no = '" + cmbBlockNo.getSelectedItem().toString() + "'");
                     int rowsAffected = ps.executeUpdate();
                     
-                    if (rowsAffected > 0)
+                    if (rowsAffected > 0) {
                         JOptionPane.showMessageDialog(null, "Updated record successfully.");
-                    else
+                        logAction("Edited grade");
+                    } else
                         JOptionPane.showMessageDialog(null, "Only grade values can be modified", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 loadGradesTable();  
@@ -1300,6 +1325,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             if (rs.next()) {
                 rs = ps.executeQuery();
                 tblClassList.setModel(TableUtil.resultSetToTableModel(rs));
+                logAction("Viewed class list");
                 TableUtil.resizeColumnWidth(tblGrades);
             } else {
                 JOptionPane.showMessageDialog(null, "No class records", "ERROR", JOptionPane.ERROR_MESSAGE);
