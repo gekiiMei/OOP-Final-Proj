@@ -98,3 +98,55 @@ INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0422.1', 'Parallel and Distrib
 INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0423', 'Social Issues and Professional Practice', 3, '2018', 'CET', 'BSCS-CS', 'A');
 INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0424', 'Graphics and Visual Computing (Lecture)', 2, '2018', 'CET', 'BSCS-CS', 'A');
 INSERT INTO finals.SUBJECT VALUES ('4', '2', 'CSC 0424.1', 'Graphics and Visual Computing (Laboratory)', 1, '2018', 'CET', 'BSCS-CS', 'A');
+
+--\\BSIT 1st year 2nd sem
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'EIT 0121', 'Introduction to Computer Human Interaction (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'EIT 0121.1', 'Introduction to Computer Human Interaction (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'EIT 0122', 'Discrete Mathematics', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'EIT 0123', 'Web Systems Technology (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('1', '2', 'EIT 0123.1', 'Web Systems Technology (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+
+--\\BSIT 2nd year 1st sem
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'EIT Elective 1', 'Professional Elective 1', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'EIT 0211', 'Object Oriented Programming (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '1', 'EIT 0211.1', 'Object Oriented Programming (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+
+--\\BSIT 2nd year 2nd sem
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'EIT 0212', 'Platform Technology', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'EIT Elective 2', 'Professional Elective 2', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'EIT 0221', 'Quantitative Methods', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'EIT 0222', 'Networking 1 (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'EIT 0222.1', 'Networking 1 (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('2', '2', 'EIT 0222', 'Networking 1 (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+
+--\\BSIT 3rd year 1st sem
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'ICC 0335', 'Application and Emerging Technologies (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'ICC 0335.1', 'Application and Emerging Technologies (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'EIT 0311', 'Advanced Database Systems (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'EIT 0311.1', 'Advanced Database Systems (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'EIT 0312', 'Networking 2 (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'EIT 0312.1', 'Networking 2 (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '1', 'EIT Elective 3', 'Profesional Elective 3', 3, '2018', 'CET', 'BSCS-IT', 'A');
+
+--\\BSIT 3rd year 2nd sem
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'EIT 0321', 'Information Assurance and Security 1 (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'EIT 0321.1', 'Information Assurance and Security 1 (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'EIT 0322', 'System Integration and Architecture 1 (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'EIT 0322.1', 'System Integration and Architecture 1 (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'EIT 0323', 'Integrative Programming and Technologies (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', '2', 'EIT 0323.1', 'Integrative Programming and Technologies (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+
+--\\BSIT 3rd year Summer
+INSERT INTO finals.SUBJECT VALUES ('3', 'S', 'EIT 0331', 'System Integration and Architecture 2 (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', 'S', 'EIT 0331.1', 'System Integration and Architecture 2 (Laboratory)', 1, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('3', 'S', 'CAP 0101', 'Capstone Project 1', 3, '2018', 'CET', 'BSCS-IT', 'A');
+
+--\\BSIT 4th year 1st sem
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'EIT Elective 4', 'Professional Elective 4', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'EIT Elective 5', 'Professional Elective 5', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'EIT Elective 6', 'Professional Elective 6', 3, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '1', 'CAP 0102', 'Capstone Project 2', 3, '2018', 'CET', 'BSCS-IT', 'A');
+
+--\\BSIT 4th year 2nd sem
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'IIP 0101', 'Practicum (Lecture)', 2, '2018', 'CET', 'BSCS-IT', 'A');
+INSERT INTO finals.SUBJECT VALUES ('4', '2', 'IIP 0102', 'Practicum (Immersion)', 4, '2018', 'CET', 'BSCS-IT', 'A');
