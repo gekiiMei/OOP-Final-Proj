@@ -19,7 +19,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
-    private boolean cmbStuCourseLoaded = false;
+    private boolean cmbStuCourseLoaded = false, cmbStuCourseLoaded2 = false, cmbCollegeLoaded = false;
     /**
      * Creates new form AdminMenu
      */
@@ -71,11 +71,131 @@ public class AdminMenu extends javax.swing.JPanel {
         try {
             rs = con.prepareStatement("SELECT * FROM finals.STUDENT").executeQuery(); // TODO: REPLACE WITH VIEW
             if (rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT").executeQuery();
                 tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblStudents);
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    private void loadSYSemTab() {
+        rbSY.setSelected(false);
+        rbSem.setSelected(false);
+        txtSY.setText("");
+        txtSem.setText("");
+        txtSY.setEnabled(false);
+        txtSem.setEnabled(false);
+        
+        resetSYSemTable();
+    }
+    
+    private void loadSYTable() {
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+            while(rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
+                tblSYSem.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblSYSem);
+            }
+        } catch (Exception e) {
+            System.out.println();
+        }
+    }
+    
+    private void loadSemTable() {
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+            while(rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+                tblSYSem.setModel(TableUtil.resultSetToTableModel(rs));
+            }
+        } catch (Exception e) {
+            System.out.println();
+        }
+    }
+    
+    private void resetSYSemTable() {
+        tblSYSem.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"Select a record to modify."}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
+    }
+    
+    private void loadSubjectsTab() {
+        txtSubjCode.setText("");
+        txtSubjDesc.setText("");
+        txtUnits.setText("");
+        txtCurriculum.setText("");
+        lblSubjDesc.setText("----------");
+        checkSubjStatus.setSelected(false);
+        
+        try {
+            con = ConnectDB.connect();
+            
+            rs = con.prepareStatement("SELECT * FROM finals.SEMESTER").executeQuery();
+            while (rs.next()) {
+                cmbSem2.addItem(rs.getString("Semester"));
+            }
+            
+            rs = con.prepareStatement("SELECT college_code FROM finals.COLLEGE").executeQuery();
+            while (rs.next()) {
+                cmbCollegeCode2.addItem(rs.getString("college_code"));
+            }
+            
+            rs = con.prepareStatement("SELECT description FROM finals.COLLEGE WHERE college_code = '" + cmbCollegeCode2.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next())
+                lblCollegeDesc.setText(rs.getString("description"));
+            cmbCollegeLoaded = true;
+            
+            rs = con.prepareStatement("SELECT course_code FROM finals.COURSE").executeQuery();
+            while (rs.next()) {
+                cmbCourseCode.addItem(rs.getString("course_code"));
+            }
+            
+            rs = con.prepareStatement("SELECT description FROM finals.COURSE WHERE course_code = '" + cmbCourseCode.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next())
+                lblCourseDesc.setText(rs.getString("description"));
+            cmbStuCourseLoaded2 = true;
+            
+            loadSubjectTable();
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        } 
+    }
+    
+    private void loadSubjectTable() {
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.SUBJECT").executeQuery();
+            if (rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.SUBJECT").executeQuery();
+                tblSubjects.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblSubjects);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+
+    private void resetSubjectTable() {
+        tblSubjects.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"No subject records found."}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
     }
 
     /**
@@ -122,7 +242,7 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         txtCurriculum = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        txtCollegeCode = new javax.swing.JComboBox<>();
+        cmbCollegeCode2 = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         lblCollegeDesc = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -133,6 +253,14 @@ public class AdminMenu extends javax.swing.JPanel {
         btnDeleteSubj = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblSubjects = new javax.swing.JTable();
+        lblCollegeYear = new javax.swing.JLabel();
+        cmbCollegeYr = new javax.swing.JComboBox<>();
+        lblSem = new javax.swing.JLabel();
+        cmbSem2 = new javax.swing.JComboBox<>();
+        jLabel45 = new javax.swing.JLabel();
+        cmbCourseCode = new javax.swing.JComboBox<>();
+        jLabel51 = new javax.swing.JLabel();
+        lblCourseDesc = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -356,6 +484,11 @@ public class AdminMenu extends javax.swing.JPanel {
         });
 
         rbSem.setText("SEMESTER");
+        rbSem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSemActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("SY:");
 
@@ -369,18 +502,43 @@ public class AdminMenu extends javax.swing.JPanel {
         });
 
         btnDeleteSYSem.setText("DELETE");
+        btnDeleteSYSem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSYSemActionPerformed(evt);
+            }
+        });
 
         tblSYSem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Choose a record to modify"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblSYSem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSYSemMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblSYSem);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -393,7 +551,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtSY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSY, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -417,7 +575,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(414, 414, 414)
                 .addComponent(jLabel14)
@@ -446,7 +604,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(btnDeleteSYSem))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         tabs.addTab("", jPanel5);
@@ -468,6 +626,12 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel21.setText("Curriculum:");
 
         jLabel22.setText("College Code:");
+
+        cmbCollegeCode2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCollegeCode2ActionPerformed(evt);
+            }
+        });
 
         jLabel23.setText("-");
 
@@ -512,16 +676,61 @@ public class AdminMenu extends javax.swing.JPanel {
 
         tblSubjects.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No subject records found"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblSubjects.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSubjectsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblSubjectsMouseEntered(evt);
+            }
+        });
         jScrollPane4.setViewportView(tblSubjects);
+
+        lblCollegeYear.setText("College Year:");
+
+        cmbCollegeYr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        cmbCollegeYr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCollegeYrActionPerformed(evt);
+            }
+        });
+
+        lblSem.setText("Semester:");
+
+        cmbSem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSem2ActionPerformed(evt);
+            }
+        });
+
+        jLabel45.setText("Course Code:");
+
+        cmbCourseCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCourseCodeActionPerformed(evt);
+            }
+        });
+
+        jLabel51.setText("-");
+
+        lblCourseDesc.setText("Course Description");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -530,29 +739,63 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel25))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(txtCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCollegeDesc))
-                    .addComponent(txtCurriculum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkSubjStatus)
+                        .addComponent(jLabel51)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblCourseDesc)
+                        .addGap(610, 610, 610))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(txtSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22))
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearchSubj)))
-                .addContainerGap(594, Short.MAX_VALUE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(cmbCollegeCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCollegeDesc)
+                                .addContainerGap(610, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(txtSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnSearchSubj)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblCollegeYear)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbCollegeYr, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(jLabel25))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                                .addComponent(txtSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblSem))
+                                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(txtCurriculum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                                    .addComponent(txtUnits, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addGap(493, 493, 493)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(checkSubjStatus))))
+                                .addGap(147, 147, 147))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -565,10 +808,7 @@ public class AdminMenu extends javax.swing.JPanel {
                         .addComponent(btnEditSubj)
                         .addGap(18, 18, 18)
                         .addComponent(btnDeleteSubj)
-                        .addGap(338, 338, 338))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))))
+                        .addGap(392, 392, 392))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -579,15 +819,21 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(txtSubjCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchSubj))
+                    .addComponent(btnSearchSubj)
+                    .addComponent(lblCollegeYear)
+                    .addComponent(cmbCollegeYr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(txtSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSubjDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSem)
+                    .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(txtUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(checkSubjStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
@@ -595,22 +841,24 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(txtCollegeCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbCollegeCode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
                     .addComponent(lblCollegeDesc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(checkSubjStatus))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel51)
+                    .addComponent(lblCourseDesc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnEditSubj)
                         .addComponent(btnDeleteSubj))
                     .addComponent(btnAddSubj))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         tabs.addTab("", jPanel6);
@@ -1484,18 +1732,24 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSYSemActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(1);
+        loadSYSemTab();
     }//GEN-LAST:event_btnSYSemActionPerformed
 
     private void btnSubjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubjectsActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(2);
+        loadSubjectsTab();
     }//GEN-LAST:event_btnSubjectsActionPerformed
 
     private void btnSchedulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedulesActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(3);
     }//GEN-LAST:event_btnSchedulesActionPerformed
 
     private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
         // TODO add your handling code here:
+        tabs.setSelectedIndex(4);
     }//GEN-LAST:event_btnEmployeesActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
@@ -1700,10 +1954,50 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void rbSYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSYActionPerformed
         // TODO add your handling code here:
+        rbSem.setSelected(false);
+        txtSem.setEnabled(false);
+        txtSY.setEnabled(true);
+        txtSem.setText("");
+        
+        loadSYTable();
     }//GEN-LAST:event_rbSYActionPerformed
 
     private void btnAddSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSYSemActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        
+        try{
+            if (rbSY.isSelected()) {
+                if(!(txtSY.getText().toString().equals(""))) {
+                    ps = con.prepareStatement("INSERT INTO finals.SY VALUES ('" + txtSY.getText().toString() + "')");
+                    int rowsAffected = ps.executeUpdate();
+                    if (rowsAffected > 0)
+                        JOptionPane.showMessageDialog(null, "Added record successfully.");
+                    else
+                        JOptionPane.showMessageDialog(null, "Invalid SY", "ERROR", JOptionPane.ERROR_MESSAGE);
+                     loadSYTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot enter empty value", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } else if (rbSem.isSelected()) {
+                if(!(txtSem.getText().toString().equals(""))) {
+                    ps = con.prepareStatement("INSERT INTO finals.SEMESTER VALUES ('" + txtSem.getText().toString() + "')");
+                    int rowsAffected = ps.executeUpdate();
+                    if (rowsAffected > 0)
+                        JOptionPane.showMessageDialog(null, "Added record successfully.");
+                    else
+                        JOptionPane.showMessageDialog(null, "Invalid Semester", "ERROR", JOptionPane.ERROR_MESSAGE);
+                     loadSemTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot enter empty value", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAddSYSemActionPerformed
 
     private void checkSubjStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSubjStatusActionPerformed
@@ -1716,18 +2010,111 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnSearchSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchSubjActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        
+        try {
+            ps = con.prepareStatement("SELECT * FROM finals.SUBJECT WHERE subject_code = '" + txtSubjCode.getText().toString() + "'");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                rs = ps.executeQuery();
+                tblSubjects.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblSubjects);
+            } else {
+                JOptionPane.showMessageDialog(null, "Subject code does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnSearchSubjActionPerformed
 
     private void btnAddSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSubjActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.SUBJECT VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps.setString(1, cmbCollegeYr.getSelectedItem().toString());
+            ps.setString(2, cmbSem2.getSelectedItem().toString());
+            ps.setString(3, txtSubjCode.getText().toString());
+            ps.setString(4, txtSubjDesc.getText().toString());
+            ps.setString(5, txtUnits.getText().toString());
+            ps.setString(6, txtCurriculum.getText().toString());
+            ps.setString(7, cmbCollegeCode2.getSelectedItem().toString());
+            ps.setString(8, cmbCourseCode.getSelectedItem().toString());
+            if(checkSubjStatus.isSelected()) 
+                ps.setString(9, "A");
+            else
+                ps.setString(9, "I");
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Added record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
+            
+            loadSubjectTable();
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnAddSubjActionPerformed
 
     private void btnEditSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSubjActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("UPDATE finals.SUBJECT "
+                    + "SET college_year = ?, semester = ?, description = ?,"
+                    + " units = ?, curriculum = ?, college_code = ?, course_code = ?, status = ?"
+                    + " WHERE subject_code = ?");
+            ps.setString(1, cmbCollegeYr.getSelectedItem().toString());
+            ps.setString(2, cmbSem2.getSelectedItem().toString());
+            ps.setString(9, txtSubjCode.getText().toString());
+            ps.setString(3, txtSubjDesc.getText().toString());
+            ps.setString(4, txtUnits.getText().toString());
+            ps.setString(5, txtCurriculum.getText().toString());
+            ps.setString(6, cmbCollegeCode2.getSelectedItem().toString());
+            ps.setString(7, cmbCourseCode.getSelectedItem().toString());
+            if(checkSubjStatus.isSelected()) 
+                ps.setString(8, "A");
+            else
+                ps.setString(8, "I");
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Updated record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Cannot modify subject code", "ERROR", JOptionPane.ERROR_MESSAGE);
+            
+            loadSubjectTable();
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnEditSubjActionPerformed
 
     private void btnDeleteSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSubjActionPerformed
         // TODO add your handling code here:
+        con = ConnectDB.connect();
+        try {
+            ps = con.prepareStatement("DELETE FROM finals.SUBJECT "
+                    + " WHERE subject_code = ?");
+            ps.setString(1, txtSubjCode.getText().toString());
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+            else
+                JOptionPane.showMessageDialog(null, "Subject does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+            
+            loadSubjectTable();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cannot delete subject in use", "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btnDeleteSubjActionPerformed
 
     private void rbOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOnlineActionPerformed
@@ -1801,6 +2188,7 @@ public class AdminMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnStudSearchNameActionPerformed
 
+
     private void MinimizeBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizeBTNMouseEntered
         MinimizeBTN.setBackground(new Color(203,68,68));
         // TODO add your handling code here:
@@ -1832,7 +2220,115 @@ public class AdminMenu extends javax.swing.JPanel {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
+  
+    private void rbSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSemActionPerformed
+        // TODO add your handling code here:
+        rbSY.setSelected(false);
+        txtSY.setEnabled(false);
+        txtSem.setEnabled(true);
+        txtSY.setText("");
+        
+        loadSemTable();
+    }//GEN-LAST:event_rbSemActionPerformed
 
+    private void btnDeleteSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSYSemActionPerformed
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        
+        try{
+            if (rbSY.isSelected()) {
+                ps = con.prepareStatement("DELETE FROM finals.SY WHERE SY = '" + txtSY.getText().toString() + "'");
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "SY does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                 loadSYTable();
+            } else if (rbSem.isSelected()) {
+                ps = con.prepareStatement("DELETE FROM finals.SEMESTER WHERE SEMESTER = '" + txtSem.getText().toString() + "'");
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Semester does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                 loadSemTable();
+            } else {
+                JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cannot delete SY/SEMESTER in use", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteSYSemActionPerformed
+
+    private void tblSYSemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSYSemMouseClicked
+        // TODO add your handling code here:
+        int intRow = tblSYSem.getSelectedRow(); 
+
+        if (rbSY.isSelected()) {
+            txtSY.setText(tblSYSem.getValueAt(intRow, 0).toString());
+        } else if (rbSem.isSelected()) {
+            txtSem.setText(tblSYSem.getValueAt(intRow, 0).toString());
+        }
+    }//GEN-LAST:event_tblSYSemMouseClicked
+
+    private void cmbCollegeCode2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCollegeCode2ActionPerformed
+         con = ConnectDB.connect();
+        if (!cmbCollegeLoaded)
+            return;
+        try {
+            rs = con.prepareStatement("SELECT description FROM finals.COLLEGE WHERE college_code = '" + cmbCollegeCode2.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next())
+                lblCollegeDesc.setText(rs.getString("description"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_cmbCollegeCode2ActionPerformed
+
+    private void tblSubjectsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSubjectsMouseClicked
+        // TODO add your handling code here:
+        int intRow = tblSubjects.getSelectedRow(); 
+        
+        cmbCollegeYr.setSelectedItem(tblSubjects.getValueAt(intRow, 0).toString());
+        cmbSem2.setSelectedItem(tblSubjects.getValueAt(intRow,1).toString());
+        txtSubjCode.setText(tblSubjects.getValueAt(intRow, 2).toString());
+        txtSubjDesc.setText(tblSubjects.getValueAt(intRow, 3).toString());
+        txtUnits.setText(tblSubjects.getValueAt(intRow, 4).toString());
+        txtCurriculum.setText(tblSubjects.getValueAt(intRow, 5).toString());
+        cmbCollegeCode2.setSelectedItem(tblSubjects.getValueAt(intRow, 6).toString());
+        cmbCourseCode.setSelectedItem(tblSubjects.getValueAt(intRow, 7).toString());
+        if ((tblSubjects.getValueAt(intRow, 8).toString()).equals("A"))
+            checkSubjStatus.setSelected(true);
+        else
+            checkSubjStatus.setSelected(false);
+        
+    }//GEN-LAST:event_tblSubjectsMouseClicked
+
+    private void cmbCollegeYrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCollegeYrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCollegeYrActionPerformed
+
+    private void cmbSem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSem2ActionPerformed
+
+    private void cmbCourseCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourseCodeActionPerformed
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        if (!cmbStuCourseLoaded2)
+            return;
+        try {
+            rs = con.prepareStatement("SELECT description FROM finals.COURSE WHERE course_code = '" + cmbCourseCode.getSelectedItem().toString() + "'").executeQuery();
+            if (rs.next())
+                lblCourseDesc.setText(rs.getString("description"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_cmbCourseCodeActionPerformed
+
+    private void tblSubjectsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSubjectsMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblSubjectsMouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
@@ -1872,11 +2368,15 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JCheckBox chkStuActive;
     private javax.swing.JComboBox<String> cmbBlockNo;
     private javax.swing.JComboBox<String> cmbCollegeCode;
+    private javax.swing.JComboBox<String> cmbCollegeCode2;
+    private javax.swing.JComboBox<String> cmbCollegeYr;
+    private javax.swing.JComboBox<String> cmbCourseCode;
     private javax.swing.JComboBox<String> cmbDay;
     private javax.swing.JComboBox<String> cmbEmpGender;
     private javax.swing.JComboBox<String> cmbFacultyID;
     private javax.swing.JComboBox<String> cmbSchedSY;
     private javax.swing.JComboBox<String> cmbSchedSem;
+    private javax.swing.JComboBox<String> cmbSem2;
     private javax.swing.JComboBox<String> cmbStuCourse;
     private javax.swing.JComboBox<String> cmbStuGender;
     private javax.swing.JComboBox<String> cmbStudentNoYear;
@@ -1922,12 +2422,14 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1950,8 +2452,11 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblCollegeDesc;
     private javax.swing.JLabel lblCollegeDescSched;
+    private javax.swing.JLabel lblCollegeYear;
+    private javax.swing.JLabel lblCourseDesc;
     private javax.swing.JLabel lblEmpEmail;
     private javax.swing.JLabel lblFacultyName;
+    private javax.swing.JLabel lblSem;
     private javax.swing.JLabel lblStuEmail;
     private javax.swing.JLabel lblSubjDesc;
     private javax.swing.JRadioButton rbF2F;
@@ -1967,7 +2472,6 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JTable tblStudents;
     private javax.swing.JTable tblSubjects;
     private com.github.lgooddatepicker.components.TimePicker timeSchedTIme;
-    private javax.swing.JComboBox<String> txtCollegeCode;
     private javax.swing.JTextField txtCurriculum;
     private javax.swing.JTextField txtEmpAddress;
     private javax.swing.JTextField txtEmpCellNo;
