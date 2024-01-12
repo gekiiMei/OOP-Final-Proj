@@ -504,13 +504,18 @@ public class StudentMenu extends javax.swing.JPanel {
         jLabel6.setBounds(30, 30, 100, 19);
 
         cmbEnrolSy.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        cmbEnrolSy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEnrolSyActionPerformed(evt);
+            }
+        });
         jPanel4.add(cmbEnrolSy);
         cmbEnrolSy.setBounds(130, 30, 72, 25);
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel2.setText("Semester :");
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(250, 29, 70, 10);
+        jLabel2.setBounds(240, 30, 70, 20);
 
         cmbEnrolSem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         cmbEnrolSem.addActionListener(new java.awt.event.ActionListener() {
@@ -531,6 +536,7 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel4.add(btnEnrolConfirm);
         btnEnrolConfirm.setBounds(720, 530, 132, 20);
 
+        btnEnrolSchedView.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         btnEnrolSchedView.setText("View Schedule");
         btnEnrolSchedView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -538,7 +544,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel4.add(btnEnrolSchedView);
-        btnEnrolSchedView.setBounds(520, 40, 106, 23);
+        btnEnrolSchedView.setBounds(520, 30, 140, 23);
 
         plmbg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
         jPanel4.add(plmbg3);
@@ -672,46 +678,57 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
 
+        lblStudentNo.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentNo.setText("STUDENT NUMBER:");
         jPanel3.add(lblStudentNo);
-        lblStudentNo.setBounds(76, 22, 103, 16);
+        lblStudentNo.setBounds(76, 22, 180, 19);
 
+        lblStudentLN.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentLN.setText("LAST NAME:");
         jPanel3.add(lblStudentLN);
-        lblStudentLN.setBounds(115, 44, 66, 16);
+        lblStudentLN.setBounds(115, 44, 64, 19);
 
+        lblStudentFN.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentFN.setText("FIRST NAME:");
         jPanel3.add(lblStudentFN);
-        lblStudentFN.setBounds(113, 72, 68, 16);
+        lblStudentFN.setBounds(113, 72, 67, 19);
 
+        lblStudentEmail.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentEmail.setText("EMAIL:");
         jPanel3.add(lblStudentEmail);
-        lblStudentEmail.setBounds(145, 100, 37, 16);
+        lblStudentEmail.setBounds(145, 100, 35, 19);
 
+        lblStudentGender.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentGender.setText("GENDER:");
         jPanel3.add(lblStudentGender);
-        lblStudentGender.setBounds(133, 128, 47, 16);
+        lblStudentGender.setBounds(133, 128, 60, 19);
 
+        lblStudentCourseCode.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentCourseCode.setText("COURSE CODE:");
         jPanel3.add(lblStudentCourseCode);
-        lblStudentCourseCode.setBounds(100, 156, 81, 16);
+        lblStudentCourseCode.setBounds(100, 156, 90, 19);
 
+        lblStudentCPNum.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentCPNum.setText("CELLPHONE NUMBER:");
         jPanel3.add(lblStudentCPNum);
-        lblStudentCPNum.setBounds(63, 187, 120, 16);
+        lblStudentCPNum.setBounds(63, 187, 120, 19);
 
+        lblStudentAddress.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentAddress.setText("ADDRESS:");
         jPanel3.add(lblStudentAddress);
-        lblStudentAddress.setBounds(127, 209, 52, 16);
+        lblStudentAddress.setBounds(127, 209, 70, 19);
 
+        lblStudentBday.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentBday.setText("BIRTHDAY:");
         jPanel3.add(lblStudentBday);
-        lblStudentBday.setBounds(123, 231, 58, 16);
+        lblStudentBday.setBounds(123, 231, 70, 19);
 
+        lblStudentStatus.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblStudentStatus.setText("STATUS:");
         jPanel3.add(lblStudentStatus);
-        lblStudentStatus.setBounds(137, 259, 43, 16);
+        lblStudentStatus.setBounds(137, 259, 50, 19);
 
+        btnChangePassword.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         btnChangePassword.setText("Change password");
         btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -719,7 +736,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnChangePassword);
-        btnChangePassword.setBounds(57, 311, 124, 23);
+        btnChangePassword.setBounds(57, 311, 139, 26);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1115,6 +1132,10 @@ public class StudentMenu extends javax.swing.JPanel {
         tabs.setSelectedIndex(3);
         profileStudentsTab();
     }//GEN-LAST:event_btnProfileActionPerformed
+
+    private void cmbEnrolSyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnrolSyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEnrolSyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
