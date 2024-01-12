@@ -1251,7 +1251,7 @@ public class FacultyMenu extends javax.swing.JPanel {
                 TableUtil.resizeColumnWidth(tblGrades);
             } else {
                 JOptionPane.showMessageDialog(null, "No class records", "ERROR", JOptionPane.ERROR_MESSAGE);
-                resetClassTable(); 
+                loadClassTable(); 
             }
             
         } catch (Exception e) {
