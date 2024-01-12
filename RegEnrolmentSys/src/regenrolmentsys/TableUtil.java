@@ -4,7 +4,9 @@
  */
 package regenrolmentsys;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.Vector;
@@ -68,5 +70,12 @@ public class TableUtil {
                 width=300;
             columnModel.getColumn(column).setPreferredWidth(width);
         }
+    }
+    
+    public static void styleTable(JTable table) {
+        table.getTableHeader().setBackground(new Color(255,81,212));
+        table.getTableHeader().setFont(new Font("Poppins", Font.BOLD,12));
+        table.getTableHeader().setOpaque(false);
+        table.getTableHeader().setForeground(new Color(0,0,0,255));
     }
 }

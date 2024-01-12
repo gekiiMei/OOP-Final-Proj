@@ -167,6 +167,15 @@ public class AdminMenu extends javax.swing.JPanel {
             }
             loadSubjectTable();
             
+            rs = con.prepareStatement("SELECT * FROM finals.ENCODING").executeQuery();
+            if (rs.next()) {
+                if (rs.getInt("state") == 0) {
+                    chkGradesEncoding.setSelected(false);
+                } else {
+                    chkGradesEncoding.setSelected(true);
+                }
+            }
+            
         } catch (Exception e) {
             System.out.println(e);
         } 
@@ -409,6 +418,8 @@ public class AdminMenu extends javax.swing.JPanel {
         jLabel51 = new javax.swing.JLabel();
         lblCourseDesc = new javax.swing.JLabel();
         plmbg2 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        chkGradesEncoding = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -1271,6 +1282,15 @@ public class AdminMenu extends javax.swing.JPanel {
 
         plmbg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
+        jLabel52.setText("Encoding of Grades:");
+
+        chkGradesEncoding.setText("Active");
+        chkGradesEncoding.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkGradesEncodingMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -1305,7 +1325,7 @@ public class AdminMenu extends javax.swing.JPanel {
                                 .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblCollegeDesc)
-                                .addContainerGap(610, Short.MAX_VALUE))
+                                .addContainerGap(605, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1329,11 +1349,13 @@ public class AdminMenu extends javax.swing.JPanel {
                                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                     .addComponent(txtCurriculum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                                                     .addComponent(txtUnits, javax.swing.GroupLayout.Alignment.LEADING))
-                                                .addGap(493, 493, 493)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel52)))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cmbSem2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(checkSubjStatus))))
+                                            .addComponent(checkSubjStatus)
+                                            .addComponent(chkGradesEncoding))))
                                 .addGap(147, 147, 147))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1381,7 +1403,9 @@ public class AdminMenu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(txtCurriculum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCurriculum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel52)
+                    .addComponent(chkGradesEncoding))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -1394,7 +1418,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(cmbCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel51)
                     .addComponent(lblCourseDesc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnEditSubj)
@@ -1536,6 +1560,7 @@ public class AdminMenu extends javax.swing.JPanel {
         lblCourseDescSched.setText("Course Description");
 
         plmbg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+
         cmbSequenceNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", " " }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -2020,7 +2045,7 @@ public class AdminMenu extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1068, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2035,9 +2060,9 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(254, 86, 86));
         jPanel9.setLayout(null);
 
+        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
         smallpf.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         smallpf.setForeground(new java.awt.Color(255, 255, 255));
-        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
         jPanel9.add(smallpf);
         smallpf.setBounds(1050, 0, 30, 30);
 
@@ -2067,11 +2092,11 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel9.add(MinimizeBTN);
         MinimizeBTN.setBounds(1220, 0, 30, 30);
 
+        CloseBTN.setText("X");
         CloseBTN.setBackground(new java.awt.Color(254, 86, 86));
+        CloseBTN.setBorder(null);
         CloseBTN.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
         CloseBTN.setForeground(new java.awt.Color(255, 255, 255));
-        CloseBTN.setText("X");
-        CloseBTN.setBorder(null);
         CloseBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CloseBTNMouseEntered(evt);
@@ -2088,15 +2113,15 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel9.add(CloseBTN);
         CloseBTN.setBounds(1250, 0, 30, 30);
 
+        MainLBL1.setText("Enrollment System for Regular Students");
         MainLBL1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         MainLBL1.setForeground(new java.awt.Color(255, 255, 255));
-        MainLBL1.setText("Enrollment System for Regular Students");
         jPanel9.add(MainLBL1);
         MainLBL1.setBounds(40, 0, 290, 30);
 
+        NameTopBar.setText(" Admin");
         NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
-        NameTopBar.setText(" Admin");
         jPanel9.add(NameTopBar);
         NameTopBar.setBounds(1070, 0, 110, 30);
 
@@ -2107,7 +2132,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1279, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -3070,6 +3095,20 @@ public class AdminMenu extends javax.swing.JPanel {
         rbOnline.setSelected(false);
     }//GEN-LAST:event_rbF2FActionPerformed
 
+    private void chkGradesEncodingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkGradesEncodingMouseClicked
+        // TODO add your handling code here:
+        con = ConnectDB.connect();
+        boolean blActive = chkGradesEncoding.isSelected();
+        try {
+            if (blActive)
+                con.prepareStatement("UPDATE finals.ENCODING SET state = 1").execute();
+            else
+                con.prepareStatement("UPDATE finals.ENCODING SET state = 0").execute();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_chkGradesEncodingMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
     private javax.swing.JLabel MainLBL1;
@@ -3104,6 +3143,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdateStuRec;
     private javax.swing.JCheckBox checkEmpStatus;
     private javax.swing.JCheckBox checkSubjStatus;
+    private javax.swing.JCheckBox chkGradesEncoding;
     private javax.swing.JCheckBox chkStuActive;
     private javax.swing.JComboBox<String> cmbBlockNo;
     private javax.swing.JComboBox<String> cmbCollegeCode2;
@@ -3169,6 +3209,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
