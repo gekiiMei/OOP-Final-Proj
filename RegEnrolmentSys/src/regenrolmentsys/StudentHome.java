@@ -5,8 +5,10 @@
 package regenrolmentsys;
 
 import java.awt.Color;
+
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.*;
 
 
 /**
@@ -29,6 +31,15 @@ public class StudentHome extends javax.swing.JPanel {
         this.mf = mf;
         this.currentUser = mf.getUserID();
     }
+    
+    /*public JPanel QuitJPane(){
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("Cuh, u want to quit?");
+       
+        panel.setBackground(Color.red);
+        panel.add(label);
+        return panel;
+    } */
     
     public void setUserID(String userID) {
         this.currentUser = userID;
@@ -353,7 +364,7 @@ public class StudentHome extends javax.swing.JPanel {
 
     private void BTNLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogoutActionPerformed
         // TODO add your handling code here:
-                int response = JOptionPane.showConfirmDialog(null, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION, 2, new ImageIcon("assets\\question.png"));  
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
