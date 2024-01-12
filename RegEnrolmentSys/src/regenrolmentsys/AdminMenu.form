@@ -616,6 +616,14 @@
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="plmbg6" min="-2" pref="1270" max="-2" attributes="0"/>
+                              <EmptySpace pref="158" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="plmbg" min="-2" pref="1050" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -695,6 +703,13 @@
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="plmbg" min="-2" pref="700" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -965,10 +980,10 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudSearchNameActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="plmbg6">
+                    <Component class="javax.swing.JLabel" name="plmbg">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/assets/plmopaque.png"/>
+                          <Image iconType="3" name="/assets/plm.png"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="12" style="0"/>
@@ -1032,7 +1047,7 @@
                                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="561" max="32767" attributes="0"/>
+                              <EmptySpace pref="341" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="414" max="-2" attributes="0"/>
@@ -1042,7 +1057,7 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg7" min="-2" pref="1270" max="-2" attributes="0"/>
+                                  <Component id="plmbg1" min="-2" pref="1050" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1074,12 +1089,12 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="76" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg7" min="-2" pref="700" max="-2" attributes="0"/>
+                                  <Component id="plmbg1" min="-2" pref="700" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1164,10 +1179,10 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="plmbg7">
+                    <Component class="javax.swing.JLabel" name="plmbg1">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/assets/plmopaque.png"/>
+                          <Image iconType="3" name="/assets/plm.png"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1223,7 +1238,7 @@
                                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="lblCollegeDesc" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace pref="605" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
@@ -1290,7 +1305,7 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg8" min="-2" pref="1270" max="-2" attributes="0"/>
+                                  <Component id="plmbg2" min="-2" pref="1050" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1359,7 +1374,7 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg8" min="-2" pref="700" max="-2" attributes="0"/>
+                                  <Component id="plmbg2" min="-2" pref="700" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1567,6 +1582,13 @@
                         <Property name="text" type="java.lang.String" value="Course Description"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="plmbg2">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/assets/plm.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel52">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Encoding of Grades:"/>
@@ -1575,13 +1597,6 @@
                     <Component class="javax.swing.JCheckBox" name="chkGradesEncoding">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Active"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="plmbg8">
-                      <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/assets/plmopaque.png"/>
-                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1634,7 +1649,7 @@
                                                       <Component id="cmbSequenceNo" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace pref="499" max="32767" attributes="0"/>
+                                              <EmptySpace pref="261" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="102" attributes="0">
                                                       <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
@@ -1714,7 +1729,7 @@
                               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="296" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="76" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnAddSched" min="-2" max="-2" attributes="0"/>
@@ -1733,7 +1748,7 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg9" min="-2" pref="1270" max="-2" attributes="0"/>
+                                  <Component id="plmbg3" min="-2" pref="1050" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1835,7 +1850,7 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg9" min="-2" pref="700" max="-2" attributes="0"/>
+                                  <Component id="plmbg3" min="-2" pref="700" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -2094,6 +2109,13 @@
                         <Property name="text" type="java.lang.String" value="Course Description"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="plmbg3">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/assets/plm.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                     <Component class="javax.swing.JComboBox" name="cmbSequenceNo">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -2111,13 +2133,6 @@
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTime">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="plmbg9">
-                      <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/assets/plmopaque.png"/>
-                        </Property>
-                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -2202,7 +2217,7 @@
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="dateEmpBday" pref="539" max="32767" attributes="0"/>
+                                                  <Component id="dateEmpBday" pref="319" max="32767" attributes="0"/>
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="checkEmpStatus" min="-2" max="-2" attributes="0"/>
@@ -2232,7 +2247,7 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg4" min="-2" pref="1270" max="-2" attributes="0"/>
+                                  <Component id="plmbg4" min="-2" pref="1050" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -2459,7 +2474,7 @@
                     <Component class="javax.swing.JLabel" name="plmbg4">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/assets/plmopaque.png"/>
+                          <Image iconType="3" name="/assets/plm.png"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -2484,13 +2499,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="1258" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="1038" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg10" min="-2" pref="1270" max="-2" attributes="0"/>
+                                  <Component id="plmbg5" min="-2" pref="1050" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -2501,12 +2516,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="519" max="-2" attributes="0"/>
-                              <EmptySpace pref="181" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="plmbg10" min="-2" pref="700" max="-2" attributes="0"/>
+                                  <Component id="plmbg5" min="-2" pref="700" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -2545,10 +2560,10 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="plmbg10">
+                    <Component class="javax.swing.JLabel" name="plmbg5">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/assets/plmopaque.png"/>
+                          <Image iconType="3" name="/assets/plm.png"/>
                         </Property>
                       </Properties>
                     </Component>

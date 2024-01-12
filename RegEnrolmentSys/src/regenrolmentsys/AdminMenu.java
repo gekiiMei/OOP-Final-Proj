@@ -58,21 +58,9 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(3, "Admin");
             ps.setDate(4, currDate);
             ps.setTime(5, currTime);
-            ps.execute();
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-    
-    private void resetHistoryTable() {
-        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {},
-                new String [] {"History log is empty"}
-                ) {
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return false;
-                    }
-                });
     }
     
     public void loadStudentsTab() {
@@ -338,23 +326,6 @@ public class AdminMenu extends javax.swing.JPanel {
                 covers[i].setVisible(false);
         }
     }
-    
-    public void loadHistoryTable() {
-        con = ConnectDB.connect();
-        try {
-            rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
-            if (rs.next()) {
-                rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
-                tblHistory.setModel(TableUtil.resultSetToTableModel(rs));
-                TableUtil.styleTable(tblHistory);
-                TableUtil.resizeColumnWidth(tblHistory);
-            } else {
-                resetHistoryTable();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -422,7 +393,7 @@ public class AdminMenu extends javax.swing.JPanel {
         lblStuEmail = new javax.swing.JLabel();
         txtStuPhone = new javax.swing.JTextField();
         btnStudSearchName = new javax.swing.JButton();
-        plmbg6 = new javax.swing.JLabel();
+        plmbg = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -436,7 +407,7 @@ public class AdminMenu extends javax.swing.JPanel {
         btnDeleteSYSem = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSYSem = new javax.swing.JTable();
-        plmbg7 = new javax.swing.JLabel();
+        plmbg1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -467,9 +438,9 @@ public class AdminMenu extends javax.swing.JPanel {
         cmbCourseCode = new javax.swing.JComboBox<>();
         jLabel51 = new javax.swing.JLabel();
         lblCourseDesc = new javax.swing.JLabel();
+        plmbg2 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         chkGradesEncoding = new javax.swing.JCheckBox();
-        plmbg8 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -508,9 +479,9 @@ public class AdminMenu extends javax.swing.JPanel {
         lblCourseCodeSched = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         lblCourseDescSched = new javax.swing.JLabel();
+        plmbg3 = new javax.swing.JLabel();
         cmbSequenceNo = new javax.swing.JComboBox<>();
         txtTime = new javax.swing.JTextField();
-        plmbg9 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -542,7 +513,7 @@ public class AdminMenu extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHistory = new javax.swing.JTable();
-        plmbg10 = new javax.swing.JLabel();
+        plmbg5 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         smallpf = new javax.swing.JLabel();
         PLMLogo = new javax.swing.JLabel();
@@ -931,6 +902,7 @@ public class AdminMenu extends javax.swing.JPanel {
 
         plmbg6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plmopaque.png"))); // NOI18N
         plmbg6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        plmbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1064,6 +1036,12 @@ public class AdminMenu extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)))
                 .addContainerGap())
+
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(plmbg, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         tabs.addTab("", jPanel4);
@@ -1139,7 +1117,7 @@ public class AdminMenu extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblSYSem);
 
-        plmbg7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plmopaque.png"))); // NOI18N
+        plmbg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1175,7 +1153,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(561, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(414, 414, 414)
                 .addComponent(jLabel14)
@@ -1183,7 +1161,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg7, javax.swing.GroupLayout.PREFERRED_SIZE, 1270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1209,11 +1187,11 @@ public class AdminMenu extends javax.swing.JPanel {
                     .addComponent(btnDeleteSYSem))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg7, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -1344,11 +1322,11 @@ public class AdminMenu extends javax.swing.JPanel {
 
         lblCourseDesc.setText("Course Description");
 
+        plmbg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+
         jLabel52.setText("Encoding of Grades:");
 
         chkGradesEncoding.setText("Active");
-
-        plmbg8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plmopaque.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1384,7 +1362,7 @@ public class AdminMenu extends javax.swing.JPanel {
                                 .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblCollegeDesc)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(605, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1432,7 +1410,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg8, javax.swing.GroupLayout.PREFERRED_SIZE, 1270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg2, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
@@ -1489,7 +1467,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg8, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -1618,9 +1596,9 @@ public class AdminMenu extends javax.swing.JPanel {
 
         lblCourseDescSched.setText("Course Description");
 
-        cmbSequenceNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", " " }));
+        plmbg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
-        plmbg9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plmopaque.png"))); // NOI18N
+        cmbSequenceNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", " " }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1652,7 +1630,7 @@ public class AdminMenu extends javax.swing.JPanel {
                                         .addComponent(jLabel37)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cmbSequenceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 499, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(jLabel53)
@@ -1713,7 +1691,7 @@ public class AdminMenu extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(78, 78, 78))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 296, Short.MAX_VALUE)
+                .addGap(0, 76, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(btnAddSched)
@@ -1728,7 +1706,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg9, javax.swing.GroupLayout.PREFERRED_SIZE, 1270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg3, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
@@ -1807,7 +1785,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg9, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg3, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -1916,7 +1894,7 @@ public class AdminMenu extends javax.swing.JPanel {
         });
         jScrollPane6.setViewportView(tblEmployees);
 
-        plmbg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plmopaque.png"))); // NOI18N
+        plmbg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1974,7 +1952,7 @@ public class AdminMenu extends javax.swing.JPanel {
                                     .addComponent(jLabel50))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateEmpBday, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                                    .addComponent(dateEmpBday, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(checkEmpStatus)
@@ -1993,7 +1971,7 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg4, javax.swing.GroupLayout.PREFERRED_SIZE, 1270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg4, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel8Layout.setVerticalGroup(
@@ -2076,7 +2054,7 @@ public class AdminMenu extends javax.swing.JPanel {
             tblHistory.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        plmbg10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plmopaque.png"))); // NOI18N
+        plmbg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -2084,12 +2062,12 @@ public class AdminMenu extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg10, javax.swing.GroupLayout.PREFERRED_SIZE, 1270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg5, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
@@ -2097,11 +2075,11 @@ public class AdminMenu extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(plmbg10, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plmbg5, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -2219,7 +2197,6 @@ public class AdminMenu extends javax.swing.JPanel {
         if (response == 0){
             mf.setUserID("");
             mf.switchCard("LoginCard");
-            logAction("Logged out");
         }
         else{
             JOptionPane.showMessageDialog(this, "Canceled");
@@ -2263,7 +2240,6 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
-        loadHistoryTable();
         tabs.setSelectedIndex(5);
         toggleSelected(5);
         //TODO: code for displaying history table
@@ -2392,7 +2368,6 @@ public class AdminMenu extends javax.swing.JPanel {
                     ps.setString(10, "I");
                 ps.execute();
                 loadStudentTable();
-                logAction("Added student record");
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
@@ -2434,7 +2409,6 @@ public class AdminMenu extends javax.swing.JPanel {
                     ps.setString(9, "I");
                 ps.execute();
                 loadStudentTable();
-                logAction("Updated student record");
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
@@ -2454,7 +2428,6 @@ public class AdminMenu extends javax.swing.JPanel {
                 );
                 ps.execute();
                 loadStudentTable();
-                logAction("Deleted student record");
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
             } catch (Exception e) {
                 System.out.println(e);
@@ -2485,10 +2458,9 @@ public class AdminMenu extends javax.swing.JPanel {
                 if(!(txtSY.getText().toString().equals(""))) {
                     ps = con.prepareStatement("INSERT INTO finals.SY VALUES ('" + txtSY.getText().toString() + "')");
                     int rowsAffected = ps.executeUpdate();
-                    if (rowsAffected > 0) {
-                        logAction("Added school year record");
+                    if (rowsAffected > 0)
                         JOptionPane.showMessageDialog(null, "Added record successfully.");
-                    } else
+                    else
                         JOptionPane.showMessageDialog(null, "Invalid SY", "ERROR", JOptionPane.ERROR_MESSAGE);
                      loadSYTable();
                 } else {
@@ -2498,10 +2470,9 @@ public class AdminMenu extends javax.swing.JPanel {
                 if(!(txtSem.getText().toString().equals(""))) {
                     ps = con.prepareStatement("INSERT INTO finals.SEMESTER VALUES ('" + txtSem.getText().toString() + "')");
                     int rowsAffected = ps.executeUpdate();
-                    if (rowsAffected > 0) {
-                        logAction("Added semester record");
+                    if (rowsAffected > 0)
                         JOptionPane.showMessageDialog(null, "Added record successfully.");
-                    } else
+                    else
                         JOptionPane.showMessageDialog(null, "Invalid Semester", "ERROR", JOptionPane.ERROR_MESSAGE);
                      loadSemTable();
                 } else {
@@ -2563,10 +2534,9 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
-                logAction("Added subject record");
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
             
             loadSubjectTable();
@@ -2599,10 +2569,9 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
-                logAction("Updated subject record");
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Cannot modify subject code", "ERROR", JOptionPane.ERROR_MESSAGE);
             
             loadSubjectTable();
@@ -2622,10 +2591,9 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
-                logAction("Deleted subject record");
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Subject does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
             
             loadSubjectTable();
@@ -2668,10 +2636,9 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(11, cmbFacultyID.getSelectedItem().toString());
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
-                logAction("Added schedule record");
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadScheduleTable();   
         } catch (Exception e) {
@@ -2708,10 +2675,9 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(5, cmbFacultyID.getSelectedItem().toString());
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
-                logAction("Updated schedule record");
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Cannot update", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadScheduleTable();   
         } catch (Exception e) {
@@ -2739,10 +2705,9 @@ public class AdminMenu extends javax.swing.JPanel {
             ps.setString(6, cmbSequenceNo.getSelectedItem().toString());
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
-                logAction("Added schedule record");
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Cannot delete", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadScheduleTable();   
         } catch (Exception e) {
@@ -2852,10 +2817,9 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
-                logAction("Added employee record");
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadEmployeeTable();   
         } catch (Exception e) {
@@ -2890,10 +2854,9 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
-                logAction("Updated employee record");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Cannot modify employee ID1", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadEmployeeTable();   
         } catch (Exception e) {
@@ -2912,10 +2875,9 @@ public class AdminMenu extends javax.swing.JPanel {
             
             int rowsAffected = ps.executeUpdate();
             
-            if (rowsAffected > 0) {
+            if (rowsAffected > 0)
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                logAction("Deleted employee record");
-            } else
+            else
                 JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
             loadEmployeeTable();   
         } catch (Exception e) {
@@ -3005,19 +2967,17 @@ public class AdminMenu extends javax.swing.JPanel {
             if (rbSY.isSelected()) {
                 ps = con.prepareStatement("DELETE FROM finals.SY WHERE SY = '" + txtSY.getText().toString() + "'");
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected > 0) {
+                if (rowsAffected > 0)
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                    logAction("Deleted SY record");
-                } else
+                else
                     JOptionPane.showMessageDialog(null, "SY does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
                  loadSYTable();
             } else if (rbSem.isSelected()) {
                 ps = con.prepareStatement("DELETE FROM finals.SEMESTER WHERE SEMESTER = '" + txtSem.getText().toString() + "'");
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected > 0) {
+                if (rowsAffected > 0)
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                    logAction("Deleted semester record");
-                } else
+                else
                     JOptionPane.showMessageDialog(null, "Semester does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
                  loadSemTable();
             } else {
@@ -3331,12 +3291,12 @@ public class AdminMenu extends javax.swing.JPanel {
     private javax.swing.JLabel pficon4;
     private javax.swing.JLabel pficon5;
     private javax.swing.JLabel pficon6;
-    private javax.swing.JLabel plmbg10;
+    private javax.swing.JLabel plmbg;
+    private javax.swing.JLabel plmbg1;
+    private javax.swing.JLabel plmbg2;
+    private javax.swing.JLabel plmbg3;
     private javax.swing.JLabel plmbg4;
-    private javax.swing.JLabel plmbg6;
-    private javax.swing.JLabel plmbg7;
-    private javax.swing.JLabel plmbg8;
-    private javax.swing.JLabel plmbg9;
+    private javax.swing.JLabel plmbg5;
     private javax.swing.JRadioButton rbF2F;
     private javax.swing.JRadioButton rbOnline;
     private javax.swing.JRadioButton rbSY;
