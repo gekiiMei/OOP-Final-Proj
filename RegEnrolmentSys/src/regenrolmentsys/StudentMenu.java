@@ -926,6 +926,7 @@ public class StudentMenu extends javax.swing.JPanel {
                         while (rs.next())
                             intBlockCount++;
                         block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
+                        System.out.println(block);
                     }
                 } else {
                     ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
@@ -976,7 +977,13 @@ public class StudentMenu extends javax.swing.JPanel {
             ps.setString(2, cmbEnrolSem.getSelectedItem().toString());
             ps.setString(3, block);
             rs = ps.executeQuery();
-            tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+            if (rs.next()) {
+                rs = ps.executeQuery();
+                tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+            } else {
+                JOptionPane.showMessageDialog(this, "No viable schedules found!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             rs = ps.executeQuery();
             enrollQuery = "INSERT INTO finals.ENROLLED_SUBJECT VALUES ";
             while (rs.next()) {
