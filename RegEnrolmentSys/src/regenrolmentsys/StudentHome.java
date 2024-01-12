@@ -216,7 +216,7 @@ public class StudentHome extends javax.swing.JPanel {
         lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUserName.setText("name");
         jPanel1.add(lblUserName);
-        lblUserName.setBounds(840, 210, 180, 70);
+        lblUserName.setBounds(730, 210, 400, 70);
 
         Student.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
         Student.setForeground(new java.awt.Color(255, 255, 255));
@@ -318,7 +318,8 @@ public class StudentHome extends javax.swing.JPanel {
     private void BTNProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNProfileActionPerformed
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
-        sm.getTabs().setSelectedIndex(0);
+        sm.getTabs().setSelectedIndex(3);
+        sm.toggleSelected(0);
         sm.profileStudentsTab();
 
     }//GEN-LAST:event_BTNProfileActionPerformed
@@ -326,7 +327,8 @@ public class StudentHome extends javax.swing.JPanel {
     private void BTNGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNGradeActionPerformed
         // TODO add your handling code here:
          mf.switchCard("StudentMenuCard");
-        sm.getTabs().setSelectedIndex(3);
+        sm.getTabs().setSelectedIndex(2);
+        sm.toggleSelected(3);
         sm.loadGradesTab();
 
     }//GEN-LAST:event_BTNGradeActionPerformed
@@ -335,7 +337,8 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         mf.switchCard("StudentMenuCard");
         sm.loadEnrolmentTab();
-        sm.getTabs().setSelectedIndex(1);
+        sm.getTabs().setSelectedIndex(0);
+        sm.toggleSelected(1);
 
     }//GEN-LAST:event_BTNEnrollmentActionPerformed
 
@@ -343,7 +346,8 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
           mf.switchCard("StudentMenuCard");
         sm.studentScheduleTab();
-        sm.getTabs().setSelectedIndex(2);
+        sm.getTabs().setSelectedIndex(1);
+        sm.toggleSelected(2);
 
     }//GEN-LAST:event_BTNScheduleActionPerformed
 

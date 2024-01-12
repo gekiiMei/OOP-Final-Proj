@@ -5,8 +5,9 @@
 package regenrolmentsys;
 
 
-import java.awt.Point;
+//import java.awt.Point;
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.util.Random;
@@ -106,6 +107,11 @@ public class StudentMenu extends javax.swing.JPanel {
                             rs = ps.executeQuery();
                             System.out.println(subjectCodesIN);
                             tblSchedule.setModel(TableUtil.resultSetToTableModel(rs));
+                            
+                            tblSchedule.getTableHeader().setBackground(new Color(255,81,212));
+                            tblSchedule.getTableHeader().setFont(new Font("Poppins", Font.BOLD,12));
+                            tblSchedule.getTableHeader().setOpaque(false);
+                            tblSchedule.getTableHeader().setForeground(new Color(0,0,0,300));
                     }
                     }          
         }
@@ -122,8 +128,6 @@ public class StudentMenu extends javax.swing.JPanel {
         
     public void loadGradesTab() {
          con = ConnectDB.connect();
-         cmbGradeSY.removeAllItems();
-         cmbGradeSem.removeAllItems();
          try {
              rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
              while (rs.next())
@@ -180,8 +184,6 @@ public class StudentMenu extends javax.swing.JPanel {
     
     public void loadEnrolmentTab() {
         con = ConnectDB.connect();
-        cmbEnrolSy.removeAllItems();
-        cmbEnrolSem.removeAllItems();
         try {
              rs = con.prepareStatement("SELECT * FROM finals.SY").executeQuery();
              while (rs.next())
@@ -204,6 +206,16 @@ public class StudentMenu extends javax.swing.JPanel {
                     }
                 });
     }
+    
+    public void toggleSelected(int index) {
+        javax.swing.JPanel covers[] = {select1, select2, select3, select4}; //just fill with the cover JPanels for other menus
+        for (int i=0; i<covers.length; ++i) {
+            if (i == index) 
+                covers[i].setVisible(true);
+            else
+                covers[i].setVisible(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -222,8 +234,43 @@ public class StudentMenu extends javax.swing.JPanel {
         btnGrades = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         btnBackStudentMenu = new javax.swing.JButton();
+        pficon = new javax.swing.JLabel();
+        pficon1 = new javax.swing.JLabel();
+        pficon2 = new javax.swing.JLabel();
+        pficon3 = new javax.swing.JLabel();
+        pficon4 = new javax.swing.JLabel();
+        pficon5 = new javax.swing.JLabel();
+        select4 = new javax.swing.JPanel();
+        select3 = new javax.swing.JPanel();
+        select2 = new javax.swing.JPanel();
+        select1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEnrolSchedule = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cmbEnrolSy = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        cmbEnrolSem = new javax.swing.JComboBox<>();
+        btnEnrolConfirm = new javax.swing.JButton();
+        btnEnrolSchedView = new javax.swing.JButton();
+        plmbg3 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblSchedule = new javax.swing.JTable();
+        plmbg2 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblGradesTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        cmbGradeSY = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        cmbGradeSem = new javax.swing.JComboBox<>();
+        btnGradeSearch = new javax.swing.JButton();
+        plmbg1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblStudentNo = new javax.swing.JLabel();
         lblStudentLN = new javax.swing.JLabel();
@@ -236,124 +283,191 @@ public class StudentMenu extends javax.swing.JPanel {
         lblStudentBday = new javax.swing.JLabel();
         lblStudentStatus = new javax.swing.JLabel();
         btnChangePassword = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblEnrolSchedule = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        cmbEnrolSy = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        cmbEnrolSem = new javax.swing.JComboBox<>();
-        btnEnrolConfirm = new javax.swing.JButton();
-        btnEnrolSchedView = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblSchedule = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblGradesTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        cmbGradeSY = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        cmbGradeSem = new javax.swing.JComboBox<>();
-        btnGradeSearch = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        plmbg = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        smallpf = new javax.swing.JLabel();
+        MainLBL = new javax.swing.JLabel();
         PLMLogo = new javax.swing.JLabel();
         MinimizeBTN = new javax.swing.JButton();
         CloseBTN = new javax.swing.JButton();
-        MainLBL1 = new javax.swing.JLabel();
-        NameTopBar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(230, 68, 68));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jSplitPane1.setBackground(new java.awt.Color(230, 68, 68));
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(0);
 
         jPanel1.setBackground(new java.awt.Color(230, 68, 68));
+        jPanel1.setLayout(null);
 
-        btnProfile.setText("profile");
+        btnProfile.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnProfile.setForeground(new java.awt.Color(255, 255, 255));
+        btnProfile.setText("Profile");
+        btnProfile.setBorder(null);
+        btnProfile.setContentAreaFilled(false);
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfileActionPerformed(evt);
             }
         });
+        jPanel1.add(btnProfile);
+        btnProfile.setBounds(0, 20, 200, 70);
 
-        btnEnrolment.setText("enrolment");
+        btnEnrolment.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnEnrolment.setForeground(new java.awt.Color(255, 255, 255));
+        btnEnrolment.setText("Enrollment");
+        btnEnrolment.setBorder(null);
+        btnEnrolment.setContentAreaFilled(false);
         btnEnrolment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnrolmentActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEnrolment);
+        btnEnrolment.setBounds(0, 90, 200, 70);
 
-        btnSched.setText("schedule");
+        btnSched.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnSched.setForeground(new java.awt.Color(255, 255, 255));
+        btnSched.setText("Schedule");
+        btnSched.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnSched.setContentAreaFilled(false);
         btnSched.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSchedActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSched);
+        btnSched.setBounds(0, 160, 200, 70);
 
-        btnGrades.setText("grades");
+        btnGrades.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnGrades.setForeground(new java.awt.Color(255, 255, 255));
+        btnGrades.setText("Grades");
+        btnGrades.setBorder(null);
+        btnGrades.setContentAreaFilled(false);
         btnGrades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGradesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnGrades);
+        btnGrades.setBounds(0, 230, 200, 70);
 
-        btnLogout.setText("logout");
+        btnLogout.setBackground(new java.awt.Color(230, 68, 68));
+        btnLogout.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setText("Log-out");
+        btnLogout.setBorder(null);
+        btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
+        jPanel1.add(btnLogout);
+        btnLogout.setBounds(-1, 570, 200, 28);
 
-        btnBackStudentMenu.setText("back");
+        btnBackStudentMenu.setBackground(new java.awt.Color(230, 68, 68));
+        btnBackStudentMenu.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnBackStudentMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnBackStudentMenu.setText("              Back");
+        btnBackStudentMenu.setBorder(null);
+        btnBackStudentMenu.setContentAreaFilled(false);
+        btnBackStudentMenu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBackStudentMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackStudentMenuActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBackStudentMenu);
+        btnBackStudentMenu.setBounds(-5, 510, 210, 28);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBackStudentMenu)
-                            .addComponent(btnLogout)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEnrolment, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                            .addComponent(btnSched, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnGrades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(13, 13, 13))
+        pficon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallLogout.png"))); // NOI18N
+        jPanel1.add(pficon);
+        pficon.setBounds(20, 560, 40, 50);
+
+        pficon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallpfside.png"))); // NOI18N
+        jPanel1.add(pficon1);
+        pficon1.setBounds(20, 30, 40, 50);
+
+        pficon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallenrollside.png"))); // NOI18N
+        jPanel1.add(pficon2);
+        pficon2.setBounds(20, 90, 40, 70);
+
+        pficon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallschedside.png"))); // NOI18N
+        jPanel1.add(pficon3);
+        pficon3.setBounds(20, 160, 40, 70);
+
+        pficon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallgrades.png"))); // NOI18N
+        jPanel1.add(pficon4);
+        pficon4.setBounds(20, 230, 40, 70);
+
+        pficon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backsmall.png"))); // NOI18N
+        jPanel1.add(pficon5);
+        pficon5.setBounds(20, 500, 40, 50);
+
+        select4.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select4Layout = new javax.swing.GroupLayout(select4);
+        select4.setLayout(select4Layout);
+        select4Layout.setHorizontalGroup(
+            select4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEnrolment, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSched, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGrades, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
-                .addComponent(btnBackStudentMenu)
-                .addGap(18, 18, 18)
-                .addComponent(btnLogout)
-                .addGap(41, 41, 41))
+        select4Layout.setVerticalGroup(
+            select4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(select4);
+        select4.setBounds(0, 230, 200, 70);
+
+        select3.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select3Layout = new javax.swing.GroupLayout(select3);
+        select3.setLayout(select3Layout);
+        select3Layout.setHorizontalGroup(
+            select3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select3Layout.setVerticalGroup(
+            select3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select3);
+        select3.setBounds(0, 160, 200, 70);
+
+        select2.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select2Layout = new javax.swing.GroupLayout(select2);
+        select2.setLayout(select2Layout);
+        select2Layout.setHorizontalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select2Layout.setVerticalGroup(
+            select2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select2);
+        select2.setBounds(0, 90, 200, 70);
+
+        select1.setBackground(new java.awt.Color(179, 52, 52));
+
+        javax.swing.GroupLayout select1Layout = new javax.swing.GroupLayout(select1);
+        select1.setLayout(select1Layout);
+        select1Layout.setHorizontalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        select1Layout.setVerticalGroup(
+            select1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(select1);
+        select1.setBounds(0, 20, 200, 70);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -362,104 +476,10 @@ public class StudentMenu extends javax.swing.JPanel {
         tabs.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         tabs.setToolTipText("");
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblStudentNo.setText("STUDENT NUMBER:");
-
-        lblStudentLN.setText("LAST NAME:");
-
-        lblStudentFN.setText("FIRST NAME:");
-
-        lblStudentEmail.setText("EMAIL:");
-
-        lblStudentGender.setText("GENDER:");
-
-        lblStudentCourseCode.setText("COURSE CODE:");
-
-        lblStudentCPNum.setText("CELLPHONE NUMBER:");
-
-        lblStudentAddress.setText("ADDRESS:");
-
-        lblStudentBday.setText("BIRTHDAY:");
-
-        lblStudentStatus.setText("STATUS:");
-
-        btnChangePassword.setText("Change password");
-        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangePasswordActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(lblStudentNo))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(lblStudentLN))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(lblStudentFN))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(lblStudentEmail))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(lblStudentGender))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(lblStudentCourseCode))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(lblStudentCPNum))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(lblStudentAddress))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(lblStudentBday))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(lblStudentStatus))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(btnChangePassword))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblStudentNo)
-                .addGap(6, 6, 6)
-                .addComponent(lblStudentLN)
-                .addGap(12, 12, 12)
-                .addComponent(lblStudentFN)
-                .addGap(12, 12, 12)
-                .addComponent(lblStudentEmail)
-                .addGap(12, 12, 12)
-                .addComponent(lblStudentGender)
-                .addGap(12, 12, 12)
-                .addComponent(lblStudentCourseCode)
-                .addGap(15, 15, 15)
-                .addComponent(lblStudentCPNum)
-                .addGap(6, 6, 6)
-                .addComponent(lblStudentAddress)
-                .addGap(6, 6, 6)
-                .addComponent(lblStudentBday)
-                .addGap(12, 12, 12)
-                .addComponent(lblStudentStatus)
-                .addGap(36, 36, 36)
-                .addComponent(btnChangePassword))
-        );
-
-        tabs.addTab("", jPanel3);
-
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(null);
 
+        tblEnrolSchedule.setBackground(new java.awt.Color(153, 153, 153));
         tblEnrolSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -470,17 +490,31 @@ public class StudentMenu extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblEnrolSchedule);
 
+        jPanel4.add(jScrollPane2);
+        jScrollPane2.setBounds(20, 100, 820, 402);
+
         jLabel5.setText("Schedule");
+        jPanel4.add(jLabel5);
+        jLabel5.setBounds(20, 70, 48, 16);
 
         jLabel6.setText("School Year :");
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(10, 30, 68, 16);
+
+        jPanel4.add(cmbEnrolSy);
+        cmbEnrolSy.setBounds(80, 30, 72, 22);
 
         jLabel2.setText("Semester :");
+        jPanel4.add(jLabel2);
+        jLabel2.setBounds(180, 30, 54, 16);
 
         cmbEnrolSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEnrolSemActionPerformed(evt);
             }
         });
+        jPanel4.add(cmbEnrolSem);
+        cmbEnrolSem.setBounds(240, 30, 72, 22);
 
         btnEnrolConfirm.setText("Confirm Enrolment");
         btnEnrolConfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -488,6 +522,8 @@ public class StudentMenu extends javax.swing.JPanel {
                 btnEnrolConfirmActionPerformed(evt);
             }
         });
+        jPanel4.add(btnEnrolConfirm);
+        btnEnrolConfirm.setBounds(710, 510, 132, 23);
 
         btnEnrolSchedView.setText("View Schedule");
         btnEnrolSchedView.addActionListener(new java.awt.event.ActionListener() {
@@ -495,58 +531,22 @@ public class StudentMenu extends javax.swing.JPanel {
                 btnEnrolSchedViewActionPerformed(evt);
             }
         });
+        jPanel4.add(btnEnrolSchedView);
+        btnEnrolSchedView.setBounds(350, 30, 106, 23);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnEnrolConfirm))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbEnrolSy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbEnrolSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(btnEnrolSchedView)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(63, 63, 63))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cmbEnrolSy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(cmbEnrolSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnrolSchedView))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEnrolConfirm)
-                .addGap(47, 47, 47))
-        );
+        plmbg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+        jPanel4.add(plmbg3);
+        plmbg3.setBounds(0, 10, 1050, 700);
 
         tabs.addTab("", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(null);
 
+        jLabel3.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel3.setText("SCHEDULE");
+        jPanel5.add(jLabel3);
+        jLabel3.setBounds(50, 30, 140, 37);
 
         tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -561,31 +561,19 @@ public class StudentMenu extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tblSchedule);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel5.add(jScrollPane3);
+        jScrollPane3.setBounds(10, 70, 820, 523);
+
+        plmbg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+        jPanel5.add(plmbg2);
+        plmbg2.setBounds(0, 10, 1050, 700);
 
         tabs.addTab("", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
+        tblGradesTable.setBackground(new java.awt.Color(102, 102, 102));
+        tblGradesTable.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tblGradesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -607,6 +595,7 @@ public class StudentMenu extends javax.swing.JPanel {
             tblGradesTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel1.setText("School year :");
 
         cmbGradeSY.addActionListener(new java.awt.event.ActionListener() {
@@ -615,6 +604,7 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel4.setText("Semester");
 
         btnGradeSearch.setText("Search");
@@ -624,6 +614,8 @@ public class StudentMenu extends javax.swing.JPanel {
             }
         });
 
+        plmbg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -631,7 +623,6 @@ public class StudentMenu extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -641,8 +632,14 @@ public class StudentMenu extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnGradeSearch)))
-                .addGap(67, 67, 67))
+                        .addComponent(btnGradeSearch))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -654,12 +651,89 @@ public class StudentMenu extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(cmbGradeSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGradeSearch))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(plmbg1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         tabs.addTab("", jPanel6);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(null);
+
+        lblStudentNo.setText("STUDENT NUMBER:");
+        jPanel3.add(lblStudentNo);
+        lblStudentNo.setBounds(76, 22, 103, 16);
+
+        lblStudentLN.setText("LAST NAME:");
+        jPanel3.add(lblStudentLN);
+        lblStudentLN.setBounds(115, 44, 66, 16);
+
+        lblStudentFN.setText("FIRST NAME:");
+        jPanel3.add(lblStudentFN);
+        lblStudentFN.setBounds(113, 72, 68, 16);
+
+        lblStudentEmail.setText("EMAIL:");
+        jPanel3.add(lblStudentEmail);
+        lblStudentEmail.setBounds(145, 100, 37, 16);
+
+        lblStudentGender.setText("GENDER:");
+        jPanel3.add(lblStudentGender);
+        lblStudentGender.setBounds(133, 128, 47, 16);
+
+        lblStudentCourseCode.setText("COURSE CODE:");
+        jPanel3.add(lblStudentCourseCode);
+        lblStudentCourseCode.setBounds(100, 156, 81, 16);
+
+        lblStudentCPNum.setText("CELLPHONE NUMBER:");
+        jPanel3.add(lblStudentCPNum);
+        lblStudentCPNum.setBounds(63, 187, 120, 16);
+
+        lblStudentAddress.setText("ADDRESS:");
+        jPanel3.add(lblStudentAddress);
+        lblStudentAddress.setBounds(127, 209, 52, 16);
+
+        lblStudentBday.setText("BIRTHDAY:");
+        jPanel3.add(lblStudentBday);
+        lblStudentBday.setBounds(123, 231, 58, 16);
+
+        lblStudentStatus.setText("STATUS:");
+        jPanel3.add(lblStudentStatus);
+        lblStudentStatus.setBounds(137, 259, 43, 16);
+
+        btnChangePassword.setText("Change password");
+        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangePasswordActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnChangePassword);
+        btnChangePassword.setBounds(57, 311, 124, 23);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 820, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 340, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel8);
+        jPanel8.setBounds(30, 10, 820, 340);
+
+        plmbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/plm.png"))); // NOI18N
+        jPanel3.add(plmbg);
+        plmbg.setBounds(0, 10, 1050, 700);
+
+        tabs.addTab("", jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -683,11 +757,11 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(254, 86, 86));
         jPanel7.setLayout(null);
 
-        smallpf.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        smallpf.setForeground(new java.awt.Color(255, 255, 255));
-        smallpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/smallprofile.png"))); // NOI18N
-        jPanel7.add(smallpf);
-        smallpf.setBounds(1040, 0, 40, 30);
+        MainLBL.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        MainLBL.setForeground(new java.awt.Color(255, 255, 255));
+        MainLBL.setText("Enrollment System for Regular Students");
+        jPanel7.add(MainLBL);
+        MainLBL.setBounds(40, 0, 290, 30);
 
         PLMLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PLM_Seal_2013.png"))); // NOI18N
         jPanel7.add(PLMLogo);
@@ -736,18 +810,6 @@ public class StudentMenu extends javax.swing.JPanel {
         jPanel7.add(CloseBTN);
         CloseBTN.setBounds(1250, 0, 30, 30);
 
-        MainLBL1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        MainLBL1.setForeground(new java.awt.Color(255, 255, 255));
-        MainLBL1.setText("Enrollment System for Regular Students");
-        jPanel7.add(MainLBL1);
-        MainLBL1.setBounds(40, 0, 290, 30);
-
-        NameTopBar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        NameTopBar.setForeground(new java.awt.Color(255, 255, 255));
-        NameTopBar.setText(" Name | Student");
-        jPanel7.add(NameTopBar);
-        NameTopBar.setBounds(1060, 0, 120, 30);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -756,7 +818,7 @@ public class StudentMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -783,27 +845,24 @@ public class StudentMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
-        // TODO add your handling code here:
-        tabs.setSelectedIndex(0);
-        profileStudentsTab();
-    }//GEN-LAST:event_btnProfileActionPerformed
-
     private void btnEnrolmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrolmentActionPerformed
         // TODO add your handling code here:
+        toggleSelected(1);
         loadEnrolmentTab();
-        tabs.setSelectedIndex(1);
+        tabs.setSelectedIndex(0);
     }//GEN-LAST:event_btnEnrolmentActionPerformed
 
     private void btnSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedActionPerformed
         // TODO add your handling code here:
-        tabs.setSelectedIndex(2);
+        toggleSelected(2);
+        tabs.setSelectedIndex(1);
         studentScheduleTab();
     }//GEN-LAST:event_btnSchedActionPerformed
 
     private void btnGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradesActionPerformed
         // TODO add your handling code here:
-        tabs.setSelectedIndex(3);
+        toggleSelected(3);
+        tabs.setSelectedIndex(2);
         loadGradesTab();
     }//GEN-LAST:event_btnGradesActionPerformed
 
@@ -861,26 +920,87 @@ public class StudentMenu extends javax.swing.JPanel {
             }
             
             if (intCurrYear == 1) {
-                rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO WHERE block_no LIKE '" + course + Integer.toString(intCurrYear) + "%'").executeQuery();
-                if (rs.next()) {
-                    while (rs.next())
-                        intBlockCount++;
-                    block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
-                }
-            } else if (intCurrYear > 4) { 
-                
-            }else {
-                ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
-                ps.setString(1, currentUser);
-                ps.setString(2, "Finished");
-                ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
-                rs = ps.executeQuery();
-                if (rs.next()) {
-                    block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                if (cmbEnrolSem.getSelectedItem().toString().equals("1")) {
+                    rs = con.prepareStatement("SELECT * FROM finals.BLOCK_NO WHERE block_no LIKE '" + course + Integer.toString(intCurrYear) + "%'").executeQuery();
+                    if (rs.next()) {
+                        while (rs.next())
+                            intBlockCount++;
+                        block = course + Integer.toString(intCurrYear) + Integer.toString(rand.nextInt(intBlockCount)+1);
+                        System.out.println(block);
+                    }
                 } else {
-                    System.out.println("missing previous enrolments"); //TODO: error msg
-                    JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
-                    return;
+                    ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + "1%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        ps = con.prepareStatement("SELECT * FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                        ps.setString(1, currentUser);
+                        ps.setString(2, "Finished");
+                        ps.setString(3, course + "1%");
+                        rs = ps.executeQuery();
+                        if (!rs.next())
+                            block = course + "1" + rs.getString("block_no").substring(3);
+                        else {
+                            JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
+                
+            } else if (intCurrYear > 4) { 
+                JOptionPane.showMessageDialog(this, "You cannot go beyond the regular school years for your course!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+            }else {
+                if (cmbEnrolSem.getSelectedItem().toString().equals("1")) {
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                        ps.setString(1, currentUser);
+                        ps.setString(2, "Finished");
+                        ps.setString(3, course + Integer.toString(intCurrYear - 1) + "%");
+                        rs = ps.executeQuery();
+                        if (!rs.next())
+                            block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                        else {
+                            JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } else {
+                        System.out.println("missing previous enrolments"); //TODO: error msg
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                } else {
+                    ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status = ? AND block_no LIKE ?");
+                    ps.setString(1, currentUser);
+                    ps.setString(2, "Finished");
+                    ps.setString(3, course + Integer.toString(intCurrYear) + "%");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        ps = con.prepareStatement("SELECT block_no FROM finals.ENROLLED_SUBJECT WHERE student_no = ? AND status != ? AND block_no LIKE ?");
+                        ps.setString(1, currentUser);
+                        ps.setString(2, "Finished");
+                        ps.setString(3, course + Integer.toString(intCurrYear) + "%");
+                        rs = ps.executeQuery();
+                        if (!rs.next())
+                            block = course + Integer.toString(intCurrYear) + rs.getString("block_no").substring(3);
+                        else {
+                            JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } else {
+                        System.out.println("missing previous enrolments"); //TODO: error msg
+                        JOptionPane.showMessageDialog(this, "You are not eligible for this semester!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
             }
             ps = con.prepareStatement("SELECT * FROM finals.SUBJECT_SCHEDULE WHERE SY = ? AND SEMESTER = ? AND BLOCK_NO = ?");
@@ -888,7 +1008,13 @@ public class StudentMenu extends javax.swing.JPanel {
             ps.setString(2, cmbEnrolSem.getSelectedItem().toString());
             ps.setString(3, block);
             rs = ps.executeQuery();
-            tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+            if (rs.next()) {
+                rs = ps.executeQuery();
+                tblEnrolSchedule.setModel(TableUtil.resultSetToTableModel(rs)); //TODO: CHANGE TO VIEW
+            } else {
+                JOptionPane.showMessageDialog(this, "No viable schedules found!", "Enrollment error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             rs = ps.executeQuery();
             enrollQuery = "INSERT INTO finals.ENROLLED_SUBJECT VALUES ";
             while (rs.next()) {
@@ -931,6 +1057,8 @@ public class StudentMenu extends javax.swing.JPanel {
 
     private void MinimizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizeBTNActionPerformed
         mf.minimize();
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_MinimizeBTNActionPerformed
 
     private void CloseBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseBTNMouseEntered
@@ -945,6 +1073,7 @@ public class StudentMenu extends javax.swing.JPanel {
 
     private void CloseBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseBTNActionPerformed
         mf.close();
+
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseBTNActionPerformed
 
@@ -969,12 +1098,18 @@ public class StudentMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
+    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
+        // TODO add your handling code here:
+        toggleSelected(0);
+        tabs.setSelectedIndex(3);
+        profileStudentsTab();
+    }//GEN-LAST:event_btnProfileActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
-    private javax.swing.JLabel MainLBL1;
+    private javax.swing.JLabel MainLBL;
     private javax.swing.JButton MinimizeBTN;
-    private javax.swing.JLabel NameTopBar;
     private javax.swing.JLabel PLMLogo;
     private javax.swing.JButton btnBackStudentMenu;
     private javax.swing.JButton btnChangePassword;
@@ -1003,6 +1138,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1017,7 +1153,20 @@ public class StudentMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblStudentLN;
     private javax.swing.JLabel lblStudentNo;
     private javax.swing.JLabel lblStudentStatus;
-    private javax.swing.JLabel smallpf;
+    private javax.swing.JLabel pficon;
+    private javax.swing.JLabel pficon1;
+    private javax.swing.JLabel pficon2;
+    private javax.swing.JLabel pficon3;
+    private javax.swing.JLabel pficon4;
+    private javax.swing.JLabel pficon5;
+    private javax.swing.JLabel plmbg;
+    private javax.swing.JLabel plmbg1;
+    private javax.swing.JLabel plmbg2;
+    private javax.swing.JLabel plmbg3;
+    private javax.swing.JPanel select1;
+    private javax.swing.JPanel select2;
+    private javax.swing.JPanel select3;
+    private javax.swing.JPanel select4;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblEnrolSchedule;
     private javax.swing.JTable tblGradesTable;

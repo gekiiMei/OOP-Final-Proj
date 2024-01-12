@@ -17,12 +17,12 @@ public class MainFrame extends javax.swing.JFrame {
     private FacultyMenu panelFacultyMenu = new FacultyMenu(this);
     private AdminHome panelAdminHome = new AdminHome(this, panelFacultyMenu);
     private StudentHome panelStudentHome = new StudentHome(this, panelStudentMenu);
-    private LogInUI panelLogin = new LogInUI(this, panelStudentHome, panelAdminHome);
+    private LogInUI panelLogin = new LogInUI(this, panelStudentHome, panelAdminHome, panelAdminMenu);
     private String currentUserID = "";
     public MainFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        //setUndecorated(true);
+        setUndecorated(true);
         setTitle("Enrollment System for Regular Students");
         
         cont.setLayout(cl);
