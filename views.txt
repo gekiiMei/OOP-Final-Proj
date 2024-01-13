@@ -41,25 +41,6 @@ CREATE VIEW vwGrade_StudentInfo AS
         INNER JOIN finals.COURSE c
             ON stu.COURSE_CODE = c.COURSE_CODE;
 
-CREATE VIEW vwClassList AS
-    SELECT
-        ensub.SY
-        , ensub.SEMESTER
-        , ensub.STUDENT_NO "STUDENT NO"
-        , stu.LAST_NAME "LAST NAME"
-        , stu.FIRST_NAME "FIRST NAME"
-        , stu.MI
-        , ensub.SUBJECT_CODE "SUBJECT CODE"
-        , ensub.BLOCK_NO "BLOCK NO"
-    FROM finals.ENROLLED_SUBJECT ensub
-        INNER JOIN finals.STUDENT stu
-            ON ensub.STUDENT_NO = stu.STUDENT_NO
-        INNER JOIN finals.SUBJECT sub
-            ON ensub.SUBJECT_CODE = sub.SUBJECT_CODE
-    WHERE ensub.STATUS = 'Enrolled'
-    ORDER BY ensub.SUBJECT_CODE;
-
-
 CREATE VIEW finals.vwSchedule AS
 SELECT en.SY 
       ,en.SEMESTER
@@ -119,3 +100,113 @@ SELECT g.SY
 FROM finals.GRADE g
 INNER JOIN finals.SUBJECT S
     ON g.SUBJECT_CODE = s.SUBJECT_CODE
+
+CREATE VIEW vwFaculty_ClassList AS
+    SELECT DISTINCT
+        ensub.SY
+        , ensub.SEMESTER
+        , ensub.STUDENT_NO "STUDENT NO"
+        , stu.LAST_NAME "LAST NAME"
+        , stu.FIRST_NAME "FIRST NAME"
+        , stu.MI
+        , ensub.SUBJECT_CODE "SUBJECT CODE"
+        , ensub.BLOCK_NO "BLOCK NO"
+        , facsched.FACULTY_ID
+    FROM finals.ENROLLED_SUBJECT ensub
+        INNER JOIN finals.STUDENT stu
+            ON ensub.STUDENT_NO = stu.STUDENT_NO
+        INNER JOIN finals.SUBJECT sub
+            ON ensub.SUBJECT_CODE = sub.SUBJECT_CODE
+        INNER JOIN finals.vwFaculty_Schedule facsched
+            ON ensub.SY = facsched.SY AND ensub.SEMESTER = facsched.SEMESTER AND ensub.BLOCK_NO = facsched.BLOCK_NO
+            AND ensub.SUBJECT_CODE = facsched.SUBJECT_CODE
+    WHERE ensub.STATUS = 'Enrolled' OR ensub.STATUS = 'Finished' OR ensub.STATUS = 'Failed'
+    ORDER BY ensub.SUBJECT_CODE;
+
+CREATE VIEW vwFaculty_Schedule AS
+    SELECT
+        SY
+        , SEMESTER
+        , COLLEGE_CODE
+        , BLOCK_NO
+        , SUBJECT_CODE
+        , SEQUENCE_NO
+        , FACULTY_ID
+    FROM finals.SUBJECT_SCHEDULE subsch
+    ORDER BY SUBJECT_CODE;
+
+CREATE VIEW vwFaculty_Subject AS
+    SELECT DISTINCT
+        SUBJECT_CODE
+        , FACULTY_ID
+    FROM finals.VWFACULTY_SCHEDULE
+    ORDER BY SUBJECT_CODE;
+
+CREATE VIEW vwFaculty_GradesList AS
+    SELECT
+        g.SY
+        , g.SEMESTER
+        , g.STUDENT_NO
+        , g.SUBJECT_CODE
+        , g.BLOCK_NO
+        , g.GRADE
+        , subsched.FACULTY_ID
+    FROM finals.GRADE g
+        INNER JOIN finals.SUBJECT_SCHEDULE subsched
+            ON g.SY = subsched.SY 
+            AND g.SEMESTER = subsched.SEMESTER 
+            AND g.SUBJECT_CODE = subsched.SUBJECT_CODE 
+            AND g.BLOCK_NO = subsched.BLOCK_NO;
+
+CREATE VIEW vwSubjectSchedule AS
+    SELECT
+        subsched.SY
+        , subsched.SEMESTER
+        , subsched.COLLEGE_CODE
+        , college.DESCRIPTION "COLLEGE_DESC"
+        , subsched.BLOCK_NO
+        , subsched.SUBJECT_CODE
+        , sub.DESCRIPTION "SUBJ_DESC"
+        , subsched.SEQUENCE_NO
+        , subsched.FACULTY_ID
+        , (emp.FIRST_NAME||' '||emp.LAST_NAME) AS FACULTY_NAME
+        , sub.COURSE_CODE
+        , course.DESCRIPTION "COURSE_DESC"
+    FROM finals.SUBJECT_SCHEDULE subsched
+        INNER JOIN finals.SUBJECT sub
+            ON subsched.SUBJECT_CODE = sub.SUBJECT_CODE
+        INNER JOIN finals.COLLEGE college
+            ON subsched.COLLEGE_CODE = college.COLLEGE_CODE
+        INNER JOIN finals.COURSE course
+            ON sub.COURSE_CODE = course.COURSE_CODE
+        INNER JOIN finals.EMPLOYEE emp
+            ON subsched.FACULTY_ID = emp.EMPLOYEE_ID
+    ORDER BY subsched.SUBJECT_CODE;
+
+CREATE VIEW vwSubjectInfo_Sched AS
+    SELECT
+        sub.SUBJECT_CODE
+        , sub.DESCRIPTION "SUBJ_DESC"
+        , sub.COLLEGE_CODE
+        , college.DESCRIPTION "COLLEGE_DESC"
+        , sub.COURSE_CODE
+        , course.DESCRIPTION "COURSE_DESC"
+    FROM finals.SUBJECT sub
+        INNER JOIN finals.COLLEGE college ON sub.COLLEGE_CODE = college.COLLEGE_CODE
+        INNER JOIN finals.COURSE course ON sub.COURSE_CODE = course.COURSE_CODE;
+
+CREATE VIEW vwFaculty_GradesList AS
+    SELECT 
+        g.SY
+        , g.SEMESTER
+        , g.STUDENT_NO "STUDENT NO"
+        , g.SUBJECT_CODE "SUBJECT CODE"
+        , g.BLOCK_NO "BLOCK NO"
+        , g.GRADE
+        , fclass.FACULTY_ID
+    FROM finals.GRADE g
+        INNER JOIN finals.VWFACULTY_CLASSLIST fclass 
+            ON g.SY = fclass.SY AND g.SEMESTER = fclass.SEMESTER AND g.STUDENT_NO = fclass."STUDENT NO" 
+            AND g.SUBJECT_CODE = fclass."SUBJECT CODE" AND g.BLOCK_NO = fclass."BLOCK NO"
+        ORDER BY g.SUBJECT_CODE;
+
