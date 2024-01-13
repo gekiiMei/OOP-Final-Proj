@@ -79,4 +79,11 @@ public class TableUtil {
         table.getTableHeader().setForeground(new Color(255,255,255,255));
         table.setForeground(new Color (255, 255, 255));
     }
+    
+    public static void styleTable2 (JTable table) {
+        table.getTableHeader().setBackground(new Color(237, 178, 14));
+        table.getTableHeader().setFont(new Font("Poppins", Font.BOLD,12));
+        table.getTableHeader().setOpaque(true);
+        table.getTableHeader().setForeground(new Color(255,255,255,255));
+    }
 }
