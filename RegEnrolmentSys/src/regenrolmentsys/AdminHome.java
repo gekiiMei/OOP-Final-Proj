@@ -18,6 +18,7 @@ public class AdminHome extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
+    private PreparedStatement psLog = null;
     private MainFrame mf = null;
     private FacultyMenu fm = null;
     private String currentUser = "";
@@ -56,12 +57,13 @@ public class AdminHome extends javax.swing.JPanel {
         Date currDate = Date.valueOf(localCurrDate);
         
         try {
-            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, currentUser);
-            ps.setString(2, action);
-            ps.setString(3, "Admin");
-            ps.setDate(4, currDate);
-            ps.setTime(5, currTime);
+            psLog = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            psLog.setString(1, currentUser);
+            psLog.setString(2, action);
+            psLog.setString(3, "Admin");
+            psLog.setDate(4, currDate);
+            psLog.setTime(5, currTime);
+            psLog.execute();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -211,7 +213,6 @@ public class AdminHome extends javax.swing.JPanel {
 
         BTNClasslist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.png"))); // NOI18N
         BTNClasslist.setText("Class List");
-        BTNClasslist.setToolTipText("");
         BTNClasslist.setBorderPainted(false);
         BTNClasslist.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
         BTNClasslist.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -222,6 +223,7 @@ public class AdminHome extends javax.swing.JPanel {
         BTNClasslist.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         BTNClasslist.setkHoverStartColor(new java.awt.Color(51, 102, 0));
         BTNClasslist.setkStartColor(new java.awt.Color(0, 102, 0));
+        BTNClasslist.setToolTipText("");
         BTNClasslist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTNClasslistActionPerformed(evt);
@@ -302,7 +304,7 @@ public class AdminHome extends javax.swing.JPanel {
         lblUserName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUserName1.setText("name");
         jPanel1.add(lblUserName1);
-        lblUserName1.setBounds(840, 210, 180, 70);
+        lblUserName1.setBounds(740, 200, 380, 70);
 
         Faculty.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
         Faculty.setForeground(new java.awt.Color(255, 255, 255));
@@ -339,12 +341,12 @@ public class AdminHome extends javax.swing.JPanel {
         jPanel6.add(PLMLogo);
         PLMLogo.setBounds(10, 0, 30, 30);
 
+        MinimizeBTN.setText("-");
         MinimizeBTN.setBackground(new java.awt.Color(254, 86, 86));
+        MinimizeBTN.setBorder(null);
         MinimizeBTN.setFont(new java.awt.Font("Boldfinger", 0, 24)); // NOI18N
         MinimizeBTN.setForeground(new java.awt.Color(255, 255, 255));
-        MinimizeBTN.setText("-");
         MinimizeBTN.setToolTipText("");
-        MinimizeBTN.setBorder(null);
         MinimizeBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MinimizeBTNMouseEntered(evt);
@@ -361,11 +363,11 @@ public class AdminHome extends javax.swing.JPanel {
         jPanel6.add(MinimizeBTN);
         MinimizeBTN.setBounds(1220, 0, 30, 30);
 
+        CloseBTN.setText("X");
         CloseBTN.setBackground(new java.awt.Color(254, 86, 86));
+        CloseBTN.setBorder(null);
         CloseBTN.setFont(new java.awt.Font("Boldfinger", 0, 18)); // NOI18N
         CloseBTN.setForeground(new java.awt.Color(255, 255, 255));
-        CloseBTN.setText("X");
-        CloseBTN.setBorder(null);
         CloseBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CloseBTNMouseEntered(evt);

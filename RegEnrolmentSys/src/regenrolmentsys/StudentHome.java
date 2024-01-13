@@ -8,6 +8,8 @@ import java.awt.Color;
 
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.*;
 
 
@@ -22,6 +24,7 @@ public class StudentHome extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
+    private PreparedStatement psLog = null;
     /**
      * Creates new form StudentHome
      */
@@ -54,6 +57,26 @@ public class StudentHome extends javax.swing.JPanel {
                 lblUserName.setText(rs.getString("first_name"));
         }
         catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    private void logAction(String action) {
+        con = ConnectDB.connect();
+        LocalTime localCurrTime = LocalTime.now();
+        LocalDate localCurrDate = LocalDate.now();
+        Time currTime = Time.valueOf(localCurrTime);
+        Date currDate = Date.valueOf(localCurrDate);
+        
+        try {
+            psLog = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            psLog.setString(1, currentUser);
+            psLog.setString(2, action);
+            psLog.setString(3, "Student");
+            psLog.setDate(4, currDate);
+            psLog.setTime(5, currTime);
+            psLog.execute();
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -366,6 +389,7 @@ public class StudentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);  
         if (response == 0){
+            logAction("Logged out");
             mf.setUserID("");
             mf.switchCard("LoginCard");
         }
