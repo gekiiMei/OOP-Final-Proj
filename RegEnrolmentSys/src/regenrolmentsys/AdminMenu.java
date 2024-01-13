@@ -808,6 +808,12 @@ public class AdminMenu extends javax.swing.JPanel {
             }
         });
 
+        txtStudentNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStudentNoKeyTyped(evt);
+            }
+        });
+
         jLabel11.setText("-");
 
         btnStudSearch.setText("Search ID");
@@ -873,8 +879,19 @@ public class AdminMenu extends javax.swing.JPanel {
                 txtStuMidInitialActionPerformed(evt);
             }
         });
+        txtStuMidInitial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStuMidInitialKeyTyped(evt);
+            }
+        });
 
         lblStuEmail.setText("-");
+
+        txtStuPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStuPhoneKeyTyped(evt);
+            }
+        });
 
         btnStudSearchName.setText("Search Name");
         btnStudSearchName.addActionListener(new java.awt.event.ActionListener() {
@@ -1049,6 +1066,18 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jLabel16.setText("Semester:");
 
+        txtSY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSYKeyTyped(evt);
+            }
+        });
+
+        txtSem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSemKeyTyped(evt);
+            }
+        });
+
         btnAddSYSem.setText("ADD");
         btnAddSYSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1189,6 +1218,11 @@ public class AdminMenu extends javax.swing.JPanel {
         txtUnits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUnitsActionPerformed(evt);
+            }
+        });
+        txtUnits.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUnitsKeyTyped(evt);
             }
         });
 
@@ -1776,6 +1810,12 @@ public class AdminMenu extends javax.swing.JPanel {
 
         jLabel41.setText("Employee ID:");
 
+        txtEmpID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmpIDKeyTyped(evt);
+            }
+        });
+
         jLabel42.setText("First Name:");
 
         jLabel43.setText("Last Name:");
@@ -1808,6 +1848,12 @@ public class AdminMenu extends javax.swing.JPanel {
         });
 
         jLabel47.setText("Cellphone No:");
+
+        txtEmpCellNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmpCellNoKeyTyped(evt);
+            }
+        });
 
         jLabel48.setText("Birthday :");
 
@@ -3127,6 +3173,96 @@ public class AdminMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         rbOnline.setSelected(false);
     }//GEN-LAST:event_rbF2FActionPerformed
+
+    private void txtEmpIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpIDKeyTyped
+        // TODO add your handling code here:
+        if (txtEmpID.getText().length() >= 4 )
+            evt.consume(); 
+    }//GEN-LAST:event_txtEmpIDKeyTyped
+
+    private void txtEmpCellNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpCellNoKeyTyped
+        // TODO add your handling code here:
+        if (Character.isLetter(evt.getKeyChar()))
+            evt.consume();
+        else {
+            try {
+                Integer.parseInt(txtEmpCellNo.getText()+evt.getKeyChar());
+            } catch (NumberFormatException e) {
+                evt.consume();
+            }
+        }
+        
+        if (txtEmpCellNo.getText().length() >= 11 )
+            evt.consume(); 
+    }//GEN-LAST:event_txtEmpCellNoKeyTyped
+
+    private void txtStudentNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStudentNoKeyTyped
+        // TODO add your handling code here:
+        if (Character.isLetter(evt.getKeyChar()))
+            evt.consume();
+        else {
+            try {
+                Integer.parseInt(txtStudentNo.getText()+evt.getKeyChar());
+            } catch (NumberFormatException e) {
+                evt.consume();
+            }
+        }
+        
+        if (txtStudentNo.getText().length() >= 5 )
+            evt.consume();
+    }//GEN-LAST:event_txtStudentNoKeyTyped
+
+    private void txtStuMidInitialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStuMidInitialKeyTyped
+        // TODO add your handling code here:
+        if (Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+        if (txtStuMidInitial.getText().length() >= 1 )
+            evt.consume();
+    }//GEN-LAST:event_txtStuMidInitialKeyTyped
+
+    private void txtStuPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStuPhoneKeyTyped
+        // TODO add your handling code here:
+        if (Character.isLetter(evt.getKeyChar()))
+            evt.consume();
+        else {
+            try {
+                Integer.parseInt(txtStuPhone.getText()+evt.getKeyChar());
+            } catch (NumberFormatException e) {
+                evt.consume();
+            }
+        }
+        
+        if (txtStuPhone.getText().length() >= 11 )
+            evt.consume();
+    }//GEN-LAST:event_txtStuPhoneKeyTyped
+
+    private void txtSemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSemKeyTyped
+        // TODO add your handling code here:
+        if (txtSem.getText().length() >= 1 )
+            evt.consume();
+    }//GEN-LAST:event_txtSemKeyTyped
+
+    private void txtSYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSYKeyTyped
+        // TODO add your handling code here:
+        if (txtSem.getText().length() >= 9 )
+            evt.consume();
+    }//GEN-LAST:event_txtSYKeyTyped
+
+    private void txtUnitsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnitsKeyTyped
+        // TODO add your handling code here:
+        if (Character.isLetter(evt.getKeyChar()))
+            evt.consume();
+        else {
+            try {
+                Integer.parseInt(txtUnits.getText()+evt.getKeyChar());
+            } catch (NumberFormatException e) {
+                evt.consume();
+            }
+        }
+        
+        if (txtUnits.getText().length() >= 1 )
+            evt.consume();
+    }//GEN-LAST:event_txtUnitsKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseBTN;
