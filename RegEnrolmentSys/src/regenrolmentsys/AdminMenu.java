@@ -2424,6 +2424,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 logAction("Added Student record");
                 JOptionPane.showMessageDialog(null, "Added record successfully.");
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot add Student", "ERROR", JOptionPane.ERROR_MESSAGE);
                 System.out.println(e);
             }
         }
@@ -2466,6 +2467,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 logAction("Updated Student record");
                 JOptionPane.showMessageDialog(null, "Updated record successfully.");
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot update Student", "ERROR", JOptionPane.ERROR_MESSAGE);
                 System.out.println(e);
             }
         }
@@ -2486,6 +2488,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 logAction("Deleted Student record");
                 JOptionPane.showMessageDialog(null, "Deleted record successfully.");
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot delete Student", "ERROR", JOptionPane.ERROR_MESSAGE);
                 System.out.println(e);
             }
         }
