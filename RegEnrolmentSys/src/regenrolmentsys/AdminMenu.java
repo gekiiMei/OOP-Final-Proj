@@ -326,6 +326,32 @@ public class AdminMenu extends javax.swing.JPanel {
                 covers[i].setVisible(false);
         }
     }
+    
+    public void loadHistoryTab() {
+        con = ConnectDB.connect();
+        try {
+            rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
+            if (rs.next()) {
+                rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
+                tblHistory.setModel(TableUtil.resultSetToTableModel(rs));
+                TableUtil.resizeColumnWidth(tblHistory);
+                TableUtil.styleTable(tblHistory);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void resetHistoryTable() {
+        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {},
+                new String [] {"History log is empty"}
+                ) {
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }
+                });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -2220,6 +2246,7 @@ public class AdminMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         int response = JOptionPane.showConfirmDialog(this, "Do you really want to log-out?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (response == 0){
+            logAction("Logged out");
             mf.setUserID("");
             mf.switchCard("LoginCard");
         }
@@ -2266,6 +2293,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
         tabs.setSelectedIndex(5);
+        loadHistoryTab();
         toggleSelected(5);
         //TODO: code for displaying history table
         
@@ -2375,7 +2403,6 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnAddStuRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStuRecActionPerformed
         // TODO add your handling code here:
-        
         if(!(txtStudentNo.getText().isEmpty()||txtStuLastName.getText().isEmpty()||txtStuMidInitial.getText().isEmpty()||txtStuPhone.getText().isEmpty()||txtStuAddress.getText().isEmpty()))
         {
             con = ConnectDB.connect();
@@ -2458,6 +2485,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     loadStudentTable();
                     JOptionPane.showMessageDialog(null, "Updated record successfully.");
                 } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Cannot update Student", "ERROR", JOptionPane.ERROR_MESSAGE);
                     System.out.println(e);
                 }
             }
@@ -2481,6 +2509,7 @@ public class AdminMenu extends javax.swing.JPanel {
                     loadStudentTable();
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
                 } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Cannot delete Student", "ERROR", JOptionPane.ERROR_MESSAGE);
                     System.out.println(e);
                 }
             }
@@ -2533,9 +2562,6 @@ public class AdminMenu extends javax.swing.JPanel {
                     } else {
                         JOptionPane.showMessageDialog(null, "Semester cannot be empty", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
             } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -2681,8 +2707,7 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnAddSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSchedActionPerformed
         // TODO add your handling code here:
-        
-        int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (intAnswer == 0) {
             con = ConnectDB.connect();
             String college_code = "";
@@ -2717,6 +2742,7 @@ public class AdminMenu extends javax.swing.JPanel {
             } catch (Exception e) {
                 System.out.println(e);
             }
+
         }
     }//GEN-LAST:event_btnAddSchedActionPerformed
 
@@ -2792,6 +2818,7 @@ public class AdminMenu extends javax.swing.JPanel {
             } catch (Exception e) {
                 System.out.println(e);
             }
+
         }
     }//GEN-LAST:event_btnDeleteSchedActionPerformed
 

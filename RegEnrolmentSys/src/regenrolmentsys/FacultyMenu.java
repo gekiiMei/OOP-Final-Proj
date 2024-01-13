@@ -6,6 +6,8 @@ package regenrolmentsys;
 
 import java.awt.Color;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -225,6 +227,25 @@ public class FacultyMenu extends javax.swing.JPanel {
                 covers[i].setVisible(true);
             else
                 covers[i].setVisible(false);
+        }
+    }
+    
+    private void logAction(String action) {
+        con = ConnectDB.connect();
+        LocalTime localCurrTime = LocalTime.now();
+        LocalDate localCurrDate = LocalDate.now();
+        Time currTime = Time.valueOf(localCurrTime);
+        Date currDate = Date.valueOf(localCurrDate);
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, currentUser);
+            ps.setString(2, action);
+            ps.setString(3, "Faculty");
+            ps.setDate(4, currDate);
+            ps.setTime(5, currTime);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
     /**
@@ -1218,6 +1239,17 @@ public class FacultyMenu extends javax.swing.JPanel {
                         } else {
                             JOptionPane.showMessageDialog(null, "Student is already graded", "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
+
+                        
+                        ps.setString(1, cmbSY.getSelectedItem().toString());
+                        ps.setString(2, cmbSem.getSelectedItem().toString());
+                        ps.setString(3, selectedStudntNo);
+                        ps.setString(4, cmbSubjCode.getSelectedItem().toString());
+                        ps.setString(5, cmbBlockNo.getSelectedItem().toString());
+                        ps.execute(); 
+                        
+                        logAction("Added Grade record");
+                        JOptionPane.showMessageDialog(null, "Added record successfully.");
                     } else {
                         JOptionPane.showMessageDialog(null, "Cannot enter grade to a subject the student is not enrolled to", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
@@ -1254,8 +1286,10 @@ public class FacultyMenu extends javax.swing.JPanel {
                     ps.setString(5, cmbBlockNo.getSelectedItem().toString());
                 int rowsAffected = ps.executeUpdate();
                     
-                if (rowsAffected > 0)
+                if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                    logAction("Deleted Grade record");
+                }
                 else
                     JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
                 loadGradesTable();
@@ -1346,6 +1380,7 @@ public class FacultyMenu extends javax.swing.JPanel {
             ps.setString(5, currentUser);
             rs = ps.executeQuery();
             if (rs.next()) {
+                logAction("Viewed class list");
                 rs = ps.executeQuery();
                 tblClassList.setModel(TableUtil.resultSetToTableModel(rs));
                 TableUtil.resizeColumnWidth(tblGrades);
