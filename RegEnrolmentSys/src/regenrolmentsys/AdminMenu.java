@@ -2556,12 +2556,14 @@ public class AdminMenu extends javax.swing.JPanel {
                         int rowsAffected = ps.executeUpdate();
                         if (rowsAffected > 0)
                             JOptionPane.showMessageDialog(null, "Added record successfully.");
-                        else
+                        else {
                             JOptionPane.showMessageDialog(null, "Invalid Semester", "ERROR", JOptionPane.ERROR_MESSAGE);
-                         loadSemTable();
+                        }
+                        loadSemTable();
                     } else {
                         JOptionPane.showMessageDialog(null, "Semester cannot be empty", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
+                }
             } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
