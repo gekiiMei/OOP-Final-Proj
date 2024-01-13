@@ -2371,92 +2371,117 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnAddStuRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStuRecActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (intAnswer == 0) {
-            try {
-                ps = con.prepareStatement("INSERT INTO finals.STUDENT (student_no, last_name, first_name, mi, gender, course_code, cp_num, address, bday, status)"
-                        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                ps.setString(1, cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText());
-                ps.setString(2, txtStuLastName.getText());
-                ps.setString(3, txtStuFirstName.getText());
-                ps.setString(4, txtStuMidInitial.getText());
-                ps.setString(5, cmbStuGender.getSelectedItem().toString());
-                ps.setString(6, cmbStuCourse.getSelectedItem().toString());
-                ps.setString(7, txtStuPhone.getText());
-                ps.setString(8, txtStuAddress.getText());
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                ps.setDate(9, new java.sql.Date(df.parse(dateStuBday.toString()).getTime()));
-                if (chkStuActive.isSelected()) 
-                    ps.setString(10, "A");
-                else 
-                    ps.setString(10, "I");
-                ps.execute();
-                loadStudentTable();
-                JOptionPane.showMessageDialog(null, "Added record successfully.");
-            } catch (Exception e) {
-                System.out.println(e);
+        
+        if(!(txtStudentNo.getText().isEmpty()||txtStuLastName.getText().isEmpty()||txtStuMidInitial.getText().isEmpty()||txtStuPhone.getText().isEmpty()||txtStuAddress.getText().isEmpty()))
+        {
+            con = ConnectDB.connect();
+            int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (intAnswer == 0) {
+                try {
+                    ps = con.prepareStatement("INSERT INTO finals.STUDENT (student_no, last_name, first_name, mi, gender, course_code, cp_num, address, bday, status)"
+                            + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    ps.setString(1, cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText());
+                    ps.setString(2, txtStuLastName.getText());
+                    ps.setString(3, txtStuFirstName.getText());
+                    ps.setString(4, txtStuMidInitial.getText());
+                    ps.setString(5, cmbStuGender.getSelectedItem().toString());
+                    ps.setString(6, cmbStuCourse.getSelectedItem().toString());
+                    ps.setString(7, txtStuPhone.getText());
+                    ps.setString(8, txtStuAddress.getText());
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    ps.setDate(9, new java.sql.Date(df.parse(dateStuBday.toString()).getTime()));
+                    if (chkStuActive.isSelected()) 
+                        ps.setString(10, "A");
+                    else 
+                        ps.setString(10, "I");
+                    int rowsAffected = ps.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        ps = con.prepareStatement("INSERT INTO finals.PASSWORD VALUES (?,?)");
+                        ps.setString(1, cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText());
+                        ps.setString(2, txtStuLastName.getText().toLowerCase());
+                        ps.execute();
+                        loadStudentTable();
+                        JOptionPane.showMessageDialog(null, "Added record successfully.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Add failed", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Cannot add duplicate record", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println(e);
+                } 
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Input field/s cannot be empty", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAddStuRecActionPerformed
 
     private void btnUpdateStuRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStuRecActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        String selectedStudntNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
-        int intAnswer = JOptionPane.showConfirmDialog(null, "Update a record?", "Updating Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (intAnswer == 0) {
-            try {
-                ps = con.prepareStatement("UPDATE finals.STUDENT " 
-                        + "SET last_name = ?"  
-                        + ", first_name = ?"  
-                        + ", mi = ?" 
-                        + ", gender = ?"
-                        + ", course_code = ?"
-                        + ", cp_num = ?"
-                        + ", address = ?"
-                        + ", bday = ?"
-                        + ",status = ?"
-                        + " WHERE student_no = '" + selectedStudntNo + "'"
-                );
-                ps.setString(1, txtStuLastName.getText());
-                ps.setString(2, txtStuFirstName.getText());
-                ps.setString(3, txtStuMidInitial.getText());
-                ps.setString(4, cmbStuGender.getSelectedItem().toString());
-                ps.setString(5, cmbStuCourse.getSelectedItem().toString());
-                ps.setString(6, txtStuPhone.getText());
-                ps.setString(7, txtStuAddress.getText());
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                ps.setDate(8, new java.sql.Date(df.parse(dateStuBday.toString()).getTime()));
-                if (chkStuActive.isSelected()) 
-                    ps.setString(9, "A");
-                else 
-                    ps.setString(9, "I");
-                ps.execute();
-                loadStudentTable();
-                JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            } catch (Exception e) {
-                System.out.println(e);
+        if(!(txtStudentNo.getText().isEmpty()||txtStuLastName.getText().isEmpty()||txtStuMidInitial.getText().isEmpty()||txtStuPhone.getText().isEmpty()||txtStuAddress.getText().isEmpty()))
+        {
+            con = ConnectDB.connect();
+            String selectedStudntNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
+            int intAnswer = JOptionPane.showConfirmDialog(null, "Update a record?", "Updating Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (intAnswer == 0) {
+                try {
+                    ps = con.prepareStatement("UPDATE finals.STUDENT " 
+                            + "SET last_name = ?"  
+                            + ", first_name = ?"  
+                            + ", mi = ?" 
+                            + ", gender = ?"
+                            + ", course_code = ?"
+                            + ", cp_num = ?"
+                            + ", address = ?"
+                            + ", bday = ?"
+                            + ",status = ?"
+                            + " WHERE student_no = '" + selectedStudntNo + "'"
+                    );
+                    ps.setString(1, txtStuLastName.getText());
+                    ps.setString(2, txtStuFirstName.getText());
+                    ps.setString(3, txtStuMidInitial.getText());
+                    ps.setString(4, cmbStuGender.getSelectedItem().toString());
+                    ps.setString(5, cmbStuCourse.getSelectedItem().toString());
+                    ps.setString(6, txtStuPhone.getText());
+                    ps.setString(7, txtStuAddress.getText());
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    ps.setDate(8, new java.sql.Date(df.parse(dateStuBday.toString()).getTime()));
+                    if (chkStuActive.isSelected()) 
+                        ps.setString(9, "A");
+                    else 
+                        ps.setString(9, "I");
+                    ps.execute();
+                    loadStudentTable();
+                    JOptionPane.showMessageDialog(null, "Updated record successfully.");
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Input field/s cannot be empty", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdateStuRecActionPerformed
 
     private void btnDeleteStuRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStuRecActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        String selectedStudntNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
-        int intAnswer = JOptionPane.showConfirmDialog(null, "Delete a record?", "Deleting Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (intAnswer == 0) {
-            try {
-                ps = con.prepareStatement("DELETE FROM finals.student"
-                        + " WHERE student_no = '" + selectedStudntNo + "'"
-                );
-                ps.execute();
-                loadStudentTable();
-                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            } catch (Exception e) {
-                System.out.println(e);
+        if(!(txtStudentNo.getText().isEmpty())) {
+            con = ConnectDB.connect();
+            String selectedStudntNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
+            int intAnswer = JOptionPane.showConfirmDialog(null, "Delete a record?", "Deleting Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (intAnswer == 0) {
+                try {
+                    ps = con.prepareStatement("DELETE FROM finals.student"
+                            + " WHERE student_no = '" + selectedStudntNo + "'"
+                    );
+                    ps.execute();
+                    loadStudentTable();
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Student no. cannot be empty", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteStuRecActionPerformed
 
@@ -2477,38 +2502,40 @@ public class AdminMenu extends javax.swing.JPanel {
     private void btnAddSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSYSemActionPerformed
         // TODO add your handling code here:
         con = ConnectDB.connect();
-        
-        try{
-            if (rbSY.isSelected()) {
-                if(!(txtSY.getText().toString().equals(""))) {
-                    ps = con.prepareStatement("INSERT INTO finals.SY VALUES ('" + txtSY.getText().toString() + "')");
-                    int rowsAffected = ps.executeUpdate();
-                    if (rowsAffected > 0)
-                        JOptionPane.showMessageDialog(null, "Added record successfully.");
-                    else
-                        JOptionPane.showMessageDialog(null, "Invalid SY", "ERROR", JOptionPane.ERROR_MESSAGE);
-                     loadSYTable();
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            try{
+                if (rbSY.isSelected()) {
+                    if(!(txtSY.getText().toString().equals(""))) {
+                        ps = con.prepareStatement("INSERT INTO finals.SY VALUES ('" + txtSY.getText().toString() + "')");
+                        int rowsAffected = ps.executeUpdate();
+                        if (rowsAffected > 0)
+                            JOptionPane.showMessageDialog(null, "Added record successfully.");
+                        else
+                            JOptionPane.showMessageDialog(null, "Invalid SY", "ERROR", JOptionPane.ERROR_MESSAGE);
+                         loadSYTable();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "SY cannot be empty", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else if (rbSem.isSelected()) {
+                    if(!(txtSem.getText().toString().equals(""))) {
+                        ps = con.prepareStatement("INSERT INTO finals.SEMESTER VALUES ('" + txtSem.getText().toString() + "')");
+                        int rowsAffected = ps.executeUpdate();
+                        if (rowsAffected > 0)
+                            JOptionPane.showMessageDialog(null, "Added record successfully.");
+                        else
+                            JOptionPane.showMessageDialog(null, "Invalid Semester", "ERROR", JOptionPane.ERROR_MESSAGE);
+                         loadSemTable();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Semester cannot be empty", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Cannot enter empty value", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-            } else if (rbSem.isSelected()) {
-                if(!(txtSem.getText().toString().equals(""))) {
-                    ps = con.prepareStatement("INSERT INTO finals.SEMESTER VALUES ('" + txtSem.getText().toString() + "')");
-                    int rowsAffected = ps.executeUpdate();
-                    if (rowsAffected > 0)
-                        JOptionPane.showMessageDialog(null, "Added record successfully.");
-                    else
-                        JOptionPane.showMessageDialog(null, "Invalid Semester", "ERROR", JOptionPane.ERROR_MESSAGE);
-                     loadSemTable();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Cannot enter empty value", "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAddSYSemActionPerformed
 
@@ -2541,91 +2568,100 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnAddSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSubjActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            ps = con.prepareStatement("INSERT INTO finals.SUBJECT VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            ps.setString(1, cmbCollegeYr.getSelectedItem().toString());
-            ps.setString(2, cmbSem2.getSelectedItem().toString());
-            ps.setString(3, txtSubjCode.getText().toString());
-            ps.setString(4, txtSubjDesc.getText().toString());
-            ps.setString(5, txtUnits.getText().toString());
-            ps.setString(6, txtCurriculum.getText().toString());
-            ps.setString(7, cmbCollegeCode2.getSelectedItem().toString());
-            ps.setString(8, cmbCourseCode.getSelectedItem().toString());
-            if(checkSubjStatus.isSelected()) 
-                ps.setString(9, "A");
-            else
-                ps.setString(9, "I");
-            
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Added record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
-            
-            loadSubjectTable();
-            
-        } catch (Exception e) {
-            System.out.println(e);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            try {
+                ps = con.prepareStatement("INSERT INTO finals.SUBJECT VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                ps.setString(1, cmbCollegeYr.getSelectedItem().toString());
+                ps.setString(2, cmbSem2.getSelectedItem().toString());
+                ps.setString(3, txtSubjCode.getText().toString());
+                ps.setString(4, txtSubjDesc.getText().toString());
+                ps.setString(5, txtUnits.getText().toString());
+                ps.setString(6, txtCurriculum.getText().toString());
+                ps.setString(7, cmbCollegeCode2.getSelectedItem().toString());
+                ps.setString(8, cmbCourseCode.getSelectedItem().toString());
+                if(checkSubjStatus.isSelected()) 
+                    ps.setString(9, "A");
+                else
+                    ps.setString(9, "I");
+
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Added record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                loadSubjectTable();
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_btnAddSubjActionPerformed
 
     private void btnEditSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSubjActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            ps = con.prepareStatement("UPDATE finals.SUBJECT "
-                    + "SET college_year = ?, semester = ?, description = ?,"
-                    + " units = ?, curriculum = ?, college_code = ?, course_code = ?, status = ?"
-                    + " WHERE subject_code = ?");
-            ps.setString(1, cmbCollegeYr.getSelectedItem().toString());
-            ps.setString(2, cmbSem2.getSelectedItem().toString());
-            ps.setString(9, txtSubjCode.getText().toString());
-            ps.setString(3, txtSubjDesc.getText().toString());
-            ps.setString(4, txtUnits.getText().toString());
-            ps.setString(5, txtCurriculum.getText().toString());
-            ps.setString(6, cmbCollegeCode2.getSelectedItem().toString());
-            ps.setString(7, cmbCourseCode.getSelectedItem().toString());
-            if(checkSubjStatus.isSelected()) 
-                ps.setString(8, "A");
-            else
-                ps.setString(8, "I");
-            
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Cannot modify subject code", "ERROR", JOptionPane.ERROR_MESSAGE);
-            
-            loadSubjectTable();
-            
-        } catch (Exception e) {
-            System.out.println(e);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Update a record?", "Updating Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            try {
+                ps = con.prepareStatement("UPDATE finals.SUBJECT "
+                        + "SET college_year = ?, semester = ?, description = ?,"
+                        + " units = ?, curriculum = ?, college_code = ?, course_code = ?, status = ?"
+                        + " WHERE subject_code = ?");
+                ps.setString(1, cmbCollegeYr.getSelectedItem().toString());
+                ps.setString(2, cmbSem2.getSelectedItem().toString());
+                ps.setString(9, txtSubjCode.getText().toString());
+                ps.setString(3, txtSubjDesc.getText().toString());
+                ps.setString(4, txtUnits.getText().toString());
+                ps.setString(5, txtCurriculum.getText().toString());
+                ps.setString(6, cmbCollegeCode2.getSelectedItem().toString());
+                ps.setString(7, cmbCourseCode.getSelectedItem().toString());
+                if(checkSubjStatus.isSelected()) 
+                    ps.setString(8, "A");
+                else
+                    ps.setString(8, "I");
+
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Updated record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Cannot modify subject code", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                loadSubjectTable();
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_btnEditSubjActionPerformed
 
     private void btnDeleteSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSubjActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            ps = con.prepareStatement("DELETE FROM finals.SUBJECT "
-                    + " WHERE subject_code = ?");
-            ps.setString(1, txtSubjCode.getText().toString());
-            
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Subject does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
-            
-            loadSubjectTable();
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cannot delete subject in use", "ERROR", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Delete a record?", "Deleting Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+                con = ConnectDB.connect();
+            try {
+                ps = con.prepareStatement("DELETE FROM finals.SUBJECT "
+                        + " WHERE subject_code = ?");
+                ps.setString(1, txtSubjCode.getText().toString());
+
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Subject does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                loadSubjectTable();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot delete subject in use", "ERROR", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_btnDeleteSubjActionPerformed
 
@@ -2636,107 +2672,117 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnAddSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSchedActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        String college_code = "";
         
-        try {
-            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
-            while (rs.next())
-                college_code = rs.getString("college_code");
-            
-            ps = con.prepareStatement("INSERT INTO finals.SUBJECT_SCHEDULE VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1, cmbSchedSY.getSelectedItem().toString());
-            ps.setString(2, cmbSchedSem.getSelectedItem().toString());
-            ps.setString(3, college_code);
-            ps.setString(4, cmbBlockNo.getSelectedItem().toString());
-            ps.setString(5, cmbSubjCode.getSelectedItem().toString());
-            ps.setString(6, cmbDay.getSelectedItem().toString());
-            ps.setString(7, txtTime.getText().toString());
-            ps.setString(8, txtRoom.getText().toString());
-            if (rbOnline.isSelected())
-                ps.setString(9, "OL");
-            else 
-                ps.setString(9, "F2F");
-            ps.setString(10, cmbSequenceNo.getSelectedItem().toString());
-            ps.setString(11, cmbFacultyID.getSelectedItem().toString());
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Added record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
-            loadScheduleTable();   
-        } catch (Exception e) {
-            System.out.println(e);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            String college_code = "";
+
+            try {
+                rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+                while (rs.next())
+                    college_code = rs.getString("college_code");
+
+                ps = con.prepareStatement("INSERT INTO finals.SUBJECT_SCHEDULE VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+                ps.setString(1, cmbSchedSY.getSelectedItem().toString());
+                ps.setString(2, cmbSchedSem.getSelectedItem().toString());
+                ps.setString(3, college_code);
+                ps.setString(4, cmbBlockNo.getSelectedItem().toString());
+                ps.setString(5, cmbSubjCode.getSelectedItem().toString());
+                ps.setString(6, cmbDay.getSelectedItem().toString());
+                ps.setString(7, txtTime.getText().toString());
+                ps.setString(8, txtRoom.getText().toString());
+                if (rbOnline.isSelected())
+                    ps.setString(9, "OL");
+                else 
+                    ps.setString(9, "F2F");
+                ps.setString(10, cmbSequenceNo.getSelectedItem().toString());
+                ps.setString(11, cmbFacultyID.getSelectedItem().toString());
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Added record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
+                loadScheduleTable();   
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_btnAddSchedActionPerformed
 
     private void btnEditSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSchedActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        String college_code = "";
         
-        try {
-            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
-            while (rs.next())
-                college_code = rs.getString("college_code");
-            
-            ps = con.prepareStatement("UPDATE finals.SUBJECT_SCHEDULE "
-                    + "SET day = ?, time = ?, room = ?, type = ?, faculty_id = ? "
-                    + "WHERE sy = ? AND semester = ? AND college_code = ? AND block_no = ? AND subject_code = ? AND sequence_no = ?");
-            ps.setString(6, cmbSchedSY.getSelectedItem().toString());
-            ps.setString(7, cmbSchedSem.getSelectedItem().toString());
-            ps.setString(8, college_code);
-            ps.setString(9, cmbBlockNo.getSelectedItem().toString());
-            ps.setString(10, cmbSubjCode.getSelectedItem().toString());
-            ps.setString(1, cmbDay.getSelectedItem().toString());
-            ps.setString(2, txtTime.getText().toString());
-            ps.setString(3, txtRoom.getText().toString());
-            if (rbOnline.isSelected())
-                ps.setString(4, "OL");
-            else 
-                ps.setString(4, "F2F");
-            ps.setString(11, cmbSequenceNo.getSelectedItem().toString());
-            ps.setString(5, cmbFacultyID.getSelectedItem().toString());
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Cannot update", "ERROR", JOptionPane.ERROR_MESSAGE);
-            loadScheduleTable();   
-        } catch (Exception e) {
-            System.out.println(e);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Update a record?", "Updating Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            String college_code = "";
+            try {
+                rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+                while (rs.next())
+                    college_code = rs.getString("college_code");
+
+                ps = con.prepareStatement("UPDATE finals.SUBJECT_SCHEDULE "
+                        + "SET day = ?, time = ?, room = ?, type = ?, faculty_id = ? "
+                        + "WHERE sy = ? AND semester = ? AND college_code = ? AND block_no = ? AND subject_code = ? AND sequence_no = ?");
+                ps.setString(6, cmbSchedSY.getSelectedItem().toString());
+                ps.setString(7, cmbSchedSem.getSelectedItem().toString());
+                ps.setString(8, college_code);
+                ps.setString(9, cmbBlockNo.getSelectedItem().toString());
+                ps.setString(10, cmbSubjCode.getSelectedItem().toString());
+                ps.setString(1, cmbDay.getSelectedItem().toString());
+                ps.setString(2, txtTime.getText().toString());
+                ps.setString(3, txtRoom.getText().toString());
+                if (rbOnline.isSelected())
+                    ps.setString(4, "OL");
+                else 
+                    ps.setString(4, "F2F");
+                ps.setString(11, cmbSequenceNo.getSelectedItem().toString());
+                ps.setString(5, cmbFacultyID.getSelectedItem().toString());
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Updated record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Cannot update", "ERROR", JOptionPane.ERROR_MESSAGE);
+                loadScheduleTable();   
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_btnEditSchedActionPerformed
 
     private void btnDeleteSchedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSchedActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        String college_code = "";
-        
-        try {
-            rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
-            while (rs.next())
-                college_code = rs.getString("college_code");
-            
-            ps = con.prepareStatement("DELETE FROM finals.SUBJECT_SCHEDULE "
-                    + "WHERE sy = ? AND semester = ? AND college_code = ? AND block_no = ? AND subject_code = ? AND sequence_no = ?");
-            ps.setString(1, cmbSchedSY.getSelectedItem().toString());
-            ps.setString(2, cmbSchedSem.getSelectedItem().toString());
-            ps.setString(3, college_code);
-            ps.setString(4, cmbBlockNo.getSelectedItem().toString());
-            ps.setString(5, cmbSubjCode.getSelectedItem().toString());
-            ps.setString(6, cmbSequenceNo.getSelectedItem().toString());
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Cannot delete", "ERROR", JOptionPane.ERROR_MESSAGE);
-            loadScheduleTable();   
-        } catch (Exception e) {
-            System.out.println(e);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Delete a record?", "Deleting Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            String college_code = "";
+
+            try {
+                rs = con.prepareStatement("SELECT * FROM finals.vwSubjectInfo_Sched WHERE subject_code = '" + cmbSubjCode.getSelectedItem().toString() + "'").executeQuery();
+                while (rs.next())
+                    college_code = rs.getString("college_code");
+
+                ps = con.prepareStatement("DELETE FROM finals.SUBJECT_SCHEDULE "
+                        + "WHERE sy = ? AND semester = ? AND college_code = ? AND block_no = ? AND subject_code = ? AND sequence_no = ?");
+                ps.setString(1, cmbSchedSY.getSelectedItem().toString());
+                ps.setString(2, cmbSchedSem.getSelectedItem().toString());
+                ps.setString(3, college_code);
+                ps.setString(4, cmbBlockNo.getSelectedItem().toString());
+                ps.setString(5, cmbSubjCode.getSelectedItem().toString());
+                ps.setString(6, cmbSequenceNo.getSelectedItem().toString());
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Cannot delete", "ERROR", JOptionPane.ERROR_MESSAGE);
+                loadScheduleTable();   
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_btnDeleteSchedActionPerformed
 
@@ -2820,94 +2866,108 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnAddEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmpActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            ps = con.prepareStatement("INSERT INTO finals.EMPLOYEE VALUES (?,?,?,default,?,?,?,?,?)");
-            ps.setString(1, txtEmpID.getText().toString());
-            ps.setString(2, txtEmpLastname.getText().toString());
-            ps.setString(3, txtEmpFirstname.getText().toString());
-            ps.setString(4, cmbEmpGender.getSelectedItem().toString());
-            ps.setString(5, txtEmpCellNo.getText().toString());
-            ps.setString(6, txtEmpAddress.getText().toString());
-            if (!(dateEmpBday.toString()=="")) {
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                ps.setDate(7, new java.sql.Date(df.parse(dateEmpBday.toString()).getTime()));
-            } else {
-                ps.setDate(7, null);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Add a record?", "Adding Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            try {
+                ps = con.prepareStatement("INSERT INTO finals.EMPLOYEE VALUES (?,?,?,default,?,?,?,?,?)");
+                ps.setString(1, txtEmpID.getText().toString());
+                ps.setString(2, txtEmpLastname.getText().toString());
+                ps.setString(3, txtEmpFirstname.getText().toString());
+                ps.setString(4, cmbEmpGender.getSelectedItem().toString());
+                ps.setString(5, txtEmpCellNo.getText().toString());
+                ps.setString(6, txtEmpAddress.getText().toString());
+                if (!(dateEmpBday.toString()=="")) {
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    ps.setDate(7, new java.sql.Date(df.parse(dateEmpBday.toString()).getTime()));
+                } else {
+                    ps.setDate(7, null);
+                }
+                if (cmbEmpGender.getSelectedItem().equals("A"))
+                    ps.setString(8,"A");
+                else
+                    ps.setString(8,"I");
+
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    ps = con.prepareStatement("INSERT INTO finals.PASSWORD VALUES (?,?)");
+                    ps.setString(1, txtEmpID.getText().toString());
+                    ps.setString(2, txtEmpLastname.getText().toString().toLowerCase());
+                    ps.execute();
+                    loadEmployeeTable();  
+                    JOptionPane.showMessageDialog(null, "Added record successfully.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Add failed", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
             }
-            if (cmbEmpGender.getSelectedItem().equals("A"))
-                ps.setString(8,"A");
-            else
-                ps.setString(8,"I");
-            
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Added record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Cannot add", "ERROR", JOptionPane.ERROR_MESSAGE);
-            loadEmployeeTable();   
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cannot add duplicate", "ERROR", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e);
         }
     }//GEN-LAST:event_btnAddEmpActionPerformed
 
     private void btnUpdateEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmpActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            ps = con.prepareStatement("UPDATE finals.EMPLOYEE SET "
-                    + "last_name = ?, first_name = ?, gender = ?, cp_num = ?, address = ?, bday = ?, status = ? "
-                    + "WHERE employee_id = ?");
-            ps.setString(8, txtEmpID.getText().toString());
-            ps.setString(1, txtEmpLastname.getText().toString());
-            ps.setString(2, txtEmpFirstname.getText().toString());
-            ps.setString(3, cmbEmpGender.getSelectedItem().toString());
-            ps.setString(4, txtEmpCellNo.getText().toString());
-            ps.setString(5, txtEmpAddress.getText().toString());
-            if (!(dateEmpBday.toString()=="")) {
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                ps.setDate(6, new java.sql.Date(df.parse(dateEmpBday.toString()).getTime()));
-            } else {
-                ps.setDate(6, null);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Update a record?", "Updating Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            try {
+                ps = con.prepareStatement("UPDATE finals.EMPLOYEE SET "
+                        + "last_name = ?, first_name = ?, gender = ?, cp_num = ?, address = ?, bday = ?, status = ? "
+                        + "WHERE employee_id = ?");
+                ps.setString(8, txtEmpID.getText().toString());
+                ps.setString(1, txtEmpLastname.getText().toString());
+                ps.setString(2, txtEmpFirstname.getText().toString());
+                ps.setString(3, cmbEmpGender.getSelectedItem().toString());
+                ps.setString(4, txtEmpCellNo.getText().toString());
+                ps.setString(5, txtEmpAddress.getText().toString());
+                if (!(dateEmpBday.toString()=="")) {
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    ps.setDate(6, new java.sql.Date(df.parse(dateEmpBday.toString()).getTime()));
+                } else {
+                    ps.setDate(6, null);
+                }
+                if (cmbEmpGender.getSelectedItem().equals("A"))
+                    ps.setString(7,"A");
+                else
+                    ps.setString(7,"I");
+
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Updated record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Cannot modify employee ID1", "ERROR", JOptionPane.ERROR_MESSAGE);
+                loadEmployeeTable();   
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot modify existing employee ID", "ERROR", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
             }
-            if (cmbEmpGender.getSelectedItem().equals("A"))
-                ps.setString(7,"A");
-            else
-                ps.setString(7,"I");
-            
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Updated record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Cannot modify employee ID1", "ERROR", JOptionPane.ERROR_MESSAGE);
-            loadEmployeeTable();   
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cannot modify existing employee ID", "ERROR", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e);
-        }
+        }     
     }//GEN-LAST:event_btnUpdateEmpActionPerformed
 
     private void btnDeleteEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmpActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            ps = con.prepareStatement("DELETE FROM finals.EMPLOYEE "
-                    + "WHERE employee_id = ?");
-            ps.setString(1, txtEmpID.getText().toString());
-            
-            int rowsAffected = ps.executeUpdate();
-            
-            if (rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-            else
-                JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
-            loadEmployeeTable();   
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cannot delete employee ID in use", "ERROR", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e);
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Delete a record?", "Deleting Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
+            try {
+                ps = con.prepareStatement("DELETE FROM finals.EMPLOYEE "
+                        + "WHERE employee_id = ?");
+                ps.setString(1, txtEmpID.getText().toString());
+
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected > 0)
+                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                else
+                    JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                loadEmployeeTable();   
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot delete employee ID in use", "ERROR", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_btnDeleteEmpActionPerformed
 
@@ -2986,31 +3046,34 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnDeleteSYSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSYSemActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
+        int intAnswer = JOptionPane.showConfirmDialog(null, "Delete a record?", "Deleting Record", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (intAnswer == 0) {
+            con = ConnectDB.connect();
         
-        try{
-            if (rbSY.isSelected()) {
-                ps = con.prepareStatement("DELETE FROM finals.SY WHERE SY = '" + txtSY.getText().toString() + "'");
-                int rowsAffected = ps.executeUpdate();
-                if (rowsAffected > 0)
-                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                else
-                    JOptionPane.showMessageDialog(null, "SY does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
-                 loadSYTable();
-            } else if (rbSem.isSelected()) {
-                ps = con.prepareStatement("DELETE FROM finals.SEMESTER WHERE SEMESTER = '" + txtSem.getText().toString() + "'");
-                int rowsAffected = ps.executeUpdate();
-                if (rowsAffected > 0)
-                    JOptionPane.showMessageDialog(null, "Deleted record successfully.");
-                else
-                    JOptionPane.showMessageDialog(null, "Semester does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
-                 loadSemTable();
-            } else {
-                JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
+            try{
+                if (rbSY.isSelected()) {
+                    ps = con.prepareStatement("DELETE FROM finals.SY WHERE SY = '" + txtSY.getText().toString() + "'");
+                    int rowsAffected = ps.executeUpdate();
+                    if (rowsAffected > 0)
+                        JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                    else
+                        JOptionPane.showMessageDialog(null, "SY does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                     loadSYTable();
+                } else if (rbSem.isSelected()) {
+                    ps = con.prepareStatement("DELETE FROM finals.SEMESTER WHERE SEMESTER = '" + txtSem.getText().toString() + "'");
+                    int rowsAffected = ps.executeUpdate();
+                    if (rowsAffected > 0)
+                        JOptionPane.showMessageDialog(null, "Deleted record successfully.");
+                    else
+                        JOptionPane.showMessageDialog(null, "Semester does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                     loadSemTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Select a record to add to", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Cannot delete SY/SEMESTER in use", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, "Cannot delete SY/SEMESTER in use", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteSYSemActionPerformed
 
