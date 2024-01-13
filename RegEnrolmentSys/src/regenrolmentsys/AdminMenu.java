@@ -2277,40 +2277,44 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnStudSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudSearchActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
-        try {
-            String selectedStudentNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
-            rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + selectedStudentNo + "'").executeQuery();
-            if (rs.next()) {
-                txtStuFirstName.setText(rs.getString("first_name"));
-                txtStuLastName.setText(rs.getString("last_name"));
-                txtStuMidInitial.setText(rs.getString("mi"));
-                lblStuEmail.setText(rs.getString("email"));
-                if (rs.getString("gender").equals("M"))
-                    cmbStuGender.setSelectedIndex(0);
-                else
-                    cmbStuGender.setSelectedIndex(1);
-                txtStuPhone.setText(rs.getString("cp_num"));
-                txtStuAddress.setText(rs.getString("address"));
-                dateStuBday.setDate(rs.getDate("bday").toLocalDate());
-                chkStuActive.setSelected(rs.getString("status").equals("A"));
-                cmbStuCourse.setSelectedItem(rs.getString("course_code"));
-            } else {
-                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no LIKE '" + selectedStudentNo + "%'").executeQuery();
+        if (!(txtStudentNo.getText().isEmpty())) {
+            con = ConnectDB.connect();
+            try {
+                String selectedStudentNo = cmbStudentNoYear.getSelectedItem().toString() + "-" + txtStudentNo.getText();
+                rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no = '" + selectedStudentNo + "'").executeQuery();
                 if (rs.next()) {
-                    rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no LIKE '" + selectedStudentNo + "%'").executeQuery();
-                    tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
+                    txtStuFirstName.setText(rs.getString("first_name"));
+                    txtStuLastName.setText(rs.getString("last_name"));
+                    txtStuMidInitial.setText(rs.getString("mi"));
+                    lblStuEmail.setText(rs.getString("email"));
+                    if (rs.getString("gender").equals("M"))
+                        cmbStuGender.setSelectedIndex(0);
+                    else
+                        cmbStuGender.setSelectedIndex(1);
+                    txtStuPhone.setText(rs.getString("cp_num"));
+                    txtStuAddress.setText(rs.getString("address"));
+                    dateStuBday.setDate(rs.getDate("bday").toLocalDate());
+                    chkStuActive.setSelected(rs.getString("status").equals("A"));
+                    cmbStuCourse.setSelectedItem(rs.getString("course_code"));
                 } else {
-                    loadStudentTable();
-                    JOptionPane.showMessageDialog(this, "No student found with matching search parameters!", "Search error", JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                    //TODO: ERROR MSG "NO STUDENT FOUND"
+                    rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no LIKE '" + selectedStudentNo + "%'").executeQuery();
+                    if (rs.next()) {
+                        rs = con.prepareStatement("SELECT * FROM finals.STUDENT WHERE student_no LIKE '" + selectedStudentNo + "%'").executeQuery();
+                        tblStudents.setModel(TableUtil.resultSetToTableModel(rs));
+                    } else {
+                        loadStudentTable();
+                        JOptionPane.showMessageDialog(this, "No student found with matching search parameters!", "Search error", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                        //TODO: ERROR MSG "NO STUDENT FOUND"
+                    }
                 }
-            }
-        } catch (Exception e) {
-            System.out.println(e); //TODO: ADD ERROR MSG
-        }
         
+                } catch (Exception e) {
+                    System.out.println(e); //TODO: ADD ERROR MSG
+                }
+        } else {
+            JOptionPane.showMessageDialog(this, "Student no. cannot be empty", "Search error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnStudSearchActionPerformed
 
     private void cmbStudentNoYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStudentNoYearActionPerformed
@@ -2549,20 +2553,25 @@ public class AdminMenu extends javax.swing.JPanel {
 
     private void btnSearchSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchSubjActionPerformed
         // TODO add your handling code here:
-        con = ConnectDB.connect();
         
-        try {
-            ps = con.prepareStatement("SELECT * FROM finals.SUBJECT WHERE subject_code = '" + txtSubjCode.getText().toString() + "'");
-            rs = ps.executeQuery();
-            if (rs.next()) {
+        if(!(txtSubjCode.getText().isEmpty())) {
+            con = ConnectDB.connect();
+        
+            try {
+                ps = con.prepareStatement("SELECT * FROM finals.SUBJECT WHERE subject_code = '" + txtSubjCode.getText().toString() + "'");
                 rs = ps.executeQuery();
-                tblEmployees.setModel(TableUtil.resultSetToTableModel(rs));
-                TableUtil.resizeColumnWidth(tblEmployees);
-            } else {
-                JOptionPane.showMessageDialog(null, "Subject code does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                if (rs.next()) {
+                    rs = ps.executeQuery();
+                    tblEmployees.setModel(TableUtil.resultSetToTableModel(rs));
+                    TableUtil.resizeColumnWidth(tblEmployees);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Subject code does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                System.out.println(e);
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } else {
+            JOptionPane.showMessageDialog(null, "Semester cannot be empty", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSearchSubjActionPerformed
 

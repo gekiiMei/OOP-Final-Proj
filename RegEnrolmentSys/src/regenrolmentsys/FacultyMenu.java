@@ -1258,7 +1258,6 @@ public class FacultyMenu extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "Deleted record successfully.");
                 else
                     JOptionPane.showMessageDialog(null, "Record does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
-
                 loadGradesTable();
             } catch (Exception e) {
                 System.out.println(e);
