@@ -314,7 +314,7 @@ public class AdminMenu extends javax.swing.JPanel {
                 tblEmployees.setModel(TableUtil.resultSetToTableModel(rs));
                 TableUtil.resizeColumnWidth(tblEmployees);
             }
-        } catch (Exception e) {
+        } catch (Exception e) { 
             System.out.println(e);
         }
     }
@@ -332,12 +332,12 @@ public class AdminMenu extends javax.swing.JPanel {
     public void loadHistoryTab() {
         con = ConnectDB.connect();
         try {
-            rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
+            rs = con.prepareStatement("SELECT * FROM finals.HISTORY ORDER BY DATE_PERFORMED DESC").executeQuery();
             if (rs.next()) {
-                rs = con.prepareStatement("SELECT * FROM finals.HISTORY").executeQuery();
+                rs = con.prepareStatement("SELECT * FROM finals.HISTORY ORDER BY DATE_PERFORMED DESC").executeQuery();
                 tblHistory.setModel(TableUtil.resultSetToTableModel(rs));
                 TableUtil.resizeColumnWidth(tblHistory);
-                TableUtil.styleTable(tblHistory);
+                TableUtil.styleTable2(tblHistory);
             }
         } catch (Exception e) {
             System.out.println(e);
