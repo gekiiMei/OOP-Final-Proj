@@ -21,6 +21,7 @@ public class AdminMenu extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
+    private PreparedStatement psLog = null;
     private boolean cmbStuCourseLoaded = false, cmbStuCourseLoaded2 = false, cmbCollegeLoaded = false, cmbSubjCodeLoaded = false, cmbFacultyLoaded = false;
     /**
      * Creates new form AdminMenu
@@ -52,12 +53,13 @@ public class AdminMenu extends javax.swing.JPanel {
         Date currDate = Date.valueOf(localCurrDate);
         
         try {
-            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, currentUser);
-            ps.setString(2, action);
-            ps.setString(3, "Admin");
-            ps.setDate(4, currDate);
-            ps.setTime(5, currTime);
+            psLog = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            psLog.setString(1, currentUser);
+            psLog.setString(2, action);
+            psLog.setString(3, "Admin");
+            psLog.setDate(4, currDate);
+            psLog.setTime(5, currTime);
+            psLog.execute();
         } catch (Exception e) {
             System.out.println(e);
         }

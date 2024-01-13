@@ -28,6 +28,7 @@ public class StudentMenu extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
+    private PreparedStatement psLog = null;
     private PreparedStatement psEnrolConfirm = null;
     /**
      * Creates new form StudentMenu
@@ -237,12 +238,13 @@ public class StudentMenu extends javax.swing.JPanel {
         Date currDate = Date.valueOf(localCurrDate);
         
         try {
-            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, currentUser);
-            ps.setString(2, action);
-            ps.setString(3, "Student");
-            ps.setDate(4, currDate);
-            ps.setTime(5, currTime);
+            psLog = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            psLog.setString(1, currentUser);
+            psLog.setString(2, action);
+            psLog.setString(3, "Student");
+            psLog.setDate(4, currDate);
+            psLog.setTime(5, currTime);
+            psLog.execute();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -663,6 +665,12 @@ public class StudentMenu extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel4.setText("Semester");
+
+        cmbGradeSem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGradeSemActionPerformed(evt);
+            }
+        });
 
         btnGradeSearch.setText("Search");
         btnGradeSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -1254,6 +1262,10 @@ public class StudentMenu extends javax.swing.JPanel {
         tabs.setSelectedIndex(3);
         profileStudentsTab();
     }//GEN-LAST:event_btnProfileActionPerformed
+
+    private void cmbGradeSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGradeSemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbGradeSemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

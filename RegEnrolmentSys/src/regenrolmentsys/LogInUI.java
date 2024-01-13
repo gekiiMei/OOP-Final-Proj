@@ -23,6 +23,7 @@ public class LogInUI extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
+    private PreparedStatement psLog = null;
     /**
      * Creates new form LogInUI
      */
@@ -126,12 +127,13 @@ public class LogInUI extends javax.swing.JPanel {
         Date currDate = Date.valueOf(localCurrDate);
         
         try {
-            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, user);
-            ps.setString(2, "Logged in");
-            ps.setString(3, userType);
-            ps.setDate(4, currDate);
-            ps.setTime(5, currTime);
+            psLog = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            psLog.setString(1, user);
+            psLog.setString(2, "Logged in");
+            psLog.setString(3, userType);
+            psLog.setDate(4, currDate);
+            psLog.setTime(5, currTime);
+            psLog.execute();
         } catch (Exception e) {
             System.out.println(e);
         }
