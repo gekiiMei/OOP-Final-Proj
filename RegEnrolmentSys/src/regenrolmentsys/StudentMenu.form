@@ -993,9 +993,9 @@
                                       <Component id="lastName" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblStudentFN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="firstName" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Component id="lblStudentFN" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -1003,7 +1003,7 @@
                                       <Component id="email" min="-2" pref="16" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblStudentGender" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="gender" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
                                   </Group>
