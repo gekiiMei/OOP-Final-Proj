@@ -25,6 +25,7 @@ public class FacultyMenu extends javax.swing.JPanel {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
+    private PreparedStatement psLog = null;
     private boolean cmbSubjCodeLoaded = false, cmbSubjCodeLoaded2 = false;
     
     /**
@@ -238,12 +239,13 @@ public class FacultyMenu extends javax.swing.JPanel {
         Date currDate = Date.valueOf(localCurrDate);
         
         try {
-            ps = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, currentUser);
-            ps.setString(2, action);
-            ps.setString(3, "Faculty");
-            ps.setDate(4, currDate);
-            ps.setTime(5, currTime);
+            psLog = con.prepareStatement("INSERT INTO finals.HISTORY VALUES (?, ?, ?, ?, ?)");
+            psLog.setString(1, currentUser);
+            psLog.setString(2, action);
+            psLog.setString(3, "Faculty");
+            psLog.setDate(4, currDate);
+            psLog.setTime(5, currTime);
+            psLog.execute();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1236,20 +1238,15 @@ public class FacultyMenu extends javax.swing.JPanel {
                             ps.execute(); 
 
                             JOptionPane.showMessageDialog(null, "Added record successfully.");
+                            logAction("Added Grade record");
                         } else {
                             JOptionPane.showMessageDialog(null, "Student is already graded", "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
 
+                      
+                        loadGradesTable();
                         
-                        ps.setString(1, cmbSY.getSelectedItem().toString());
-                        ps.setString(2, cmbSem.getSelectedItem().toString());
-                        ps.setString(3, selectedStudntNo);
-                        ps.setString(4, cmbSubjCode.getSelectedItem().toString());
-                        ps.setString(5, cmbBlockNo.getSelectedItem().toString());
-                        ps.execute(); 
-                        
-                        logAction("Added Grade record");
-                        JOptionPane.showMessageDialog(null, "Added record successfully.");
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Cannot enter grade to a subject the student is not enrolled to", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
